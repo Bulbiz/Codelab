@@ -1,20 +1,10 @@
-.PHONY: all run clean
+JCC = javac
+JFLAGS = -g
+MODULE =
+SRC = $(shell find src/ -name '*.java')
 
-MVN=mvn
-CLASSPATH=./target/*.jar
-JAVA_OPT=-cp $(CLASSPATH)
-JAVA=java $(JAVA_OPT)
-TARGET=my.package.name.App
+compile :
+	$(JCC) $(JFLAGS) $(SRC)
 
-# Target all builds the project.
-all:
-	$(MVN) package
-
-# Target run executes the program and start with target all to build the
-# project.
-run : all
-	$(JAVA) $(TARGET)
-
-# Target clean removes all files produced during build.
 clean :
-	$(MVN) clean
+	rm $(SRC:.java=.class)
