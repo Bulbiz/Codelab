@@ -3,30 +3,18 @@ package src.model.world;
 
 import java.util.*;
 
-/**
- * 
- */
 public class Cell {
-
-    /**
-     * Default constructor
-     */
+	
+	private Decor obstacle;
+	private Entity being;
+    
     public Cell() {
+    	this.obstacle = null;
+    	this.being = null;
     }
 
-    /**
-     * 
-     */
-    private Entity entity;
-
-    /**
-     * 
-     */
-    private Decor decor;
-
-
-
-
-
-
+    public Cell(Decor obstacle) {
+    	this.obstacle = obstacle;
+    	this.being = null;
+    }
 }
