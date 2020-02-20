@@ -11,7 +11,8 @@ public class Porte extends Entity {
     /**
      * Default constructor
      */
-    public Porte() {
+    public Porte(Board b, int xStart, int yStart) {
+    	super(b,xStart,yStart);
     }
 
 }

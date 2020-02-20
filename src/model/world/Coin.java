@@ -11,7 +11,8 @@ public class Coin extends Entity {
     /**
      * Default constructor
      */
-    public Coin() {
+    public Coin(Board b, int xStart, int yStart) {
+    	super(b,xStart,yStart);
     }
 
 }
