@@ -1,7 +1,6 @@
 
 package src.view.langage;
 
-import src.model.langage.*;
 import javax.swing.JPanel;
 
 import java.util.*;
