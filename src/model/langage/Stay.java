@@ -18,8 +18,8 @@ public class Stay extends Action {
      */
     public int run() {
 		//TODO implement here
-      this.personage.stay();
-		  return 1;
-	}
+        this.personage.stay();
+		    return 1;
+	  }
 
 }
