@@ -18,7 +18,7 @@ public class Instruction {
     /**
      * 
      */
-    protected src.model.world.Character character;
+    protected src.model.world.Personage personage;
 
 
 }
