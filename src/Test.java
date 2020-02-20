@@ -11,5 +11,7 @@ class Test {
         TestWorldModel.run();
         TestLanguageView.run();
         TestWorldView.run();
+
+        System.out.println("fin de test");
     }
 }
