@@ -30,4 +30,14 @@ public class Personage extends Entity {
     public void move(){
       System.out.println("move");
     }
+
+    //FIXME implement the code.
+    public void turnLeft(){
+      System.out.println("turnLeft");
+    }
+
+    //FIXME implement the code
+    public void turnRight(){
+      System.out.println("turnRight");
+    }
 }
