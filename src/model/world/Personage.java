@@ -8,12 +8,12 @@ import java.util.*;
 /**
  * 
  */
-public class Character extends Entity {
+public class Personage extends Entity {
 
     /**
      * Default constructor
      */
-    public Character() {
+    public Personage() {
     }
 
     /**

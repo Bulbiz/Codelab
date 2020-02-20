@@ -6,7 +6,7 @@ import java.util.*;
 /**
  * 
  */
-public class Player extends Character {
+public class Player extends Personage {
 
     /**
      * Default constructor
