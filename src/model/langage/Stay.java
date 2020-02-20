@@ -6,10 +6,10 @@ import src.model.world.*;
 /**
  *
  */
-public class TurnRight extends Action {
+public class Stay extends Action {
 
 
-    public TurnRight(Personage personage) {
+    public Stay(Personage personage) {
       super(personage);
     }
 
@@ -18,8 +18,8 @@ public class TurnRight extends Action {
      */
     public int run() {
 		//TODO implement here
-      this.personage.turnRight();
-		  return 0;
-	  }
+      this.personage.stay();
+		  return 1;
+	}
 
 }

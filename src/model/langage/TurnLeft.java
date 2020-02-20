@@ -18,8 +18,8 @@ public class TurnLeft extends Action {
      */
     public int run() {
 		//TODO implement here
-    this.personage.turnLeft();
-		return 0;
-	}
+      this.personage.turnLeft();
+		  return 0;
+    }
 
 }

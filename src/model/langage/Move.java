@@ -18,8 +18,8 @@ public class Move extends Action {
      */
     public int run() {
 		//TODO implement here
-    this.personage.move();
-		return 1;
-	}
+      this.personage.move();
+		  return 1;
+	  }
 
 }
