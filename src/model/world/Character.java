@@ -16,6 +16,18 @@ public class Character extends Entity {
     	super(b,xStart,yStart);
     	facing = facingStart % 4;
     	actions = a;
+    } 
+    
+    private void turn (int rotate) {
+    	this.facing = (this.facing + rotate) % 4;
+    }
+    
+    public void turnLeft () {
+    	this.turn(-1);
+    }
+    
+    public void turnRight () {
+    	this.turn(1);
     }
     
 }
