@@ -16,11 +16,12 @@ public class Move extends Action {
     }
 
     /**
-     * @return
+     * @return it return the amount of the action.
      */
     public int run() {
 		//TODO implement here
-		return 0;
+    this.personage.move();
+		return 1;
 	}
 
 }

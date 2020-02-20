@@ -6,7 +6,7 @@ import src.model.langage.*;
 import java.util.*;
 
 /**
- * 
+ *
  */
 public class Personage extends Entity {
 
@@ -17,8 +17,17 @@ public class Personage extends Entity {
     }
 
     /**
-     * 
+     *
      */
     protected ArrayList<Action> actions;
 
+
+
+
+
+
+    //FIXME implement the code.
+    public void move(){
+      System.out.println("move");
+    }
 }
