@@ -9,16 +9,15 @@ import java.util.*;
  * 
  */
 public class Character extends Entity {
-
-    /**
-     * Default constructor
-     */
-    public Character() {
+    protected int facing;
+    protected ArrayList<Action> actions;
+    
+    public Character(int facingStart) {
+    	facing = facingStart % 4;
     }
 
     /**
      * 
      */
-    protected ArrayList<Action> actions;
 
 }
