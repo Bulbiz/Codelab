@@ -10,16 +10,15 @@ public class Move extends Action {
 
 
     public Move(Personage personage) {
-      super(personage);
+    	super(personage);
     }
 
     /**
-     * @return it return the amount of the action.
+     * @return return the number of actions executed
      */
     public int run() {
-		//TODO implement here
-      this.personage.move();
-		  return 1;
-	  }
+    	this.personage.move();
+    	return 1;
+	}
 
 }

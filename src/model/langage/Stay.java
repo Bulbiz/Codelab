@@ -10,16 +10,15 @@ public class Stay extends Action {
 
 
     public Stay(Personage personage) {
-      super(personage);
+    	super(personage);
     }
 
     /**
-     * @return it return the amount of the action.
+     * @return return the number of actions executed
      */
     public int run() {
-		//TODO implement here
         this.personage.stay();
-		    return 1;
-	  }
+		return 1;
+	}
 
 }

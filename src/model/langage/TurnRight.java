@@ -10,16 +10,15 @@ public class TurnRight extends Action {
 
 
     public TurnRight(Personage personage) {
-      super(personage);
+    	super(personage);
     }
 
     /**
-     * @return it return the amount of the action.
+     * @return return the number of actions executed
      */
     public int run() {
-		//TODO implement here
-      this.personage.turnRight();
-		  return 0;
-	  }
+    	this.personage.turnRight();
+    	return 0;
+	}
 
 }
