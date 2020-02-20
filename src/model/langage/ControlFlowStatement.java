@@ -2,25 +2,26 @@
 package src.model.langage;
 
 import java.util.*;
-
+import src.model.world.*;
 /**
- * 
+ *
  */
 public abstract class ControlFlowStatement extends Action {
 
     /**
      * Default constructor
      */
-    public ControlFlowStatement() {
+    public ControlFlowStatement(Personage personage) {
+      super(personage);
     }
 
     /**
-     * 
+     *
      */
     protected Condition condition;
 
     /**
-     * 
+     *
      */
     protected ArrayList<Action> actions;
 

@@ -2,16 +2,17 @@
 package src.model.langage;
 
 import java.util.*;
-
+import src.model.world.*;
 /**
- * 
+ *
  */
 public class Condition extends Instruction {
 
     /**
      * Default constructor
      */
-    public Condition() {
+    public Condition(Personage personage) {
+      super(personage);
     }
 
     /**

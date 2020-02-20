@@ -9,16 +9,15 @@ import java.util.*;
  */
 public class Instruction {
 
-    private Character character;
-
-    public Instruction(Character character) {
-      this.character = character;
+    //protected src.model.world.Personage personage;
+    protected Personage personage;
+    public Instruction(Personage personage) {
+      this.personage = personage;
     }
 
     /**
      *
      */
-    protected src.model.world.Personage personage;
 
 
 }

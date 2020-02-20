@@ -2,16 +2,17 @@
 package src.model.langage;
 
 import java.util.*;
-
+import src.model.world.*;
 /**
- * 
+ *
  */
 public class Move extends Action {
 
     /**
      * Default constructor
      */
-    public Move() {
+    public Move(Personage personage) {
+      super(personage);
     }
 
     /**
