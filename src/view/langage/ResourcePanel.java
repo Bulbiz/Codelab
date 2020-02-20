@@ -2,13 +2,14 @@
 package src.view.langage;
 
 import src.model.langage.*;
+import javax.swing.JPanel;
 
 import java.util.*;
 
 /**
  * 
  */
-public class ResourcePanel {
+public class ResourcePanel extends JPanel {
 
     /**
      * Default constructor
