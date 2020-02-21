@@ -5,20 +5,19 @@ import src.model.world.*;
 import java.util.*;
 
 /**
- * 
+ *
  */
 public class Instruction {
 
-    /**
-     * Default constructor
-     */
-    public Instruction() {
+    //protected src.model.world.Personage personage;
+    protected Personage personage;
+    public Instruction(Personage personage) {
+      this.personage = personage;
     }
 
     /**
-     * 
+     *
      */
-    protected src.model.world.Character character;
 
 
 }

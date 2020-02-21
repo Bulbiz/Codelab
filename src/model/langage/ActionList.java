@@ -2,20 +2,21 @@
 package src.model.langage;
 
 import java.util.*;
-
+import src.model.world.*;
 /**
- * 
+ *
  */
 public class ActionList extends Action {
 
     /**
      * Default constructor
      */
-    public ActionList() {
+    public ActionList(Personage personage) {
+      super(personage);
     }
 
     /**
-     * 
+     *
      */
     private ArrayList<Action> actions;
 

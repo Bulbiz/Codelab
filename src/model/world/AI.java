@@ -7,7 +7,7 @@ import java.util.*;
 /**
  * 
  */
-public class AI extends Character {
+public class AI extends Personage {
 
     /**
      * Default constructor
