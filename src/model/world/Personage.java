@@ -8,7 +8,7 @@ import java.util.*;
 /*
  * Define every Entity that have actions in the board
  */
-public class Personage extends Entity {
+public abstract class Personage extends Entity {
     protected int facing;
     protected Queue<Action> actions;
     
@@ -43,5 +43,5 @@ public class Personage extends Entity {
     		y = y + rotate [facing][1];
     	}
     }
-
+    abstract void run();
 }

@@ -19,8 +19,8 @@ public class Move extends Action {
      * @return
      */
     public int run() {
-		//TODO implement here
-		return 0;
+		personage.move();
+		return 1;
 	}
 
 }

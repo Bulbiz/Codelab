@@ -1,14 +1,12 @@
 
 package src.model.world;
 import java.util.*;
-
-import javax.swing.Action;
-
 import src.model.langage.*;
 
 public class TestWorldModel {
 	
-	private static void testPlayerMove () {
+	private static void testPlayerMoveTurn () {
+		System.out.println("Test Player Move and Turn");
 		Board bTest = new Board ();
         Player pTest = new Player (bTest,0,0,0);
         pTest.move();
@@ -18,7 +16,21 @@ public class TestWorldModel {
         pTest.move();
 	}
 	
+	private static void testPlayerRun () {
+		System.out.println("Test Player Run");
+		Board bTest = new Board ();
+		Player pTest = new Player (bTest,0,0,0);
+		Queue<Action> listAction = new LinkedList<Action> ();
+		for(int i=0; i<10; i++)
+			listAction.offer(new Move (pTest));
+		pTest.setActions(listAction);
+		
+		while(pTest.hasActionsLeft())
+			pTest.run();
+	}
+	
     public static void run() {
-    	testPlayerMove();
+    	testPlayerMoveTurn();
+    	testPlayerRun();
     }
 }

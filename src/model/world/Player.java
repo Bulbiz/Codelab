@@ -18,5 +18,22 @@ public class Player extends Personage {
     public void setActions (Queue<Action> actions) {
     	this.actions = actions;
     }
+    
+    /* 0 => Action qui ne compte pas comme une action (turn)
+     * 1 => Action terminer
+     * 2 => Action n'est pas terminer (cas dans le if/while) */
+    public void run () {
+        int verification = actions.peek().run();
+        while (verification == 0) {
+            actions.poll();
+            verification = actions.peek().run();
+        }
 
+        if(verification == 1)
+            actions.poll();
+    }
+    
+    public boolean hasActionsLeft () {
+    	return !(this.actions.isEmpty());
+    }
 }
