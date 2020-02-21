@@ -12,7 +12,7 @@ public class AI extends Personage {
     /**
      * Default constructor
      */
-    public AI(Board b, int xStart, int yStart,int facingStart,ArrayList<Action> a) {
+    public AI(Board b, int xStart, int yStart,int facingStart,Queue<Action> a) {
     	super(b,xStart,yStart,facingStart,a);
     }
 
