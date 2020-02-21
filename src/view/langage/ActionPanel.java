@@ -3,8 +3,6 @@ package src.view.langage;
 
 import src.model.langage.*;
 
-import java.util.*;
-
 /**
  * 
  */

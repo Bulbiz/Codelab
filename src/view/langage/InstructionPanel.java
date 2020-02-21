@@ -2,12 +2,12 @@
 package src.view.langage;
 import src.model.langage.*;
 
-import java.util.*;
+import javax.swing.JPanel;
 
 /**
  * 
  */
-public abstract class InstructionPanel {
+public abstract class InstructionPanel extends JPanel {
 
     /**
      * Default constructor

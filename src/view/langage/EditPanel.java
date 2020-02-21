@@ -3,11 +3,12 @@ package src.view.langage;
 import src.model.langage.*;
 
 import java.util.*;
+import javax.swing.JPanel;
 
 /**
  * 
  */
-public class EditPanel {
+public class EditPanel extends JPanel {
 
     /**
      * Default constructor
