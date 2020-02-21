@@ -5,10 +5,11 @@ import src.model.langage.*;
 
 public class TestWorldModel {
 	
+	private static Board bTest = new Board ();
+	private static Player pTest = new Player (bTest,0,0,0);
+	
 	private static void testPlayerMoveTurn () {
 		System.out.println("Test Player Move and Turn");
-		Board bTest = new Board ();
-        Player pTest = new Player (bTest,0,0,0);
         pTest.move();
         pTest.turnLeft();
         pTest.move();
@@ -18,8 +19,6 @@ public class TestWorldModel {
 	
 	private static void testPlayerRun () {
 		System.out.println("Test Player Run");
-		Board bTest = new Board ();
-		Player pTest = new Player (bTest,0,0,0);
 		Queue<Action> listAction = new LinkedList<Action> ();
 		for(int i=0; i<10; i++)
 			listAction.offer(new Move (pTest));
