@@ -5,11 +5,20 @@ import src.model.langage.*;
 
 import java.util.*;
 
+/*
+ * Define every Entity that have actions in the board
+ */
 public class Personage extends Entity {
     protected int facing;
     protected Queue<Action> actions;
     
-    private static final int [][] rotate = {{1,0},{0,1},{-1,0},{0,-1}}; 
+    /*FIXME : Not very explicit
+     * 0 => facing the right
+     * 1 => facing the top
+     * 2 => facing the left
+     * 3 => facing the bottom */
+    private static final int [][] rotate = {{1,0},{0,1},{-1,0},{0,-1}};
+    
     public Personage(Board b, int xStart, int yStart,int facingStart,Queue<Action> a) {
     	super(b,xStart,yStart);
     	facing = facingStart % 4;
