@@ -16,7 +16,7 @@ public class Move extends Action {
     }
 
     /**
-     * @return
+     * FIXME: Place Holder
      */
     public int run() {
 		personage.move();

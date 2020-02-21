@@ -24,6 +24,9 @@ public class Board {
      */
     private ArrayList<Character> characters;
 
+    /**
+     * FIXME: Place Holder
+     */
     public boolean move (int xStart,int yStart, int xEnd , int yEnd) {
     	System.out.println ("("+xStart+":"+yStart+")"+" -> ("+ xEnd + ":" + yEnd + ")");
     	return true;
