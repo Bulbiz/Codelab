@@ -12,7 +12,7 @@ public abstract class ControlFlowStatement extends Action {
      * Default constructor
      */
     public ControlFlowStatement(Personage personage) {
-      super(personage);
+    	super(personage);
     }
 
     /**
@@ -23,7 +23,7 @@ public abstract class ControlFlowStatement extends Action {
     /**
      *
      */
-    protected ArrayList<Action> actions;
+    protected Queue<Action> actions;
 
 
 
