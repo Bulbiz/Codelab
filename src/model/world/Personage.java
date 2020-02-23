@@ -1,4 +1,3 @@
-
 package src.model.world;
 
 import src.model.langage.*;
@@ -30,11 +29,11 @@ public abstract class Personage extends Entity {
     }
 
     public void turnLeft () {
-    	this.turn(-1);
+    	this.turn(1);
     }
 
     public void turnRight () {
-    	this.turn(1);
+    	this.turn(-1);
     }
     
     public void move () {
