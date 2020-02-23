@@ -20,7 +20,7 @@ public abstract class Personage extends Entity {
     
     public Personage(Board b, int xStart, int yStart,int facingStart,Queue<Action> a) {
     	super(b,xStart,yStart);
-    	facing = facingStart % 4;
+    	facing = (this.facing + 4) % 4; // "+ 4" is to always get positif modulus
     	actions = a;
     }
 
