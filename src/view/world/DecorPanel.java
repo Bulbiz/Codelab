@@ -9,18 +9,13 @@ import java.util.*;
  * 
  */
 public class DecorPanel implements IDisplayable {
-
+	
+	private Decor decor;
     /**
      * Default constructor
      */
     public DecorPanel() {
     }
-
-    /**
-     * 
-     */
-    private Decor decor;
-
     /**
      * 
      */

@@ -9,17 +9,13 @@ import java.util.*;
  * 
  */
 public class EntityPanel implements IDisplayable {
-
+	
+	private Entity entity;
     /**
      * Default constructor
      */
     public EntityPanel() {
     }
-
-    /**
-     * 
-     */
-    private Entity entity;
 
     /**
      * 

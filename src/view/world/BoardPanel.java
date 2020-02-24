@@ -8,30 +8,20 @@ import java.util.*;
 /**
  * 
  */
-public class BoardPanel implements IDisplayable {
-
+public class BoardPanel extends JPanel implements IDisplayable {
+	 
+	private Board board;
+	private CellPanel[][] cellPanels;
+	 
     /**
-     * Default constructor
+     * 
      */
+	 
     public BoardPanel() {
     }
 
-    /**
-     * 
-     */
-    private Board board;
-
-    /**
-     * 
-     */
-    private CellPanel[][] cellPanels;
-
-
-    /**
-     * 
-     */
     public void updateDisplay() {
-        // TODO implement here
+        
     }
 
 }

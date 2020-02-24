@@ -10,29 +10,14 @@ import java.util.*;
  */
 public class CellPanel implements IDisplayable {
 
+	private Cell cell;
+    private DecorPanel decorPanel;
+    private EntityPanel entityPanel;
     /**
      * Default constructor
      */
     public CellPanel() {
     }
-
-    /**
-     * 
-     */
-    private Cell cell;
-
-    /**
-     * 
-     */
-    private DecorPanel decorPanel;
-
-    /**
-     * 
-     */
-    private EntityPanel entityPanel;
-
-
-
     /**
      * 
      */
