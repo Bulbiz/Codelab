@@ -12,7 +12,7 @@ public class EntityPanel extends JLabel implements IDisplayable {
 	
 	private Entity entity;
     /**
-     * Default constructor
+     * FIXME : What if entity == null ?
      */
     public EntityPanel(Entity e) {
     	ImageIcon image = new ImageIcon (this.getClass().getResource(e.toString() + ".png"));
