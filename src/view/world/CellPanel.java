@@ -16,7 +16,7 @@ public class CellPanel implements IDisplayable {
     /**
      * Default constructor
      */
-    public CellPanel() {
+    public CellPanel(Cell c) {
     }
     /**
      * 
