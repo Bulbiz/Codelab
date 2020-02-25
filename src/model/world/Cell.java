@@ -14,6 +14,13 @@ public class Cell {
     public Cell() {
     }
 
+    public Entity getEntity () {
+    	return this.entity;
+    }
+    
+    public Decor getDecor() {
+    	return this.decor;
+    } 
     /**
      * 
      */
