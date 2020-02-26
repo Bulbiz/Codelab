@@ -6,7 +6,7 @@ import javax.swing.*;
 import java.util.*;
 
 /**
- * 
+ * Display the Board in general.
  */
 public class BoardPanel extends JPanel implements IDisplayable {
 	/*FIXME: is a board useful for the view when we have the cell inside?
@@ -14,7 +14,6 @@ public class BoardPanel extends JPanel implements IDisplayable {
 	 */
 	
 	//FIXME ArrayList or normal array ?
-	
 	private CellPanel[][] cellPanels;
 	 
     /**

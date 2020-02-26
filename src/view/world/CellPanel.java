@@ -6,7 +6,7 @@ import javax.swing.*;
 import java.util.*;
 
 /**
- * 
+ * Display a Cell
  */
 public class CellPanel extends JPanel implements IDisplayable {
 
@@ -16,18 +16,18 @@ public class CellPanel extends JPanel implements IDisplayable {
 	
     private DecorPanel decorPanel;
     private EntityPanel entityPanel;
-    /**
-     * Default constructor
+    
+    /*
+     * FIXME : Should Change the GridLayout into another Layout
      */
     public CellPanel(Cell c) {
+    	this.setLayout(new GridLayout(2,1));
     	decorPanel = new DecorPanel(c.getDecor());
     	entityPanel = new EntityPanel(c.getEntity());
     	this.add(decorPanel);
     	this.add(entityPanel);
     }
-    /**
-     * 
-     */
+
     public void updateDisplay() {
     	this.decorPanel.updateDisplay(); //FIXME: Should we update the decor since he never really change ?
         this.entityPanel.updateDisplay();

@@ -6,24 +6,26 @@ import javax.swing.*;
 import java.util.*;
 
 /**
- * 
+ * Display a Decor,
  */
 public class DecorPanel extends JLabel implements IDisplayable {
 	
 	private Decor decor;
     /**
-     * Default constructor
+     * FIXME : Should replace the text with an Image
      */
     public DecorPanel(Decor d) {
-    	ImageIcon image = new ImageIcon (this.getClass().getResource(d.toString() + ".png"));
     	this.decor = d;
-    	this.setIcon(image);
+    	this.updateDisplay();
+    	
     }
     /**
-     * 
+     * FIXME : Should replace the text with an Image
+     * What if decor == null? should we throw an exception since it's not allowed
      */
     public void updateDisplay() {
-        // TODO implement here
+        if(this.decor != null)
+        	this.setText(d.toString())
     }
 
 }

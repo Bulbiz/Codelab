@@ -12,20 +12,21 @@ public class EntityPanel extends JLabel implements IDisplayable {
 	
 	private Entity entity;
     /**
-     * FIXME : What if entity == null ?
+     * FIXME : Should replace the text with an Image
      */
     public EntityPanel(Entity e) {
-    	ImageIcon image = new ImageIcon (this.getClass().getResource(e.toString() + ".png"));
     	this.entity = e;
-    	this.setIcon(image);
+    	this.updateDisplay();
     }
 
     /**
-     * 
+     * FIXME : Should replace the text with an Image
      */
     public void updateDisplay() {
-    	ImageIcon image = new ImageIcon (this.getClass().getResource(entity.getClass().toString() + ".png"));
-    	this.setIcon(image);
+    	if (this.entity == null) 
+    		this.setText("Vide");
+    	else
+    		this.setText(e.toString());
     }
 
 }
