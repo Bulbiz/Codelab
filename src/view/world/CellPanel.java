@@ -20,6 +20,9 @@ public class CellPanel extends JPanel implements IDisplayable {
     
     /*
      * FIXME : Should Change the GridLayout into another Layout
+     * + Should Entity be here or directly in the BoardPanel ?
+     * (this version is more stable but less estetics but the other
+     * is more estetics but less stable)
      */
     public CellPanel(Cell c) {
     	this.setLayout(new GridLayout(1,2));
