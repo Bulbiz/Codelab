@@ -23,7 +23,7 @@ public class Board {
     
     //This method will create a border on the board that won't be crossable
     private void createBorder() {
-    	Cell mountain = new Cell(); //La case qui servira de Bordure à déterminer
+    	Cell mountain = new Cell(); //TODO La case qui servira de Bordure à déterminer
     	for(int i = 0; i < this.cells[0].length; i++) {
     		this.cells[0][i] = new Cell();
     		this.cells[16][i] = new Cell();
