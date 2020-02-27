@@ -3,6 +3,7 @@ package src.view.world;
 
 import src.model.world.*;
 import javax.swing.*;
+import java.awt.*;
 import java.util.*;
 
 /**
@@ -24,9 +25,9 @@ public class EntityPanel extends JLabel implements IDisplayable {
      */
     public void updateDisplay() {
     	if (this.entity == null) 
-    		this.setText("v"); //v for Vide
+    		this.setText("E");
     	else
-    		this.setText(e.toString().charAt(0));
+    		this.setText(Character.toString(entity.toString().charAt(0)));
     }
 
 }

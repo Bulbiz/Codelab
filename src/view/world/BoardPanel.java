@@ -3,7 +3,9 @@ package src.view.world;
 
 import src.model.world.*;
 import javax.swing.*;
+import java.awt.*;
 import java.util.*;
+import java.awt.GridLayout;
 
 /**
  * Display the Board in general.
@@ -21,7 +23,7 @@ public class BoardPanel extends JPanel implements IDisplayable {
      * Should we give a Cell [][] or a Board directly as argument?
      */
     public BoardPanel(Cell [][] board) {
-    	this.setLayout(new GridLayout (17,17));
+    	this.setLayout(new GridLayout(17,17));
     	
     	cellPanels = new CellPanel [17][17];
     	

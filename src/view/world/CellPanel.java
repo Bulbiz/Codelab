@@ -3,6 +3,7 @@ package src.view.world;
 
 import src.model.world.*;
 import javax.swing.*;
+import java.awt.*;
 import java.util.*;
 
 /**
@@ -21,9 +22,10 @@ public class CellPanel extends JPanel implements IDisplayable {
      * FIXME : Should Change the GridLayout into another Layout
      */
     public CellPanel(Cell c) {
-    	this.setLayout(new GridLayout(2,1));
+    	this.setLayout(new GridLayout(1,2));
     	decorPanel = new DecorPanel(c.getDecor());
     	entityPanel = new EntityPanel(c.getEntity());
+    	this.setBorder(BorderFactory.createLineBorder(Color.BLACK));
     	this.add(decorPanel);
     	this.add(entityPanel);
     }

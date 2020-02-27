@@ -19,6 +19,7 @@ public class Board {
     	}
     	this.characters = characters;
     	createBorder();
+    	filling(); //FIXME PlaceHolder Function
     }
     
     //This method will create a border on the board that won't be crossable
@@ -37,5 +38,15 @@ public class Board {
     	System.out.println ("("+xStart+":"+yStart+")"+" -> ("+ xEnd + ":" + yEnd + ")");
     	return true;
     }
-
+    
+    public Cell[][] getCells (){
+    	return this.cells;
+    }
+    
+    //FIXME Function Place Holder for the view
+    private void filling () {
+    	for (int i = 1; i < this.cells.length - 1; i++) 
+    		for(int j = 1; j < this.cells[i].length - 1; j++)
+    				this.cells[i][j] = new Cell ();
+    }
 }
