@@ -42,7 +42,9 @@ public abstract class Personage extends Entity {
     		y = y + rotate [facing][1];
     	}
     }
-    public void stay () {}
+    public void stay () {
+    	//Ne Fais Rien
+    }
     abstract void run();
     
 }

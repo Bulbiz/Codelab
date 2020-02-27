@@ -36,4 +36,8 @@ public class Player extends Personage {
     public boolean hasActionsLeft () {
     	return !(this.actions.isEmpty());
     }
+    
+    public String toString() {
+    	return "player";
+    }
 }

@@ -13,5 +13,7 @@ public class Door extends Decor {
      */
     public Door() {
     }
-
+    public String toString() {
+    	return "door";
+    }
 }

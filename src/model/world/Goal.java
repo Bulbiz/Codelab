@@ -12,5 +12,7 @@ public class Goal extends Decor {
      */
     public Goal() {
     }
-
+    public String toString() {
+    	return "goal";
+    }
 }

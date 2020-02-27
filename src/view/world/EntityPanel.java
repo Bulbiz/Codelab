@@ -24,9 +24,9 @@ public class EntityPanel extends JLabel implements IDisplayable {
      */
     public void updateDisplay() {
     	if (this.entity == null) 
-    		this.setText("Vide");
+    		this.setText("v"); //v for Vide
     	else
-    		this.setText(e.toString());
+    		this.setText(e.toString().charAt(0));
     }
 
 }

@@ -25,7 +25,7 @@ public class DecorPanel extends JLabel implements IDisplayable {
      */
     public void updateDisplay() {
         if(this.decor != null)
-        	this.setText(d.toString())
+        	this.setText(d.toString().charAt(0));
     }
 
 }
