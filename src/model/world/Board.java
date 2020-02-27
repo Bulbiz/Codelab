@@ -38,4 +38,11 @@ public class Board {
     	return true;
     }
 
+    //FIXME: Code to implement
+    public boolean endOfLevel() {
+    	return false;
+    }
+    //FIXME: Code to implement
+    public void run() {
+    }
 }
