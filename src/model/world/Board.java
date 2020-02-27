@@ -7,9 +7,9 @@ public class Board {
 	private Cell[][] cells;
 	private Cell finish;
 	//FIXME ArrayList characters attributes must be the class Personage or Avatar
-	private ArrayList<Character> characters;
+	private ArrayList<Personage> characters;
     
-    public Board(int xFinish, int yFinish, ArrayList<Character> characters) {
+    public Board(int xFinish, int yFinish, ArrayList<Personage> characters) {
     	this.cells = new Cell[17][17];
     	try{
     	    this.finish = this.cells[yFinish][xFinish];
