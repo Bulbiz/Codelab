@@ -7,8 +7,13 @@ public class Cell {
 	private Decor decor;
 	private Entity being;
     
+    public Cell() {
+    	this.decor = null;
+    	this.being = null;
+    }
+
     public Entity getEntity () {
-    	return this.entity;
+    	return this.being;
     }
     
     public Decor getDecor() {
