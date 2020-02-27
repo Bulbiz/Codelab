@@ -12,7 +12,7 @@ public class Board {
     public Board(int xFinish, int yFinish, ArrayList<Character> characters) {
     	this.cells = new Cell[17][17];
     	try{
-    	    this.finish = this.cells[yFinish][XFinish];
+    	    this.finish = this.cells[yFinish][xFinish];
     	} catch(Exception e){
     	    System.out.println("Erreur : Les coordonnées sont hors limite");
     	    return;
