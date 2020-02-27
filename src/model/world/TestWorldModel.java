@@ -5,7 +5,7 @@ import src.model.langage.*;
 
 public class TestWorldModel {
 	
-	/* FIXME : Test not correct with the implementation of board
+	/*FIXME : Replace the test after MAJ of constructor
 	private static Board bTest = new Board ();
 	private static Player pTest = new Player (bTest,0,0,0);*/
 	
@@ -32,5 +32,6 @@ public class TestWorldModel {
     public static void run() {
     	/*testPlayerMoveTurn();
     	testPlayerRun();*/
+
     }
 }
