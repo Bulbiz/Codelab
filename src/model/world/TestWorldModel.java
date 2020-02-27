@@ -5,6 +5,7 @@ import src.model.langage.*;
 
 public class TestWorldModel {
 	
+	/*FIXME : Replace the test after MAJ of constructor
 	private static Board bTest = new Board ();
 	private static Player pTest = new Player (bTest,0,0,0);
 	
@@ -15,10 +16,10 @@ public class TestWorldModel {
         pTest.move();
         pTest.turnRight();
         pTest.move();
-	}
+	}*/
 	
 	private static void testPlayerRun () {
-		System.out.println("Test Player Run");
+		/*System.out.println("Test Player Run");
 		Queue<Action> listAction = new LinkedList<Action> ();
 		for(int i=0; i<10; i++)
 			listAction.offer(new Move (pTest));
@@ -26,10 +27,12 @@ public class TestWorldModel {
 		
 		while(pTest.hasActionsLeft())
 			pTest.run();
+			*/
 	}
 	
     public static void run() {
-    	testPlayerMoveTurn();
+    	/*testPlayerMoveTurn();
     	testPlayerRun();
+    	*/
     }
 }
