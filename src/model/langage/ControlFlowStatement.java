@@ -11,6 +11,8 @@ public abstract class ControlFlowStatement extends Action {
 
     public ControlFlowStatement(Personage personage) {
     	super(personage);
+    	swapActive = false;
+    	active = false;
     }
 
     /**
@@ -21,10 +23,9 @@ public abstract class ControlFlowStatement extends Action {
     /**
      *
      */
-    protected ArrayList<Action> actions;
-
-
-
+    protected Queue<Action> actions;
+    protected boolean active; 				//true = the control struture is always active, false the control struture is end.
+    protected boolean swapActive;
 
     /**
      * @return

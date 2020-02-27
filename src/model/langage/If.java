@@ -14,7 +14,26 @@ public class If extends ControlFlowStatement {
     }
 
 	public int run() {
-		//TODO implement here
-		return 0;
+		if(condition.isTrue() && !swapActive) {		//if the condition is true, preserve the condition until the end
+			active = true;
+			swapActive = true;
+		}
+		if(active) {
+			int verification = actions.peek().run();
+			while(verification == 0) {				//do the no count actions.
+				actions.poll();
+				verification = actions.peek().run();
+			}
+			if(verification == 1) 
+				actions.poll();
+			
+			if(actions.peek() != null)
+				return 2;							//continue the list of actions while is not over
+			
+		}
+		active = false;
+		swapActive = false;
+		
+		return 1;									//when the list of actions is over
 	}
 }
