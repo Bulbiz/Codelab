@@ -1,19 +1,12 @@
-
 package src.model.world;
 
 import java.util.*;
 
-/**
- * 
- */
 public class Cell {
-
-    /**
-     * Default constructor
-     */
-    public Cell() {
-    }
-
+	
+	private Decor decor;
+	private Entity being;
+    
     public Entity getEntity () {
     	return this.entity;
     }
@@ -21,19 +14,9 @@ public class Cell {
     public Decor getDecor() {
     	return this.decor;
     } 
-    /**
-     * 
-     */
-    private Entity entity;
 
-    /**
-     * 
-     */
-    private Decor decor;
-
-
-
-
-
-
+    public Cell(Decor decor) {
+    	this.decor = decor;
+    	this.being = null;
+    }
 }

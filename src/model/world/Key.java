@@ -11,7 +11,8 @@ public class Key extends Entity {
     /**
      * Default constructor
      */
-    public Key() {
+    public Key(Board b, int xStart, int yStart) {
+    	super(b,xStart,yStart);
     }
 
 }

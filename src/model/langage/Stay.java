@@ -6,10 +6,10 @@ import src.model.world.*;
 /**
  *
  */
-public class Move extends Action {
+public class Stay extends Action {
 
 
-    public Move(Personage personage) {
+    public Stay(Personage personage) {
     	super(personage);
     }
 
@@ -17,8 +17,8 @@ public class Move extends Action {
      * @return return the number of actions executed
      */
     public int run() {
-    	this.personage.move();
-    	return 1;
+        this.personage.stay();
+		return 1;
 	}
 
 }
