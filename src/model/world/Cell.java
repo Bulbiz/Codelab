@@ -4,16 +4,16 @@ import java.util.*;
 
 public class Cell {
 	
-	private Decor obstacle;
+	private Decor decor;
 	private Entity being;
     
     public Cell() {
-    	this.obstacle = null;
+    	this.decor = null;
     	this.being = null;
     }
 
-    public Cell(Decor obstacle) {
-    	this.obstacle = obstacle;
+    public Cell(Decor decor) {
+    	this.decor = decor;
     	this.being = null;
     }
 }
