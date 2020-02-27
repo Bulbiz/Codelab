@@ -16,9 +16,13 @@ public class If extends ControlFlowStatement {
     }
 
 	public int run() {
-		int verification = actions.peek().run();
-		if(condition.isTrue()) {
-			while(verification == 0) {	//do the no count actions.
+		if(condition.isTrue() && !swapActive) {		//if the condition is true, preserve the condition until the end
+			active = true;
+			swapActive = true;
+		}
+		if(active) {
+			int verification = actions.peek().run();
+			while(verification == 0) {				//do the no count actions.
 				actions.poll();
 				verification = actions.peek().run();
 			}
@@ -26,10 +30,12 @@ public class If extends ControlFlowStatement {
 				actions.poll();
 			
 			if(actions.peek() != null)
-				return 2;				//continue the list of actions while is not over
+				return 2;							//continue the list of actions while is not over
 			
 		}
+		active = false;
+		swapActive = false;
 		
-		return 1;						//when the list of actions is over
+		return 1;									//when the list of actions is over
 	}
 }
