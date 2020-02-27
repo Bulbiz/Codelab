@@ -8,11 +8,9 @@ import src.model.world.*;
  */
 public class While extends ControlFlowStatement {
 
-    /**
-     * Default constructor
-     */
+	
     public While(Personage personage) {
-      super(personage);
+    	super(personage);
     }
 
 	public int run() {

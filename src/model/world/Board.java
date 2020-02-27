@@ -31,4 +31,11 @@ public class Board {
     		this.cells[i][16] = new Cell();
     	}
     }
+    
+    //FIXME code to implement
+    public boolean move (int xStart,int yStart, int xEnd , int yEnd) {
+    	System.out.println ("("+xStart+":"+yStart+")"+" -> ("+ xEnd + ":" + yEnd + ")");
+    	return true;
+    }
+
 }
