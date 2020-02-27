@@ -5,7 +5,7 @@ import java.util.*;
 /**
  * An Entity is an object in the board of a level
  */
-public class Entity {
+public abstract class Entity {
 	protected Board levelBoard; 
 	protected int x;
 	protected int y;
