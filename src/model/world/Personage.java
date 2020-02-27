@@ -1,48 +1,48 @@
-
 package src.model.world;
 
 import src.model.langage.*;
 
 import java.util.*;
 
-/**
- *
+/*
+ * Define every Entity that have actions in the board
  */
-public class Personage extends Entity {
-
-    /**
-     * Default constructor
-     */
-    public Personage() {
+public abstract class Personage extends Entity {
+    protected int facing;
+    protected Queue<Action> actions;
+    
+    /*FIXME : Not very explicit
+     * 0 => facing the right
+     * 1 => facing the top
+     * 2 => facing the left
+     * 3 => facing the bottom */
+    private static final int [][] rotate = {{1,0},{0,1},{-1,0},{0,-1}};
+    
+    public Personage(Board b, int xStart, int yStart,int facingStart,Queue<Action> a) {
+    	super(b,xStart,yStart);
+    	facing = (this.facing + 4) % 4; // "+ 4" is to always get positif modulus
+    	actions = a;
     }
 
-    /**
-     *
-     */
-    protected ArrayList<Action> actions;
-
-
-
-
-
-
-    //FIXME implement the code.
-    public void move(){
-    	System.out.println("move");
+    private void turn (int rotate) {
+    	this.facing = ((this.facing + rotate) + 4) % 4; // "+ 4" is to always get positif modulus
     }
 
-    //FIXME implement the code.
-    public void turnLeft(){
-    	System.out.println("turnLeft");
+    public void turnLeft () {
+    	this.turn(1);
     }
 
-    //FIXME implement the code
-    public void turnRight(){
-    	System.out.println("turnRight");
+    public void turnRight () {
+    	this.turn(-1);
     }
-
-    //FIXME implement the code
-    public void stay(){
-    	System.out.println("stay");
+    
+    public void move () {
+    	if(this.levelBoard.move (x,y, x + rotate [facing][0] , y + rotate [facing][1] )) {
+    		x = x + rotate [facing][0];
+    		y = y + rotate [facing][1];
+    	}
     }
+    public void stay () {}
+    abstract void run();
+    
 }
