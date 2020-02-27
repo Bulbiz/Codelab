@@ -9,9 +9,14 @@ public class Board {
 	//FIXME ArrayList characters attributes must be the class Personage or Avatar
 	private ArrayList<Character> characters;
     
-    public Board(Cell finish, ArrayList<Character> characters) {
-    	this.finish = finish;
+    public Board(int xFinish, int yFinish, ArrayList<Character> characters) {
     	this.cells = new Cell[17][17];
+    	try{
+    	    this.finish = this.cells[yFinish][XFinish];
+    	} catch(Exception e){
+    	    System.out.println("Erreur : Les coordonnées sont hors limite");
+    	    return;
+    	}
     	this.characters = characters;
     	createBorder();
     }
