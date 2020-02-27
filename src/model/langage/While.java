@@ -9,8 +9,9 @@ import src.model.world.*;
 public class While extends ControlFlowStatement {
 
 	private Queue<Action> actionsSave;
+	
     public While(Personage personage) {
-      super(personage);
+    	super(personage);
     }
 
 	public int run() {

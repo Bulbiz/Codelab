@@ -8,11 +8,9 @@ import src.model.world.*;
  */
 public class Condition extends Instruction {
 
-    /**
-     * Default constructor
-     */
+
     public Condition(Personage personage) {
-      super(personage);
+    	super(personage);
     }
 
     /**

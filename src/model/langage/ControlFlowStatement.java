@@ -8,9 +8,7 @@ import src.model.world.*;
  */
 public abstract class ControlFlowStatement extends Action {
 
-    /**
-     * Default constructor
-     */
+
     public ControlFlowStatement(Personage personage) {
     	super(personage);
     	swapActive = false;

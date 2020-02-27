@@ -9,10 +9,11 @@ import java.util.*;
  */
 public class Instruction {
 
-    //protected src.model.world.Personage personage;
+	
     protected Personage personage;
+    
     public Instruction(Personage personage) {
-      this.personage = personage;
+    	this.personage = personage;
     }
 
     /**

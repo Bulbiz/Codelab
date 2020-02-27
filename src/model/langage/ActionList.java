@@ -8,11 +8,9 @@ import src.model.world.*;
  */
 public class ActionList extends Action {
 
-    /**
-     * Default constructor
-     */
+
     public ActionList(Personage personage) {
-      super(personage);
+    	super(personage);
     }
 
     /**

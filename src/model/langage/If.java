@@ -8,11 +8,9 @@ import src.model.world.*;
  */
 public class If extends ControlFlowStatement {
 
-    /**
-     * Default constructor
-     */
+
     public If(Personage personage) {
-      super(personage);
+    	super(personage);
     }
 
 	public int run() {
