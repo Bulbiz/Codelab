@@ -61,6 +61,7 @@ class InstructionGenerator {
         }
     }
 
+    //TODO gestion des erreurs
     private static ControlFlowStatement createFlowControlStatement(Personage pers, String version, JSONObject json) {
         
         ControlFlowStatement i = null;
