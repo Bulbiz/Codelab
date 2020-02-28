@@ -2,15 +2,19 @@
 package src.model.langage;
 
 import java.util.*;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import src.model.world.*;
+
 /**
  *
  */
-public class Condition extends Instruction {
-
+public abstract class Condition extends Instruction {
 
     public Condition(Personage personage) {
-    	super(personage);
+        super(personage);
     }
 
     /**
@@ -20,5 +24,7 @@ public class Condition extends Instruction {
         // TODO implement here
         return false;
     }
+
+    public String getType() { return "condition"; }
 
 }

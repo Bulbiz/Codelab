@@ -3,12 +3,21 @@ package src.model.langage;
 import src.model.world.*;
 
 import java.util.*;
+import org.json.*;
 
 /**
  *
  */
-public class Instruction {
+public abstract class Instruction {
 
+    abstract public String getType();
+    
+    public String getVersion() {
+        String classname = this.getClass().getName();
+        String[] array = classname.split("\\.");
+        String version = array[array.length - 1].toLowerCase();
+        return version;
+    }
 	
     protected Personage personage;
     
@@ -17,8 +26,14 @@ public class Instruction {
     }
 
     /**
-     *
+     * @return the JSON representation of the instruction 
      */
-
+    public JSONObject toJSON() throws JSONException {
+        JSONObject json = new JSONObject();
+        json.put("type", getType());
+        json.put("version", getVersion());
+        
+        return json;
+    }
 
 }
