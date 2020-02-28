@@ -36,4 +36,10 @@ public abstract class Instruction {
         return json;
     }
 
+    /**
+     * uniquement pour les tests
+     */
+    public void printTypeAndVersion() {
+        System.out.println("type : " + getType() + "\nversion : " + getVersion());
+    }
 }

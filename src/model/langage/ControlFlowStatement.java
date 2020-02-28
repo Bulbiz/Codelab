@@ -63,4 +63,19 @@ public abstract class ControlFlowStatement extends Action {
     public void addAction(Action action) {
         actions.add(action);
     }
+
+    public void printTypeAndVersion() {
+        super.printTypeAndVersion();
+
+        System.out.print("condition : ") ;
+        condition.printTypeAndVersion();
+
+        for (Action a : actions) {
+            System.out.print("action");
+            a.printTypeAndVersion();
+            System.out.println();
+        }
+
+        System.out.println();
+    }
 }
