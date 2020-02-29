@@ -11,7 +11,6 @@ import org.json.simple.*;
 public class Level {
 
     private Board board;
-    //private int type; FIXME: What is the type ?
     private int id;
     /*FIXME: is actions the actions available for the player 
     or the actions made by the player*/
