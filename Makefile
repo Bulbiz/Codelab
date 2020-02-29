@@ -1,9 +1,8 @@
 JCC = javac
 JFLAGS = -g
-MODULE =
+CLASSPATH = bin:java-json.jar
 
-
-all: modell modelw viewl vieww test
+all: modell modelw viewl vieww testall
 
 modell: 
 	javac -cp . src/model/langage/*.java -d bin
@@ -17,11 +16,11 @@ viewl:
 vieww:
 	javac -cp . src/view/langage/*.java -d bin
 
-test:
+testall:
 	javac -cp . src/Test.java -d bin
 
 andrun:	all
-	java -cp bin src.Test
+	java -cp $(CLASSPATH) src.Test
 
 clean :
 	rm -r bin
