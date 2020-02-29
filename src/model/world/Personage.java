@@ -10,14 +10,14 @@ import java.util.*;
 public abstract class Personage extends Entity {
     protected int facing;
     protected Queue<Action> actions;
-    
+
     /*FIXME : Not very explicit
      * 0 => facing the right
      * 1 => facing the top
      * 2 => facing the left
      * 3 => facing the bottom */
     private static final int [][] rotate = {{1,0},{0,1},{-1,0},{0,-1}};
-    
+
     public Personage(Board b, int xStart, int yStart,int facingStart,Queue<Action> a) {
     	super(b,xStart,yStart);
     	facing = (this.facing + 4) % 4; // "+ 4" is to always get positif modulus
@@ -35,7 +35,7 @@ public abstract class Personage extends Entity {
     public void turnRight () {
     	this.turn(-1);
     }
-    
+
     public void move () {
     	if(this.levelBoard.move (x,y, x + rotate [facing][0] , y + rotate [facing][1] )) {
     		x = x + rotate [facing][0];
@@ -44,5 +44,11 @@ public abstract class Personage extends Entity {
     }
     public void stay () {}
     abstract void run();
-    
+
+    //FIXME implement the condition for the obstacle in Front of the personage
+    public boolean obstacleFront(){
+        System.out.println("False");
+        return false;
+    }
+
 }
