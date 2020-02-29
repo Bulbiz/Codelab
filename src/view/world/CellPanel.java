@@ -1,4 +1,3 @@
-
 package src.view.world;
 
 import src.model.world.*;
@@ -10,10 +9,6 @@ import java.util.*;
  * Display a Cell
  */
 public class CellPanel extends JPanel implements IDisplayable {
-
-	/* FIXME: Is a Cell Useful Here ?
-	 * private Cell cell;
-	 */
 	
     private DecorPanel decorPanel;
     private EntityPanel entityPanel;
