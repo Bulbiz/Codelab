@@ -27,20 +27,11 @@ public class Level {
     }
     
     public boolean run () {
-        if(!board.endOfLevel()){
             this.board.run();
-            return true;
-        }
-        return false;
     }
     
-    /*FIXME : Read the actions from a json*/
-    private ArrayList<Action> readActions (JSONObject json){
-        return null;
+    public boolean endOfLevel () {
+    	return board.endOfLevel();
     }
     
-    /*FIXME : Create a board from a json*/
-    private Board readBoard (JSONObject json){
-        return null;
-    }
 }
