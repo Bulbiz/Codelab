@@ -1,6 +1,6 @@
 JCC = javac
 JFLAGS = -g
-CLASSPATH = bin:java-json.jar
+CLASSPATH = bin
 
 all: modell modelw viewl vieww testall
 

@@ -44,7 +44,9 @@ public abstract class ControlFlowStatement extends Action {
 
         json.put("type", getType());
         json.put("version", getVersion());
-        json.put("condition", condition.toJSON());
+
+        if (condition != null)
+            json.put("condition", condition.toJSON());
         
         JSONArray json_array = new JSONArray();
         for (Action a : actions)
@@ -68,9 +70,14 @@ public abstract class ControlFlowStatement extends Action {
         super.printTypeAndVersion();
 
         System.out.print("condition : ") ;
-        condition.printTypeAndVersion();
+        if (condition != null)
+            condition.printTypeAndVersion();
+        else 
+            System.out.println("null");
 
-        for (Action a : actions) {
+        System.out.print("liste actions :");
+        for (int i = 0; i < actions.size(); i++) {
+            Action a = actions.poll();
             System.out.print("action");
             a.printTypeAndVersion();
             System.out.println();
