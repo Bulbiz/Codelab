@@ -1,4 +1,3 @@
-
 package src.view.world;
 
 import javax.swing.*;
@@ -17,11 +16,11 @@ public class TestWorldView {
         return frame;
 	}
 	private static void testDisplayWorld() {
-		JFrame worldTest = TestWorldView.createWindows("Test World View");
+		/*JFrame worldTest = TestWorldView.createWindows("Test World View");
 		Board boardTest = new Board (7,7,null);
 		BoardPanel viewBoardTest = new BoardPanel (boardTest.getCells());
 		worldTest.setContentPane(viewBoardTest);
-		worldTest.pack();
+		worldTest.pack();*/
 	}
     public static void run() {
         testDisplayWorld();
