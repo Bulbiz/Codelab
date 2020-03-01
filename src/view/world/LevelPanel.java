@@ -13,4 +13,8 @@ public class LevelPanel {
 	public LevelPanel (Level l) {
 		this.level = l;
 	}
+	
+	public void updateDisplay() {
+		//FIXME : To Finish
+	}
 }
