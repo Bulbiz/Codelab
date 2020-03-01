@@ -16,4 +16,12 @@ public class Cell {
     	this.decor = decor;
     	this.being = null;
     }
+    
+    public Entity getEntity() {
+    	return this.being;
+    }
+    
+    protected void setEntity(Entity e) {
+    	this.being = e;
+    }
 }

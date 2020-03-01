@@ -46,8 +46,15 @@ public class Board {
     }
     
     //FIXME code to implement
-    public boolean move (int xStart,int yStart, int xEnd , int yEnd) {
-    	System.out.println ("("+xStart+":"+yStart+")"+" -> ("+ xEnd + ":" + yEnd + ")");
+    public boolean move (int xStart, int yStart, int xEnd, int yEnd) {
+    	try {
+    		this.cells[xEnd][yEnd].setEntity(this.cells[xStart][yStart].getEntity());
+    		this.cells[xStart][yStart].setEntity(null);
+    	} catch(IndexOutOfBoundsException e) {
+    		System.out.println("[Erreur] : Le déplacement n'a pas pu se faire");
+    		return false;
+    	}
+    	System.out.println("("+xStart+":"+yStart+")"+" -> ("+ xEnd + ":" + yEnd + ")");
     	return true;
     }
 
