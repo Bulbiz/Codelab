@@ -27,7 +27,7 @@ public class LevelPanel extends JPanel{
 		layoutPlacement();
 	}
 	
-	//FIXME : Doesn't Work well
+	//FIXME : Doesn't Place well
 	private void layoutPlacement() {
 		this.setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
