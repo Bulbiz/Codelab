@@ -11,9 +11,7 @@ public class Level {
 
     private Board board;
     private int id;
-    /*FIXME: is actions the actions available for the player 
-    or the actions made by the player*/
-    private ArrayList<Action> actions;
+    private ArrayList<Action> actions; /*actions is the action the player can do for the level */
     
     /**
      * FIXME : Use a JSON as a argument should be better
@@ -32,4 +30,10 @@ public class Level {
     	return board.endOfLevel();
     }
     
+    public Board getBoard () {
+    	return this.board;
+    } 
+    public ArrayList<Action> getActions () {
+    	return this.actions;
+    } 
 }

@@ -18,7 +18,6 @@ public class Controller{
 		while(!level.endOfLevel()) {
 			level.run();
 			vueLevel.updateDisplay();
-			Thread.sleep(1000);
 		}
 	}
 	

@@ -16,7 +16,7 @@ public class BoardPanel extends JPanel implements IDisplayable {
     /**
      * FIXME : 17 is a magic number + should we display the border ?
      */
-    public BoardPanel(Board [][] b) {
+    public BoardPanel(Board b) {
     	this.setLayout(new GridLayout(17,17));
     	Cell[][] board = b.getCells();
     	cellPanels = new CellPanel [17][17];
