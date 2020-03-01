@@ -43,7 +43,7 @@ public abstract class Personage extends Entity {
     	}
     }
     public void stay () {
-    	//Ne Fais Rien
+    	//Do nothing
     }
     abstract void run();
     
