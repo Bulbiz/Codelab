@@ -10,6 +10,7 @@ public class Board {
 	private ArrayList<Personage> characters;
     
     public Board(int xFinish, int yFinish, ArrayList<Personage> characters) {
+    	//TODO we would like the number 17 of cells to be addable from the call
     	this.cells = new Cell[17][17];
     	try{
     	    this.finish = this.cells[yFinish][xFinish];
@@ -19,6 +20,7 @@ public class Board {
     	}
     	this.characters = characters;
     	createBorder();
+    	initiateCells();
     }
     
     //This method will create a border on the board that won't be crossable
@@ -29,6 +31,17 @@ public class Board {
     		this.cells[16][i] = new Cell();
     		this.cells[i][0] = new Cell();
     		this.cells[i][16] = new Cell();
+    	}
+    }
+    
+    //This method will initiate all cells remaining that are still = null
+    private void initiateCells() {
+    	for(int i = 0; i < this.cells.length; i++) {
+    		for(int j = 0; j < this.cells[0].length; j++) {
+    			if(this.cells[i][j] == null) {
+    				this.cells[i][j] = new Cell();
+    			}
+    		}
     	}
     }
     
