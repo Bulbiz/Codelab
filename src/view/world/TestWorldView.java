@@ -11,7 +11,7 @@ public class TestWorldView {
 		JFrame frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setTitle(title);
-        frame.setSize(new Dimension(500,500));
+        frame.setMinimumSize(new Dimension(1000,1000));
         frame.setVisible(true);
         return frame;
 	}
@@ -25,12 +25,12 @@ public class TestWorldView {
 	}
 	
 	private static void testDisplayLevel() {
-		/*JFrame levelTest = TestWorldView.createWindows("Test Level View");
+		JFrame levelTest = TestWorldView.createWindows("Test Level View");
 		Board boardTest = new Board (7,7,null);
 		Level level = new Level (boardTest,1,null);
 		LevelPanel viewLevelTest = new LevelPanel (level);
 		levelTest.setContentPane(viewLevelTest);
-		levelTest.pack();*/
+		levelTest.pack();
 	}
 	
     public static void run() {

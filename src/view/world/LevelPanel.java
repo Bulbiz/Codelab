@@ -27,20 +27,14 @@ public class LevelPanel extends JPanel{
 		layoutPlacement();
 	}
 	
-	//FIXME : Doesn't Work well
+	//FIXME : Magic Number is not the best
 	private void layoutPlacement() {
-		this.setLayout(new GridBagLayout());
-		GridBagConstraints c = new GridBagConstraints();
-		placeElement(0,0,c,this.worldView);
-		placeElement(0,1,c,this.runButton);
+		this.setLayout(null);
+		this.add(this.worldView);
+		this.add(this.runButton);
+		this.worldView.setBounds(0,0,500,500);
+		this.runButton.setBounds(400, 510, 100, 100);
 	}
-	
-	private void placeElement(int x, int y,GridBagConstraints c,Component element ) {
-		c.gridx = x;
-		c.gridy = y;
-		this.add(element);
-	}
-	
 	//FIXME : Freeze every thing
 	public void updateDisplay() {
 		this.worldView.updateDisplay();
