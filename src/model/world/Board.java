@@ -49,4 +49,11 @@ public class Board {
     		for(int j = 1; j < this.cells[i].length - 1; j++)
     				this.cells[i][j] = new Cell ();
     }
+    //FIXME: Code to implement
+    public boolean endOfLevel() {
+    	return false;
+    }
+    //FIXME: Code to implement
+    public void run() {
+    }
 }
