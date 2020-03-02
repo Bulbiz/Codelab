@@ -23,6 +23,24 @@ public class Board {
     	initiateCells();
     }
     
+    public Decor getDecor(int x, int y) {
+    	try {
+    		return this.cells[y][x].getDecor();
+    	} catch(IndexOutOfBoundsException e) {
+    		System.out.println("[Erreur] : Case inexistante");
+    		return null;
+    	}
+    }
+    
+    //method to initiate the entity when its not on the board
+    protected void initiateEntity(int x, int y, Entity being) {
+    	try {
+    		this.cells[y][x].setEntity(being);
+    	} catch(IndexOutOfBoundsException e) {
+    		System.out.println("[Erreur] : Case inexistante");
+    	}
+    }
+    
     //This method will create a border on the board that won't be crossable
     private void createBorder() {
     	Cell mountain = new Cell(); //TODO La case qui servira de Bordure à déterminer
@@ -45,7 +63,6 @@ public class Board {
     	}
     }
     
-    //FIXME code to implement
     public boolean move (int xStart, int yStart, int xEnd, int yEnd) {
     	try {
     		this.cells[xEnd][yEnd].setEntity(this.cells[xStart][yStart].getEntity());
