@@ -63,6 +63,8 @@ public class Board {
     	}
     }
     
+    //TODO the method should verify that the entity isnt trying to go into an obstacle
+    //TODO what happens if a player entity try to go into an ennemy entity ? 
     public boolean move (int xStart, int yStart, int xEnd, int yEnd) {
     	try {
     		this.cells[xEnd][yEnd].setEntity(this.cells[xStart][yStart].getEntity());
