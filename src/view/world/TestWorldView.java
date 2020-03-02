@@ -34,6 +34,8 @@ public class TestWorldView {
 	}
 	
     public static void run() {
-        testDisplayLevel();
+    	EventQueue.invokeLater(() ->{
+    		testDisplayLevel();
+        });
     }
 }

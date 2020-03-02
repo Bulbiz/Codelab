@@ -8,17 +8,19 @@ import src.view.langage.*;
 public class Controller{
 	private Level level;
 	private LevelPanel vueLevel;
+	private WorldThread worldTime;
 	
 	public Controller (Level l, LevelPanel v) {
-		level = l;
-		vueLevel = v;
+		this.level = l;
+		this.vueLevel = v;
+		this.worldTime = new WorldThread (level, vueLevel);
 	}
 	
+	//FIXME : Run should also initiate the program for the player
 	public void run () {
-		while(!level.endOfLevel()) {
-			level.run();
-			vueLevel.updateDisplay();
-		}
+		this.worldTime.interrupt();
+		this.worldTime = new WorldThread (level, vueLevel);
+		this.worldTime.start();
 	}
 	
 }

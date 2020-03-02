@@ -17,13 +17,17 @@ public class LevelPanel extends JPanel{
 	private BoardPanel worldView;
 	private JButton runButton;
 	
+	private JButton menuButton;//
+	
 	public LevelPanel (Level l){
 		this.level = l;
 		this.controller = new Controller (this.level, this);
 		
 		this.worldView = new BoardPanel(this.level.getBoard());
 		this.runButton = new JButton ("Run");
+		this.menuButton = new JButton ("menu");//
 		this.runButton.addActionListener((e) -> controller.run());
+		
 		layoutPlacement();
 	}
 	
@@ -32,17 +36,14 @@ public class LevelPanel extends JPanel{
 		this.setLayout(null);
 		this.add(this.worldView);
 		this.add(this.runButton);
+		this.add(this.menuButton);
+		this.menuButton.setBounds(510, 10, 100, 75);
 		this.worldView.setBounds(0,0,500,500);
 		this.runButton.setBounds(400, 510, 100, 100);
 	}
-	//FIXME : Freeze every thing
+	
+	//FIXME There is no animation it's Sad :(
 	public void updateDisplay() {
 		this.worldView.updateDisplay();
-		try {
-			Thread.sleep(5000);
-			System.out.println("Turn Finish");
-		}catch(InterruptedException e) {
-			System.out.println("Please don't interrupt !");
-		}
 	}
 }
