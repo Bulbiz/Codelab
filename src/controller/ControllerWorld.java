@@ -18,11 +18,15 @@ public class ControllerWorld{
 	
 	//FIXME : Run should also initiate the program for the player 
 	public void run () {
-		this.worldTime.interrupt();
+		this.vueLevel.setEnableRunButton(false);
+		this.vueLevel.setEnableStopButton(true);
+		
 		this.worldTime = new WorldThread (level, vueLevel);
 		this.worldTime.start();
 	}
 	public void stop () {
 		this.worldTime.interrupt();
+		this.vueLevel.setEnableRunButton(true);
+		this.vueLevel.setEnableStopButton(false);
 	}
 }

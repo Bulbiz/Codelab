@@ -27,6 +27,7 @@ public class LevelPanel extends JPanel{
 		this.runButton = new JButton ("Run");
 		this.stopButton = new JButton ("Stop");
 		this.stopButton.addActionListener((e) -> worldController.stop());
+		this.stopButton.setEnabled(false);
 		this.runButton.addActionListener((e) -> worldController.run());
 		
 		layoutPlacement();
@@ -46,5 +47,12 @@ public class LevelPanel extends JPanel{
 	//FIXME There is no animation it's Sad :(
 	public void updateDisplay() {
 		this.worldView.updateDisplay();
+	}
+	
+	public void setEnableRunButton(boolean activation) {
+		this.runButton.setEnabled(activation);
+	}
+	public void setEnableStopButton(boolean activation) {
+		this.stopButton.setEnabled(activation);
 	}
 }
