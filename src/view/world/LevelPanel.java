@@ -17,7 +17,7 @@ public class LevelPanel extends JPanel{
 	private BoardPanel worldView;
 	private JButton runButton;
 	
-	private JButton menuButton;//
+	private JButton stopButton;
 	
 	public LevelPanel (Level l){
 		this.level = l;
@@ -25,7 +25,8 @@ public class LevelPanel extends JPanel{
 		
 		this.worldView = new BoardPanel(this.level.getBoard());
 		this.runButton = new JButton ("Run");
-		this.menuButton = new JButton ("menu");//
+		this.stopButton = new JButton ("Stop");
+		this.stopButton.addActionListener((e) -> worldController.stop());
 		this.runButton.addActionListener((e) -> worldController.run());
 		
 		layoutPlacement();
@@ -36,10 +37,10 @@ public class LevelPanel extends JPanel{
 		this.setLayout(null);
 		this.add(this.worldView);
 		this.add(this.runButton);
-		this.add(this.menuButton);
-		this.menuButton.setBounds(510, 10, 100, 75);
+		this.add(this.stopButton);
 		this.worldView.setBounds(0,0,500,500);
-		this.runButton.setBounds(400, 510, 100, 100);
+		this.runButton.setBounds(400, 510, 100, 75);
+		this.stopButton.setBounds(300, 510 , 100, 75);
 	}
 	
 	//FIXME There is no animation it's Sad :(

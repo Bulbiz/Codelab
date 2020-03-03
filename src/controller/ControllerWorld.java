@@ -16,11 +16,13 @@ public class ControllerWorld{
 		this.worldTime = new WorldThread (level, vueLevel);
 	}
 	
-	//FIXME : Run should also initiate the program for the player
+	//FIXME : Run should also initiate the program for the player 
 	public void run () {
 		this.worldTime.interrupt();
 		this.worldTime = new WorldThread (level, vueLevel);
 		this.worldTime.start();
 	}
-	
+	public void stop () {
+		this.worldTime.interrupt();
+	}
 }
