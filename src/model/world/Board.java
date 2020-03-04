@@ -3,12 +3,12 @@ package src.model.world;
 import java.util.*;
 
 public class Board {
-	
+
 	private Cell[][] cells;
 	private Cell finish;
 	//FIXME ArrayList characters attributes must be the class Personage or Avatar
 	private ArrayList<Personage> characters;
-    
+
     public Board(int xFinish, int yFinish, ArrayList<Personage> characters) {
     	this.cells = new Cell[17][17];
     	try{
@@ -20,7 +20,11 @@ public class Board {
     	this.characters = characters;
     	createBorder();
     }
-    
+
+	public Cell[][] getCells(){
+		return cells;
+	}
+
     //This method will create a border on the board that won't be crossable
     private void createBorder() {
     	Cell mountain = new Cell(); //TODO La case qui servira de Bordure à déterminer
@@ -31,7 +35,7 @@ public class Board {
     		this.cells[i][16] = new Cell();
     	}
     }
-    
+
     //FIXME code to implement
     public boolean move (int xStart,int yStart, int xEnd , int yEnd) {
     	System.out.println ("("+xStart+":"+yStart+")"+" -> ("+ xEnd + ":" + yEnd + ")");
