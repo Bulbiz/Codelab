@@ -45,9 +45,11 @@ public abstract class Personage extends Entity {
     public void stay () {}
     abstract void run();
 
-    //FIXME implement the condition for the obstacle in Front of the personage
     public boolean obstacleFront(){
-        System.out.println("False");
+        int xFront = x + rotate [facing][0];
+        int yFront = y + rotate [facing][1];
+        if(levelBoard.getCells()[ xFront ][ yFront ].getDecor().getClass().getName().equals("Obstacle"))
+            return true;
         return false;
     }
 
