@@ -12,10 +12,4 @@ public class Obstacle extends Decor {
     	super(b,xPosition,yPosition);
     }
 
-    public boolean conditionObstacleFront(int xPosition, int yPosition){
-        if(x == xPosition && y == yPosition)
-            return true;
-        return false;
-    }
-
 }
