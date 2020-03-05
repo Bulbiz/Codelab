@@ -3,12 +3,12 @@ package src.model.world;
 import java.util.*;
 
 public class Board {
-	
+
 	private Cell[][] cells;
 	private Cell finish;
 	//FIXME ArrayList characters attributes must be the class Personage or Avatar
 	private ArrayList<Personage> characters;
-    
+
     public Board(int xFinish, int yFinish, ArrayList<Personage> characters) {
     	//TODO we would like the number 17 of cells to be addable from the call
     	this.cells = new Cell[17][17];
@@ -40,7 +40,11 @@ public class Board {
     		System.out.println("[Erreur] : Case inexistante");
     	}
     }
-    
+
+	public Cell[][] getCells(){
+		return cells;
+	}
+
     //This method will create a border on the board that won't be crossable
     private void createBorder() {
     	Cell mountain = new Cell(); //TODO La case qui servira de Bordure à déterminer
