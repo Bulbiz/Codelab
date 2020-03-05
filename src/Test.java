@@ -21,7 +21,7 @@ class Test {
         action.offer(new Move(steve));
       }
       steve.setActions(action);
-      b.initiateEntity(15,6,steve);
+      b.initiateEntity(6,15,steve);
       p.add(steve);
       Level levelTest = new Level(b,1,null);
       LevelPanel vueLevel = new LevelPanel (levelTest);
