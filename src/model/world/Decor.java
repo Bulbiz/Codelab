@@ -4,13 +4,19 @@ package src.model.world;
 import java.util.*;
 
 /**
- * 
+ *
  */
-public class Decor {
+public abstract class Decor {
 
-    /**
-     * Default constructor
-     */
-    public Decor() {
+
+    protected Board levelBoard;
+	protected int x;
+	protected int y;
+
+
+    public Decor(Board b, int xPosition, int yPosition) {
+        levelBoard = b;
+    	x = xPosition;
+    	y = yPosition;
     }
 }

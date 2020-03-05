@@ -3,10 +3,10 @@ package src.model.world;
 import java.util.*;
 
 public class Cell {
-	
+
 	private Decor decor;
 	private Entity being;
-    
+
     public Cell() {
     	this.decor = null;
     	this.being = null;
