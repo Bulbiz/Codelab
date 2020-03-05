@@ -10,13 +10,12 @@ import java.util.*;
  * Display a Decor,
  */
 public class DecorPanel extends JLabel implements IDisplayable {
-	
-	private Decor decor;
+	private Cell cell;
     /**
      * FIXME : Should replace the text with an Image
      */
-    public DecorPanel(Decor d) {
-    	this.decor = d;
+    public DecorPanel(Cell c) {
+    	this.cell = c;
     	this.updateDisplay();
     	
     }
@@ -26,10 +25,7 @@ public class DecorPanel extends JLabel implements IDisplayable {
      * Do we have to update the Display since it never really change ? 
      */
     public void updateDisplay() {
-    	if (this.decor == null) 
-    		this.setText("D");
-    	else
-    		this.setText(Character.toString(decor.toString().charAt(0)));
+    	this.setText(this.cell.getDecor() != null? Character.toString(this.cell.getDecor().toString().charAt(0)) : "D");
     }
 
 }

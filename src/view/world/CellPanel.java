@@ -9,7 +9,7 @@ import java.util.*;
  * Display a Cell
  */
 public class CellPanel extends JPanel implements IDisplayable {
-	
+	private Cell cell;
     private DecorPanel decorPanel;
     private EntityPanel entityPanel;
     
@@ -21,11 +21,12 @@ public class CellPanel extends JPanel implements IDisplayable {
      */
     public CellPanel(Cell c) {
     	this.setLayout(new GridLayout(1,2));
-    	decorPanel = new DecorPanel(c.getDecor());
-    	entityPanel = new EntityPanel(c.getEntity());
+    	this.decorPanel = new DecorPanel(c);
+    	this.entityPanel = new EntityPanel(c);
+    	this.cell = c;
     	this.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-    	this.add(decorPanel);
-    	this.add(entityPanel);
+    	this.add(this.decorPanel);
+    	this.add(this.entityPanel);
     }
 
     public void updateDisplay() {

@@ -33,7 +33,7 @@ public class Board {
     }
     
     //method to initiate the entity when its not on the board
-    protected void initiateEntity(int x, int y, Entity being) {
+    public void initiateEntity(int x, int y, Entity being) {
     	try {
     		this.cells[y][x].setEntity(being);
     	} catch(IndexOutOfBoundsException e) {
