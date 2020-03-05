@@ -12,14 +12,6 @@ public class Cell {
     	this.being = null;
     }
 
-    public Entity getEntity () {
-    	return this.being;
-    }
-    
-    public Decor getDecor() {
-    	return this.decor;
-    } 
-
     public Cell(Decor decor) {
     	this.decor = decor;
     	this.being = null;
