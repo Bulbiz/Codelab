@@ -8,6 +8,13 @@ Cette semaine nous avons ajouté les éléments suivants à la branche develop:
 3.  Une représentation json des instructions 
 4.  Quelques conditions 
 
+Nous avons également fait un choix sur le concept du jeu qui s'orientera vers le vol de documents secrets pour un révolution.
+Dès la semaine prochaine, à l'aide de la version minimale, nous définirons avec précision les actions que nous
+implémenterons
+
+Enfin, voici ce qui n'a pas été modifié :
+- Le Makefile créer toujours un fichier src dans le bin
+
 
 ## Equipe
 
