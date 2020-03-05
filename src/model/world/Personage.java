@@ -17,7 +17,8 @@ public abstract class Personage extends Entity {
      * 2 => facing the left
      * 3 => facing the bottom */
     private static final int [][] rotate = {{1,0},{0,1},{-1,0},{0,-1}};
-
+    
+    //FIXME we need a Board to create a Personage but we need a Personage to create a Board
     public Personage(Board b, int xStart, int yStart,int facingStart,Queue<Action> a) {
     	super(b,xStart,yStart);
     	facing = (this.facing + 4) % 4; // "+ 4" is to always get positif modulus
