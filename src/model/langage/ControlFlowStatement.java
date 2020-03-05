@@ -34,13 +34,21 @@ public abstract class ControlFlowStatement extends Action {
                               // end.
     protected boolean swapActive;
 
+    public Queue<Action> copyActions(Queue<Action> listeAction){
+        Queue<Action> copy  = new LinkedList<Action>();
+        while(listeAction.peek() != null){
+            copy.add(listeAction.poll());
+        }
+        return copy;
+    }
+
     /**
      * @return
      */
     public abstract int run();
 
     public JSONObject toJSON() throws JSONException {
-        
+
         JSONObject json = new JSONObject();
 
         json.put("type", getType());
@@ -48,7 +56,7 @@ public abstract class ControlFlowStatement extends Action {
 
         if (condition != null)
             json.put("condition", condition.toJSON());
-        
+
         JSONArray json_array = new JSONArray();
         for (Action a : actions)
             json_array.put(a.toJSON());
@@ -73,7 +81,7 @@ public abstract class ControlFlowStatement extends Action {
         System.out.print("condition : ") ;
         if (condition != null)
             condition.printTypeAndVersion();
-        else 
+        else
             System.out.println("null");
 
         System.out.print("liste actions :");
