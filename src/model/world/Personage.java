@@ -10,7 +10,7 @@ import java.util.*;
 public abstract class Personage extends Entity {
     protected int facing;
     protected Queue<Action> actions;
-    
+
     /*FIXME : Not very explicit
      * 0 => facing the right
      * 1 => facing the top
@@ -36,7 +36,7 @@ public abstract class Personage extends Entity {
     public void turnRight () {
     	this.turn(-1);
     }
-    
+
     public void move () {
     	if(this.levelBoard.move (x,y, x + rotate [facing][0] , y + rotate [facing][1] )) {
     		x = x + rotate [facing][0];
@@ -45,5 +45,13 @@ public abstract class Personage extends Entity {
     }
     public void stay () {}
     abstract void run();
-    
+
+    public boolean obstacleFront(){
+        int xFront = x + rotate [facing][0];
+        int yFront = y + rotate [facing][1];
+        if(levelBoard.getCells()[ xFront ][ yFront ].getDecor().getClass().getName().equals("Obstacle"))
+            return true;
+        return false;
+    }
+
 }
