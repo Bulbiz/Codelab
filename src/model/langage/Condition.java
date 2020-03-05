@@ -13,17 +13,14 @@ import src.model.world.*;
  */
 public abstract class Condition extends Instruction {
 
+
     public Condition(Personage personage) {
         super(personage);
     }
 
-    /**
-     * @return
-     */
-    public boolean isTrue() {
-        // TODO implement here
-        return false;
-    }
+
+    public abstract boolean isTrue();
+        
 
     public String getType() { return "condition"; }
 

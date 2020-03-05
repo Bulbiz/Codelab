@@ -10,7 +10,7 @@ import java.util.*;
 public abstract class Personage extends Entity {
     protected int facing;
     protected Queue<Action> actions;
-    
+
     /*FIXME : Not very explicit
      * 0 => facing the right
      * 1 => facing the top
@@ -18,6 +18,7 @@ public abstract class Personage extends Entity {
      * 3 => facing the bottom */
     private static final int [][] rotate = {{1,0},{0,1},{-1,0},{0,-1}};
     
+    //FIXME we need a Board to create a Personage but we need a Personage to create a Board
     public Personage(Board b, int xStart, int yStart,int facingStart,Queue<Action> a) {
     	super(b,xStart,yStart);
     	facing = (this.facing + 4) % 4; // "+ 4" is to always get positif modulus
@@ -35,14 +36,24 @@ public abstract class Personage extends Entity {
     public void turnRight () {
     	this.turn(-1);
     }
-    
+
     public void move () {
     	if(this.levelBoard.move (x,y, x + rotate [facing][0] , y + rotate [facing][1] )) {
     		x = x + rotate [facing][0];
     		y = y + rotate [facing][1];
     	}
     }
-    public void stay () {}
+    public void stay () {
+    	//Do nothing
+    }
     abstract void run();
-    
+
+    public boolean obstacleFront(){
+        int xFront = x + rotate [facing][0];
+        int yFront = y + rotate [facing][1];
+        if(levelBoard.getCells()[ xFront ][ yFront ].getDecor().getClass().getName().equals("Obstacle"))
+            return true;
+        return false;
+    }
+
 }
