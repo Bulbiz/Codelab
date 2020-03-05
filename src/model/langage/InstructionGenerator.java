@@ -74,7 +74,7 @@ class InstructionGenerator {
         try {
             String conditionVersion = json.getJSONObject("condition").getString("version");
             i.setCondition((Condition)createCondition(pers, conditionVersion));
-        } catch (Exception e) { return null; }        
+        } catch (Exception e) { return i; }        
 
         return i;
     }
