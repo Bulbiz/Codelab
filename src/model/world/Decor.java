@@ -13,5 +13,4 @@ public class Decor {
      */
     public Decor() {
     }
-
 }

@@ -18,9 +18,8 @@ public class WorldThread extends Thread {
 		while(!level.endOfLevel()) {
 				level.run();
 				vueLevel.updateDisplay();
-				System.out.println(this.getState());
 			try {
-				this.sleep(1000);
+				this.sleep(5000);
 			}catch (InterruptedException e) {
 				return;
 			}

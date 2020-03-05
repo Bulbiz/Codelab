@@ -28,4 +28,10 @@ public class Cell {
     protected void setEntity(Entity e) {
     	this.being = e;
     }
+    //Terminal View
+    public String toString() {
+    	String decorText = this.decor != null? Character.toString(this.decor.toString().charAt(0)) : "N";
+    	String beingText = this.being != null? Character.toString(this.being.toString().charAt(0)) : "N";
+    	return "(" + beingText + "," + decorText + ")";
+    }
 }

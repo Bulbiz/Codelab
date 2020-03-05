@@ -7,7 +7,7 @@ import src.model.world.*;
 
 public class TestWorldView {
 	
-	private static JFrame createWindows (String title) {
+	public static JFrame createWindows (String title) {
 		JFrame frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setTitle(title);
@@ -34,8 +34,8 @@ public class TestWorldView {
 	}
 	
     public static void run() {
-    	EventQueue.invokeLater(() ->{
+    	/*EventQueue.invokeLater(() ->{
     		testDisplayLevel();
-        });
+        });*/
     }
 }

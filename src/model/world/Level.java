@@ -23,7 +23,8 @@ public class Level {
     }
     
     public void run () {
-        this.board.run();    
+        this.board.run(); 
+        System.out.println(this.board + "\n ************* \n"); //Terminal View
     }
     
     public boolean endOfLevel () {

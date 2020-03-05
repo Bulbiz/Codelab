@@ -93,5 +93,18 @@ public class Board {
     }
     //FIXME: Code to implement
     public void run() {
+    	for(Personage p : this.characters)
+    		p.run();
+    }
+    
+    //Terminal View
+    public String toString() {
+    	String res = "";
+    	for(int i = 0; i< this.cells.length ; i++) {
+    		res = res + "\n";
+    		for (int j=0; j< this.cells[i].length ; j++)
+    			res = res + this.cells[i][j].toString() + " | ";
+    	}
+    	return res;	
     }
 }

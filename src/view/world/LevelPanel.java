@@ -31,6 +31,7 @@ public class LevelPanel extends JPanel{
 		this.runButton.addActionListener((e) -> worldController.run());
 		
 		layoutPlacement();
+		this.updateDisplay();
 	}
 	
 	//FIXME : Magic Number is not the best
