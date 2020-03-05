@@ -71,8 +71,8 @@ public class Board {
     //TODO what happens if a player entity try to go into an ennemy entity ? 
     public boolean move (int xStart, int yStart, int xEnd, int yEnd) {
     	try {
-    		this.cells[xEnd][yEnd].setEntity(this.cells[xStart][yStart].getEntity());
-    		this.cells[xStart][yStart].setEntity(null);
+    		this.cells[yEnd][xEnd].setEntity(this.cells[yStart][xStart].getEntity());
+    		this.cells[yStart][xStart].setEntity(null);
     	} catch(IndexOutOfBoundsException e) {
     		System.out.println("[Erreur] : Le déplacement n'a pas pu se faire");
     		return false;
