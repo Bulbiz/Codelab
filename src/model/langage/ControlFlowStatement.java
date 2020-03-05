@@ -34,13 +34,6 @@ public abstract class ControlFlowStatement extends Action {
                               // end.
     protected boolean swapActive;
 
-    public Queue<Action> copyActions(Queue<Action> listeAction){
-        Queue<Action> copy  = new LinkedList<Action>();
-        while(listeAction.peek() != null){
-            copy.add(listeAction.poll());
-        }
-        return copy;
-    }
 
     /**
      * @return
