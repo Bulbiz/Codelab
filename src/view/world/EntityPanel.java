@@ -2,30 +2,27 @@
 package src.view.world;
 
 import src.model.world.*;
-
+import javax.swing.*;
+import java.awt.*;
 import java.util.*;
-
 /**
  * 
  */
-public class EntityPanel implements IDisplayable {
-
+public class EntityPanel extends JLabel implements IDisplayable {
+	private Cell cell;
     /**
-     * Default constructor
+     * FIXME : Should replace the text with an Image
      */
-    public EntityPanel() {
+    public EntityPanel(Cell c) {
+    	this.cell = c;
+    	this.updateDisplay();
     }
 
     /**
-     * 
-     */
-    private Entity entity;
-
-    /**
-     * 
+     * FIXME : Should replace the text with an Image
      */
     public void updateDisplay() {
-        // TODO implement here
+    	this.setText(this.cell.getEntity() != null?Character.toString(this.cell.getEntity().toString().charAt(0)) : "E");
     }
 
 }

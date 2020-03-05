@@ -13,5 +13,7 @@ public class Goal extends Decor {
     public Goal(Board b, int xPosition, int yPosition) {
         super(b,xPosition,yPosition);
     }
-
+    public String toString() {
+    	return "goal";
+    }
 }

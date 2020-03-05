@@ -2,30 +2,30 @@
 package src.view.world;
 
 import src.model.world.*;
-
+import javax.swing.*;
+import java.awt.*;
 import java.util.*;
 
 /**
- * 
+ * Display a Decor,
  */
-public class DecorPanel implements IDisplayable {
-
+public class DecorPanel extends JLabel implements IDisplayable {
+	private Cell cell;
     /**
-     * Default constructor
+     * FIXME : Should replace the text with an Image
      */
-    public DecorPanel() {
+    public DecorPanel(Cell c) {
+    	this.cell = c;
+    	this.updateDisplay();
+    	
     }
-
     /**
-     * 
-     */
-    private Decor decor;
-
-    /**
-     * 
+     * FIXME : Should replace the text with an Image
+     * What if decor == null? should we throw an exception since it's not allowed
+     * Do we have to update the Display since it never really change ? 
      */
     public void updateDisplay() {
-        // TODO implement here
+    	this.setText(this.cell.getDecor() != null? Character.toString(this.cell.getDecor().toString().charAt(0)) : "D");
     }
 
 }

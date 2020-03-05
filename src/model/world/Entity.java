@@ -16,5 +16,4 @@ public abstract class Entity {
     	y = yStart;
     }
 
-
 }

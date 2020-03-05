@@ -33,7 +33,7 @@ public class Board {
     }
     
     //method to initiate the entity when its not on the board
-    protected void initiateEntity(int x, int y, Entity being) {
+    public void initiateEntity(int x, int y, Entity being) {
     	try {
     		this.cells[y][x].setEntity(being);
     	} catch(IndexOutOfBoundsException e) {
@@ -80,5 +80,31 @@ public class Board {
     	System.out.println("("+xStart+":"+yStart+")"+" -> ("+ xEnd + ":" + yEnd + ")");
     	return true;
     }
-
+    
+    //FIXME Function Place Holder for the view
+    private void filling () {
+    	for (int i = 1; i < this.cells.length - 1; i++) 
+    		for(int j = 1; j < this.cells[i].length - 1; j++)
+    				this.cells[i][j] = new Cell ();
+    }
+    //FIXME: Code to implement
+    public boolean endOfLevel() {
+    	return false;
+    }
+    //FIXME: Code to implement
+    public void run() {
+    	for(Personage p : this.characters)
+    		p.run();
+    }
+    
+    //Terminal View
+    public String toString() {
+    	String res = "";
+    	for(int i = 0; i< this.cells.length ; i++) {
+    		res = res + "\n";
+    		for (int j=0; j< this.cells[i].length ; j++)
+    			res = res + this.cells[i][j].toString() + " | ";
+    	}
+    	return res;	
+    }
 }

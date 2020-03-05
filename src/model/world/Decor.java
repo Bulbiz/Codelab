@@ -19,7 +19,4 @@ public abstract class Decor {
     	x = xPosition;
     	y = yPosition;
     }
-
-
-
 }

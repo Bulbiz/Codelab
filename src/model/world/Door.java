@@ -14,5 +14,7 @@ public class Door extends Decor {
     public Door(Board b, int xPosition, int yPosition) {
         super(b,xPosition,yPosition);
     }
-
+    public String toString() {
+    	return "door";
+    }
 }
