@@ -19,7 +19,7 @@ public class WorldThread extends Thread {
 				level.run();
 				vueLevel.updateDisplay();
 			try {
-				this.sleep(5000);
+				this.sleep(2500);
 			}catch (InterruptedException e) {
 				return;
 			}

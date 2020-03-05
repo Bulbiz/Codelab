@@ -81,10 +81,6 @@ public class Board {
     	return true;
     }
     
-    public Cell[][] getCells (){
-    	return this.cells;
-    }
-    
     //FIXME Function Place Holder for the view
     private void filling () {
     	for (int i = 1; i < this.cells.length - 1; i++) 
