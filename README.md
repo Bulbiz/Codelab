@@ -13,7 +13,7 @@ Dès la semaine prochaine, à l'aide de la version minimale, nous définirons av
 implémenterons
 
 Enfin, voici ce qui n'a pas été modifié :
-- Le Makefile créer toujours un fichier src dans le bin
+Le Makefile créer toujours un fichier src dans le bin
 
 
 ## Equipe
