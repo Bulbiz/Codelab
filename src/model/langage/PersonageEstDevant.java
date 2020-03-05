@@ -8,4 +8,10 @@ class PersonageEstDevant extends Condition {
         super(personage);
     }
 
+    @Override
+    public boolean isTrue() {
+        // TODO Auto-generated method stub
+        return false;
+    }
+
 }
