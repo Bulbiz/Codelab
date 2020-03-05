@@ -2,11 +2,12 @@
 
 ## Update semaine du 2/03/2020
 
-Cette semaine nous avons ajouté les éléments suivants :
+Cette semaine nous avons ajouté les éléments suivants à la branche develop:
 1.  Une interface graphique basique du plateau
 2.  Un bouton Run qui permet d'exécuter la liste d'instruction du joueur
-3.  Des fichiers json pour représenter les instructions 
+3.  Une représentation json des instructions 
 4.  Quelques conditions 
+
 
 ## Equipe
 
