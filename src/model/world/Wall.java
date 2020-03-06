@@ -1,18 +1,10 @@
-
 package src.model.world;
-
 import java.util.*;
 
-/**
- *
- */
-public class Wall extends Decor {
+public class Wall extends Obstacle {
 
-    /**
-     * Default constructor
-     */
-    public Wall(Board b, int xPosition, int yPosition) {
-        super(b,xPosition,yPosition);
+    public Wall(int xPosition, int yPosition) {
+        super(xPosition, yPosition);
     }
 
 }

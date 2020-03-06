@@ -49,12 +49,11 @@ public class Board {
 
     //This method will create a border on the board that won't be crossable
     private void createBorder() {
-    	Cell mountain = new Cell(); //TODO La case qui servira de Bordure à déterminer
     	for(int i = 0; i < this.cells[0].length; i++) {
-    		this.cells[0][i] = new Cell();
-    		this.cells[16][i] = new Cell();
-    		this.cells[i][0] = new Cell();
-    		this.cells[i][16] = new Cell();
+	    this.cells[0][i] = new Cell(new Wall(0, i));
+	    this.cells[16][i] = new Cell(new Wall(16, i));
+	    this.cells[i][0] = new Cell(new Wall(i, 0));
+	    this.cells[i][16] = new Cell(new Wall(i, 16));
     	}
     }
     
