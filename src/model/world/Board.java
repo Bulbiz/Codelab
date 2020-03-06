@@ -33,11 +33,13 @@ public class Board {
     }
     
     //method to initiate the entity when its not on the board
-    public void initiateEntity(int x, int y, Entity being) {
+    public boolean initiateEntity(int x, int y, Entity being) {
     	try {
     		this.cells[y][x].setEntity(being);
+		return true;
     	} catch(IndexOutOfBoundsException e) {
     		System.out.println("[Erreur] : Case inexistante");
+		return false;
     	}
     }
 
@@ -91,7 +93,7 @@ public class Board {
     public boolean endOfLevel() {
     	return false;
     }
-    //FIXME: Code to implement
+
     public void run() {
     	for(Personage p : this.characters)
     		p.run();
