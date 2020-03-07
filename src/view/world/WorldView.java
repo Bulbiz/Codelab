@@ -9,9 +9,9 @@ import java.util.*;
  *
  */
 public class BoardPanel extends JPanel implements IDisplayable {
-	 	private static final int caseLength = 32;
-		private Queue<EntityView> entityView;
-		private CellView [][] cellView; 
+	private static final int caseLength = 32;
+	private Queue<EntityView> entityView;
+	private CellView cellView;
     /**
      *
      */

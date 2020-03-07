@@ -5,12 +5,12 @@ import src.model.langage.*;
 import src.view.world.*;
 import src.view.langage.*;
 
-public class ControllerWorld{
+public class ControllerLevel{
 	private Level level;
 	private LevelPanel vueLevel;
 	private WorldThread worldTime;
 	
-	public ControllerWorld (Level l, LevelPanel v) {
+	public ControllerLevel (Level l, LevelPanel v) {
 		this.level = l;
 		this.vueLevel = v;
 	}

@@ -12,7 +12,7 @@ import java.util.*;
 public class LevelPanel extends JPanel{
 	private Level level;
 	
-	private ControllerWorld worldController;
+	private ControllerLevel levelController;
 	
 	private JButton runButton;
 	
@@ -20,13 +20,13 @@ public class LevelPanel extends JPanel{
 	
 	public LevelPanel (Level l){
 		this.level = l;
-		this.worldController = new ControllerWorld (this.level, this);
+		this.levelController = new ControllerLevel (this.level, this);
 		
 		this.runButton = new JButton ("Run");
 		this.stopButton = new JButton ("Stop");
-		this.stopButton.addActionListener((e) -> worldController.stop());
+		this.stopButton.addActionListener((e) -> levelController.stop());
 		this.stopButton.setEnabled(false);
-		this.runButton.addActionListener((e) -> worldController.run());
+		this.runButton.addActionListener((e) -> levelController.run());
 		
 		layoutPlacement();
 		this.updateDisplay();
