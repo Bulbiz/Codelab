@@ -9,6 +9,7 @@ import src.model.world.*;
 public class While extends ControlFlowStatement {
 
 	private Queue<Action> actionsSave;
+	private int limit = 0;
 
     public While(Personage personage) {
     	super(personage);
@@ -17,9 +18,9 @@ public class While extends ControlFlowStatement {
 
 	public Queue<Action> copyActions(Queue<Action> listeAction){
         Queue<Action> copy  = new LinkedList<Action>();
-        while(listeAction.peek() != null){
-            copy.add(listeAction.poll());
-        }
+        for(Action a : listeAction){
+			copy.add(a);
+		}
         return copy;
     }
 
@@ -42,6 +43,11 @@ public class While extends ControlFlowStatement {
 				return 2;				//continue the list of actions while is not over
 
 			active = condition.isTrue();		//uptate the condition for the while
+			limit += 1;
+			if(limit>100){
+				System.out.println("Boucle infini");
+				System.exit(0);
+			}
 			if(active) {
 				actions = actionsSave;
 				return 2;
