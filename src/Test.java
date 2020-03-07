@@ -4,6 +4,7 @@ import src.model.langage.*;
 import src.model.world.*;
 import src.view.langage.*;
 import src.view.world.*;
+import src.view.*;
 import java.util.*;
 import javax.swing.*;
 import java.awt.*;
@@ -12,7 +13,7 @@ import java.awt.*;
 class Test {
     //test of running the project
     public static void begin(){
-      ArrayList<Personage> p = new ArrayList();
+      /*ArrayList<Personage> p = new ArrayList();
       Board b = new Board(6, 1, p);
       Player steve = new Player(b, 6, 15, 1);
       Queue<src.model.langage.Action> action = new LinkedList <src.model.langage.Action>();
@@ -27,7 +28,7 @@ class Test {
       LevelPanel vueLevel = new LevelPanel (levelTest);
       JFrame testWindows = TestWorldView.createWindows ("Test");
       testWindows.setContentPane(vueLevel);
-      testWindows.pack();
+      testWindows.pack();*/
     }
 
     public static void main(String[] args) {
@@ -36,8 +37,7 @@ class Test {
         TestLanguageView.run();
         TestWorldView.run();
 
-        begin();
-
+        //begin();
         System.out.println("fin de test");
     }
 }
