@@ -16,6 +16,8 @@ public class WorldThread extends Thread {
 
 	private void tick () {
 		board.run();
+	}
+	private void render() {
 		vueWorld.updateDisplay();
 	}
 	private void waiting (int milisecond) {
@@ -25,9 +27,11 @@ public class WorldThread extends Thread {
 			this.interrupt();
 		}
 	}
+	
 	public void run() {
 		while(!board.endOfLevel()) {
 			this.tick();
+			this.render();
 			this.waiting(2500);
 		}
 		this.interrupt();
