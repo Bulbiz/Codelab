@@ -14,26 +14,13 @@ import src.model.world.*;
  */
 public abstract class ControlFlowStatement extends Action {
 
+    protected Condition condition;
+    protected Queue<Action> actions;
+
     public ControlFlowStatement(Personage personage) {
         super(personage);
-        swapActive = false;
-        active = false;
         actions = new LinkedList<Action>();
     }
-
-    /**
-     *
-     */
-    protected Condition condition;
-
-    /**
-     *
-     */
-    protected Queue<Action> actions;
-    protected boolean active; // true = the control struture is always active, false the control struture is
-                              // end.
-    protected boolean swapActive;
-
 
     /**
      * @return
