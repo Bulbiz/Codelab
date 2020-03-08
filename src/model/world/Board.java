@@ -8,9 +8,10 @@ public class Board {
 	private Cell finish;
 	//FIXME ArrayList characters attributes must be the class Personage or Avatar
 	private ArrayList<Personage> characters;
-
+	
+	//TODO we would like the number 17 of cells to be addable from the call
+	//FIXME maybe we should give in parameters the Cell finish entirely so we wont have to initiate it later
     public Board(int xFinish, int yFinish, ArrayList<Personage> characters) {
-    	//TODO we would like the number 17 of cells to be addable from the call
     	this.cells = new Cell[17][17];
     	try{
     	    this.finish = this.cells[yFinish][xFinish];
@@ -32,14 +33,14 @@ public class Board {
     	}
     }
     
-    private boolean isOccupied(int x, int y) {
+    private boolean isNotOccupied(int x, int y) {
     	return this.cells[y][x].getEntity() == null && !(this.cells[y][x].getDecor() instanceof Obstacle);
     }
     
     //method to initiate the entity when its not on the board
     public boolean initiateEntity(int x, int y, Entity being) {
     	try {
-    		if(isOccupied(x, y)) {
+    		if(isNotOccupied(x, y)) {
     			this.cells[y][x].setEntity(being);
     			return true;
     		} else {
@@ -80,7 +81,7 @@ public class Board {
     
     public boolean move (int xStart, int yStart, int xEnd, int yEnd) {
     	try {
-    		if(isOccupied(xEnd, yEnd)) {
+    		if(isNotOccupied(xEnd, yEnd)) {
     			this.cells[yEnd][xEnd].setEntity(this.cells[yStart][xStart].getEntity());
     			this.cells[yStart][xStart].setEntity(null);
     		} else {
@@ -102,8 +103,11 @@ public class Board {
     				this.cells[i][j] = new Cell ();
     }
     
-    //FIXME: Code to implement
+    //FIXME: maybe Personage rather than Player for instanceof
     public boolean endOfLevel() {
+    	if(this.finish.getEntity() != null && this.finish.getEntity() instanceof Player) {
+    		return true;
+    	}
     	return false;
     }
     
