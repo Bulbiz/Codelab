@@ -33,11 +33,18 @@ public class Board {
     }
     
     //method to initiate the entity when its not on the board
-    public void initiateEntity(int x, int y, Entity being) {
+    public boolean initiateEntity(int x, int y, Entity being) {
     	try {
-    		this.cells[y][x].setEntity(being);
+    		if(this.cells[y][x].getEntity() == null) {
+    			this.cells[y][x].setEntity(being);
+    			return true;
+    		} else {
+    			System.out.println("[Erreur] : Il y a quelque chose sur cette case");
+    			return false;
+    		}
     	} catch(IndexOutOfBoundsException e) {
     		System.out.println("[Erreur] : Case inexistante");
+    		return false;
     	}
     }
 
