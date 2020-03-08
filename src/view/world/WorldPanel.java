@@ -4,11 +4,13 @@ import src.model.world.*;
 import javax.swing.*;
 import java.awt.*;
 import java.util.*;
+import java.io.File;
+import java.awt.Image;
+import javax.imageio.ImageIO;
 /**
  *
  */
 public class WorldPanel extends JPanel implements IDisplayable {
-
 	private static final int tileLength = 32;
 	private Board boardModel;
 	
@@ -17,10 +19,10 @@ public class WorldPanel extends JPanel implements IDisplayable {
      */
     public WorldPanel (Board b) {
     	this.boardModel = b ;
-    	updateDisplay();
+    	initiateView();
     }
     
-    private void createCanvas() {
+    private void initiateView() {
     	int length = Board.boardLength * tileLength;
     	this.setPreferredSize(new Dimension(length,length));
     	this.setMinimumSize(new Dimension(length,length));
@@ -29,10 +31,16 @@ public class WorldPanel extends JPanel implements IDisplayable {
     }
     
     public void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        //Draw Here
-        g.drawString("This is my custom Panel!",10,20);
-    }  
+    	super.paintComponent(g);
+    	ImageIcon img = new ImageIcon(this.getClass().getResource("image/Sol.png"));
+        //Draw Here;
+    	for(int i=0; i< 17 ; i++)
+    		for(int j = 0 ; j < 17 ; j ++) {
+    			g.drawImage(img.getImage(),i*tileLength, j*tileLength,null);
+    		}
+    	ImageIcon img2 = new ImageIcon(this.getClass().getResource("image/Transparence.png"));
+    	img2.paintIcon(this, g, 2*tileLength, 5*tileLength);
+    } 
     public void updateDisplay() {
     	repaint();
     }

@@ -24,6 +24,8 @@ public class TestWorldView {
 		levelTest.setContentPane(viewLevelTest);
 		levelTest.pack();
 	}
+	
+	
 	private static void testDisplayWorld() {
 		JFrame worldTest = TestWorldView.createWindows("Test World View");
 		Board boardTest = new Board (7,7,null);
