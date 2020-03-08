@@ -32,10 +32,14 @@ public class Board {
     	}
     }
     
+    private boolean isOccupied(int x, int y) {
+    	return this.cells[y][x].getEntity() == null && !(this.cells[y][x].getDecor() instanceof Obstacle);
+    }
+    
     //method to initiate the entity when its not on the board
     public boolean initiateEntity(int x, int y, Entity being) {
     	try {
-    		if(this.cells[y][x].getEntity() == null) {
+    		if(isOccupied(x, y)) {
     			this.cells[y][x].setEntity(being);
     			return true;
     		} else {
@@ -74,12 +78,15 @@ public class Board {
     	}
     }
     
-    //TODO the method should verify that the entity isnt trying to go into an obstacle
-    //TODO what happens if a player entity try to go into an ennemy entity ? 
     public boolean move (int xStart, int yStart, int xEnd, int yEnd) {
     	try {
-    		this.cells[yEnd][xEnd].setEntity(this.cells[yStart][xStart].getEntity());
-    		this.cells[yStart][xStart].setEntity(null);
+    		if(isOccupied(xEnd, yEnd)) {
+    			this.cells[yEnd][xEnd].setEntity(this.cells[yStart][xStart].getEntity());
+    			this.cells[yStart][xStart].setEntity(null);
+    		} else {
+    			System.out.println("[Erreur] : Il y a quelque chose sur la destination");
+    			return false;
+    		}
     	} catch(IndexOutOfBoundsException e) {
     		System.out.println("[Erreur] : Le déplacement n'a pas pu se faire");
     		return false;
@@ -94,11 +101,12 @@ public class Board {
     		for(int j = 1; j < this.cells[i].length - 1; j++)
     				this.cells[i][j] = new Cell ();
     }
+    
     //FIXME: Code to implement
     public boolean endOfLevel() {
     	return false;
     }
-    //FIXME: Code to implement
+    
     public void run() {
     	for(Personage p : this.characters)
     		p.run();
