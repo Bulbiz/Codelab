@@ -14,26 +14,32 @@ public class If extends ControlFlowStatement {
     }
 
 	public int run() {
-		if(condition.isTrue() && !swapActive) {		//if the condition is true, preserve the condition until the end
-			active = true;
-			swapActive = true;
-		}
-		if(active) {
-			int verification = actions.peek().run();
-			while(verification == 0) {				//do the no count actions.
-				actions.poll();
-				verification = actions.peek().run();
+        class FinIf extends Action{
+
+			public FinIf(Personage personage){
+				super(personage);
+				FinIf end = new FinIf(personage);
+				actions.add(end);		//add the condition for the verification
 			}
-			if(verification == 1) 
-				actions.poll();
-			
-			if(actions.peek() != null)
-				return 2;							//continue the list of actions while is not over
-			
+
+			public int run(){
+				if(condition.isTrue())
+					return 0;
+				return -1;						//condition is not verify
+			}
 		}
-		active = false;
-		swapActive = false;
-		
-		return 1;									//when the list of actions is over
+
+		int verification = actions.peek().run();
+		while(actions != null && verification == 0) {
+			actions.poll();
+			verification = actions.peek().run();
+		}
+
+		if(actions != null && verification == 1){
+			actions.poll();
+			return 2;                          // continu to execute the actions list
+		}
+        return 1;                              // end actions list for the if
 	}
+
 }

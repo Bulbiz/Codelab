@@ -8,7 +8,6 @@ import src.model.world.*;
  */
 public class While extends ControlFlowStatement {
 
-	private Queue<Action> actionsSave;
 	private int limit = 0;
 
     public While(Personage personage) {
@@ -16,46 +15,39 @@ public class While extends ControlFlowStatement {
     }
 
 
-	public Queue<Action> copyActions(Queue<Action> listeAction){
-        Queue<Action> copy  = new LinkedList<Action>();
-        for(Action a : listeAction){
-			copy.add(a);
-		}
-        return copy;
-    }
-
 	public int run() {
-		if(condition.isTrue() && !swapActive) {		//if the condition is true, preserve the condition until the end
-			active = true;
-			swapActive = true;
-			actionsSave = copyActions(actions);
-		}
-		if(active) {
-			int verification = actions.peek().run();
-			while(verification == 0) {	//do the no count actions.
-				actions.poll();
-				verification = actions.peek().run();
+
+		class FinWhile extends Action{
+
+			public FinWhile(Personage personage){
+				super(personage);
+				FinWhile end = new FinWhile(personage);
+				actions.add(end);		//add the condition for the verification
 			}
-			if(verification == 1)
-				actions.poll();
 
-			if(actions.peek() != null)
-				return 2;				//continue the list of actions while is not over
+			public int run(){
+				if(condition.isTrue()){
+					limit +=1;					//limit for the infinite loop
+					return 0;
+				}
+				return -1;						//condition is not verify
+			}
+		}
 
-			active = condition.isTrue();		//uptate the condition for the while
-			limit += 1;
-			if(limit>100){
+		int verification = actions.peek().run();
+		while(verification == 0) {				//do the no count actions.
+			actions.offer(actions.poll());		//add this action in the end of the actions list
+			verification = actions.peek().run();
+		}
+
+		if(limit>100){
 				System.out.println("Boucle infini");
 				System.exit(0);
 			}
-			if(active) {
-				actions = actionsSave;
-				return 2;
-			}else {
-				swapActive = false;
-			}
 
-
+		if(verification == 1){
+			actions.offer(actions.poll());
+			return 2;					//when the list isn't over
 		}
 
 		return 1;						//when the list of actions is over
