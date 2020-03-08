@@ -20,12 +20,16 @@ public class ControllerLevel{
 		this.vueLevel.setEnableRunButton(false);
 		this.vueLevel.setEnableStopButton(true);
 
+		/*
 		this.worldTime = new WorldThread (level, vueLevel);
 		this.worldTime.start();
+		*/
 	}
 	public void stop () {
-		this.worldTime.interrupt();
+		/*
+		this.worldTime.stop();
 		this.vueLevel.setEnableRunButton(true);
 		this.vueLevel.setEnableStopButton(false);
+		*/
 	}
 }

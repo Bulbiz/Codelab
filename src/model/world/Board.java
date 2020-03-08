@@ -8,7 +8,9 @@ public class Board {
 	private Cell finish;
 	//FIXME ArrayList characters attributes must be the class Personage or Avatar
 	private ArrayList<Personage> characters;
-
+	
+	public static final int boardLength = 17; 
+	
     public Board(int xFinish, int yFinish, ArrayList<Personage> characters) {
     	//TODO we would like the number 17 of cells to be addable from the call
     	this.cells = new Cell[17][17];

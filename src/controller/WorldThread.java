@@ -6,24 +6,30 @@ import src.view.world.*;
 import src.view.langage.*;
 
 public class WorldThread extends Thread {
-	/*private Level level;
-	private LevelPanel vueLevel;
+	private Board board;
+	private WorldPanel vueWorld;
 
-	public WorldThread (Level l, LevelPanel v) {
-		this.level = l;
-		this.vueLevel = v;
+	public WorldThread (Board b, WorldPanel v) {
+		this.board = b;
+		this.vueWorld = v;
 	}
 
-	public void run () {
-		while(!level.endOfLevel()) {
-				level.run();
-				vueLevel.updateDisplay();
-			try {
-				this.sleep(2500);
-			}catch (InterruptedException e) {
-				return;
-			}
+	private void tick () {
+		board.run();
+		vueWorld.updateDisplay();
+	}
+	private void waiting (int milisecond) {
+		try {
+			this.sleep(milisecond);
+		}catch (InterruptedException e) {
+			this.interrupt();
 		}
-	}*/
-	
+	}
+	public void run() {
+		while(!board.endOfLevel()) {
+			this.tick();
+			this.waiting(2500);
+		}
+		this.interrupt();
+	}
 }

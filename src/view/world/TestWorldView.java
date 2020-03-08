@@ -16,14 +16,6 @@ public class TestWorldView {
         return frame;
 	}
 	
-	private static void testDisplayWorld() {
-		/*JFrame worldTest = TestWorldView.createWindows("Test World View");
-		Board boardTest = new Board (7,7,null);
-		BoardPanel viewBoardTest = new BoardPanel (boardTest.getCells());
-		worldTest.setContentPane(viewBoardTest);
-		worldTest.pack();*/
-	}
-	
 	private static void testDisplayLevel() {
 		JFrame levelTest = TestWorldView.createWindows("Test Level View");
 		Board boardTest = new Board (7,7,null);
@@ -32,10 +24,18 @@ public class TestWorldView {
 		levelTest.setContentPane(viewLevelTest);
 		levelTest.pack();
 	}
+	private static void testDisplayWorld() {
+		JFrame worldTest = TestWorldView.createWindows("Test World View");
+		Board boardTest = new Board (7,7,null);
+		WorldPanel worldView = new WorldPanel(boardTest);
+		worldTest.setContentPane(worldView);
+		worldTest.pack();
+	}
 	
     public static void run() {
     	/*EventQueue.invokeLater(() ->{
     		testDisplayLevel();
         });*/
+    	testDisplayWorld();
     }
 }

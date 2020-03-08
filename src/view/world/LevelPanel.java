@@ -23,10 +23,11 @@ public class LevelPanel extends JPanel{
 		this.levelController = new ControllerLevel (this.level, this);
 		
 		this.runButton = new JButton ("Run");
+		this.runButton.addActionListener((e) -> levelController.run());
+		
 		this.stopButton = new JButton ("Stop");
 		this.stopButton.addActionListener((e) -> levelController.stop());
 		this.stopButton.setEnabled(false);
-		this.runButton.addActionListener((e) -> levelController.run());
 		
 		layoutPlacement();
 		this.updateDisplay();
