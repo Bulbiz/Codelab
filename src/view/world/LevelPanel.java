@@ -14,14 +14,15 @@ public class LevelPanel extends JPanel{
 	
 	private ControllerLevel levelController;
 	
+	private WorldPanel worldView;
 	private JButton runButton;
-	
 	private JButton stopButton;
 	
 	public LevelPanel (Level l){
 		this.level = l;
 		this.levelController = new ControllerLevel (this.level, this);
 		
+		this.worldView = new WorldPanel (this.level.getBoard());
 		this.runButton = new JButton ("Run");
 		this.runButton.addActionListener((e) -> levelController.run());
 		
@@ -33,6 +34,9 @@ public class LevelPanel extends JPanel{
 		this.updateDisplay();
 	}
 	
+	public WorldPanel getWorldView () {
+		return this.worldView;
+	}
 	//FIXME : Magic Number is not the best
 	private void layoutPlacement() {
 		this.setLayout(null);
