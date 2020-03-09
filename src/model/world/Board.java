@@ -11,7 +11,7 @@ public class Board {
 	
 	//TODO we would like the number 17 of cells to be addable from the call
 	//FIXME maybe we should give in parameters the Cell finish entirely so we wont have to initiate it later
-    public Board(int xFinish, int yFinish, ArrayList<Personage> characters) {
+    public Board(int yFinish, int xFinish, ArrayList<Personage> characters) {
     	this.cells = new Cell[17][17];
     	try{
     	    this.finish = this.cells[yFinish][xFinish];
@@ -24,7 +24,7 @@ public class Board {
     	initiateCells();
     }
     
-    public Decor getDecor(int x, int y) {
+    public Decor getDecor(int y, int x) {
     	try {
     		return this.cells[y][x].getDecor();
     	} catch(IndexOutOfBoundsException e) {
@@ -36,14 +36,14 @@ public class Board {
     /*
      * @return true if the Cell dont have an obstacle or entity false otherwise
      */
-    private boolean isNotOccupied(int x, int y) {
+    private boolean isNotOccupied(int y, int x) {
     	return this.cells[y][x].getEntity() == null && !(this.cells[y][x].getDecor() instanceof Obstacle);
     }
     
     //method to initiate the entity when its not on the board
     public boolean initiateEntity(int x, int y, Entity being) {
     	try {
-    		if(isNotOccupied(x, y)) {
+    		if(isNotOccupied(y, x)) {
     			this.cells[y][x].setEntity(being);
     			return true;
     		} else {
@@ -63,10 +63,10 @@ public class Board {
     //This method will create a border on the board that won't be crossable
     private void createBorder() {
     	for(int i = 0; i < this.cells[0].length; i++) {
-	    this.cells[0][i] = new Cell(new Wall(this, 0, i));
-	    this.cells[16][i] = new Cell(new Wall(this, 16, i));
-	    this.cells[i][0] = new Cell(new Wall(this, i, 0));
-	    this.cells[i][16] = new Cell(new Wall(this, i, 16));
+    		this.cells[0][i] = new Cell(new Wall(this, 0, i));
+    		this.cells[16][i] = new Cell(new Wall(this, 16, i));
+    		this.cells[i][0] = new Cell(new Wall(this, i, 0));
+    		this.cells[i][16] = new Cell(new Wall(this, i, 16));
     	}
     }
     
@@ -81,9 +81,9 @@ public class Board {
     	}
     }
     
-    public boolean move (int xStart, int yStart, int xEnd, int yEnd) {
+    public boolean move (int yStart, int xStart, int xEnd, int yEnd) {
     	try {
-    		if(isNotOccupied(xEnd, yEnd)) {
+    		if(isNotOccupied(yEnd, xEnd)) {
     			this.cells[yEnd][xEnd].setEntity(this.cells[yStart][xStart].getEntity());
     			this.cells[yStart][xStart].setEntity(null);
     		} else {
