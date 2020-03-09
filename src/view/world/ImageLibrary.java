@@ -9,7 +9,9 @@ public class ImageLibrary {
 	
 	public ImageLibrary () {
 		this.storedSprite = new HashMap<String,Icon>();
+		this.putImage("vide", ".png");
 	}
+	
 	public Icon getSprite (String spriteName) {
 		return this.storedSprite.get(spriteName);
 	}
@@ -17,6 +19,7 @@ public class ImageLibrary {
 	private void putImage (String key, String extension) {
 		this.storedSprite.put(key,new ImageIcon(this.getClass().getResource("image/" + key + extension)));
 	}
+	
 	public void loadWorldImage () {
 		this.putImage("sol", ".png");
 		this.putImage("player0", ".gif");

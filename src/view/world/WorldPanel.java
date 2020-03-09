@@ -37,11 +37,12 @@ public class WorldPanel extends JPanel implements IDisplayable {
     	super.paintComponent(g);
     	for(int i = 0 ; i < Board.boardLength ; i++) {
     		for(int j = 0 ; j < Board.boardLength ; j++) {
-    			//g.drawImage(spriteLibrary.getSprite("player0"),i*tileLength, j*tileLength,null);
-    			spriteLibrary.getSprite("sol").paintIcon(this,g,i*tileLength, j*tileLength);
+    			String decorSpriteName = boardModel.getDecor(i,j) != null ? boardModel.getDecor(i,j).toString(): "vide";
+    			spriteLibrary.getSprite(decorSpriteName).paintIcon(this,g,i*tileLength, j*tileLength);
     		}
     	}
     	spriteLibrary.getSprite("player0").paintIcon(this,g,tileLength, tileLength);
+    	
     	/*ImageIcon img = new ImageIcon(this.getClass().getResource("image/Sol.png"));
         //Draw Here;
     	for(int i=0; i< 17 ; i++)
