@@ -18,14 +18,21 @@ class Test {
       Player steve = new Player(b, 6, 15, 1);
       Queue<src.model.langage.Action> action = new LinkedList <src.model.langage.Action>();
       action.offer(new TurnLeft(steve));
-      for(int i = 3; i>1; i--){
+      for(int i = 5; i>1; i--){
         action.offer(new Move(steve));
       }
       action.offer(new TurnLeft(steve));
-      for(int i = 3; i>1; i--){
+      for(int i = 5; i>1; i--){
           action.offer(new Move(steve));
         }
-      
+      action.offer(new TurnRight(steve));
+      for(int i = 5; i>1; i--){
+          action.offer(new Move(steve));
+        }
+      action.offer(new TurnRight(steve));
+      for(int i = 5; i>1; i--){
+          action.offer(new Move(steve));
+        }
       steve.setActions(action);
       b.initiateEntity(6,15,steve);
       p.add(steve);

@@ -32,7 +32,7 @@ public class WorldThread extends Thread {
 		while(!board.endOfLevel()) {
 			this.tick();
 			this.render();
-			this.waiting(2500);
+			this.waiting(1300);
 		}
 		this.interrupt();
 	}
