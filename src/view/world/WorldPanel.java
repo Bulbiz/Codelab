@@ -44,7 +44,7 @@ public class WorldPanel extends JPanel implements IDisplayable {
     	}
     	for(Personage p : boardModel.getCharacter()) {
     		String personageSpriteName = p.toString();
-			spriteLibrary.getSprite(personageSpriteName).paintIcon(this,g,p.getX()*tileLength, p.getY()*tileLength);
+			spriteLibrary.getSprite(personageSpriteName).paintIcon(this,g,p.getY()*tileLength, p.getX()*tileLength);
     	}
 
     }

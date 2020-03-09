@@ -56,6 +56,6 @@ public abstract class Personage extends Entity {
         return false;
     }
     public String toString() {
-    	return "vide";
+    	return "player"+this.facing;
     }
 }
