@@ -13,6 +13,7 @@ import javax.imageio.ImageIO;
 public class WorldPanel extends JPanel implements IDisplayable {
 	private static final int tileLength = 32;
 	private Board boardModel;
+	private ImageLibrary spriteLibrary;
 	
     /**
      *
@@ -20,6 +21,8 @@ public class WorldPanel extends JPanel implements IDisplayable {
     public WorldPanel (Board b) {
     	this.boardModel = b ;
     	initiateView();
+    	this.spriteLibrary = new ImageLibrary ();
+    	this.spriteLibrary.loadWorldImage();
     }
     
     private void initiateView() {
@@ -32,18 +35,24 @@ public class WorldPanel extends JPanel implements IDisplayable {
     
     public void paintComponent(Graphics g) {
     	super.paintComponent(g);
-    	System.out.println("Je suis appeler");
-    	ImageIcon img = new ImageIcon(this.getClass().getResource("image/Sol.png"));
+    	for(int i = 0 ; i < Board.boardLength ; i++) {
+    		for(int j = 0 ; j < Board.boardLength ; j++) {
+    			//g.drawImage(spriteLibrary.getSprite("player0"),i*tileLength, j*tileLength,null);
+    			spriteLibrary.getSprite("sol").paintIcon(this,g,i*tileLength, j*tileLength);
+    		}
+    	}
+    	spriteLibrary.getSprite("player0").paintIcon(this,g,tileLength, tileLength);
+    	/*ImageIcon img = new ImageIcon(this.getClass().getResource("image/Sol.png"));
         //Draw Here;
     	for(int i=0; i< 17 ; i++)
     		for(int j = 0 ; j < 17 ; j ++) {
     			g.drawImage(img.getImage(),i*tileLength, j*tileLength,null);
     		}
     	ImageIcon img2 = new ImageIcon(this.getClass().getResource("image/Front.gif"));
-    	img2.paintIcon(this, g, 2*tileLength, 5*tileLength);
+    	img2.paintIcon(this, g, 2*tileLength, 5*tileLength);*/
     }
     
     public void updateDisplay() {
+    	
     }
-
 }
