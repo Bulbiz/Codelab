@@ -13,14 +13,16 @@ import java.awt.*;
 class Test {
     //test of running the project
     public static void begin(){
-      /*ArrayList<Personage> p = new ArrayList();
+      ArrayList<Personage> p = new ArrayList();
       Board b = new Board(6, 1, p);
       Player steve = new Player(b, 6, 15, 1);
       Queue<src.model.langage.Action> action = new LinkedList <src.model.langage.Action>();
 
-      for(int i = 15; i>1; i--){
+      action.offer(new TurnLeft(steve));
+      for(int i = 0; i>3; i++){
         action.offer(new Move(steve));
       }
+      
       steve.setActions(action);
       b.initiateEntity(6,15,steve);
       p.add(steve);
@@ -28,7 +30,7 @@ class Test {
       LevelPanel vueLevel = new LevelPanel (levelTest);
       JFrame testWindows = TestWorldView.createWindows ("Test");
       testWindows.setContentPane(vueLevel);
-      testWindows.pack();*/
+      testWindows.pack();
     }
 
     public static void main(String[] args) {
@@ -37,7 +39,7 @@ class Test {
         TestLanguageView.run();
         TestWorldView.run();
 
-        //begin();
+        begin();
         System.out.println("fin de test");
     }
 }

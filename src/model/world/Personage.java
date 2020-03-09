@@ -55,5 +55,7 @@ public abstract class Personage extends Entity {
             return true;
         return false;
     }
-
+    public String toString() {
+    	return "vide";
+    }
 }

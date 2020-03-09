@@ -38,6 +38,6 @@ public class TestWorldView {
     	/*EventQueue.invokeLater(() ->{
     		testDisplayLevel();
         });*/
-    	testDisplayLevel();
+    	//testDisplayLevel();
     }
 }

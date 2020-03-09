@@ -47,6 +47,9 @@ public class Board {
 		return cells;
 	}
 
+	public ArrayList<Personage> getCharacter(){
+		return this.characters;
+	}
     //This method will create a border on the board that won't be crossable
     private void createBorder() {
     	Cell mountain = new Cell(); //TODO La case qui servira de Bordure à déterminer
