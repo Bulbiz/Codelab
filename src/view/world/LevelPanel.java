@@ -39,7 +39,7 @@ public class LevelPanel extends JPanel{
 	}
 	//FIXME : Magic Number is not the best
 	private void layoutPlacement() {
-		this.setLayout(null);
+		this.add(this.worldView);
 		this.add(this.runButton);
 		this.add(this.stopButton);
 		this.runButton.setBounds(400, 510, 100, 75);
