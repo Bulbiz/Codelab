@@ -51,14 +51,30 @@ public class LevelPanel extends JPanel{
 	}
 	//FIXME : Magic Number is not the best
 	private void layoutPlacement() {
-		this.setLayout(mgr);
-		this.add(this.worldView);
-		this.add(this.runButton);
-		this.add(this.stopButton);
-		this.runButton.setBounds(400, 510, 100, 75);
-		this.stopButton.setBounds(300, 510 , 100, 75);
+		this.setLayout(new GridLayout(2,1));
+		JPanel rightPanel = constructRightPanel();
+		this.add(rightPanel);
 	}
 	
+	private JPanel constructRightPanel() {
+		JPanel rightPanel = new JPanel ();
+		rightPanel.setLayout(new BorderLayout());
+		rightPanel.add(this.worldView,BorderLayout.CENTER);
+		JPanel buttonPanel = constructButtonPanel();
+		rightPanel.add(buttonPanel,BorderLayout.SOUTH);
+		return rightPanel;
+	}
+	
+	private JPanel constructButtonPanel() {
+		JPanel buttonPanel = new JPanel () ;
+		buttonPanel.setLayout(new FlowLayout());
+		buttonPanel.add(this.runButton);
+		buttonPanel.add(this.stopButton);
+		return buttonPanel;
+	}
+	public void updateDisplay() {
+		
+	}
 	public void setEnableRunButton(boolean activation) {
 		this.runButton.setEnabled(activation);
 	}
