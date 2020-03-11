@@ -17,15 +17,15 @@ public class ControllerLevel{
 
 	//FIXME : Run should also initiate the program for the player 
 	public void run () {
-		this.vueLevel.setEnableRunButton(false);
-		this.vueLevel.setEnableStopButton(true);
 
-		this.worldTime = new WorldThread (level.getBoard(), vueLevel.getWorldView());
-		this.worldTime.start();
+		if(this.worldTime != null && this.worldTime.isAlive())
+			this.worldTime.stop();
+		else {
+			this.worldTime = new WorldThread (level.getBoard(), vueLevel.getWorldView());
+			this.worldTime.start();
+		}
 	}
-	public void stop () {
-		this.worldTime.stop();
-		this.vueLevel.setEnableRunButton(true);
-		this.vueLevel.setEnableStopButton(false);
+	public void restart() {
+		//TO DO:
 	}
 }
