@@ -15,7 +15,7 @@ public class Wall extends Decor {
         super(b,xPosition,yPosition);
     }
     public String toString() {
-    	return "mur";
+    	return "wall";
     }
 
 }
