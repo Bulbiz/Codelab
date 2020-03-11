@@ -51,7 +51,7 @@ public class LevelPanel extends JPanel{
 	}
 	//FIXME : Magic Number is not the best
 	private void layoutPlacement() {
-		this.setLayout(new GridLayout(2,1));
+		this.setLayout(new GridLayout(1,2));
 		JPanel rightPanel = constructRightPanel();
 		this.add(rightPanel);
 	}
@@ -59,7 +59,7 @@ public class LevelPanel extends JPanel{
 	private JPanel constructRightPanel() {
 		JPanel rightPanel = new JPanel ();
 		rightPanel.setLayout(new BorderLayout());
-		rightPanel.add(this.worldView,BorderLayout.CENTER);
+		rightPanel.add(this.worldView,BorderLayout.WEST);
 		JPanel buttonPanel = constructButtonPanel();
 		rightPanel.add(buttonPanel,BorderLayout.SOUTH);
 		return rightPanel;
