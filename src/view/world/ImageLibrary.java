@@ -9,22 +9,39 @@ public class ImageLibrary {
 	
 	public ImageLibrary () {
 		this.storedSprite = new HashMap<String,Icon>();
-		this.putImage("vide", ".png");
+		this.putImage("vide", "vide.png");
 	}
 	
 	public Icon getSprite (String spriteName) {
 		return this.storedSprite.get(spriteName);
 	}
 	
-	private void putImage (String key, String extension) {
-		this.storedSprite.put(key,new ImageIcon(this.getClass().getResource("image/" + key + extension)));
+	private void putImage (String key, String filename) {
+		this.storedSprite.put(key,new ImageIcon(this.getClass().getResource("image/" + filename)));
 	}
 	
 	public void loadWorldImage () {
-		this.putImage("sol", ".png");
-		this.putImage("player0", ".gif");
-		this.putImage("player1", ".gif");
-		this.putImage("player2", ".gif");
-		this.putImage("player3", ".gif");
+		loadDecorImage();
+		loadPlayerImage();
+		loadEntityImage();
+	}
+	
+	private void loadPlayerImage() {
+		this.putImage("player0", "player0.gif");
+		this.putImage("player1", "player1.gif");
+		this.putImage("player2", "player2.gif");
+		this.putImage("player3", "player3.gif");
+	}
+	
+	private void loadDecorImage() {
+		this.putImage("door", "door.png");
+		this.putImage("goal", "goal.png");
+		this.putImage("wall", "wall.png");
+		this.putImage("ground", "ground.png");
+	}
+	
+	private void loadEntityImage() {
+		this.putImage("coin", "coin.png");
+		this.putImage("key", "key.png");
 	}
 }

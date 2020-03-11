@@ -49,7 +49,7 @@ class Test {
         TestLanguageView.run();
         TestWorldView.run();
 
-        begin();
+       // begin();
         System.out.println("fin de test");
     }
 }
