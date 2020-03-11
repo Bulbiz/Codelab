@@ -49,29 +49,62 @@ public class LevelPanel extends JPanel{
 	public WorldPanel getWorldView () {
 		return this.worldView;
 	}
-	//FIXME : Magic Number is not the best
+	
 	private void layoutPlacement() {
-		this.setLayout(new GridLayout(1,2));
-		JPanel rightPanel = constructRightPanel();
-		this.add(rightPanel);
+		this.setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));
+		this.add(constructTopPanel());
+		this.add(constructBodyPanel());
+	}
+	//FIXME : Place Holder Panel
+	private JPanel constructTopPanel() {
+		JPanel north = new JPanel ();
+		north.setLayout(new FlowLayout());
+		north.add(new JButton("Retour"));
+		north.add(new JButton("1"));
+		north.add(new JButton("2"));
+		north.add(new JButton("3"));
+		north.add(new JButton("4"));
+		north.add(new JButton("5"));
+		north.setPreferredSize(new Dimension(1000,30));
+		return north;
+	}
+	
+	private JPanel constructBodyPanel() {
+		JPanel body = new JPanel (new GridLayout (1,2));
+		body.add(constructRightPanel());
+		body.add(constructLeftPanel());
+		return body;
+	}
+	
+	private JPanel constructLeftPanel() {
+		JPanel east = new JPanel ();
+		east.setLayout(new BoxLayout(east,BoxLayout.Y_AXIS));
+		JTextArea temp = new JTextArea("Code Temporaire");
+		temp.setPreferredSize(new Dimension (100,10));
+		JTextField messagetemp = new JTextField("Message Temporaire");
+		messagetemp.setPreferredSize(new Dimension (100,10));
+		east.add(temp);
+		east.add(messagetemp);
+		return east;
 	}
 	
 	private JPanel constructRightPanel() {
-		JPanel rightPanel = new JPanel ();
-		rightPanel.setLayout(new BorderLayout());
-		rightPanel.add(this.worldView,BorderLayout.WEST);
-		JPanel buttonPanel = constructButtonPanel();
-		rightPanel.add(buttonPanel,BorderLayout.SOUTH);
-		return rightPanel;
+		JPanel west = new JPanel ();
+		west.setLayout(new BoxLayout(west,BoxLayout.Y_AXIS));
+		west.add(this.worldView);
+		west.add(Box.createRigidArea(new Dimension(0,20)));
+		west.add(constructExecutionButton());
+		return west;
 	}
 	
-	private JPanel constructButtonPanel() {
-		JPanel buttonPanel = new JPanel () ;
-		buttonPanel.setLayout(new FlowLayout());
-		buttonPanel.add(this.runButton);
-		buttonPanel.add(this.stopButton);
-		return buttonPanel;
+	private JPanel constructExecutionButton() {
+		JPanel executionPanel = new JPanel (new FlowLayout());
+		executionPanel.setAlignmentX(LEFT_ALIGNMENT);
+		executionPanel.add(this.runButton);
+		executionPanel.add(this.stopButton);
+		return executionPanel;
 	}
+	
 	public void updateDisplay() {
 		
 	}

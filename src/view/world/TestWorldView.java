@@ -18,7 +18,7 @@ public class TestWorldView {
 		JFrame frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setTitle(title);
-        //frame.setMinimumSize(new Dimension(1000,1000));
+        frame.setMinimumSize(new Dimension(1300,700));
         frame.setVisible(true);
         return frame;
 	}
