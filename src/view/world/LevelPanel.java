@@ -15,6 +15,7 @@ public class LevelPanel extends JPanel{
 	private ControllerLevel levelController;
 	
 	private WorldPanel worldView;
+	private JPanel languageView;//FIXME : Place the LanguageView Here
 	private JButton runButton;
 	private JButton stopButton;
 	
@@ -22,16 +23,27 @@ public class LevelPanel extends JPanel{
 		this.level = l;
 		this.levelController = new ControllerLevel (this.level, this);
 		
-		this.worldView = new WorldPanel (this.level.getBoard());
-		this.runButton = new JButton ("Run");
-		this.runButton.addActionListener((e) -> levelController.run());
-		
-		this.stopButton = new JButton ("Stop");
-		this.stopButton.addActionListener((e) -> levelController.stop());
-		this.stopButton.setEnabled(false);
+		initialiseWorldView();
+		initialiseRunButton();
+		initialiseStopButton();
 		
 		layoutPlacement();
 		this.updateDisplay();
+	}
+	
+	private void initialiseWorldView() {
+		this.worldView = new WorldPanel (this.level.getBoard());
+	}
+	
+	private void initialiseRunButton() {
+		this.runButton = new JButton ("Run");
+		this.runButton.addActionListener((e) -> levelController.run());
+	}
+	
+	private void initialiseStopButton() {
+		this.stopButton = new JButton ("Stop");
+		this.stopButton.addActionListener((e) -> levelController.stop());
+		this.stopButton.setEnabled(false);
 	}
 	
 	public WorldPanel getWorldView () {
@@ -39,15 +51,12 @@ public class LevelPanel extends JPanel{
 	}
 	//FIXME : Magic Number is not the best
 	private void layoutPlacement() {
+		this.setLayout(mgr);
 		this.add(this.worldView);
 		this.add(this.runButton);
 		this.add(this.stopButton);
 		this.runButton.setBounds(400, 510, 100, 75);
 		this.stopButton.setBounds(300, 510 , 100, 75);
-	}
-	
-	//FIXME There is no animation it's Sad :(
-	public void updateDisplay() {
 	}
 	
 	public void setEnableRunButton(boolean activation) {
