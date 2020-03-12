@@ -11,23 +11,23 @@ public class If extends ControlFlowStatement {
 
     public If(Personage personage) {
     	super(personage);
+        this.addAction(new FinIf(personage));
+    }
+
+    class FinIf extends Action{
+
+        public FinIf(Personage personage){
+            super(personage);
+        }
+
+        public int run(){
+            if(condition.isTrue())
+                return 0;
+            return -1;						//condition is not verify
+        }
     }
 
 	public int run() {
-        class FinIf extends Action{
-
-			public FinIf(Personage personage){
-				super(personage);
-				FinIf end = new FinIf(personage);
-				actions.add(end);		//add the condition for the verification
-			}
-
-			public int run(){
-				if(condition.isTrue())
-					return 0;
-				return -1;						//condition is not verify
-			}
-		}
 
 		int verification = actions.peek().run();
 		while(verification == 0) {

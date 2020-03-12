@@ -12,17 +12,14 @@ public class While extends ControlFlowStatement {
 
     public While(Personage personage) {
     	super(personage);
+		this.addAction(new FinWhile(personage));
     }
 
 
-	public int run() {
-
-		class FinWhile extends Action{
+	class FinWhile extends Action{
 
 			public FinWhile(Personage personage){
 				super(personage);
-				FinWhile end = new FinWhile(personage);
-				actions.add(end);		//add the condition for the verification
 			}
 
 			public int run(){
@@ -33,6 +30,10 @@ public class While extends ControlFlowStatement {
 				return -1;						//condition is not verify
 			}
 		}
+
+
+	public int run() {
+
 
 		int verification = actions.peek().run();
 		while(verification == 0) {				//do the no count actions.
