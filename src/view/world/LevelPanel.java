@@ -24,7 +24,7 @@ public class LevelPanel extends JPanel{
 		this.levelController = new ControllerLevel (this.level, this);
 		
 		initialiseWorldView();
-		initialiserunOrStopButton();
+		initialiseRunOrStopButton();
 		initialiseRestartButton();
 		
 		layoutPlacement();
@@ -35,7 +35,7 @@ public class LevelPanel extends JPanel{
 		this.worldView = new WorldPanel (this.level.getBoard());
 	}
 	
-	private void initialiserunOrStopButton() {
+	private void initialiseRunOrStopButton() {
 		this.runOrStopButton = new JButton ("Run Or Stop");
 		this.runOrStopButton.addActionListener((e) -> levelController.runOrStop(new LinkedList<src.model.langage.Action>()));//PlaceLanguageHere
 	}
