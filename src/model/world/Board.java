@@ -14,15 +14,15 @@ public class Board {
 	
     public Board(int yFinish, int xFinish, ArrayList<Personage> characters) {
     	this.cells = new Cell[boardLength][boardLength];
+    	this.characters = characters;
+    	createBorder();
+    	initiateCells();
     	try{
     	    this.finish = this.cells[yFinish][xFinish];
     	} catch(Exception e){
     	    System.out.println("Erreur : Les coordonnées sont hors limite");
     	    return;
     	}
-    	this.characters = characters;
-    	createBorder();
-    	initiateCells();
     }
 
     public void initPlayerActions(Queue<Action> script){
