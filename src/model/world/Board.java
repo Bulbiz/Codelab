@@ -31,6 +31,7 @@ public class Board {
     }
 
     //FIXME: not optimal yet
+    //FIXME: high risk of NullPointerException
     private Player getPlayer(){
 				Player player = null;
         for(Personage p: characters){
