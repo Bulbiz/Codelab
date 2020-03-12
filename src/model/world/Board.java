@@ -41,7 +41,7 @@ public class Board {
     }
     
     //method to initiate the entity when its not on the board
-    public boolean initiateEntity(int x, int y, Entity being) {
+    public boolean initiateEntity(int y, int x, Entity being) {
     	try {
     		if(isNotOccupied(y, x)) {
     			this.cells[y][x].setEntity(being);
