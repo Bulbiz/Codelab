@@ -1,6 +1,7 @@
 package src.model.world;
 
 import java.util.*;
+import src.model.langage.*;
 
 public class Board {
 
@@ -24,12 +25,14 @@ public class Board {
     	initiateCells();
     }
     
-    public void initPlayerActions(Queue<Action> script){
-        Personage player;
+    public void initPlayerActions(Queue<Action> script)throws Exception{
+        Player player = null;
         for(Personage p: characters){
             if(p instanceof Player)
                 player = (Player) p;
         }
+        if(player == null)
+        	throw new Exception ("il n'y a pas de player dans le board!");
         player.setActions(script);
     }
     
