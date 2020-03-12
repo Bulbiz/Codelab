@@ -25,15 +25,21 @@ public class Board {
     	initiateCells();
     }
     
-    public void initPlayerActions(Queue<Action> script)throws Exception{
-        Player player = null;
+    public void initPlayerActions(Queue<Action> script) throws Exception{
+        Player player = getPlayer();
+        player.setActions(script);
+    }
+
+    //FIXME: not optimal yet
+    private Player getPlayer() throws Exception{
+	Player player = null;
         for(Personage p: characters){
             if(p instanceof Player)
                 player = (Player) p;
         }
         if(player == null)
         	throw new Exception ("il n'y a pas de player dans le board!");
-        player.setActions(script);
+	return player;
     }
     
     public Decor getDecor(int y, int x) {
@@ -119,7 +125,7 @@ public class Board {
     
     //FIXME: maybe Personage rather than Player for instanceof
     public boolean endOfLevel() {
-    	return this.finish.getEntity() != null && this.finish.getEntity() instanceof Player;
+    	return (this.finish.getEntity() != null && this.finish.getEntity() instanceof Player) || !getPlayer().hasActionLeft();
     }
 
     public void run() {
