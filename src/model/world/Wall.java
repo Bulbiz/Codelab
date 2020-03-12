@@ -3,6 +3,7 @@ import java.util.*;
 
 public class Wall extends Obstacle {
 
+    //FIXME: maybe not pertinent to add Board in call
     public Wall(Board b,int xPosition, int yPosition) {
         super(b, xPosition, yPosition);
     }
