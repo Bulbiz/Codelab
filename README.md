@@ -9,6 +9,8 @@ Cette semaine nous avons ajouté les éléments suivants à la branche develop:
 Dans la branche affichage_langage:
 1. Une première version graphique du langage permet de créer du code et de construire une file d'instruction
 
+Dans la branche fusion_affichages:
+1. Une version avec la création du code à droite et l'execution de ce code à gauche
 
 
 ## Equipe
