@@ -24,7 +24,6 @@ public class WorldThread extends Thread {
 		try {
 			this.sleep(milisecond);
 		}catch (InterruptedException e) {
-			this.interrupt();
 		}
 	}
 	
