@@ -81,6 +81,7 @@ public class ControlFlowStatementPanel extends ActionPanel {
 
         Condition condition = conditionPanel.getCondition();
         if (condition == null) return null;
+        cfs.setCondition(condition);
 
         for (ActionPanel ap : actionPanelList) {
             Action a = (Action)ap.toInstruction();

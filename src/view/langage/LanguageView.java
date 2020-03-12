@@ -5,6 +5,7 @@ import javax.swing.JPanel;
 
 import src.controller.ControllerLanguage;
 import src.model.langage.*;
+import src.model.world.Personage;
 
 import java.awt.Graphics;
 import java.util.LinkedList;
@@ -13,24 +14,49 @@ import java.util.Queue;
 public class LanguageView extends JPanel {
 
     ControllerLanguage controller;
+    Personage player;
     
     EditPanel editPanel;
     ResourcePanel resourcePanel;
 
+    Queue<Action> instructionQueue = new LinkedList<Action>();
+
     JPanel movableObject;
 
-    public LanguageView(ControllerLanguage controller) {
+    public LanguageView(ControllerLanguage controller, Personage player) {
         this.controller = controller;
+        this.player = player;
 
         editPanel = new EditPanel();
         resourcePanel = new ResourcePanel();
 
         add(editPanel);
         add(resourcePanel);
+
+        editPanel.addActionPanel(new ActionPanel(controller, new Move(null)));
+        TestLanguageView.testInstructionPanelGeneratorClick(this, controller);
     }
 
     public void setMovableObject(JPanel o) {
         movableObject = o;
+    }
+
+    public Queue<Action> getInstructionQueue() {
+        return instructionQueue;
+    }
+
+    public void fillInstructionQueue() {
+        while(!instructionQueue.isEmpty())
+            instructionQueue.poll();
+
+        for (int i = editPanel.instructionPanels.size() - 1 ; i >= 0; i--) {
+            InstructionPanel ip = editPanel.instructionPanels.get(i);
+            Instruction instruction = ip.toInstruction();            
+            if (instruction == null)
+                return;
+                instruction.setPersonage(player);
+            instructionQueue.add((Action)instruction);
+        }
     }
 
     public Queue<Instruction> toInstruction() {

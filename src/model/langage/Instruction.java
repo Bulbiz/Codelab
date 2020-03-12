@@ -40,6 +40,10 @@ public abstract class Instruction {
         return personage;
     }
 
+    public void setPersonage(Personage pers) {
+        personage = pers;
+    }
+
     /**
      * uniquement pour les tests
      */

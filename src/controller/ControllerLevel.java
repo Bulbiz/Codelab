@@ -17,8 +17,11 @@ public class ControllerLevel{
 	}
 
 	//FIXME : Run should also initiate the program for the player 
-	public void runOrStop (Queue<Action> script) {
+	public void runOrStop (LanguageView lv) {
+		Queue<Action> script = lv.getInstructionQueue();
+
 		if(this.worldTime == null) {
+			lv.fillInstructionQueue();
 			this.level.getBoard().initiatePlayerActions(script);
 			this.worldTime = new WorldThread (level.getBoard(), vueLevel.getWorldView());
 		}
