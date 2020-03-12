@@ -7,5 +7,8 @@ public class Wall extends Obstacle {
     public Wall(Board b,int xPosition, int yPosition) {
         super(b, xPosition, yPosition);
     }
+    public String toString() {
+    	return "wall";
+    }
 
 }

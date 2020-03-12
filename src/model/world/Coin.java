@@ -18,5 +18,4 @@ public class Coin extends Entity {
     public String toString() {
     	return "coin";
     }
-
 }

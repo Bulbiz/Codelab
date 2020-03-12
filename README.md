@@ -1,20 +1,15 @@
 # CODELAB 3
 
-## Update semaine du 2/03/2020
+## Update semaine du 7/03/2020
 
 Cette semaine nous avons ajouté les éléments suivants à la branche develop:
-1.  Une interface graphique basique du plateau
-2.  Un bouton Run qui permet d'exécuter la liste d'instruction du joueur
-3.  Une représentation json des instructions 
-4.  Quelques conditions 
+1.  L'interface graphique a été refaite sans attribuer de JPanel pour chaque cellule du tableau
+2.  Les conditions If et While sont implémentées et ont été testées
 
-Nous avons également fait un choix sur le concept du jeu qui s'orientera vers le vol de documents secrets pour un révolution.
-Dès la semaine prochaine, à l'aide de la version minimale, nous définirons avec précision les actions que nous
-implémenterons
+Dans la branche affichage_langage:
+1. Une première version graphique du langage permet de créer du code et de construire une file d'instruction
 
-Enfin, voici ce qui n'a pas été modifié :
-Le Makefile créer toujours un fichier src dans le bin
-
+Enfin, le Makefile accèpte les commandes make et make run 
 
 ## Equipe
 

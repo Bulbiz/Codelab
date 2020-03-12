@@ -9,11 +9,11 @@ public class Board {
 	private Cell finish;
 	//FIXME ArrayList characters attributes must be the class Personage or Avatar
 	private ArrayList<Personage> characters;
-
-	//TODO we would like the number 17 of cells to be addable from the call
-	//FIXME maybe we should give in parameters the Cell finish entirely so we wont have to initiate it later
+	
+	public static final int boardLength = 17; 
+	
     public Board(int yFinish, int xFinish, ArrayList<Personage> characters) {
-    	this.cells = new Cell[17][17];
+    	this.cells = new Cell[boardLength][boardLength];
     	try{
     	    this.finish = this.cells[yFinish][xFinish];
     	} catch(Exception e){
@@ -79,6 +79,9 @@ public class Board {
 		return cells;
 	}
 
+	public ArrayList<Personage> getCharacter(){
+		return this.characters;
+	}
     //This method will create a border on the board that won't be crossable
     private void createBorder() {
     	for(int i = 0; i < this.cells[0].length; i++) {
@@ -99,7 +102,9 @@ public class Board {
     		}
     	}
     }
-
+    
+    //TODO the method should verify that the entity isnt trying to go into an obstacle
+    //TODO what happens if a player entity try to go into an ennemy entity ? 
     public boolean move (int yStart, int xStart, int yEnd, int xEnd) {
     	try {
     		if(isNotOccupied(yEnd, xEnd)) {
