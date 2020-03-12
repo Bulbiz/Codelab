@@ -9,7 +9,7 @@ Cette semaine nous avons ajouté les éléments suivants à la branche develop:
 Dans la branche affichage_langage:
 1. Une première version graphique du langage permet de créer du code et de construire une file d'instruction
 
-Enfin, le Makefile accèpte les commandes make et make run 
+
 
 ## Equipe
 
