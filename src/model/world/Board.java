@@ -9,7 +9,7 @@ public class Board {
 	private Cell finish;
 	//FIXME ArrayList characters attributes must be the class Personage or Avatar
 	private ArrayList<Personage> characters;
-	
+
 	//TODO we would like the number 17 of cells to be addable from the call
 	//FIXME maybe we should give in parameters the Cell finish entirely so we wont have to initiate it later
     public Board(int yFinish, int xFinish, ArrayList<Personage> characters) {
@@ -24,24 +24,24 @@ public class Board {
     	createBorder();
     	initiateCells();
     }
-    
-    public void initPlayerActions(Queue<Action> script) throws Exception{
+
+    public void initPlayerActions(Queue<Action> script){
         Player player = getPlayer();
         player.setActions(script);
     }
 
     //FIXME: not optimal yet
-    private Player getPlayer() throws Exception{
-	Player player = null;
+    private Player getPlayer(){
+				Player player = null;
         for(Personage p: characters){
             if(p instanceof Player)
                 player = (Player) p;
         }
         if(player == null)
-        	throw new Exception ("il n'y a pas de player dans le board!");
-	return player;
+        	return null;;
+				return player;
     }
-    
+
     public Decor getDecor(int y, int x) {
     	try {
     		return this.cells[y][x].getDecor();
@@ -50,14 +50,14 @@ public class Board {
     		return null;
     	}
     }
-    
+
     /*
      * @return true if the Cell dont have an obstacle or entity false otherwise
      */
     private boolean isNotOccupied(int y, int x) {
     	return this.cells[y][x].getEntity() == null && !(this.cells[y][x].getDecor() instanceof Obstacle);
     }
-    
+
     //method to initiate the entity when its not on the board
     public boolean initiateEntity(int y, int x, Entity being) {
     	try {
@@ -87,7 +87,7 @@ public class Board {
     		this.cells[i][16] = new Cell(new Wall(this, i, 16));
     	}
     }
-    
+
     //This method will initiate all cells remaining that are still = null
     private void initiateCells() {
     	for(int i = 0; i < this.cells.length; i++) {
@@ -98,7 +98,7 @@ public class Board {
     		}
     	}
     }
-    
+
     public boolean move (int yStart, int xStart, int yEnd, int xEnd) {
     	try {
     		if(isNotOccupied(yEnd, xEnd)) {
@@ -115,24 +115,24 @@ public class Board {
     	System.out.println("("+xStart+":"+yStart+")"+" -> ("+ xEnd + ":" + yEnd + ")");
     	return true;
     }
-    
+
     //FIXME Function Place Holder for the view
     private void filling () {
-    	for (int i = 1; i < this.cells.length - 1; i++) 
+    	for (int i = 1; i < this.cells.length - 1; i++)
     		for(int j = 1; j < this.cells[i].length - 1; j++)
     				this.cells[i][j] = new Cell ();
     }
-    
+
     //FIXME: maybe Personage rather than Player for instanceof
-    public boolean endOfLevel() {
-    	return (this.finish.getEntity() != null && this.finish.getEntity() instanceof Player) || !getPlayer().hasActionLeft();
+    public boolean endOfLevel(){
+    	return (this.finish.getEntity() != null && this.finish.getEntity() instanceof Player) || !getPlayer().hasActionsLeft();
     }
 
     public void run() {
     	for(Personage p : this.characters)
     		p.run();
     }
-    
+
     //Terminal View
     public String toString() {
     	String res = "";
@@ -141,6 +141,6 @@ public class Board {
     		for (int j=0; j< this.cells[i].length ; j++)
     			res = res + this.cells[i][j].toString() + " | ";
     	}
-    	return res;	
+    	return res;
     }
 }
