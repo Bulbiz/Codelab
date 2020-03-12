@@ -36,6 +36,10 @@ public abstract class Instruction {
         return json;
     }
 
+    public Personage getPersonage() {
+        return personage;
+    }
+
     /**
      * uniquement pour les tests
      */
