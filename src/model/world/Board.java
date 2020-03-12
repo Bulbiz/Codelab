@@ -27,6 +27,10 @@ public class Board {
 
     public void initPlayerActions(Queue<Action> script){
         Player player = getPlayer();
+        if(player == null) {
+        	System.out.println("Erreur le joueur n'est pas initialiser ! ");
+        	return;
+        }
         player.setActions(script);
     }
 
@@ -39,8 +43,8 @@ public class Board {
                 player = (Player) p;
         }
         if(player == null)
-        	return null;;
-				return player;
+        	return null;
+		return player;
     }
 
     public Decor getDecor(int y, int x) {
