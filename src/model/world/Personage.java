@@ -12,10 +12,10 @@ public abstract class Personage extends Entity {
     protected Queue<Action> actions;
 
     /*FIXME : Not very explicit
-     * 0 => facing the right
-     * 1 => facing the top
-     * 2 => facing the left
-     * 3 => facing the bottom */
+     * 0 => facing the bottom
+     * 1 => facing the right
+     * 2 => facing the top
+     * 3 => facing the left */
     private static final int [][] rotate = {{1,0},{0,1},{-1,0},{0,-1}};
     
     //FIXME we need a Board to create a Personage but we need a Personage to create a Board
@@ -30,15 +30,15 @@ public abstract class Personage extends Entity {
     }
 
     public void turnLeft () {
-    	this.turn(1);
-    }
-
-    public void turnRight () {
     	this.turn(-1);
     }
 
+    public void turnRight () {
+    	this.turn(1);
+    }
+
     public void move () {
-    	if(this.levelBoard.move (x,y, x + rotate [facing][0] , y + rotate [facing][1] )) {
+    	if(this.levelBoard.move (y,x, y + rotate [facing][1], x + rotate [facing][0] )) {
     		x = x + rotate [facing][0];
     		y = y + rotate [facing][1];
     	}
@@ -55,5 +55,4 @@ public abstract class Personage extends Entity {
             return true;
         return false;
     }
-
 }

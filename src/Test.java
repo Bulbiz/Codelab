@@ -4,6 +4,7 @@ import src.model.langage.*;
 import src.model.world.*;
 import src.view.langage.*;
 import src.view.world.*;
+import src.view.*;
 import java.util.*;
 import javax.swing.*;
 import java.awt.*;
@@ -16,10 +17,22 @@ class Test {
       Board b = new Board(6, 1, p);
       Player steve = new Player(b, 6, 15, 1);
       Queue<src.model.langage.Action> action = new LinkedList <src.model.langage.Action>();
-
-      for(int i = 15; i>1; i--){
+      action.offer(new TurnLeft(steve));
+      for(int i = 5; i>1; i--){
         action.offer(new Move(steve));
       }
+      action.offer(new TurnLeft(steve));
+      for(int i = 5; i>1; i--){
+          action.offer(new Move(steve));
+        }
+      action.offer(new TurnRight(steve));
+      for(int i = 5; i>1; i--){
+          action.offer(new Move(steve));
+        }
+      action.offer(new TurnRight(steve));
+      for(int i = 5; i>1; i--){
+          action.offer(new Move(steve));
+        }
       steve.setActions(action);
       b.initiateEntity(6,15,steve);
       p.add(steve);
@@ -36,8 +49,7 @@ class Test {
         TestLanguageView.run();
         TestWorldView.run();
 
-        begin();
-
+       // begin();
         System.out.println("fin de test");
     }
 }
