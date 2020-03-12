@@ -1,7 +1,14 @@
 package src.view.world;
 
+import src.model.langage.*;
+import src.model.world.*;
+import src.view.langage.*;
+import src.view.world.*;
+import src.view.*;
+import java.util.*;
 import javax.swing.*;
 import java.awt.*;
+
 import src.model.world.*;
 //import java.util.*;
 
@@ -11,19 +18,11 @@ public class TestWorldView {
 		JFrame frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setTitle(title);
-        frame.setMinimumSize(new Dimension(1000,1000));
+        frame.setMinimumSize(new Dimension(1300,700));
         frame.setVisible(true);
         return frame;
 	}
-	
-	private static void testDisplayWorld() {
-		/*JFrame worldTest = TestWorldView.createWindows("Test World View");
-		Board boardTest = new Board (7,7,null);
-		BoardPanel viewBoardTest = new BoardPanel (boardTest.getCells());
-		worldTest.setContentPane(viewBoardTest);
-		worldTest.pack();*/
-	}
-	
+	/*
 	private static void testDisplayLevel() {
 		JFrame levelTest = TestWorldView.createWindows("Test Level View");
 		Board boardTest = new Board (7,7,null);
@@ -33,9 +32,49 @@ public class TestWorldView {
 		levelTest.pack();
 	}
 	
+	
+	private static void testDisplayWorld() {
+		JFrame worldTest = TestWorldView.createWindows("Test World View");
+		Board boardTest = new Board (7,7,null);
+		WorldPanel worldView = new WorldPanel(boardTest);
+		worldTest.setContentPane(worldView);
+		worldTest.pack();
+	}*/
+	private static void testViewWorld() {
+		ArrayList<Personage> p = new ArrayList();
+    	Board b = new Board(6, 1, p);
+    	Player steve = new Player(b, 6, 15, 1);
+    	Queue<src.model.langage.Action> action = new LinkedList <src.model.langage.Action>();
+    	action.offer(new TurnLeft(steve));
+    	for(int i = 5; i>1; i--){
+    		action.offer(new Move(steve));
+    	}
+    	action.offer(new TurnLeft(steve));
+    	for(int i = 5; i>1; i--){
+    		action.offer(new Move(steve));
+    	}
+    	action.offer(new TurnRight(steve));
+    	for(int i = 5; i>1; i--){
+    		action.offer(new Move(steve));
+    	}
+    	action.offer(new TurnRight(steve));
+    	for(int i = 5; i>1; i--){
+        	action.offer(new Move(steve));
+    		}
+    	steve.setActions(action);
+    	b.initiateEntity(6,15,steve);
+    	p.add(steve);
+    	Level levelTest = new Level(b,1,null);
+    	LevelPanel vueLevel = new LevelPanel (levelTest);
+    	JFrame testWindows = TestWorldView.createWindows ("Test");
+    	testWindows.setContentPane(vueLevel);
+    	testWindows.pack();
+	}
     public static void run() {
     	/*EventQueue.invokeLater(() ->{
     		testDisplayLevel();
         });*/
+    	//testDisplayLevel();
+    	testViewWorld();
     }
 }

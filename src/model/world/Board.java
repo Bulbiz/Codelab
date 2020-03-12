@@ -8,10 +8,11 @@ public class Board {
 	private Cell finish;
 	//FIXME ArrayList characters attributes must be the class Personage or Avatar
 	private ArrayList<Personage> characters;
-
-    public Board(int xFinish, int yFinish, ArrayList<Personage> characters) {
-    	//TODO we would like the number 17 of cells to be addable from the call
-    	this.cells = new Cell[17][17];
+	
+	public static final int boardLength = 17; 
+	
+    public Board(int yFinish, int xFinish, ArrayList<Personage> characters) {
+    	this.cells = new Cell[boardLength][boardLength];
     	try{
     	    this.finish = this.cells[yFinish][xFinish];
     	} catch(Exception e){
@@ -23,7 +24,7 @@ public class Board {
     	initiateCells();
     }
     
-    public Decor getDecor(int x, int y) {
+    public Decor getDecor(int y, int x) {
     	try {
     		return this.cells[y][x].getDecor();
     	} catch(IndexOutOfBoundsException e) {
@@ -33,7 +34,7 @@ public class Board {
     }
     
     //method to initiate the entity when its not on the board
-    public void initiateEntity(int x, int y, Entity being) {
+    public void initiateEntity(int y, int x, Entity being) {
     	try {
     		this.cells[y][x].setEntity(being);
     	} catch(IndexOutOfBoundsException e) {
@@ -45,6 +46,9 @@ public class Board {
 		return cells;
 	}
 
+	public ArrayList<Personage> getCharacter(){
+		return this.characters;
+	}
     //This method will create a border on the board that won't be crossable
     private void createBorder() {
     	Cell mountain = new Cell(); //TODO La case qui servira de Bordure à déterminer
@@ -69,7 +73,7 @@ public class Board {
     
     //TODO the method should verify that the entity isnt trying to go into an obstacle
     //TODO what happens if a player entity try to go into an ennemy entity ? 
-    public boolean move (int xStart, int yStart, int xEnd, int yEnd) {
+    public boolean move (int yStart, int xStart, int yEnd, int xEnd) {
     	try {
     		this.cells[yEnd][xEnd].setEntity(this.cells[yStart][xStart].getEntity());
     		this.cells[yStart][xStart].setEntity(null);

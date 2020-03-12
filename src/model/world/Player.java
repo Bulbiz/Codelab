@@ -38,6 +38,6 @@ public class Player extends Personage {
     }
     
     public String toString() {
-    	return "player";
+    	return "player"+this.facing;
     }
 }

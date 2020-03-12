@@ -4,6 +4,7 @@ import src.model.langage.*;
 import src.model.world.*;
 import src.view.langage.*;
 import src.view.world.*;
+import src.view.*;
 import java.util.*;
 import javax.swing.*;
 import java.awt.*;
@@ -45,8 +46,7 @@ class Test {
         TestLanguageView.run();
         TestWorldView.run();
 
-        begin();
-
+       // begin();
         System.out.println("fin de test");
     }
 }
