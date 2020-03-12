@@ -17,22 +17,19 @@ class Test {
       Board b = new Board(6, 1, p);
       Player steve = new Player(b, 6, 15, 1);
       Queue<src.model.langage.Action> action = new LinkedList <src.model.langage.Action>();
-      action.offer(new TurnLeft(steve));
-      for(int i = 5; i>1; i--){
-        action.offer(new Move(steve));
-      }
-      action.offer(new TurnLeft(steve));
-      for(int i = 5; i>1; i--){
-          action.offer(new Move(steve));
-        }
-      action.offer(new TurnRight(steve));
-      for(int i = 5; i>1; i--){
-          action.offer(new Move(steve));
-        }
-      action.offer(new TurnRight(steve));
-      for(int i = 5; i>1; i--){
-          action.offer(new Move(steve));
-        }
+      While w = new While (steve);                    //test pour le while avec un mouvement
+      w.addAction(new Move(steve));
+      w.addAction(new TurnLeft(steve));
+      w.setCondition(new ConditionTrue(steve));
+      action.add(w);
+
+      /*If i = new If(steve);                             //test pour le if
+      i.addAction(new Move(steve));
+      i.addAction(new TurnLeft(steve));
+      i.addAction(new Move(steve));
+      i.setCondition(new ConditionTrue(steve));
+      action.add(i);*/
+
       steve.setActions(action);
       b.initiateEntity(6,15,steve);
       p.add(steve);
