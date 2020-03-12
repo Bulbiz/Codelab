@@ -12,8 +12,7 @@ public class Board {
 	public static final int boardLength = 17; 
 	
     public Board(int yFinish, int xFinish, ArrayList<Personage> characters) {
-    	//TODO we would like the number 17 of cells to be addable from the call
-    	this.cells = new Cell[17][17];
+    	this.cells = new Cell[boardLength][boardLength];
     	try{
     	    this.finish = this.cells[yFinish][xFinish];
     	} catch(Exception e){
