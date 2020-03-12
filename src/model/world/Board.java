@@ -24,6 +24,15 @@ public class Board {
     	initiateCells();
     }
     
+    public void initPlayerActions(Queue<Action> script){
+        Personage player;
+        for(Personage p: characters){
+            if(p instanceof Player)
+                player = (Player) p;
+        }
+        player.setActions(script);
+    }
+    
     public Decor getDecor(int y, int x) {
     	try {
     		return this.cells[y][x].getDecor();
