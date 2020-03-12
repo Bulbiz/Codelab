@@ -47,8 +47,8 @@ public abstract class ControlFlowStatement extends Action {
 
     public String getType() { return "flow_control_statement"; }
 
-    public void setCondition(Condition c) {
-        this.condition = c;
+    public void setCondition(Condition condition) {
+        this.condition = condition;
     }
 
     public void addAction(Action action) {

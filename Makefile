@@ -23,8 +23,10 @@ controller:
 testall:
 	javac -cp $(CLASSPATH) src/Test.java -d bin
 
-andrun:	all
+run:
 	java -cp bin:json.jar src.Test
+
+andrun:	all run
 
 clean :
 	rm -r bin/src/model/langage/*.class

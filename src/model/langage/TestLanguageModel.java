@@ -36,8 +36,8 @@ public class TestLanguageModel {
         System.out.println(jsonAction.toString(2));
 
         /* on convertit les json en objet et on affiche le résultat */
-        Action afromjson = (Action)InstructionGenerator.createInstruction(player, jsonAction);
-        If ifromjson = (If)InstructionGenerator.createInstruction(player, jsonIf);
+        Action afromjson = (Action)InstructionFactory.loadInstructionFromJson(player, jsonAction);
+        If ifromjson = (If)InstructionFactory.loadInstructionFromJson(player, jsonIf);
         
         ifromjson.printTypeAndVersion();
         afromjson.printTypeAndVersion();             
