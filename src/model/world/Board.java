@@ -81,7 +81,7 @@ public class Board {
     	}
     }
     
-    public boolean move (int yStart, int xStart, int xEnd, int yEnd) {
+    public boolean move (int yStart, int xStart, int yEnd, int xEnd) {
     	try {
     		if(isNotOccupied(yEnd, xEnd)) {
     			this.cells[yEnd][xEnd].setEntity(this.cells[yStart][xStart].getEntity());
