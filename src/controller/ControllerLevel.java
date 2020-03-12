@@ -24,7 +24,7 @@ public class ControllerLevel{
 		}
 		
 		if(this.worldTime.isAlive())
-			this.worldTime.interrupt();
+			this.worldTime.stop();
 		else {
 			this.worldTime = new WorldThread (level.getBoard(), vueLevel.getWorldView());
 			this.worldTime.start();

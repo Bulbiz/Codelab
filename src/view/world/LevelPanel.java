@@ -75,7 +75,7 @@ public class LevelPanel extends JPanel{
 		return body;
 	}
 	
-	private JPanel constructLeftPanel() {
+	private JPanel constructLeftPanel() {//Ajouter le Panel du language
 		JPanel east = new JPanel ();
 		east.setLayout(new BoxLayout(east,BoxLayout.Y_AXIS));
 		JTextArea temp = new JTextArea("Code Temporaire");
