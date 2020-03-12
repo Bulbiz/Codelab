@@ -30,15 +30,20 @@ public class If extends ControlFlowStatement {
 		}
 
 		int verification = actions.peek().run();
-		while(actions != null && verification == 0) {
+		while(verification == 0) {
 			actions.poll();
 			verification = actions.peek().run();
 		}
 
-		if(actions != null && verification == 1){
+		if(verification == 1){
 			actions.poll();
 			return 2;                          // continu to execute the actions list
 		}
+
+        if(verification == 2){			//if is a controle flow statement, don't depile
+			return 2;
+		}
+
         return 1;                              // end actions list for the if
 	}
 

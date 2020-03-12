@@ -41,9 +41,13 @@ public class While extends ControlFlowStatement {
 		}
 
 		if(limit>100){
-				System.out.println("Boucle infini");
-				System.exit(0);
-			}
+			System.out.println("Boucle infini");
+			System.exit(0);
+		}
+
+		if(verification == 2){			//if is a controle flow statement, don't depile
+			return 2;
+		}
 
 		if(verification == 1){
 			actions.offer(actions.poll());
