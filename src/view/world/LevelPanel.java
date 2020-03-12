@@ -16,7 +16,7 @@ public class LevelPanel extends JPanel{
 	
 	private WorldPanel worldView;
 	private JPanel languageView;//FIXME : Place the LanguageView Here
-	private JButton runButton;
+	private JButton runOrStopButton;
 	private JButton restartButton;
 	
 	public LevelPanel (Level l){
@@ -24,7 +24,7 @@ public class LevelPanel extends JPanel{
 		this.levelController = new ControllerLevel (this.level, this);
 		
 		initialiseWorldView();
-		initialiseRunButton();
+		initialiserunOrStopButton();
 		initialiseRestartButton();
 		
 		layoutPlacement();
@@ -35,9 +35,9 @@ public class LevelPanel extends JPanel{
 		this.worldView = new WorldPanel (this.level.getBoard());
 	}
 	
-	private void initialiseRunButton() {
-		this.runButton = new JButton ("Run");
-		this.runButton.addActionListener((e) -> levelController.run(new LinkedList<src.model.langage.Action>()));//PlaceLanguageHere
+	private void initialiserunOrStopButton() {
+		this.runOrStopButton = new JButton ("Run Or Stop");
+		this.runOrStopButton.addActionListener((e) -> levelController.runOrStop(new LinkedList<src.model.langage.Action>()));//PlaceLanguageHere
 	}
 	
 	private void initialiseRestartButton() {
@@ -99,7 +99,7 @@ public class LevelPanel extends JPanel{
 	private JPanel constructExecutionButton() {
 		JPanel executionPanel = new JPanel (new FlowLayout());
 		executionPanel.setAlignmentX(LEFT_ALIGNMENT);
-		executionPanel.add(this.runButton);
+		executionPanel.add(this.runOrStopButton);
 		executionPanel.add(this.restartButton);
 		return executionPanel;
 	}
@@ -107,8 +107,8 @@ public class LevelPanel extends JPanel{
 	public void updateDisplay() {
 		
 	}
-	public void setEnableRunButton(boolean activation) {
-		this.runButton.setEnabled(activation);
+	public void setEnablerunOrStopButton(boolean activation) {
+		this.runOrStopButton.setEnabled(activation);
 	}
 	public void setEnablerestartButton(boolean activation) {
 		this.restartButton.setEnabled(activation);
