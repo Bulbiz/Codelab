@@ -6,7 +6,10 @@ Cette semaine nous avons ajouté les éléments suivants à la branche develop:
 1.  L'interface graphique a été refaite sans attribuer de JPanel pour chaque cellule du tableau
 2.  Les conditions If et While sont implémentées et ont été testées
 
+Dans la branche affichage_langage:
+1. Une première version graphique du langage permet de créer du code et de construire une file d'instruction
 
+Enfin, le Makefile accèpte les commandes make et make run 
 
 ## Equipe
 
