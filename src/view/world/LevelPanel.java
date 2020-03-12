@@ -37,7 +37,7 @@ public class LevelPanel extends JPanel{
 	
 	private void initialiseRunButton() {
 		this.runButton = new JButton ("Run");
-		this.runButton.addActionListener((e) -> levelController.run());
+		this.runButton.addActionListener((e) -> levelController.run(new LinkedList<src.model.langage.Action>()));//PlaceLanguageHere
 	}
 	
 	private void initialiseRestartButton() {

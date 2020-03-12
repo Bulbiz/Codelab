@@ -25,7 +25,7 @@ public class Board {
     	}
     }
 
-    public void initPlayerActions(Queue<Action> script){
+    public void initiatePlayerActions(Queue<Action> script){
         Player player = getPlayer();
         if(player == null) {
         	System.out.println("Erreur le joueur n'est pas initialiser ! ");
