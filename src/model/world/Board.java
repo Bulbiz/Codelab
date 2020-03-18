@@ -114,9 +114,23 @@ public class Board {
     }
 
 
-//	public JSONObject toJson(){
+	public JSONArray toJson(){
+		JSONArray jsonCells = new JSONArray();
+		try{
+			for(int i = 0; i < this.cells.length; i++){
+				for(int j = 0; j < this.cells[i].length; j++){
+					jsonCells.put(CellToJson(cells[j][i],j,i));
+				}
+			}
 
-//	}
+
+
+			System.out.println(jsonCells.toString(2));
+		}catch(Exception e){
+			System.out.println("le json n'a pas pu être créer");
+		}
+		return jsonCells;
+	}
 
 	public JSONObject CellToJson(Cell c, int x, int y){
 		JSONObject json = new JSONObject();
@@ -133,7 +147,7 @@ public class Board {
 
 			json.put("xPosition",x);
 			json.put("yPosition",y);
-			System.out.println(json.toString(2));
+			//System.out.println(json.toString(2));
 		}catch(Exception e){
 			System.out.println("le json n'a pas pu être créer");
 		}

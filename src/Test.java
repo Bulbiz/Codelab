@@ -66,9 +66,10 @@ class Test {
         Cell c = new Cell();
         ArrayList<Personage> p = new ArrayList();
         Board b = new Board(1,1,p);
-        int x = 5;
-        int y = 7;
-        b.CellToJson(c,x,y);
+        b.toJson();
+        //int x = 5;
+        //int y = 7;
+        //b.CellToJson(c,x,y);
 
         //testJson();
        // begin();
