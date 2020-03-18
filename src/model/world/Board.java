@@ -1,6 +1,7 @@
 package src.model.world;
 
 import java.util.*;
+import org.json.*;
 
 public class Board {
 
@@ -8,9 +9,9 @@ public class Board {
 	private Cell finish;
 	//FIXME ArrayList characters attributes must be the class Personage or Avatar
 	private ArrayList<Personage> characters;
-	
-	public static final int boardLength = 17; 
-	
+
+	public static final int boardLength = 17;
+
     public Board(int yFinish, int xFinish, ArrayList<Personage> characters) {
     	this.cells = new Cell[boardLength][boardLength];
     	try{
@@ -23,7 +24,7 @@ public class Board {
     	createBorder();
     	initiateCells();
     }
-    
+
     public Decor getDecor(int y, int x) {
     	try {
     		return this.cells[y][x].getDecor();
@@ -32,7 +33,7 @@ public class Board {
     		return null;
     	}
     }
-    
+
     //method to initiate the entity when its not on the board
     public void initiateEntity(int y, int x, Entity being) {
     	try {
@@ -59,7 +60,7 @@ public class Board {
     		this.cells[i][16] = new Cell();
     	}
     }
-    
+
     //This method will initiate all cells remaining that are still = null
     private void initiateCells() {
     	for(int i = 0; i < this.cells.length; i++) {
@@ -70,9 +71,9 @@ public class Board {
     		}
     	}
     }
-    
+
     //TODO the method should verify that the entity isnt trying to go into an obstacle
-    //TODO what happens if a player entity try to go into an ennemy entity ? 
+    //TODO what happens if a player entity try to go into an ennemy entity ?
     public boolean move (int yStart, int xStart, int yEnd, int xEnd) {
     	try {
     		this.cells[yEnd][xEnd].setEntity(this.cells[yStart][xStart].getEntity());
@@ -84,10 +85,10 @@ public class Board {
     	System.out.println("("+xStart+":"+yStart+")"+" -> ("+ xEnd + ":" + yEnd + ")");
     	return true;
     }
-    
+
     //FIXME Function Place Holder for the view
     private void filling () {
-    	for (int i = 1; i < this.cells.length - 1; i++) 
+    	for (int i = 1; i < this.cells.length - 1; i++)
     		for(int j = 1; j < this.cells[i].length - 1; j++)
     				this.cells[i][j] = new Cell ();
     }
@@ -100,7 +101,7 @@ public class Board {
     	for(Personage p : this.characters)
     		p.run();
     }
-    
+
     //Terminal View
     public String toString() {
     	String res = "";
@@ -109,6 +110,33 @@ public class Board {
     		for (int j=0; j< this.cells[i].length ; j++)
     			res = res + this.cells[i][j].toString() + " | ";
     	}
-    	return res;	
+    	return res;
     }
+
+
+//	public JSONObject toJson(){
+
+//	}
+
+	public JSONObject CellToJson(Cell c, int x, int y){
+		JSONObject json = new JSONObject();
+		try{
+			if(c.getDecor() == null)
+				json.put("decor","null");
+			else
+				json.put("decor",c.getDecor().toString());
+
+			if(c.getEntity() == null)
+				json.put("entity","null");
+			else
+				json.put("entity",c.getEntity().toString());
+
+			json.put("xPosition",x);
+			json.put("yPosition",y);
+			System.out.println(json.toString(2));
+		}catch(Exception e){
+			System.out.println("le json n'a pas pu être créer");
+		}
+		return json;
+	}
 }

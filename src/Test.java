@@ -8,9 +8,8 @@ import src.view.*;
 import java.util.*;
 import javax.swing.*;
 import java.awt.*;
-import java.io.File;
-import java.io.FileReader;
 import org.json.*;
+import java.io.*;
 
 
 class Test {
@@ -46,14 +45,32 @@ class Test {
       testWindows.pack();*/
     }
 
+    /*public static void testJson(){
+        try{
+            String s = "{\"name\":\"John\"}";
+            File f = new File("niveau1.json");
+            System.out.println(f == null);
+
+            System.out.println(json.getString("name"));
+        }catch(Exception e){
+            System.out.println("erreur");
+        }
+    }*/
+
     public static void main(String[] args) throws Exception {
         /*TestLanguageModel.run();
         TestWorldModel.run();
         TestLanguageView.run();
         TestWorldView.run();*/
-	       
 
+        Cell c = new Cell();
+        ArrayList<Personage> p = new ArrayList();
+        Board b = new Board(1,1,p);
+        int x = 5;
+        int y = 7;
+        b.CellToJson(c,x,y);
 
+        //testJson();
        // begin();
         System.out.println("fin de test");
     }
