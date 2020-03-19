@@ -7,13 +7,12 @@ public class Board {
 
 	private Cell[][] cells;
 	private Cell finish;
-	//FIXME ArrayList characters attributes must be the class Personage or Avatar
-	private ArrayList<Personage> characters;
+	private ArrayList<Entity> characters;
 	
 	public static final int boardLength = 17; 
 	
     //FIXME : Should be deleted
-    public Board(int yFinish, int xFinish, ArrayList<Personage> characters) {
+    public Board(int yFinish, int xFinish, ArrayList<Entity> characters) {
     	this.cells = new Cell[boardLength][boardLength];
     	this.characters = characters;
     	createBorder();
@@ -25,7 +24,6 @@ public class Board {
     	    return;
     	}
     }
-    
 
     public Board () {
     	this.cells = new Cell[boardLength][boardLength];
@@ -46,7 +44,7 @@ public class Board {
     //FIXME: high risk of NullPointerException
     private Player getPlayer(){
 		Player player = null;
-        for(Personage p: characters){
+        for(Entity p: characters){
             if(p instanceof Player)
                 player = (Player) p;
         }
@@ -68,6 +66,15 @@ public class Board {
     	try {
     		this.cells[y][x] = c;
     	} catch(Exception e) {
+    		System.out.println("[Erreur]: La case n'a pas pu être modifiée");
+    		return;
+    	}
+    }
+    
+    public void setEntity(int y, int x, Entity e) {
+    	try {
+    		this.cells[y][x].setEntity(e);
+    	} catch (Exception ex) {
     		System.out.println("[Erreur]: La case n'a pas pu être modifiée");
     		return;
     	}
@@ -103,7 +110,7 @@ public class Board {
 		return cells;
 	}
 
-	public ArrayList<Personage> getCharacter(){
+	public ArrayList<Entity> getCharacter(){
 		return this.characters;
 	}
     //This method will create a border on the board that won't be crossable
@@ -159,7 +166,7 @@ public class Board {
     }
 
     public void run() {
-    	for(Personage p : this.characters)
+    	for(Entity p : this.characters) 
     		p.run();
     }
 

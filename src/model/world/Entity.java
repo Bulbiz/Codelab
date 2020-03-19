@@ -22,4 +22,6 @@ public abstract class Entity {
     	return this.y;
     }
     
+    public abstract void run();
+    
 }
