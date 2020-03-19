@@ -19,7 +19,7 @@ import org.json.simple.parser.ParseException;
 class Test {
     //test of running the project
     public static void begin(){
-     /* ArrayList<Personage> p = new ArrayList();
+      ArrayList<Personage> p = new ArrayList();
       Board b = new Board(6, 1, p);
       Player steve = new Player(b, 6, 15, 1);
       Queue<src.model.langage.Action> action = new LinkedList <src.model.langage.Action>();
@@ -29,12 +29,12 @@ class Test {
       w.setCondition(new ConditionTrue(steve));
       action.add(w);
 
-      /*If i = new If(steve);                             //test pour le if
+      If i = new If(steve);                             //test pour le if
       i.addAction(new Move(steve));
       i.addAction(new TurnLeft(steve));
       i.addAction(new Move(steve));
       i.setCondition(new ConditionTrue(steve));
-      action.add(i);*/
+      action.add(i);
 
       steve.setActions(action);
       b.initiateEntity(6,15,steve);
@@ -43,7 +43,7 @@ class Test {
       LevelPanel vueLevel = new LevelPanel (levelTest, steve);
       JFrame testWindows = TestWorldView.createWindows ("Test");
       testWindows.setContentPane(vueLevel);
-      testWindows.pack();*/
+      testWindows.pack();
     }
 
 
@@ -124,12 +124,7 @@ class Test {
         return s;
     }
 
-    public static void main(String[] args) throws Exception {
-        /*TestLanguageModel.run();
-        TestWorldModel.run();
-        TestLanguageView.run();
-        TestWorldView.run();*/
-
+    private static void testPasDansLeMainThierry() {
         Cell c = new Cell();
         ArrayList<Personage> p = new ArrayList();
         Board b = new Board(1,1,p);
@@ -141,6 +136,15 @@ class Test {
         System.out.println(jsonToStringDecor());
         System.out.println(jsonToStringEntity());
         System.out.println(jsonToStringGoal());
+    }
+
+    public static void main(String[] args) throws Exception {
+        /*TestLanguageModel.run();
+        TestWorldModel.run();
+        TestLanguageView.run();
+        TestWorldView.run();*/
+        //testPasDansLeMainThierry();
+        
        // begin();
         System.out.println("fin de test");
     }

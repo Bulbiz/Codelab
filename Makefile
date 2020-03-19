@@ -24,7 +24,7 @@ controller:
 testall:
 	javac -cp $(CLASSPATH) src/Test.java -d bin
 
-andrun:	all
+run:
 	java -cp bin:json.jar:json-simple.jar src.Test
 
 andrun:	all run
