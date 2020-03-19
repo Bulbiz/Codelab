@@ -65,8 +65,9 @@ public class TestLanguageView {
         InstructionPanelGenerator ig2 = new InstructionPanelGenerator(new While(null), controller);
         InstructionPanelGenerator ig3 = new InstructionPanelGenerator(new Move(null), controller);
         InstructionPanelGenerator ig4 = new InstructionPanelGenerator(new TurnLeft(null), controller);
-        InstructionPanelGenerator ig5 = new InstructionPanelGenerator(new ObstableFront(null), controller);
-        InstructionPanelGenerator ig6 = new InstructionPanelGenerator(new PersonageEstDevant(null), controller);
+        InstructionPanelGenerator ig5 = new InstructionPanelGenerator(new TurnRight(null), controller);
+        InstructionPanelGenerator ig6 = new InstructionPanelGenerator(new ObstableFront(null), controller);
+        InstructionPanelGenerator ig7 = new InstructionPanelGenerator(new PersonageEstDevant(null), controller);
 
         view.resourcePanel.add(ig1);
         view.resourcePanel.add(ig2);
@@ -74,6 +75,7 @@ public class TestLanguageView {
         view.resourcePanel.add(ig4);
         view.resourcePanel.add(ig5);
         view.resourcePanel.add(ig6);
+        view.resourcePanel.add(ig7);
     }
 
 }

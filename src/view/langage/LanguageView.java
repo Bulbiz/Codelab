@@ -53,7 +53,7 @@ public class LanguageView extends JPanel {
             Instruction instruction = cur.toInstruction();            
             if (instruction == null)
                 return;
-                instruction.setPersonage(player);
+            instruction.setPersonage(player);
             instructionQueue.add((Action)instruction);
             cur = cur.next;
         }

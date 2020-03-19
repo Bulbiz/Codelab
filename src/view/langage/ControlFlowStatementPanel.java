@@ -105,9 +105,8 @@ public class ControlFlowStatementPanel extends ActionPanel implements IActionPan
         removeRecursively(ap, actionPanelsPanel);
 
         ActionPanel previous = getPrevious(ap, head);
-        if (previous != null) {
+        if (previous != null)
             previous.next = null;
-        }
         else {
             head = createEmptyActionPanel();
             actionPanelsPanel.add(head);

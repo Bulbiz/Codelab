@@ -37,10 +37,8 @@ public class EditPanel extends JPanel implements IActionPanelListable {
      * 
      */
     public void addActionPanel(ActionPanel ap, ActionPanel previous) {
-
-        int indexAp = getIndexInPane(ap, head);
-        int indexPrevious = getIndexInPane(previous, head);
-        if (indexAp != -1 && indexAp <= indexPrevious)
+        // TODO merge with ControlFlowStatementPanel's version
+        if (ap.getParentPanel() == previous.getParentPanel() && getIndexInPane(ap, head) <= getIndexInPane(previous, head))
             return;
 
         if (ap.getParentPanel() != null) 
@@ -54,6 +52,7 @@ public class EditPanel extends JPanel implements IActionPanelListable {
      * 
      */
     public void removeActionPanel(ActionPanel ap) {
+        // TODO merge with ControlFlowStatementPanel's version
         if (ap.getInstruction() == null)
             return;
 
