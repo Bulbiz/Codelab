@@ -11,7 +11,7 @@ public class Board {
 	
 	public static final int boardLength = 17; 
 	
-    //FIXME : Should be deleted
+    /*
     public Board(int yFinish, int xFinish, ArrayList<Entity> characters) {
     	this.cells = new Cell[boardLength][boardLength];
     	this.characters = characters;
@@ -23,7 +23,7 @@ public class Board {
     	    System.out.println("Erreur : Les coordonnées sont hors limite");
     	    return;
     	}
-    }
+    }*/
 
     public Board () {
     	this.cells = new Cell[boardLength][boardLength];
@@ -39,7 +39,7 @@ public class Board {
         }
         player.setActions(script);
     }
-
+    
     //FIXME: not optimal yet
     //FIXME: high risk of NullPointerException
     private Player getPlayer(){
@@ -64,15 +64,6 @@ public class Board {
     	try {
     		this.cells[y][x] = c;
     	} catch(Exception e) {
-    		System.out.println("[Erreur]: La case n'a pas pu être modifiée");
-    		return;
-    	}
-    }
-    
-    public void setEntity(int y, int x, Entity e) {
-    	try {
-    		this.cells[y][x].setEntity(e);
-    	} catch (Exception ex) {
     		System.out.println("[Erreur]: La case n'a pas pu être modifiée");
     		return;
     	}
@@ -112,6 +103,7 @@ public class Board {
 	public ArrayList<Entity> getCharacter(){
 		return this.characters;
 	}
+	
     //This method will create a border on the board that won't be crossable
     private void createBorder() {
     	for(int i = 0; i < this.cells[0].length; i++) {
@@ -150,13 +142,6 @@ public class Board {
     	}
     	System.out.println("("+xStart+":"+yStart+")"+" -> ("+ xEnd + ":" + yEnd + ")");
     	return true;
-    }
-
-    //FIXME Function Place Holder for the view
-    private void filling () {
-    	for (int i = 1; i < this.cells.length - 1; i++)
-    		for(int j = 1; j < this.cells[i].length - 1; j++)
-    				this.cells[i][j] = new Cell ();
     }
 
     //FIXME: maybe Personage rather than Player for instanceof
