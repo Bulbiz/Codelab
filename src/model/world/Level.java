@@ -44,8 +44,9 @@ public class Level {
     	String[] separation = information.split("/"); //Should be changed
     	this.board = new Board ();
     	initiateBoardDecor(this.board,separation[0].split("|"));
-    	initiateBoardObjectEntity(this.board,separation[1].split("|"));
-    	initiateBoardPersonageEntity(this.board,separation[2].split("|"));
+    	initiateBoardGoal(this.board,separation[1].split("|"));
+    	initiateBoardObjectEntity(this.board,separation[2].split("|"));
+    	initiateBoardPersonageEntity(this.board,separation[3].split("|"));
     }
     
     private void initiateBoardPersonageEntity(Board b, String[] boardEntity) {
@@ -101,5 +102,9 @@ public class Level {
     	}
     }
     
-    
+    private void initiateBoardGoal (Board b, String [] information) {
+    	int x = Integer.parseInt(information[0]);
+    	int y = Integer.parseInt(information[0]);
+    	b.initiateGoal(y, x);
+    }
 }
