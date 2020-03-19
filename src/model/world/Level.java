@@ -3,8 +3,9 @@ package src.model.world;
 
 import src.model.langage.*;
 import src.Test;
-import org.json.simple.JSONObject;
 import java.util.*;
+import org.json.simple.JSONObject;
+import org.json.simple.JSONArray;
 /**
  *
  */
@@ -16,19 +17,20 @@ public class Level {
 
     /**
      * FIXME : Use a JSON as a argument should be better
-     
+
     public Level(Board b, int id, ArrayList<Action> a) {
         this.board = b;
         this.id = id;
         this.actions = a;
     }*/
-
+    
+    //FIXME : Change a little bit
     public Level (int id,JSONObject json) {
     	this.id = id;
     	this.actions = null;
     	initiateBoard (json);
     }
-    
+
     public void run () {
         this.board.run();
         System.out.println(this.board + "\n ************* \n"); //Terminal View
@@ -41,7 +43,7 @@ public class Level {
     public Board getBoard () {
     	return this.board;
     }
-    
+
     public ArrayList<Action> getActions () {
     	return this.actions;
     }
@@ -50,73 +52,73 @@ public class Level {
     }
     //FIXME : Should be changed to JSON
     private void initiateBoard (JSONObject json) {
+
     	this.board = new Board ();
     	//FIXME : Should be changed
-    	System.out.println(Test.jsonToStringDecor().split("|"));
-    	
-    	initiateBoardDecor(this.board,Test.jsonToStringDecor().split("|"));
-    	initiateBoardGoal(this.board,Test.jsonToStringGoal().split(","));
-    	initiateBoardObjectEntity(this.board,Test.jsonToStringEntity().split("|"));
-    	initiateBoardPersonageEntity(this.board,Test.jsonToStringPersonage().split("|"));
+
+    	initiateBoardDecor(this.board,(JSONArray)json.get("decor"));
+    	initiateBoardGoal(this.board,(JSONObject) json.get("goal"));
+    	initiateBoardObjectEntity(this.board,(JSONArray)json.get("entity"));
+    	initiateBoardPersonageEntity(this.board,(JSONArray)json.get("perso"));
     }
-    
-    private void initiateBoardPersonageEntity(Board b, String[] boardEntity) {
-    	for(String entity : boardEntity) {
-    		initiateObjectEntity(b,entity);
+
+    private void initiateBoardPersonageEntity(Board b, JSONArray jsonEntity) {
+    	for(Object o : jsonEntity) {
+        JSONObject entity = (JSONObject) o;
+    		initiatePersonageEntity(b,entity);
     	}
     }
-    
-    private void initiatePersonageEntity(Board b, String entity) {
-    	String [] information = entity.split(",");
-    	String classe = information [0];
-    	int x = Integer.parseInt(information[1]);
-    	int y = Integer.parseInt(information[2]);
-    	int facing = Integer.parseInt(information[3]);
+
+    private void initiatePersonageEntity(Board b, JSONObject information) {
+    	String classe = information.get("namePerso").toString();
+    	int x =  Integer.parseInt(information.get("xPosition").toString());
+    	int y =  Integer.parseInt(information.get("yPosition").toString());
+    	int facing =  Integer.parseInt(information.get("facing").toString());
     	switch(classe) {
 			case "Player" : b.initiateEntity(y, x, new Player(b , x , y, facing));break;
     	}
     }
-    
-    
-    private void initiateBoardObjectEntity(Board b, String[] boardEntity) {
-    	for(String entity : boardEntity) {
-    		initiateObjectEntity(b,entity);
+
+
+    private void initiateBoardObjectEntity(Board b, JSONArray jsonEntity) {
+    	for(Object o : jsonEntity) {
+            JSONObject object = (JSONObject) o;
+    		initiateObjectEntity(b,object);
     	}
     }
-    
-    private void initiateObjectEntity(Board b, String entity) {
-    	String [] information = entity.split(",");
-    	String classe = information [0];
-    	int x = Integer.parseInt(information[1]);
-    	int y = Integer.parseInt(information[2]);
-    	
+
+    private void initiateObjectEntity(Board b, JSONObject information) {
+    	String classe = information.get("nameEntity").toString();
+    	int x =  Integer.parseInt(information.get("xPosition").toString());
+    	int y =  Integer.parseInt(information.get("yPosition").toString());
+
     	switch(classe) {
 			case "Coin" : b.initiateEntity(y, x, new Coin(b , x , y));break;
 			case "Key" : b.initiateEntity(y, x, new Key(b , x , y));break;
     	}
     }
 
-    private void initiateBoardDecor(Board b, String[] boardDecor) {
-    	System.out.println(boardDecor[0]);
+    private void initiateBoardDecor(Board b, JSONArray jsonDecor) {
     	for(int i=0; i< Board.boardLength ; i++) {
     		for(int j=0; j< Board.boardLength ; j++) {
-    			initiateDecor( b , boardDecor[i* Board.boardLength + j], j , i);
+    			JSONObject json = (JSONObject) jsonDecor.get(i* Board.boardLength + j);
+    			initiateDecor( b , json, j , i);
     		}
     	}
     }
-    
-    private void initiateDecor (Board b, String decor, int y , int x) {
+
+    private void initiateDecor (Board b, JSONObject information, int y , int x) {
     	//System.out.println(decor);
-    	switch(decor) {
+    	switch(information.get("nameDecor").toString()) {
     		case "Door" : b.setDecor(new Door (b, x , y ), y , x); break;
     		case "Wall" : b.setDecor(new Wall (b, x , y ), y , x); break;
     		default : b.setDecor(null,y,x); break;
     	}
     }
-    
-    private void initiateBoardGoal (Board b, String [] information) {
-    	int x = Integer.parseInt(information[0]);
-    	int y = Integer.parseInt(information[1]);
+
+    private void initiateBoardGoal (Board b, JSONObject information) {
+    	int x = Integer.parseInt(information.get("xPosition").toString());
+    	int y = Integer.parseInt(information.get("yPosition").toString());
     	b.initiateGoal(y, x);
     }
 }

@@ -140,11 +140,19 @@ public class Test {
     }
 
     public static void begin(){
-        Level levelTest = new Level(1,null);
+      try{
+        JSONParser jsonParser = new JSONParser();
+        FileReader reader = new FileReader("resources/test.json");
+        Object obj = jsonParser.parse(reader);
+        JSONObject jsonLevel = (JSONObject) obj;
+        Level levelTest = new Level(1,jsonLevel);
         LevelPanel vueLevel = new LevelPanel (levelTest, levelTest.getPlayer());
         JFrame testWindows = TestWorldView.createWindows ("Test");
         testWindows.setContentPane(vueLevel);
         testWindows.pack();
+      }catch(Exception e){
+        e.printStackTrace();
+      }
     }
     public static void main(String[] args) throws Exception {
         /*TestLanguageModel.run();
@@ -152,8 +160,8 @@ public class Test {
         TestLanguageView.run();
         TestWorldView.run();*/
         //testPasDansLeMainThierry();
-        
-        //begin();
+
+        begin();
         System.out.println("fin de test");
     }
 }

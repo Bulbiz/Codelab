@@ -16,16 +16,15 @@ public class ControllerLevel{
 		this.vueLevel = v;
 	}
 
-	//FIXME : Run should also initiate the program for the player 
+	//FIXME : Run should also initiate the program for the player
 	public void runOrStop (LanguageView lv) {
 		Queue<Action> script = lv.getInstructionQueue();
-
 		if(this.worldTime == null) {
 			lv.fillInstructionQueue();
 			this.level.getBoard().initiatePlayerActions(script);
 			this.worldTime = new WorldThread (level.getBoard(), vueLevel.getWorldView());
 		}
-		
+
 		if(this.worldTime.isAlive())
 			this.worldTime.stop();
 		else {
@@ -33,7 +32,7 @@ public class ControllerLevel{
 			this.worldTime.start();
 		}
 	}
-	
+
 	public void restart() {
 		//TO DO:
 	}

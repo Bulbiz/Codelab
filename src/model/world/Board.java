@@ -10,9 +10,9 @@ public class Board {
 	private Cell[][] cells;
 	private Cell finish;
 	private ArrayList<Entity> characters;
-	
-	public static final int boardLength = 17; 
-	
+
+	public static final int boardLength = 17;
+
     /*
     public Board(int yFinish, int xFinish, ArrayList<Entity> characters) {
 
@@ -30,10 +30,11 @@ public class Board {
 
     public Board () {
     	this.cells = new Cell[boardLength][boardLength];
+			this.characters = new ArrayList<Entity> ();
     	createBorder();
     	initiateCells();
     }
-    
+
     public void initiatePlayerActions(Queue<Action> script){
         Player player = getPlayer();
         if(player == null) {
@@ -42,7 +43,7 @@ public class Board {
         }
         player.setActions(script);
     }
-    
+
     //FIXME: not optimal yet
     //FIXME: high risk of NullPointerException
     public Player getPlayer(){
@@ -89,7 +90,7 @@ public class Board {
     		return false;
     	}
     }
-    
+
     public void initiateGoal(int yGoal, int xGoal) {
     	this.finish = this.cells[yGoal][xGoal];
     	this.finish.setDecor(new Goal(this, xGoal, yGoal));
@@ -102,7 +103,7 @@ public class Board {
 	public ArrayList<Entity> getCharacter(){
 		return this.characters;
 	}
-	
+
     //This method will create a border on the board that won't be crossable
     private void createBorder() {
     	for(int i = 0; i < this.cells[0].length; i++) {
@@ -145,11 +146,11 @@ public class Board {
 
     //FIXME: maybe Personage rather than Player for instanceof
     public boolean endOfLevel(){
-    	return (this.finish.getEntity() != null && this.finish.getEntity() instanceof Player) || !getPlayer().hasActionsLeft();
+    	return (this.finish.getEntity() != null && this.finish.getEntity() instanceof Player);
     }
 
     public void run() {
-    	for(Entity p : this.characters) 
+    	for(Entity p : this.characters)
     		p.run();
     }
 
