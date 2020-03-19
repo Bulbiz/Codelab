@@ -10,7 +10,11 @@ import javax.swing.*;
 import java.awt.*;
 import org.json.*;
 import java.io.*;
-
+import java.io.FileReader;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 class Test {
     //test of running the project
@@ -45,17 +49,76 @@ class Test {
       testWindows.pack();*/
     }
 
-    /*public static void testJson(){
-        try{
-            String s = "{\"name\":\"John\"}";
-            File f = new File("niveau1.json");
-            System.out.println(f == null);
 
-            System.out.println(json.getString("name"));
+
+
+    /*public static String jsonToStringPersonage(){
+        String s = "";
+        try{
+            JSONParser jsonParser = new JSONParser();
+            FileReader reader = new FileReader("resources/test.json");
+            Object obj = jsonParser.parse(reader);
+            JSONObject jsonLevel = (JSONObject) obj;
+            JSONObject perso = (JSONObject) jsonLevel.get("perso");
+            System.out.println(s);
         }catch(Exception e){
             System.out.println("erreur");
         }
+        return s;
     }*/
+
+    public static String jsonToStringDecor(){
+        String s = "";
+        try{
+            JSONParser jsonParser = new JSONParser();
+            FileReader reader = new FileReader("resources/test.json");
+            Object obj = jsonParser.parse(reader);
+            JSONObject jsonLevel = (JSONObject) obj;
+            JSONObject decor = (JSONObject) jsonLevel.get("decor");
+
+            s = (String) decor.get("nameDecor");
+            System.out.println(s);
+        }catch(Exception e){
+            System.out.println("erreur");
+        }
+        return s;
+    }
+
+
+    public static String jsonToStringEntity(){
+        String s = "";
+        try{
+            JSONParser jsonParser = new JSONParser();
+            FileReader reader = new FileReader("resources/test.json");
+            Object obj = jsonParser.parse(reader);
+            JSONObject jsonLevel = (JSONObject) obj;
+            JSONObject entity = (JSONObject) jsonLevel.get("entity");
+            s = (String) entity.get("nameEntity");
+            s += "," + (String) entity.get("xPosition");
+            s += "," + (String) entity.get("yPosition");
+            System.out.println(s);
+        }catch(Exception e){
+            System.out.println("erreur");
+        }
+        return s;
+    }
+
+    public static String jsonToStringGoal(){
+        String s = "";
+        try{
+            JSONParser jsonParser = new JSONParser();
+            FileReader reader = new FileReader("resources/test.json");
+            Object obj = jsonParser.parse(reader);
+            JSONObject jsonLevel = (JSONObject) obj;
+            JSONObject goal = (JSONObject) jsonLevel.get("goal");
+            s = (String) goal.get("xPosition");
+            s += "," + (String) goal.get("yPosition");
+            System.out.println(s);
+        }catch(Exception e){
+            System.out.println("erreur");
+        }
+        return s;
+    }
 
     public static void main(String[] args) throws Exception {
         /*TestLanguageModel.run();
@@ -66,12 +129,14 @@ class Test {
         Cell c = new Cell();
         ArrayList<Personage> p = new ArrayList();
         Board b = new Board(1,1,p);
-        b.toJson();
+        //b.toJson();
         //int x = 5;
         //int y = 7;
         //b.CellToJson(c,x,y);
-
-        //testJson();
+        //jsonToStringPersonage();
+        jsonToStringDecor();
+        jsonToStringEntity();
+        jsonToStringGoal();
        // begin();
         System.out.println("fin de test");
     }
