@@ -57,18 +57,17 @@ class Test {
         try{
             JSONParser jsonParser = new JSONParser();
             FileReader reader = new FileReader("resources/test.json");
-
             Object obj = jsonParser.parse(reader);
             JSONObject jsonLevel = (JSONObject) obj;
             JSONArray jsonArray = (JSONArray)jsonLevel.get("perso");
-            ArrayList<String> listPerso = new ArrayList<String>();
             for (Object o : jsonArray) {
-                listPerso.add(o.toString());
                 JSONObject jo = (JSONObject) o;
-                System.out.println(jo.get("namePerso"));
+                s += jo.get("namePerso") + ",";
+                s += jo.get("xPosition") + ",";
+                s += jo.get("yPosition") + ",";
+                s += jo.get("facing") + "|";
             }
         }catch(Exception e){
-            //System.out.println("erreur");
             e.printStackTrace();
         }
         return s;
@@ -81,12 +80,13 @@ class Test {
             FileReader reader = new FileReader("resources/test.json");
             Object obj = jsonParser.parse(reader);
             JSONObject jsonLevel = (JSONObject) obj;
-            JSONObject decor = (JSONObject) jsonLevel.get("decor");
-
-            s = (String) decor.get("nameDecor");
-            System.out.println(s);
+            JSONArray jsonArray = (JSONArray)jsonLevel.get("decor");
+            for (Object o : jsonArray) {
+                JSONObject jo = (JSONObject) o;
+                s += jo.get("nameDecor") + "|";
+            }
         }catch(Exception e){
-            System.out.println("erreur");
+            e.printStackTrace();
         }
         return s;
     }
@@ -99,13 +99,15 @@ class Test {
             FileReader reader = new FileReader("resources/test.json");
             Object obj = jsonParser.parse(reader);
             JSONObject jsonLevel = (JSONObject) obj;
-            JSONObject entity = (JSONObject) jsonLevel.get("entity");
-            s = (String) entity.get("nameEntity");
-            s += "," + (String) entity.get("xPosition");
-            s += "," + (String) entity.get("yPosition");
-            System.out.println(s);
+            JSONArray jsonArray = (JSONArray)jsonLevel.get("entity");
+            for (Object o : jsonArray) {
+                JSONObject jo = (JSONObject) o;
+                s += jo.get("nameEntity") + ",";
+                s += jo.get("xPosition") + ",";
+                s += jo.get("yPosition") + "|";
+            }
         }catch(Exception e){
-            System.out.println("erreur");
+            e.printStackTrace();
         }
         return s;
     }
@@ -118,11 +120,9 @@ class Test {
             Object obj = jsonParser.parse(reader);
             JSONObject jsonLevel = (JSONObject) obj;
             JSONObject goal = (JSONObject) jsonLevel.get("goal");
-            s = (String) goal.get("xPosition");
-            s += "," + (String) goal.get("yPosition");
-            System.out.println(s);
+            s += (String) goal.get("xPosition") + "," + (String) goal.get("yPosition");
         }catch(Exception e){
-            System.out.println("erreur");
+            e.printStackTrace();
         }
         return s;
     }
@@ -140,10 +140,10 @@ class Test {
         //int x = 5;
         //int y = 7;
         //b.CellToJson(c,x,y);
-        System.out.println( jsonToStringPersonage() );
-        //jsonToStringDecor();
-        //jsonToStringEntity();
-        //jsonToStringGoal();
+        System.out.println(jsonToStringPersonage());
+        System.out.println(jsonToStringDecor());
+        System.out.println(jsonToStringEntity());
+        System.out.println(jsonToStringGoal());
        // begin();
         System.out.println("fin de test");
     }
