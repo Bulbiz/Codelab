@@ -39,10 +39,16 @@ public class Level {
     	return this.actions;
     }
     
+    //FIXME : Should be changed to JSON
+    private void initiateBoard (String information) {
+    	String[] separation = information.split("/"); //Should be changed
+    	this.board = new Board ();
+    	initiateBoardDecor(this.board,separation[0].split("|"));
+    	initiateBoardEntity(this.board,separation[1].split("|"));
+    }
     
-    private void initiateBoardEntity(Board b, String boardEntity) {
-    	String [] listEntity = boardEntity.split("|");
-    	for(String entity : listEntity) {
+    private void initiateBoardEntity(Board b, String[] boardEntity) {
+    	for(String entity : boardEntity) {
     		initiateEntity(b,entity);
     	}
     }

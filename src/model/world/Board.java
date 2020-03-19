@@ -48,8 +48,6 @@ public class Board {
             if(p instanceof Player)
                 player = (Player) p;
         }
-        if(player == null)
-        	return null;
 		return player;
     }
 
@@ -95,6 +93,7 @@ public class Board {
     	try {
     		if(isNotOccupied(y, x)) {
     			this.cells[y][x].setEntity(being);
+    			this.characters.add(being);
     			return true;
     		} else {
     			System.out.println("[Erreur] : Il y a quelque chose sur cette case");
