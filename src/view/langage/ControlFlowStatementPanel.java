@@ -74,13 +74,20 @@ public class ControlFlowStatementPanel extends ActionPanel implements IActionPan
     }
 
     public void addActionPanel(ActionPanel ap, ActionPanel previous) {
+        if (ap.getParentPanel() == previous.getParentPanel() && getIndexInPane(ap, head) <= getIndexInPane(previous, head))
+            return;
+
+        if (ap.getParentPanel() != null)
+            ap.getParentPanel().removeActionPanel(ap);
+
         if (previous.getInstruction() == null) { 
             actionPanelsPanel.remove(head);           
             head = ap;
             updateNext(ap, null);
         }
-        else
+        else {
             updateNext(ap, previous);
+        }
 
         addRecursively(ap, this, actionPanelsPanel);
         revalidate();
@@ -93,9 +100,12 @@ public class ControlFlowStatementPanel extends ActionPanel implements IActionPan
         removeRecursively(ap, actionPanelsPanel);
 
         ActionPanel previous = getPrevious(ap, head);
-        if (previous != null)
+        if (previous != null) {
+            System.out.println("previous != null");
             previous.next = null;
+        }
         else {
+            System.out.println("previous == null");
             head = createEmptyActionPanel();
             actionPanelsPanel.add(head);
         }
