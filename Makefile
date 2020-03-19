@@ -1,9 +1,10 @@
 JCC = javac
 JFLAGS = -g
-CLASSPATH = .:json.jar
+CLASSPATH = .:json.jar:json-simple.jar
 
 all: modell modelw viewl vieww controller testall
 	cp -r json.jar bin
+	cp -r json-simple.jar bin
 
 modell:
 	javac -cp $(CLASSPATH) src/model/langage/*.java -d bin
@@ -24,7 +25,7 @@ testall:
 	javac -cp $(CLASSPATH) src/Test.java -d bin
 
 andrun:	all
-	java -cp bin:json.jar src.Test
+	java -cp bin:json.jar:json-simple.jar src.Test
 
 clean :
 	rm -r bin/src/model/langage/*.class
