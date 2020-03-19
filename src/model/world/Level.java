@@ -47,6 +47,7 @@ public class Level {
     	initiateBoardObjectEntity(this.board,separation[1].split("|"));
     	initiateBoardPersonageEntity(this.board,separation[2].split("|"));
     }
+    
     private void initiateBoardPersonageEntity(Board b, String[] boardEntity) {
     	for(String entity : boardEntity) {
     		initiateObjectEntity(b,entity);

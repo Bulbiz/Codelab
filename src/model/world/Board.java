@@ -59,15 +59,6 @@ public class Board {
     		return null;
     	}
     }
-    
-    public void setCell(int y, int x, Cell c) {
-    	try {
-    		this.cells[y][x] = c;
-    	} catch(Exception e) {
-    		System.out.println("[Erreur]: La case n'a pas pu être modifiée");
-    		return;
-    	}
-    }
 
     public void setDecor(Decor d,int y, int x) {
     	this.cells[y][x].setDecor(d);
