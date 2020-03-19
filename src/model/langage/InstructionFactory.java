@@ -73,6 +73,7 @@ public class InstructionFactory {
             case "turnleft": return new TurnLeft(pers);
             case "turnright": return new TurnRight(pers);
             case "stay": return new Stay(pers);
+            case "begin": return new Begin(pers);
             default: return null;
         }
     }

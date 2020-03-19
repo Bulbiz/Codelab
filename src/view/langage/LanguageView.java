@@ -125,6 +125,8 @@ public class LanguageView extends JPanel {
             return;
         if (source.getInstruction().getType().equals("condition"))
             return;
+        if (source.getInstruction().getVersion().equals("begin"))
+            return;
         
         ap.getParentPanel().addActionPanel((ActionPanel)source, ap);            
     }

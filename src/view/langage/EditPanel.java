@@ -27,7 +27,7 @@ public class EditPanel extends JPanel implements IActionPanelListable {
         this.controller = controller;
 
         setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
-        head = new ActionPanel( controller, new Move(null) );
+        head = new ActionPanel( controller, new Begin(null) );
         head.setParentPanel(this);
         add(head);
     }   
