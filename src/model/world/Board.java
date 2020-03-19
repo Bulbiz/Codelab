@@ -95,6 +95,10 @@ public class Board {
     		return false;
     	}
     }
+    
+    public void initiateGoal(int yGoal, int xGoal) {
+    	this.finish.setDecor(new Goal(this, xGoal, yGoal));
+    }
 
 	public Cell[][] getCells(){
 		return cells;
