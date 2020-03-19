@@ -60,9 +60,28 @@ public class ControlFlowStatementPanel extends ActionPanel {
         revalidate();
     }
 
+<<<<<<< Updated upstream
     public void addActionPanel(ActionPanel ap) {
         if (actionPanelList.get(0).getInstruction() == null)
             removeActionPanel(actionPanelList.get(0));
+=======
+    private ConditionPanel createEmptyConditionPanel() {
+        return new ConditionPanel(controller, null);
+    }
+
+    private ActionPanel createEmptyActionPanel() {
+        return new ActionPanel(controller, null);
+    }
+
+    public void addActionPanel(ActionPanel ap, ActionPanel previous) {
+        if (previous.getInstruction() == null) { 
+            actionPanelsPanel.remove(head);           
+            head = ap;
+            updateNext(ap, null);
+        }
+        else
+            updateNext(ap, previous);
+>>>>>>> Stashed changes
 
         actionPanelList.add(ap);
         actionPanelsPanel.add(ap);

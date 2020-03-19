@@ -39,7 +39,6 @@ public class TestLanguageView {
                     frame.setContentPane(view);
                     controller.setView(view);
 
-                    testInstructionPanel(view, controller);
                     testInstructionPanelGeneratorClick(view, controller);
                     frame.revalidate();
                 }
@@ -47,20 +46,6 @@ public class TestLanguageView {
         } catch (Exception e) {
         }
 
-    }
-
-    public static void testInstructionPanel(LanguageView view, ControllerLanguage controller) {
-        
-        ConditionPanel cp = new ConditionPanel(controller, new ObstableFront(null));
-        ActionPanel ap = new ActionPanel(controller, new Move(null));
-        
-        ControlFlowStatementPanel ifp = new ControlFlowStatementPanel(controller, new While(null)); 
-        view.editPanel.addActionPanel(ifp); 
-        ifp.addActionPanel(ap);
-        ifp.setConditionPanel(cp);
-        
-        
-        
     }
 
     public static void testInstructionPanelGeneratorGenerating(LanguageView view, ControllerLanguage controller) {

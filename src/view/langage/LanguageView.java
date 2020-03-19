@@ -27,13 +27,12 @@ public class LanguageView extends JPanel {
         this.controller = controller;
         this.player = player;
 
-        editPanel = new EditPanel();
+        editPanel = new EditPanel(controller);
         resourcePanel = new ResourcePanel();
 
         add(editPanel);
         add(resourcePanel);
 
-        editPanel.addActionPanel(new ActionPanel(controller, new Move(null)));
         TestLanguageView.testInstructionPanelGeneratorClick(this, controller);
     }
 
@@ -49,28 +48,20 @@ public class LanguageView extends JPanel {
         while(!instructionQueue.isEmpty())
             instructionQueue.poll();
 
-        for (int i = editPanel.instructionPanels.size() - 1 ; i >= 0; i--) {
-            InstructionPanel ip = editPanel.instructionPanels.get(i);
-            Instruction instruction = ip.toInstruction();            
+        ActionPanel cur = editPanel.head;
+        while (cur != null) {
+            Instruction instruction = cur.toInstruction();            
             if (instruction == null)
                 return;
                 instruction.setPersonage(player);
             instructionQueue.add((Action)instruction);
+            cur = cur.next;
         }
     }
 
     public Queue<Instruction> toInstruction() {
-        Queue<Instruction> q = new LinkedList<Instruction>();
-        
-        for (int i = editPanel.instructionPanels.size()- 1 ; i >= 0; i++) {
-            InstructionPanel ip = editPanel.instructionPanels.get(i);
-            Instruction instruction = ip.toInstruction();
-            if (instruction == null)
-                return null;
-            q.add(instruction);
-        }
 
-        return q;
+        return null;
     }
 
     @Override
@@ -135,7 +126,7 @@ public class LanguageView extends JPanel {
         
 
         if (ap.getParentPanel() == null)
-            editPanel.addActionPanel((ActionPanel)source);
+            editPanel.addActionPanel((ActionPanel)source, ap);
         else 
             ap.getParentPanel().addActionPanel((ActionPanel)source);
             
