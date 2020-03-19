@@ -12,6 +12,7 @@ public class Board {
 	
 	public static final int boardLength = 17; 
 	
+    //FIXME : Should be deleted
     public Board(int yFinish, int xFinish, ArrayList<Personage> characters) {
     	this.cells = new Cell[boardLength][boardLength];
     	this.characters = characters;
@@ -24,7 +25,14 @@ public class Board {
     	    return;
     	}
     }
+    
 
+    public Board () {
+    	this.cells = new Cell[boardLength][boardLength];
+    	createBorder();
+    	initiateCells();
+    }
+    
     public void initiatePlayerActions(Queue<Action> script){
         Player player = getPlayer();
         if(player == null) {
@@ -56,6 +64,9 @@ public class Board {
     	}
     }
 
+    public void setDecor(Decor d,int y, int x) {
+    	this.cells[y][x].setDecor(d);
+    }
     /*
      * @return true if the Cell dont have an obstacle or entity false otherwise
      */

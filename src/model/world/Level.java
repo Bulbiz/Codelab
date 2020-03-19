@@ -34,7 +34,36 @@ public class Level {
     public Board getBoard () {
     	return this.board;
     }
+    
     public ArrayList<Action> getActions () {
     	return this.actions;
     }
+    
+    private void initiateBoardEntity(Board b, String[] boardEntity) {
+    	for(String entity : boardEntity) {
+    		initiateEntity(b,entity);
+    	}
+    }
+    
+    private void initiateEntity(Board b, String entity) {
+    	//TODO :
+    }
+    
+    private void initiateBoardDecor(Board b, String[] boardDecor) {
+    	for(int i=0; i< Board.boardLength ; i++) {
+    		for(int j=0; j< Board.boardLength ; j++) {
+    			initiateDecor( b , boardDecor[i* Board.boardLength + j], j , i);
+    		}
+    	}
+    }
+    private void initiateDecor (Board b, String decor, int y , int x) {
+    	switch(decor) {
+    		case "Door" : b.setDecor(new Door (b, x , y ), y , x); break;
+    		case "Goal" : b.setDecor(new Goal (b, x , y ), y , x); break;
+    		case "Wall" : b.setDecor(new Wall (b, x , y ), y , x); break;
+    		default : b.setDecor(null,x,y); break;
+    	}
+    }
+    
+    
 }
