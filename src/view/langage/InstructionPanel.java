@@ -1,5 +1,7 @@
 
 package src.view.langage;
+
+import src.controller.ControllerLanguage;
 import src.model.langage.*;
 
 import javax.swing.JPanel;
@@ -16,8 +18,9 @@ public abstract class InstructionPanel extends JPanel implements IMouseReactive 
     /**
      * Default constructor
      */
-    public InstructionPanel(MouseAdapter controller, Instruction instruction) {
+    public InstructionPanel(ControllerLanguage controller, Instruction instruction) {
         this.instruction = instruction;
+        this.controller = controller;
         addMouseListener(controller);
         addMouseMotionListener(controller);
     }
@@ -32,12 +35,9 @@ public abstract class InstructionPanel extends JPanel implements IMouseReactive 
      */
     protected int y;
 
-    /**
-     * 
-     */
-    protected InstructionPanel next;
-
     protected ControlFlowStatementPanel parent;
+
+    protected ControllerLanguage controller;
 
     protected Instruction instruction;
 
@@ -93,7 +93,7 @@ public abstract class InstructionPanel extends JPanel implements IMouseReactive 
         return parent;
     }
 
-    public void setParent(ControlFlowStatementPanel parent) {
+    public void setParentPanel(ControlFlowStatementPanel parent) {
         this.parent = parent;
     }
 

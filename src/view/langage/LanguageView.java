@@ -128,7 +128,7 @@ public class LanguageView extends JPanel {
         if (ap.getParentPanel() == null)
             editPanel.addActionPanel((ActionPanel)source, ap);
         else 
-            ap.getParentPanel().addActionPanel((ActionPanel)source);
+            ap.getParentPanel().addActionPanel((ActionPanel)source, ap);
             
     }
 }
