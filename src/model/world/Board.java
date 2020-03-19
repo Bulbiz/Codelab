@@ -45,7 +45,7 @@ public class Board {
     //FIXME: not optimal yet
     //FIXME: high risk of NullPointerException
     private Player getPlayer(){
-				Player player = null;
+		Player player = null;
         for(Personage p: characters){
             if(p instanceof Player)
                 player = (Player) p;
@@ -61,6 +61,15 @@ public class Board {
     	} catch(IndexOutOfBoundsException e) {
     		System.out.println("[Erreur] : Case inexistante");
     		return null;
+    	}
+    }
+    
+    public void setCell(int y, int x, Cell c) {
+    	try {
+    		this.cells[y][x] = c;
+    	} catch(Exception e) {
+    		System.out.println("[Erreur]: La case n'a pas pu être modifiée");
+    		return;
     	}
     }
 
