@@ -50,9 +50,9 @@ public class WorldPanel extends JPanel implements IDisplayable {
     }
     //FIXME: Shouldn't this be painting Entity instead of just Personage ?
     private void paintPersonage (Graphics g) {
-    	for(Personage p : boardModel.getCharacter()) {
-    		String personageSpriteName = p.toString();
-			spriteLibrary.getSprite(personageSpriteName).paintIcon(this,g,p.getY()*tileLength, p.getX()*tileLength);
+    	for(Entity e : boardModel.getCharacter()) {
+    		String entitySpriteName = e.toString();
+			spriteLibrary.getSprite(entitySpriteName).paintIcon(this,g,e.getY()*tileLength, e.getX()*tileLength);
     	}
     }
     public void updateDisplay() {

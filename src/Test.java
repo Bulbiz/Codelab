@@ -12,7 +12,7 @@ import java.awt.*;
 
 class Test {
     //test of running the project
-    public static void begin(){
+  /* public static void begin(){
       ArrayList<Personage> p = new ArrayList();
       Board b = new Board(6, 1, p);
       Player steve = new Player(b, 6, 15, 1);
@@ -23,12 +23,12 @@ class Test {
       w.setCondition(new ConditionTrue(steve));
       action.add(w);
 
-      /*If i = new If(steve);                             //test pour le if
+      If i = new If(steve);                             //test pour le if
       i.addAction(new Move(steve));
       i.addAction(new TurnLeft(steve));
       i.addAction(new Move(steve));
       i.setCondition(new ConditionTrue(steve));
-      action.add(i);*/
+      action.add(i);
 
       steve.setActions(action);
       b.initiateEntity(6,15,steve);
@@ -38,7 +38,7 @@ class Test {
       JFrame testWindows = TestWorldView.createWindows ("Test");
       testWindows.setContentPane(vueLevel);
       testWindows.pack();
-    }
+    }*/
 
     public static void main(String[] args) {
         TestLanguageModel.run();
@@ -46,7 +46,6 @@ class Test {
         TestLanguageView.run();
         TestWorldView.run();
 
-       // begin();
         System.out.println("fin de test");
     }
 }
