@@ -54,8 +54,8 @@ public class ControlFlowStatementPanel extends ActionPanel implements IActionPan
     private JPanel conditionPanelPanel;
     
     public void setConditionPanel(ConditionPanel cp) {
-        if (cp.getParentPanel() != null) {
-            cp.getParentPanel().setConditionPanel(createEmptyConditionPanel());
+        if (cp.getParentPanel() != null && cp.getParentPanel() != this) {
+            cp.getParentPanel().setConditionPanel(createEmptyConditionPanel(cp.getParentPanel()));
         }
 
         conditionPanelPanel.remove(conditionPanel);
@@ -65,19 +65,23 @@ public class ControlFlowStatementPanel extends ActionPanel implements IActionPan
         revalidate();
     }
 
-    private ConditionPanel createEmptyConditionPanel() {
-        return new ConditionPanel(controller, null);
+    private ConditionPanel createEmptyConditionPanel(ControlFlowStatementPanel parent) {
+        ConditionPanel cp = new ConditionPanel(controller, null);
+        cp.setParentPanel(parent);
+        return cp;
     }
 
     private ActionPanel createEmptyActionPanel() {
-        return new ActionPanel(controller, null);
+        ActionPanel empty = new ActionPanel(controller, null);
+        empty.setParentPanel(this);
+        return empty;
     }
 
     public void addActionPanel(ActionPanel ap, ActionPanel previous) {
         if (ap.getParentPanel() == previous.getParentPanel() && getIndexInPane(ap, head) <= getIndexInPane(previous, head))
             return;
 
-        if (ap.getParentPanel() != null)
+        if (ap.getParentPanel() != null) 
             ap.getParentPanel().removeActionPanel(ap);
 
         if (previous.getInstruction() == null) { 
@@ -109,7 +113,7 @@ public class ControlFlowStatementPanel extends ActionPanel implements IActionPan
             head = createEmptyActionPanel();
             actionPanelsPanel.add(head);
         }
-
+        revalidate();
     }
 
 	public Instruction toInstruction() {
