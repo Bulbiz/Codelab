@@ -2,17 +2,7 @@
 
 ## Update semaine du 7/03/2020
 
-Cette semaine nous avons ajouté les éléments suivants à la branche develop:
-1.  L'interface graphique a été refaite sans attribuer de JPanel pour chaque cellule du tableau
-2.  Les conditions If et While sont implémentées et ont été testées
-
-Dans la branche affichage_langage:
-* Une première version graphique du langage permet de créer du code et de construire une file d'instruction
-
-Dans la branche fusion_affichages:
-* Une version avec la création du code à droite et l'execution de ce code à gauche
-
-Enfin le Makefile accepte les commandes make et make run
+Nous avons fait un prototype pour pouvoir charger un niveau à partir d'un JSON, nous avons aussi modifier le board pour qu'il créer un board vierge dans lequel l'on peut y "peindre" les modifications.
 
 ## Equipe
 
