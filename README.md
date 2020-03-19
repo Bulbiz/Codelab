@@ -10,6 +10,9 @@ Parmis les éléments non terminés nous posant des difficultés :
 -Création d'un level à partir d'un String n'a pas encore été testé mais est implémenté
 -Aussi beaucoup de membres de notre équipe est tombé malade cette semaine, nous avons donc pas été très efficace pour ce sprint. Il y en as qui se sont réfugier dans des îles désertes ou bien dans des grandes plaines pour se reposer.
 
+Autres :
+- Certains d'entre nous etaient malades ou recuperaient apres etre malade (Antoine, Thierry) et par consequent n'ont pas pu etre efficace
+
 ## Equipe
 
 - Thierry CHHOA,
