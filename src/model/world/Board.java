@@ -88,6 +88,7 @@ public class Board {
     }
     
     public void initiateGoal(int yGoal, int xGoal) {
+    	this.finish = this.cells[yGoal][xGoal];
     	this.finish.setDecor(new Goal(this, xGoal, yGoal));
     }
 
