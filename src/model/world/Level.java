@@ -44,24 +44,40 @@ public class Level {
     	String[] separation = information.split("/"); //Should be changed
     	this.board = new Board ();
     	initiateBoardDecor(this.board,separation[0].split("|"));
-    	initiateBoardEntity(this.board,separation[1].split("|"));
+    	initiateBoardObjectEntity(this.board,separation[1].split("|"));
+    	initiateBoardPersonageEntity(this.board,separation[2].split("|"));
     }
-    
-    private void initiateBoardEntity(Board b, String[] boardEntity) {
+    private void initiateBoardPersonageEntity(Board b, String[] boardEntity) {
     	for(String entity : boardEntity) {
-    		initiateEntity(b,entity);
+    		initiateObjectEntity(b,entity);
     	}
     }
     
-    private void initiateEntity(Board b, String entity) {
+    private void initiatePersonageEntity(Board b, String entity) {
     	String [] information = entity.split(",");
     	String classe = information [0];
     	int x = Integer.parseInt(information[1]);
     	int y = Integer.parseInt(information[2]);
     	int facing = Integer.parseInt(information[3]);
+    	switch(classe) {
+			case "Player" : b.initiateEntity(y, x, new Player(b , x , y, facing));break;
+    	}
+    }
+    
+    
+    private void initiateBoardObjectEntity(Board b, String[] boardEntity) {
+    	for(String entity : boardEntity) {
+    		initiateObjectEntity(b,entity);
+    	}
+    }
+    
+    private void initiateObjectEntity(Board b, String entity) {
+    	String [] information = entity.split(",");
+    	String classe = information [0];
+    	int x = Integer.parseInt(information[1]);
+    	int y = Integer.parseInt(information[2]);
     	
     	switch(classe) {
-    		case "Player" : b.initiateEntity(y, x, new Player(b , x , y , facing));break;
 			case "Coin" : b.initiateEntity(y, x, new Coin(b , x , y));break;
 			case "Key" : b.initiateEntity(y, x, new Key(b , x , y));break;
     	}
