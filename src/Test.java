@@ -8,11 +8,11 @@ import src.view.*;
 import java.util.*;
 import javax.swing.*;
 import java.awt.*;
-import org.json.*;
+//import org.json.*;
 import java.io.*;
 import java.io.FileReader;
-import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.json.simple.JSONArray;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
@@ -52,20 +52,27 @@ class Test {
 
 
 
-    /*public static String jsonToStringPersonage(){
+    public static String jsonToStringPersonage(){
         String s = "";
         try{
             JSONParser jsonParser = new JSONParser();
             FileReader reader = new FileReader("resources/test.json");
+
             Object obj = jsonParser.parse(reader);
             JSONObject jsonLevel = (JSONObject) obj;
-            JSONObject perso = (JSONObject) jsonLevel.get("perso");
-            System.out.println(s);
+            JSONArray jsonArray = (JSONArray)jsonLevel.get("perso");
+            ArrayList<String> listPerso = new ArrayList<String>();
+            for (Object o : jsonArray) {
+                listPerso.add(o.toString());
+                JSONObject jo = (JSONObject) o;
+                System.out.println(jo.get("namePerso"));
+            }
         }catch(Exception e){
-            System.out.println("erreur");
+            //System.out.println("erreur");
+            e.printStackTrace();
         }
         return s;
-    }*/
+    }
 
     public static String jsonToStringDecor(){
         String s = "";
@@ -133,10 +140,10 @@ class Test {
         //int x = 5;
         //int y = 7;
         //b.CellToJson(c,x,y);
-        //jsonToStringPersonage();
-        jsonToStringDecor();
-        jsonToStringEntity();
-        jsonToStringGoal();
+        System.out.println( jsonToStringPersonage() );
+        //jsonToStringDecor();
+        //jsonToStringEntity();
+        //jsonToStringGoal();
        // begin();
         System.out.println("fin de test");
     }
