@@ -9,6 +9,9 @@ Parmis les éléments non terminés nous posant des difficultés :
 - la manipulation des plateaux à travers le json n'est pas encore terminée. Nous avons eu des problèmes de compatibilité avec json et json-simple
 -Création d'un level à partir d'un String n'a pas encore été testés mais est implémenter
 
+Autres :
+- Certains d'entre nous etaient malades ou recuperaient apres etre malade (Antoine, Thierry) et par consequent n'ont pas pu etre efficace
+
 ## Equipe
 
 - Thierry CHHOA,
