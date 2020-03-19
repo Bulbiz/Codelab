@@ -14,25 +14,13 @@ import src.model.world.*;
  */
 public abstract class ControlFlowStatement extends Action {
 
+    protected Condition condition;
+    protected Queue<Action> actions;
+
     public ControlFlowStatement(Personage personage) {
         super(personage);
-        swapActive = false;
-        active = false;
         actions = new LinkedList<Action>();
     }
-
-    /**
-     *
-     */
-    protected Condition condition;
-
-    /**
-     *
-     */
-    protected Queue<Action> actions;
-    protected boolean active; // true = the control struture is always active, false the control struture is
-                              // end.
-    protected boolean swapActive;
 
     /**
      * @return
@@ -40,7 +28,7 @@ public abstract class ControlFlowStatement extends Action {
     public abstract int run();
 
     public JSONObject toJSON() throws JSONException {
-        
+
         JSONObject json = new JSONObject();
 
         json.put("type", getType());
@@ -48,7 +36,7 @@ public abstract class ControlFlowStatement extends Action {
 
         if (condition != null)
             json.put("condition", condition.toJSON());
-        
+
         JSONArray json_array = new JSONArray();
         for (Action a : actions)
             json_array.put(a.toJSON());
@@ -59,8 +47,16 @@ public abstract class ControlFlowStatement extends Action {
 
     public String getType() { return "flow_control_statement"; }
 
-    public void setCondition(Condition c) {
-        this.condition = c;
+    public void setPersonage(Personage pers) {
+        this.personage = pers;
+        if (condition != null)
+            condition.setPersonage(pers);
+        for (Action a : actions)
+            a.setPersonage(pers);
+    }
+
+    public void setCondition(Condition condition) {
+        this.condition = condition;
     }
 
     public void addAction(Action action) {
@@ -73,7 +69,7 @@ public abstract class ControlFlowStatement extends Action {
         System.out.print("condition : ") ;
         if (condition != null)
             condition.printTypeAndVersion();
-        else 
+        else
             System.out.println("null");
 
         System.out.print("liste actions :");

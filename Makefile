@@ -27,6 +27,8 @@ testall:
 andrun:	all
 	java -cp bin:json.jar:json-simple.jar src.Test
 
+andrun:	all run
+
 clean :
 	rm -r bin/src/model/langage/*.class
 	rm -r bin/src/model/world/*.class

@@ -1,6 +1,7 @@
 package src.controller;
 
 import src.model.world.*;
+import java.util.*;
 import src.model.langage.*;
 import src.view.world.*;
 import src.view.langage.*;
@@ -16,15 +17,23 @@ public class ControllerLevel{
 	}
 
 	//FIXME : Run should also initiate the program for the player 
-	public void run () {
+	public void runOrStop (LanguageView lv) {
+		Queue<Action> script = lv.getInstructionQueue();
 
-		if(this.worldTime != null && this.worldTime.isAlive())
+		if(this.worldTime == null) {
+			lv.fillInstructionQueue();
+			this.level.getBoard().initiatePlayerActions(script);
+			this.worldTime = new WorldThread (level.getBoard(), vueLevel.getWorldView());
+		}
+		
+		if(this.worldTime.isAlive())
 			this.worldTime.stop();
 		else {
 			this.worldTime = new WorldThread (level.getBoard(), vueLevel.getWorldView());
 			this.worldTime.start();
 		}
 	}
+	
 	public void restart() {
 		//TO DO:
 	}

@@ -1,39 +1,70 @@
 
 package src.view.langage;
+
+import src.controller.ControllerLanguage;
 import src.model.langage.*;
 
 import java.util.*;
+
+import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 
 /**
  * 
  */
-public class EditPanel extends JPanel {
+public class EditPanel extends JPanel implements IActionPanelListable {
+
+    /**
+     * 
+     */
+    protected ActionPanel head;
+    protected ControllerLanguage controller;
 
     /**
      * Default constructor
      */
-    public EditPanel() {
+    public EditPanel(ControllerLanguage controller) {
+        this.controller = controller;
+
+        setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
+        head = new ActionPanel( controller, new Begin(null) );
+        head.setParentPanel(this);
+        add(head);
+    }   
+
+
+    /**
+     * 
+     */
+    public void addActionPanel(ActionPanel ap, ActionPanel previous) {
+        // TODO merge with ControlFlowStatementPanel's version
+        if (ap.getParentPanel() == previous.getParentPanel() && getIndexInPane(ap, head) <= getIndexInPane(previous, head))
+            return;
+
+        if (ap.getParentPanel() != null) 
+            ap.getParentPanel().removeActionPanel(ap);
+
+        updateNext(ap, previous);
+        addRecursively(ap, this, this);
     }
 
     /**
      * 
      */
-    private ArrayList<InstructionPanel> instructionPanels;
+    public void removeActionPanel(ActionPanel ap) {
+        // TODO merge with ControlFlowStatementPanel's version
+        if (ap.getInstruction() == null)
+            return;
 
+        ActionPanel previous = getPrevious(ap, head);
+        if (previous != null)
+            previous.next = null;
 
-    /**
-     * 
-     */
-    public void addInstructionPanel() {
-        // TODO implement here
+        removeRecursively(ap, this);
     }
 
-    /**
-     * 
-     */
-    public void removeInstructionPanel() {
-        // TODO implement here
+    public String getListType() {
+        return "editPanelList";
     }
 
     /**

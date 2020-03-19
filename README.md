@@ -1,20 +1,17 @@
 # CODELAB 3
 
-## Update semaine du 2/03/2020
+## Update semaine du 14/03/2020
 
 Cette semaine nous avons ajouté les éléments suivants à la branche develop:
-1.  Une interface graphique basique du plateau
-2.  Un bouton Run qui permet d'exécuter la liste d'instruction du joueur
-3.  Une représentation json des instructions 
-4.  Quelques conditions 
+- L'édition d'instruction est enfin plus souple et accepte la modification après ajout. 
 
-Nous avons également fait un choix sur le concept du jeu qui s'orientera vers le vol de documents secrets pour un révolution.
-Dès la semaine prochaine, à l'aide de la version minimale, nous définirons avec précision les actions que nous
-implémenterons
+Parmis les éléments non terminés nous posant des difficultés :
+- la manipulation des plateaux à travers le json n'est pas encore terminée. Nous avons eu des problèmes de compatibilité avec json et json-simple
+-Création d'un level à partir d'un String n'a pas encore été testé mais est implémenté
+-Aussi beaucoup de membres de notre équipe est tombé malade cette semaine, nous avons donc pas été très efficace pour ce sprint. Il y en as qui se sont réfugier dans des îles désertes ou bien dans des grandes plaines pour se reposer.
 
-Enfin, voici ce qui n'a pas été modifié :
-Le Makefile créer toujours un fichier src dans le bin
-
+Autres :
+- Certains d'entre nous etaient malades ou recuperaient apres etre malade (Antoine, Thierry) et par consequent n'ont pas pu etre efficace
 
 ## Equipe
 

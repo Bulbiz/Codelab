@@ -15,15 +15,37 @@ public class Board {
 
     public Board(int yFinish, int xFinish, ArrayList<Personage> characters) {
     	this.cells = new Cell[boardLength][boardLength];
+    	this.characters = characters;
+    	createBorder();
+    	initiateCells();
     	try{
     	    this.finish = this.cells[yFinish][xFinish];
     	} catch(Exception e){
     	    System.out.println("Erreur : Les coordonnées sont hors limite");
     	    return;
     	}
-    	this.characters = characters;
-    	createBorder();
-    	initiateCells();
+    }
+
+    public void initiatePlayerActions(Queue<Action> script){
+        Player player = getPlayer();
+        if(player == null) {
+        	System.out.println("Erreur le joueur n'est pas initialiser ! ");
+        	return;
+        }
+        player.setActions(script);
+    }
+
+    //FIXME: not optimal yet
+    //FIXME: high risk of NullPointerException
+    private Player getPlayer(){
+				Player player = null;
+        for(Personage p: characters){
+            if(p instanceof Player)
+                player = (Player) p;
+        }
+        if(player == null)
+        	return null;
+		return player;
     }
 
     public Decor getDecor(int y, int x) {
@@ -35,12 +57,26 @@ public class Board {
     	}
     }
 
+    /*
+     * @return true if the Cell dont have an obstacle or entity false otherwise
+     */
+    private boolean isNotOccupied(int y, int x) {
+    	return this.cells[y][x].getEntity() == null && !(this.cells[y][x].getDecor() instanceof Obstacle);
+    }
+
     //method to initiate the entity when its not on the board
-    public void initiateEntity(int y, int x, Entity being) {
+    public boolean initiateEntity(int y, int x, Entity being) {
     	try {
-    		this.cells[y][x].setEntity(being);
+    		if(isNotOccupied(y, x)) {
+    			this.cells[y][x].setEntity(being);
+    			return true;
+    		} else {
+    			System.out.println("[Erreur] : Il y a quelque chose sur cette case");
+    			return false;
+    		}
     	} catch(IndexOutOfBoundsException e) {
     		System.out.println("[Erreur] : Case inexistante");
+    		return false;
     	}
     }
 
@@ -53,12 +89,11 @@ public class Board {
 	}
     //This method will create a border on the board that won't be crossable
     private void createBorder() {
-    	Cell mountain = new Cell(); //TODO La case qui servira de Bordure à déterminer
     	for(int i = 0; i < this.cells[0].length; i++) {
-    		this.cells[0][i] = new Cell();
-    		this.cells[16][i] = new Cell();
-    		this.cells[i][0] = new Cell();
-    		this.cells[i][16] = new Cell();
+    		this.cells[0][i] = new Cell(new Wall(this, 0, i));
+    		this.cells[16][i] = new Cell(new Wall(this, 16, i));
+    		this.cells[i][0] = new Cell(new Wall(this, i, 0));
+    		this.cells[i][16] = new Cell(new Wall(this, i, 16));
     	}
     }
 
@@ -77,8 +112,13 @@ public class Board {
     //TODO what happens if a player entity try to go into an ennemy entity ?
     public boolean move (int yStart, int xStart, int yEnd, int xEnd) {
     	try {
-    		this.cells[yEnd][xEnd].setEntity(this.cells[yStart][xStart].getEntity());
-    		this.cells[yStart][xStart].setEntity(null);
+    		if(isNotOccupied(yEnd, xEnd)) {
+    			this.cells[yEnd][xEnd].setEntity(this.cells[yStart][xStart].getEntity());
+    			this.cells[yStart][xStart].setEntity(null);
+    		} else {
+    			System.out.println("[Erreur] : Il y a quelque chose sur la destination");
+    			return false;
+    		}
     	} catch(IndexOutOfBoundsException e) {
     		System.out.println("[Erreur] : Le déplacement n'a pas pu se faire");
     		return false;
@@ -93,11 +133,12 @@ public class Board {
     		for(int j = 1; j < this.cells[i].length - 1; j++)
     				this.cells[i][j] = new Cell ();
     }
-    //FIXME: Code to implement
-    public boolean endOfLevel() {
-    	return false;
+
+    //FIXME: maybe Personage rather than Player for instanceof
+    public boolean endOfLevel(){
+    	return (this.finish.getEntity() != null && this.finish.getEntity() instanceof Player) || !getPlayer().hasActionsLeft();
     }
-    //FIXME: Code to implement
+
     public void run() {
     	for(Personage p : this.characters)
     		p.run();
