@@ -28,6 +28,7 @@ public class EditPanel extends JPanel implements IActionPanelListable {
 
         setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
         head = new ActionPanel( controller, new Move(null) );
+        head.setParentPanel(this);
         add(head);
     }   
 
@@ -36,17 +37,35 @@ public class EditPanel extends JPanel implements IActionPanelListable {
      * 
      */
     public void addActionPanel(ActionPanel ap, ActionPanel previous) {
+
+        int indexAp = getIndexInPane(ap, head);
+        int indexPrevious = getIndexInPane(previous, head);
+        if (indexAp != -1 && indexAp <= indexPrevious)
+            return;
+
+        if (ap.getParentPanel() != null) 
+            ap.getParentPanel().removeActionPanel(ap);
+
         updateNext(ap, previous);
-        addRecursively(ap, null, this);
+        addRecursively(ap, this, this);
     }
 
     /**
      * 
      */
     public void removeActionPanel(ActionPanel ap) {
-        if (ap == head)
+        if (ap.getInstruction() == null)
             return;
-        // TODO implement here
+
+        ActionPanel previous = getPrevious(ap, head);
+        if (previous != null)
+            previous.next = null;
+
+        removeRecursively(ap, this);
+    }
+
+    public String getListType() {
+        return "editPanelList";
     }
 
     /**

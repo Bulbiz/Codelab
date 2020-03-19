@@ -54,8 +54,10 @@ public class ControlFlowStatementPanel extends ActionPanel implements IActionPan
     private JPanel conditionPanelPanel;
     
     public void setConditionPanel(ConditionPanel cp) {
-        if (cp.getParentPanel() != null && cp.getParentPanel() != this) {
-            cp.getParentPanel().setConditionPanel(createEmptyConditionPanel(cp.getParentPanel()));
+        if (cp.getParentPanel() != this) {
+            ControlFlowStatementPanel parent = (ControlFlowStatementPanel)cp.getParentPanel();
+            if (parent != null)
+                parent.setConditionPanel(createEmptyConditionPanel(parent));
         }
 
         conditionPanelPanel.remove(conditionPanel);
@@ -65,7 +67,7 @@ public class ControlFlowStatementPanel extends ActionPanel implements IActionPan
         revalidate();
     }
 
-    private ConditionPanel createEmptyConditionPanel(ControlFlowStatementPanel parent) {
+    private ConditionPanel createEmptyConditionPanel(IActionPanelListable parent) {
         ConditionPanel cp = new ConditionPanel(controller, null);
         cp.setParentPanel(parent);
         return cp;
@@ -89,9 +91,8 @@ public class ControlFlowStatementPanel extends ActionPanel implements IActionPan
             head = ap;
             updateNext(ap, null);
         }
-        else {
+        else
             updateNext(ap, previous);
-        }
 
         addRecursively(ap, this, actionPanelsPanel);
         revalidate();
@@ -105,15 +106,17 @@ public class ControlFlowStatementPanel extends ActionPanel implements IActionPan
 
         ActionPanel previous = getPrevious(ap, head);
         if (previous != null) {
-            System.out.println("previous != null");
             previous.next = null;
         }
         else {
-            System.out.println("previous == null");
             head = createEmptyActionPanel();
             actionPanelsPanel.add(head);
         }
         revalidate();
+    }
+
+    public String getListType() {
+        return "flowControlStatementList";
     }
 
 	public Instruction toInstruction() {

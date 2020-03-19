@@ -6,7 +6,7 @@ import javax.swing.JPanel;
 interface IActionPanelListable {
 
     void addActionPanel(ActionPanel ap, ActionPanel previous);
-    default void addRecursively(ActionPanel ap, ControlFlowStatementPanel parent, JPanel panel) {
+    default void addRecursively(ActionPanel ap, IActionPanelListable parent, JPanel panel) {
         ActionPanel cur = ap;
         while (cur != null) {
             panel.add(cur);
@@ -57,4 +57,5 @@ interface IActionPanelListable {
         return cur;
     }
 
+    String getListType();
 }

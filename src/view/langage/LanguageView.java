@@ -113,8 +113,10 @@ public class LanguageView extends JPanel {
         if (!source.getInstruction().getType().equals("condition"))
             return;            
 
-        if (conditionPanel.getParentPanel() != null)
-            conditionPanel.getParentPanel().setConditionPanel((ConditionPanel)source);
+        if (conditionPanel.getParentPanel() != null) {
+            ControlFlowStatementPanel parent = (ControlFlowStatementPanel)conditionPanel.getParentPanel();
+            parent.setConditionPanel((ConditionPanel)source);
+        }            
     }
 
     private void mouseReleasedOverActionPanel(ActionPanel ap, InstructionPanel source) {
@@ -124,11 +126,6 @@ public class LanguageView extends JPanel {
         if (source.getInstruction().getType().equals("condition"))
             return;
         
-
-        if (ap.getParentPanel() == null)
-            editPanel.addActionPanel((ActionPanel)source, ap);
-        else 
-            ap.getParentPanel().addActionPanel((ActionPanel)source, ap);
-            
+        ap.getParentPanel().addActionPanel((ActionPanel)source, ap);            
     }
 }
