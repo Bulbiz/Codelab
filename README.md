@@ -1,8 +1,13 @@
 # CODELAB 3
 
-## Update semaine du 7/03/2020
+## Update semaine du 14/03/2020
 
-Nous avons fait un prototype pour pouvoir charger un niveau à partir d'un JSON, nous avons aussi modifier le board pour qu'il créer un board vierge dans lequel l'on peut y "peindre" les modifications.
+Cette semaine nous avons ajouté les éléments suivants à la branche develop:
+- [en cours] L'édition d'instruction est enfin plus souple et accepte la modification après ajout. 
+
+Parmis les éléments non terminés nous posant des difficultés :
+- la manipulation des plateaux à travers le json n'est pas encore terminée. Nous avons eu des problèmes de compatibilité avec json et json-simple
+-Création d'un level à partir d'un String n'a pas encore été testés mais est implémenter
 
 ## Equipe
 
