@@ -1,7 +1,9 @@
 package src.model.world;
 
 import java.util.*;
-import src.model.langage.*;
+import org.json.*;
+import java.io.FileWriter;
+import src.model.langage.Action;
 
 public class Board {
 
@@ -13,6 +15,7 @@ public class Board {
 	
     /*
     public Board(int yFinish, int xFinish, ArrayList<Entity> characters) {
+
     	this.cells = new Cell[boardLength][boardLength];
     	this.characters = characters;
     	createBorder();
@@ -42,7 +45,7 @@ public class Board {
     
     //FIXME: not optimal yet
     //FIXME: high risk of NullPointerException
-    private Player getPlayer(){
+    public Player getPlayer(){
 		Player player = null;
         for(Entity p: characters){
             if(p instanceof Player)
@@ -120,9 +123,9 @@ public class Board {
     		}
     	}
     }
-    
+
     //TODO the method should verify that the entity isnt trying to go into an obstacle
-    //TODO what happens if a player entity try to go into an ennemy entity ? 
+    //TODO what happens if a player entity try to go into an ennemy entity ?
     public boolean move (int yStart, int xStart, int yEnd, int xEnd) {
     	try {
     		if(isNotOccupied(yEnd, xEnd)) {
@@ -160,4 +163,48 @@ public class Board {
     	}
     	return res;
     }
+
+
+	public JSONArray toJson(){
+		JSONArray jsonCells = new JSONArray();
+		try{
+			for(int i = 0; i < this.cells.length; i++){
+				for(int j = 0; j < this.cells[i].length; j++){
+					jsonCells.put(CellToJson(cells[j][i],j,i));
+				}
+			}
+
+
+
+			FileWriter file = new FileWriter("resources/level.json");
+			file.write(jsonCells.toString(2));
+			file.flush();
+			//System.out.println(jsonCells.toString(2));	just to see the array
+		}catch(Exception e){
+			System.out.println("le json n'a pas pu être créer");
+		}
+		return jsonCells;
+	}
+
+	public JSONObject CellToJson(Cell c, int x, int y){
+		JSONObject json = new JSONObject();
+		try{
+			if(c.getDecor() == null)
+				json.put("decor","null");
+			else
+				json.put("decor",c.getDecor().toString());
+
+			if(c.getEntity() == null)
+				json.put("entity","null");
+			else
+				json.put("entity",c.getEntity().toString());
+
+			json.put("xPosition",x);
+			json.put("yPosition",y);
+			//System.out.println(json.toString(2));
+		}catch(Exception e){
+			System.out.println("le json n'a pas pu être créer");
+		}
+		return json;
+	}
 }

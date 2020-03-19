@@ -19,7 +19,7 @@ public abstract class Action extends Instruction {
 
 
     /**
-     *
+     * @return the number of action executed
      */
     public abstract int run();
 

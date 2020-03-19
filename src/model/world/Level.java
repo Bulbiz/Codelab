@@ -2,7 +2,8 @@
 package src.model.world;
 
 import src.model.langage.*;
-
+import src.Test;
+import org.json.simple.JSONObject;
 import java.util.*;
 /**
  *
@@ -15,13 +16,19 @@ public class Level {
 
     /**
      * FIXME : Use a JSON as a argument should be better
-     */
+     
     public Level(Board b, int id, ArrayList<Action> a) {
         this.board = b;
         this.id = id;
         this.actions = a;
-    }
+    }*/
 
+    public Level (int id,JSONObject json) {
+    	this.id = id;
+    	this.actions = null;
+    	initiateBoard (json);
+    }
+    
     public void run () {
         this.board.run();
         System.out.println(this.board + "\n ************* \n"); //Terminal View
@@ -38,15 +45,19 @@ public class Level {
     public ArrayList<Action> getActions () {
     	return this.actions;
     }
-    
+    public Player getPlayer() {
+    	return this.board.getPlayer();
+    }
     //FIXME : Should be changed to JSON
-    private void initiateBoard (String information) {
-    	String[] separation = information.split("/"); //Should be changed
+    private void initiateBoard (JSONObject json) {
     	this.board = new Board ();
-    	initiateBoardDecor(this.board,separation[0].split("|"));
-    	initiateBoardGoal(this.board,separation[1].split("|"));
-    	initiateBoardObjectEntity(this.board,separation[2].split("|"));
-    	initiateBoardPersonageEntity(this.board,separation[3].split("|"));
+    	//FIXME : Should be changed
+    	System.out.println(Test.jsonToStringDecor().split("|"));
+    	
+    	initiateBoardDecor(this.board,Test.jsonToStringDecor().split("|"));
+    	initiateBoardGoal(this.board,Test.jsonToStringGoal().split(","));
+    	initiateBoardObjectEntity(this.board,Test.jsonToStringEntity().split("|"));
+    	initiateBoardPersonageEntity(this.board,Test.jsonToStringPersonage().split("|"));
     }
     
     private void initiateBoardPersonageEntity(Board b, String[] boardEntity) {
@@ -86,6 +97,7 @@ public class Level {
     }
 
     private void initiateBoardDecor(Board b, String[] boardDecor) {
+    	System.out.println(boardDecor[0]);
     	for(int i=0; i< Board.boardLength ; i++) {
     		for(int j=0; j< Board.boardLength ; j++) {
     			initiateDecor( b , boardDecor[i* Board.boardLength + j], j , i);
@@ -94,17 +106,17 @@ public class Level {
     }
     
     private void initiateDecor (Board b, String decor, int y , int x) {
+    	//System.out.println(decor);
     	switch(decor) {
     		case "Door" : b.setDecor(new Door (b, x , y ), y , x); break;
-    		case "Goal" : b.setDecor(new Goal (b, x , y ), y , x); break;
     		case "Wall" : b.setDecor(new Wall (b, x , y ), y , x); break;
-    		default : b.setDecor(null,x,y); break;
+    		default : b.setDecor(null,y,x); break;
     	}
     }
     
     private void initiateBoardGoal (Board b, String [] information) {
     	int x = Integer.parseInt(information[0]);
-    	int y = Integer.parseInt(information[0]);
+    	int y = Integer.parseInt(information[1]);
     	b.initiateGoal(y, x);
     }
 }

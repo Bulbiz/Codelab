@@ -6,6 +6,7 @@ import java.awt.Color;
 import javax.swing.JLabel;
 import java.awt.event.MouseAdapter;
 
+import src.controller.ControllerLanguage;
 import src.model.langage.*;
 
 /**
@@ -16,7 +17,7 @@ public class ConditionPanel extends InstructionPanel {
     /**
      * Default constructor
      */
-    public ConditionPanel(MouseAdapter controller, Condition condition) {
+    public ConditionPanel(ControllerLanguage controller, Condition condition) {
         super(controller, null);
         if (condition != null)
             instruction = InstructionFactory.createCondition(condition.getPersonage(), condition.getVersion());
