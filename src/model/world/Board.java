@@ -2,6 +2,7 @@ package src.model.world;
 
 import java.util.*;
 import org.json.*;
+import java.io.FileWriter;
 
 public class Board {
 
@@ -125,7 +126,10 @@ public class Board {
 
 
 
-			System.out.println(jsonCells.toString(2));
+			FileWriter file = new FileWriter("resources/level.json");
+			file.write(jsonCells.toString(2));
+			file.flush();
+			//System.out.println(jsonCells.toString(2));	just to see the array
 		}catch(Exception e){
 			System.out.println("le json n'a pas pu être créer");
 		}
