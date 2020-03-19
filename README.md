@@ -3,7 +3,7 @@
 ## Update semaine du 14/03/2020
 
 Cette semaine nous avons ajouté les éléments suivants à la branche develop:
-- [en cours] L'édition d'instruction est enfin plus souple et accepte la modification après ajout. 
+- L'édition d'instruction est enfin plus souple et accepte la modification après ajout. 
 
 Parmis les éléments non terminés nous posant des difficultés :
 - la manipulation des plateaux à travers le json n'est pas encore terminée. Nous avons eu des problèmes de compatibilité avec json et json-simple
