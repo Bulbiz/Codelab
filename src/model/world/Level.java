@@ -39,16 +39,28 @@ public class Level {
     	return this.actions;
     }
     
-    private void initiateBoardEntity(Board b, String[] boardEntity) {
-    	for(String entity : boardEntity) {
+    
+    private void initiateBoardEntity(Board b, String boardEntity) {
+    	String [] listEntity = boardEntity.split("|");
+    	for(String entity : listEntity) {
     		initiateEntity(b,entity);
     	}
     }
     
     private void initiateEntity(Board b, String entity) {
-    	//TODO :
+    	String [] information = entity.split(",");
+    	String classe = information [0];
+    	int x = Integer.parseInt(information[1]);
+    	int y = Integer.parseInt(information[2]);
+    	int facing = Integer.parseInt(information[3]);
+    	
+    	switch(classe) {
+    		case "Player" : b.initiateEntity(y, x, new Player(b , x , y , facing));break;
+			case "Coin" : b.initiateEntity(y, x, new Coin(b , x , y));break;
+			case "Key" : b.initiateEntity(y, x, new Key(b , x , y));break;
+    	}
     }
-    
+
     private void initiateBoardDecor(Board b, String[] boardDecor) {
     	for(int i=0; i< Board.boardLength ; i++) {
     		for(int j=0; j< Board.boardLength ; j++) {
@@ -56,6 +68,7 @@ public class Level {
     		}
     	}
     }
+    
     private void initiateDecor (Board b, String decor, int y , int x) {
     	switch(decor) {
     		case "Door" : b.setDecor(new Door (b, x , y ), y , x); break;
