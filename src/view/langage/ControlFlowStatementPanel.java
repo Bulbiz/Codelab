@@ -1,6 +1,7 @@
 
 package src.view.langage;
 
+import src.controller.ControllerLanguage;
 import src.model.langage.*;
 
 import java.util.*;
@@ -16,24 +17,25 @@ import java.awt.GridLayout;
 /**
  * 
  */
-public class ControlFlowStatementPanel extends ActionPanel {
+public class ControlFlowStatementPanel extends ActionPanel implements IActionPanelListable {
+
+    ActionPanel head;
 
     /**
      * Default constructor
      */
-    public ControlFlowStatementPanel(MouseAdapter controller, ControlFlowStatement cfs) {
+    public ControlFlowStatementPanel(ControllerLanguage controller, ControlFlowStatement cfs) {
         super(controller);
         instruction = InstructionFactory.createFlowControlStatement(cfs.getPersonage(), cfs.getVersion());
 
         conditionPanel = new ConditionPanel(controller, null);
-        conditionPanel.setParent(this);
+        conditionPanel.setParentPanel(this);
         conditionPanelPanel = new JPanel();        
         conditionPanelPanel.add(conditionPanel);
 
-        actionPanelList = new ArrayList<ActionPanel>();
         ActionPanel ap = new ActionPanel(controller, null);
-        ap.setParent(this);
-        actionPanelList.add(ap);
+        ap.setParentPanel(this);
+        head = ap;
         actionPanelsPanel = new JPanel();
         actionPanelsPanel.setLayout(new BoxLayout(actionPanelsPanel, BoxLayout.PAGE_AXIS));
         actionPanelsPanel.add(ap);
@@ -46,34 +48,74 @@ public class ControlFlowStatementPanel extends ActionPanel {
         setBackground(Color.GREEN);
     }
 
-    private ArrayList<ActionPanel> actionPanelList;
     private JPanel actionPanelsPanel;
 
     private ConditionPanel conditionPanel;
     private JPanel conditionPanelPanel;
     
     public void setConditionPanel(ConditionPanel cp) {
+        if (cp.getParentPanel() != this) {
+            ControlFlowStatementPanel parent = (ControlFlowStatementPanel)cp.getParentPanel();
+            if (parent != null)
+                parent.setConditionPanel(createEmptyConditionPanel(parent));
+        }
+
         conditionPanelPanel.remove(conditionPanel);
         conditionPanel = cp;
-        conditionPanel.setParent(this);
+        conditionPanel.setParentPanel(this);
         conditionPanelPanel.add(cp);
         revalidate();
     }
 
-    public void addActionPanel(ActionPanel ap) {
-        if (actionPanelList.get(0).getInstruction() == null)
-            removeActionPanel(actionPanelList.get(0));
+    private ConditionPanel createEmptyConditionPanel(IActionPanelListable parent) {
+        ConditionPanel cp = new ConditionPanel(controller, null);
+        cp.setParentPanel(parent);
+        return cp;
+    }
 
-        actionPanelList.add(ap);
-        actionPanelsPanel.add(ap);
-        ap.setParent(this);
+    private ActionPanel createEmptyActionPanel() {
+        ActionPanel empty = new ActionPanel(controller, null);
+        empty.setParentPanel(this);
+        return empty;
+    }
+
+    public void addActionPanel(ActionPanel ap, ActionPanel previous) {
+        if (ap.getParentPanel() == previous.getParentPanel() && getIndexInPane(ap, head) <= getIndexInPane(previous, head))
+            return;
+
+        if (ap.getParentPanel() != null) 
+            ap.getParentPanel().removeActionPanel(ap);
+
+        if (previous.getInstruction() == null) { 
+            actionPanelsPanel.remove(head);           
+            head = ap;
+            updateNext(ap, null);
+        }
+        else
+            updateNext(ap, previous);
+
+        addRecursively(ap, this, actionPanelsPanel);
         revalidate();
     }
 
     public void removeActionPanel(ActionPanel ap) {
-        actionPanelList.remove(ap);
-        actionPanelsPanel.remove(ap);
-        ap.setParent(null);
+        if (ap.getInstruction() == null)
+            return;
+
+        removeRecursively(ap, actionPanelsPanel);
+
+        ActionPanel previous = getPrevious(ap, head);
+        if (previous != null)
+            previous.next = null;
+        else {
+            head = createEmptyActionPanel();
+            actionPanelsPanel.add(head);
+        }
+        revalidate();
+    }
+
+    public String getListType() {
+        return "flowControlStatementList";
     }
 
 	public Instruction toInstruction() {
@@ -81,11 +123,14 @@ public class ControlFlowStatementPanel extends ActionPanel {
 
         Condition condition = conditionPanel.getCondition();
         if (condition == null) return null;
+        cfs.setCondition(condition);
 
-        for (ActionPanel ap : actionPanelList) {
-            Action a = (Action)ap.toInstruction();
+        ActionPanel cur = head;
+        while (cur != null) {
+            Action a = (Action)cur.toInstruction();
             if (a == null) return null;
             cfs.addAction(a);
+            cur = cur.next;
         }
 
         return instruction;

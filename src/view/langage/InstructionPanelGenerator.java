@@ -18,9 +18,9 @@ public class InstructionPanelGenerator extends JPanel implements IMouseReactive 
 	protected int height, width, y;
 
 	Instruction instruction;
-	MouseAdapter controller;
+	ControllerLanguage controller;
 
-	public InstructionPanelGenerator(Instruction instruction, MouseAdapter controller) {
+	public InstructionPanelGenerator(Instruction instruction, ControllerLanguage controller) {
 		this.instruction = instruction;
 		this.controller = controller;
 		addMouseListener(controller);

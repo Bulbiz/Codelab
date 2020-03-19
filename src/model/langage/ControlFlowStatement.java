@@ -47,6 +47,14 @@ public abstract class ControlFlowStatement extends Action {
 
     public String getType() { return "flow_control_statement"; }
 
+    public void setPersonage(Personage pers) {
+        this.personage = pers;
+        if (condition != null)
+            condition.setPersonage(pers);
+        for (Action a : actions)
+            a.setPersonage(pers);
+    }
+
     public void setCondition(Condition condition) {
         this.condition = condition;
     }

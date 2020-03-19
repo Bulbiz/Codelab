@@ -34,16 +34,16 @@ class Test {
       b.initiateEntity(6,15,steve);
       p.add(steve);
       Level levelTest = new Level(b,1,null);
-      LevelPanel vueLevel = new LevelPanel (levelTest);
+      LevelPanel vueLevel = new LevelPanel (levelTest, steve);
       JFrame testWindows = TestWorldView.createWindows ("Test");
       testWindows.setContentPane(vueLevel);
       testWindows.pack();
     }
 
     public static void main(String[] args) {
-        TestLanguageModel.run();
-        TestWorldModel.run();
-        TestLanguageView.run();
+        //TestLanguageModel.run();
+        //TestWorldModel.run();
+        //TestLanguageView.run();
         TestWorldView.run();
 
        // begin();

@@ -2,6 +2,7 @@ package src.view.world;
 
 import src.model.world.*;
 import src.model.langage.*;
+import src.model.langage.Action;
 import src.controller.*;
 import src.view.langage.*;
 import javax.swing.*;
@@ -15,16 +16,20 @@ public class LevelPanel extends JPanel{
 	private ControllerLevel levelController;
 	
 	private WorldPanel worldView;
-	private JPanel languageView;//FIXME : Place the LanguageView Here
+	private LanguageView languageView;//FIXME : Place the LanguageView Here
 	private JButton runOrStopButton;
 	private JButton restartButton;
 	
-	public LevelPanel (Level l){
+	public LevelPanel (Level l, Personage player){
 		this.level = l;
 		this.levelController = new ControllerLevel (this.level, this);
+
+		ControllerLanguage controllerLanguage = new ControllerLanguage(null);
+		languageView = new LanguageView(controllerLanguage, player);
+		controllerLanguage.setView(languageView);
 		
 		initialiseWorldView();
-		initialiseRunOrStopButton();
+		initialiseRunOrStopButton(languageView);
 		initialiseRestartButton();
 		
 		layoutPlacement();
@@ -35,9 +40,10 @@ public class LevelPanel extends JPanel{
 		this.worldView = new WorldPanel (this.level.getBoard());
 	}
 	
-	private void initialiseRunOrStopButton() {
+	private void initialiseRunOrStopButton(LanguageView languageView) {
 		this.runOrStopButton = new JButton ("Run Or Stop");
-		this.runOrStopButton.addActionListener((e) -> levelController.runOrStop(new LinkedList<src.model.langage.Action>()));//PlaceLanguageHere
+		this.runOrStopButton.addActionListener((e) -> levelController.runOrStop(languageView));
+		//PlaceLanguageHere
 	}
 	
 	private void initialiseRestartButton() {
@@ -50,9 +56,12 @@ public class LevelPanel extends JPanel{
 	}
 	
 	private void layoutPlacement() {
-		this.setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));
-		this.add(constructTopPanel());
-		this.add(constructBodyPanel());
+		JPanel worldPane = new JPanel();
+		worldPane.setLayout(new BoxLayout(worldPane,BoxLayout.Y_AXIS));
+		//worldPane.add(constructTopPanel());
+		worldPane.add(constructBodyPanel()); 
+		this.add(worldPane);
+		this.add(languageView);
 	}
 	//FIXME : Place Holder Panel
 	private JPanel constructTopPanel() {
@@ -71,7 +80,7 @@ public class LevelPanel extends JPanel{
 	private JPanel constructBodyPanel() {
 		JPanel body = new JPanel (new GridLayout (1,2));
 		body.add(constructRightPanel());
-		body.add(constructLeftPanel());
+		//body.add(constructLeftPanel());
 		return body;
 	}
 	

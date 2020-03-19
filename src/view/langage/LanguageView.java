@@ -5,6 +5,7 @@ import javax.swing.JPanel;
 
 import src.controller.ControllerLanguage;
 import src.model.langage.*;
+import src.model.world.Personage;
 
 import java.awt.Graphics;
 import java.util.LinkedList;
@@ -13,38 +14,54 @@ import java.util.Queue;
 public class LanguageView extends JPanel {
 
     ControllerLanguage controller;
+    Personage player;
     
     EditPanel editPanel;
     ResourcePanel resourcePanel;
 
+    Queue<Action> instructionQueue = new LinkedList<Action>();
+
     JPanel movableObject;
 
-    public LanguageView(ControllerLanguage controller) {
+    public LanguageView(ControllerLanguage controller, Personage player) {
         this.controller = controller;
+        this.player = player;
 
-        editPanel = new EditPanel();
+        editPanel = new EditPanel(controller);
         resourcePanel = new ResourcePanel();
 
         add(editPanel);
         add(resourcePanel);
+
+        TestLanguageView.testInstructionPanelGeneratorClick(this, controller);
     }
 
     public void setMovableObject(JPanel o) {
         movableObject = o;
     }
 
-    public Queue<Instruction> toInstruction() {
-        Queue<Instruction> q = new LinkedList<Instruction>();
-        
-        for (int i = editPanel.instructionPanels.size()- 1 ; i >= 0; i++) {
-            InstructionPanel ip = editPanel.instructionPanels.get(i);
-            Instruction instruction = ip.toInstruction();
-            if (instruction == null)
-                return null;
-            q.add(instruction);
-        }
+    public Queue<Action> getInstructionQueue() {
+        return instructionQueue;
+    }
 
-        return q;
+    public void fillInstructionQueue() {
+        while(!instructionQueue.isEmpty())
+            instructionQueue.poll();
+
+        ActionPanel cur = editPanel.head;
+        while (cur != null) {
+            Instruction instruction = cur.toInstruction();            
+            if (instruction == null)
+                return;
+            instruction.setPersonage(player);
+            instructionQueue.add((Action)instruction);
+            cur = cur.next;
+        }
+    }
+
+    public Queue<Instruction> toInstruction() {
+
+        return null;
     }
 
     @Override
@@ -96,8 +113,10 @@ public class LanguageView extends JPanel {
         if (!source.getInstruction().getType().equals("condition"))
             return;            
 
-        if (conditionPanel.getParentPanel() != null)
-            conditionPanel.getParentPanel().setConditionPanel((ConditionPanel)source);
+        if (conditionPanel.getParentPanel() != null) {
+            ControlFlowStatementPanel parent = (ControlFlowStatementPanel)conditionPanel.getParentPanel();
+            parent.setConditionPanel((ConditionPanel)source);
+        }            
     }
 
     private void mouseReleasedOverActionPanel(ActionPanel ap, InstructionPanel source) {
@@ -106,12 +125,9 @@ public class LanguageView extends JPanel {
             return;
         if (source.getInstruction().getType().equals("condition"))
             return;
+        if (source.getInstruction().getVersion().equals("begin"))
+            return;
         
-
-        if (ap.getParentPanel() == null)
-            editPanel.addActionPanel((ActionPanel)source);
-        else 
-            ap.getParentPanel().addActionPanel((ActionPanel)source);
-            
+        ap.getParentPanel().addActionPanel((ActionPanel)source, ap);            
     }
 }
