@@ -1,18 +1,12 @@
 # CODELAB 3
 
-## Update semaine du 7/03/2020
+## Update semaine du 14/03/2020
 
 Cette semaine nous avons ajouté les éléments suivants à la branche develop:
-1.  L'interface graphique a été refaite sans attribuer de JPanel pour chaque cellule du tableau
-2.  Les conditions If et While sont implémentées et ont été testées
+- [en cours] L'édition d'instruction est enfin plus souple et accepte la modification après ajout. 
 
-Dans la branche affichage_langage:
-* Une première version graphique du langage permet de créer du code et de construire une file d'instruction
-
-Dans la branche fusion_affichages:
-* Une version avec la création du code à droite et l'execution de ce code à gauche
-
-Enfin le Makefile accepte les commandes make et make run
+Parmis les éléments non terminés nous posant des difficultés :
+- la manipulation des plateaux à travers le json n'est pas encore terminée. Nous avons eu des problèmes de compatibilité avec json et json-simple
 
 ## Equipe
 
