@@ -7,12 +7,12 @@
 
     "entity" : [
         {
-            "nameEntity" : "key",
+            "nameEntity" : "Key",
             "xPosition" : "8",
             "yPosition" : "5"
         },
         {
-            "nameEntity" : "coin",
+            "nameEntity" : "Coin",
             "xPosition" : "4",
             "yPosition" : "6"
         }
@@ -20,7 +20,457 @@
 
     "decor" : [
         {
-            "nameDecor" : "wall"
+            "nameDecor" : "Wall"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },{
+            "nameDecor" : "Wall"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "Wall"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "Wall"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },{
+            "nameDecor" : "Wall"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "Wall"
+        },
+        {
+            "nameDecor" : "Wall"
+        },
+        {
+            "nameDecor" : "Wall"
+        },
+        {
+            "nameDecor" : "Wall"
+        },{
+            "nameDecor" : "Wall"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },{
+            "nameDecor" : "Wall"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },{
+            "nameDecor" : "Wall"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },{
+            "nameDecor" : "Wall"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },{
+            "nameDecor" : "Wall"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },{
+            "nameDecor" : "Wall"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },
+        {
+            "nameDecor" : "floor"
+        },{
+            "nameDecor" : "Wall"
         },
         {
             "nameDecor" : "floor"
@@ -120,7 +570,7 @@
         {
             "nameDecor" : "floor"
         },{
-            "nameDecor" : "wall"
+            "nameDecor" : "Wall"
         },
         {
             "nameDecor" : "floor"
@@ -170,7 +620,7 @@
         {
             "nameDecor" : "floor"
         },{
-            "nameDecor" : "wall"
+            "nameDecor" : "Wall"
         },
         {
             "nameDecor" : "floor"
@@ -220,7 +670,7 @@
         {
             "nameDecor" : "floor"
         },{
-            "nameDecor" : "wall"
+            "nameDecor" : "Wall"
         },
         {
             "nameDecor" : "floor"
@@ -270,7 +720,7 @@
         {
             "nameDecor" : "floor"
         },{
-            "nameDecor" : "wall"
+            "nameDecor" : "Wall"
         },
         {
             "nameDecor" : "floor"
@@ -320,7 +770,7 @@
         {
             "nameDecor" : "floor"
         },{
-            "nameDecor" : "wall"
+            "nameDecor" : "Wall"
         },
         {
             "nameDecor" : "floor"
@@ -370,457 +820,7 @@
         {
             "nameDecor" : "floor"
         },{
-            "nameDecor" : "wall"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },{
-            "nameDecor" : "wall"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },{
-            "nameDecor" : "wall"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },{
-            "nameDecor" : "wall"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },{
-            "nameDecor" : "wall"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },{
-            "nameDecor" : "wall"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },{
-            "nameDecor" : "wall"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },{
-            "nameDecor" : "wall"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },{
-            "nameDecor" : "wall"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },
-        {
-            "nameDecor" : "floor"
-        },{
-            "nameDecor" : "wall"
+            "nameDecor" : "Wall"
         },
         {
             "nameDecor" : "floor"
