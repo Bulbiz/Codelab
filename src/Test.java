@@ -146,7 +146,7 @@ public class Test {
         Object obj = jsonParser.parse(reader);
         JSONObject jsonLevel = (JSONObject) obj;
         Level levelTest = new Level(1,jsonLevel);
-        LevelPanel vueLevel = new LevelPanel (levelTest, levelTest.getPlayer());
+        LevelPanel vueLevel = new LevelPanel (levelTest);
         JFrame testWindows = TestWorldView.createWindows ("Test");
         testWindows.setContentPane(vueLevel);
         testWindows.pack();

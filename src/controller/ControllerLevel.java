@@ -34,6 +34,8 @@ public class ControllerLevel{
 	}
 
 	public void restart() {
-		//TO DO:
+		this.level.restart();
+		this.vueLevel.restart();
+		this.worldTime = null;
 	}
 }

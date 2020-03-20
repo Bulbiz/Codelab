@@ -24,7 +24,9 @@ public class WorldPanel extends JPanel implements IDisplayable {
     	this.spriteLibrary = new ImageLibrary ();
     	this.spriteLibrary.loadWorldImage();
     }
-
+		public void setBoard(Board b){
+			this.boardModel = b ;
+		}
     private void initiateView() {
     	int length = Board.boardLength * tileLength;
     	this.setPreferredSize(new Dimension(length,length));

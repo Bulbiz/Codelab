@@ -14,7 +14,7 @@ public class Level {
     private Board board;
     private int id;
     private ArrayList<Action> actions; /*actions is the action the player can do for the level */
-
+    private JSONObject jsonSave;
     /**
      * FIXME : Use a JSON as a argument should be better
 
@@ -23,19 +23,23 @@ public class Level {
         this.id = id;
         this.actions = a;
     }*/
-    
+
     //FIXME : Change a little bit
     public Level (int id,JSONObject json) {
     	this.id = id;
     	this.actions = null;
-    	initiateBoard (json);
+      this.jsonSave = json;
+    	this.board = initiateBoard (json);
     }
 
     public void run () {
         this.board.run();
         System.out.println(this.board + "\n ************* \n"); //Terminal View
     }
-
+    
+    public void restart(){
+      this.board = initiateBoard(jsonSave);
+    }
     public boolean endOfLevel(){
     	return board.endOfLevel();
     }
@@ -51,15 +55,15 @@ public class Level {
     	return this.board.getPlayer();
     }
     //FIXME : Should be changed to JSON
-    private void initiateBoard (JSONObject json) {
+    private Board initiateBoard (JSONObject json) {
 
-    	this.board = new Board ();
+    	Board board = new Board ();
     	//FIXME : Should be changed
-
-    	initiateBoardDecor(this.board,(JSONArray)json.get("decor"));
-    	initiateBoardGoal(this.board,(JSONObject) json.get("goal"));
-    	initiateBoardObjectEntity(this.board,(JSONArray)json.get("entity"));
-    	initiateBoardPersonageEntity(this.board,(JSONArray)json.get("perso"));
+    	initiateBoardDecor(board,(JSONArray)json.get("decor"));
+    	initiateBoardGoal(board,(JSONObject) json.get("goal"));
+    	initiateBoardObjectEntity(board,(JSONArray)json.get("entity"));
+    	initiateBoardPersonageEntity(board,(JSONArray)json.get("perso"));
+      return board;
     }
 
     private void initiateBoardPersonageEntity(Board b, JSONArray jsonEntity) {
@@ -108,7 +112,6 @@ public class Level {
     }
 
     private void initiateDecor (Board b, JSONObject information, int y , int x) {
-    	//System.out.println(decor);
     	switch(information.get("nameDecor").toString()) {
     		case "Door" : b.setDecor(new Door (b, x , y ), y , x); break;
     		case "Wall" : b.setDecor(new Wall (b, x , y ), y , x); break;
