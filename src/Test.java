@@ -1,4 +1,3 @@
-
 package src;
 import src.model.langage.*;
 import src.model.world.*;
@@ -145,6 +144,7 @@ public class Test {
         FileReader reader = new FileReader("resources/test.json");
         Object obj = jsonParser.parse(reader);
         JSONObject jsonLevel = (JSONObject) obj;
+        //RECUPERATION DE JSON
         Level levelTest = new Level(1,jsonLevel);
         LevelPanel vueLevel = new LevelPanel (levelTest);
         JFrame testWindows = TestWorldView.createWindows ("Test");
