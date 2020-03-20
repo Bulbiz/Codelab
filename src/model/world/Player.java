@@ -26,6 +26,8 @@ public class Player extends Personage {
         int verification = actions.peek().run();
         while (verification == 0) {
             actions.poll();
+            if(!this.hasActionsLeft())
+            	return;
             verification = actions.peek().run();
         }
 
