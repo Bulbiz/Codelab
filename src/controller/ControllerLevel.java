@@ -44,8 +44,8 @@ public class ControllerLevel{
 	public void errorPopUp(String message) {
 		Object[] options = { "OK" };
 		JOptionPane error = new JOptionPane();
-		JOptionPane.showOptionDialog(null, "Click OK to continue", "Warning",
-				JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE,
+		JOptionPane.showOptionDialog(null, message, "A fatal error has occured",
+				JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE,
 				null, options, options[0]);
 	}
 }
