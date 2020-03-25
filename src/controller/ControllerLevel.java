@@ -39,4 +39,13 @@ public class ControllerLevel{
 		this.vueLevel.restart();
 		this.worldTime = null;
 	}
+	
+	//TODO: method based on a generic example
+	public void errorPopUp(String message) {
+		Object[] options = { "OK" };
+		JOptionPane error = new JOptionPane();
+		JOptionPane.showOptionDialog(null, "Click OK to continue", "Warning",
+				JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE,
+				null, options, options[0]);
+	}
 }
