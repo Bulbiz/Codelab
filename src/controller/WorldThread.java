@@ -26,9 +26,9 @@ public class WorldThread extends Thread {
 		}catch (InterruptedException e) {
 		}
 	}
-	
+
 	public void run() {
-		while(!board.endOfLevel()) {
+		while(!board.endOfLevel() && this.board.getPlayer().hasActionsLeft()) {
 			this.tick();
 			this.render();
 			this.waiting(1300);

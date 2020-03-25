@@ -9,12 +9,13 @@ public class Board {
 
 	private Cell[][] cells;
 	private Cell finish;
-	//FIXME ArrayList characters attributes must be the class Personage or Avatar
-	private ArrayList<Personage> characters;
+	private ArrayList<Entity> characters;
 
 	public static final int boardLength = 17;
 
-    public Board(int yFinish, int xFinish, ArrayList<Personage> characters) {
+    /*
+    public Board(int yFinish, int xFinish, ArrayList<Entity> characters) {
+
     	this.cells = new Cell[boardLength][boardLength];
     	this.characters = characters;
     	createBorder();
@@ -25,6 +26,13 @@ public class Board {
     	    System.out.println("Erreur : Les coordonnées sont hors limite");
     	    return;
     	}
+    }*/
+
+    public Board () {
+    	this.cells = new Cell[boardLength][boardLength];
+			this.characters = new ArrayList<Entity> ();
+    	createBorder();
+    	initiateCells();
     }
 
     public void initiatePlayerActions(Queue<Action> script){
@@ -38,14 +46,12 @@ public class Board {
 
     //FIXME: not optimal yet
     //FIXME: high risk of NullPointerException
-    private Player getPlayer(){
-				Player player = null;
-        for(Personage p: characters){
+    public Player getPlayer(){
+		Player player = null;
+        for(Entity p: characters){
             if(p instanceof Player)
                 player = (Player) p;
         }
-        if(player == null)
-        	return null;
 		return player;
     }
 
@@ -58,6 +64,9 @@ public class Board {
     	}
     }
 
+    public void setDecor(Decor d,int y, int x) {
+    	this.cells[y][x].setDecor(d);
+    }
     /*
      * @return true if the Cell dont have an obstacle or entity false otherwise
      */
@@ -70,6 +79,7 @@ public class Board {
     	try {
     		if(isNotOccupied(y, x)) {
     			this.cells[y][x].setEntity(being);
+    			this.characters.add(being);
     			return true;
     		} else {
     			System.out.println("[Erreur] : Il y a quelque chose sur cette case");
@@ -81,13 +91,19 @@ public class Board {
     	}
     }
 
+    public void initiateGoal(int yGoal, int xGoal) {
+    	this.finish = this.cells[yGoal][xGoal];
+    	this.finish.setDecor(new Goal(this, xGoal, yGoal));
+    }
+
 	public Cell[][] getCells(){
 		return cells;
 	}
 
-	public ArrayList<Personage> getCharacter(){
+	public ArrayList<Entity> getCharacter(){
 		return this.characters;
 	}
+
     //This method will create a border on the board that won't be crossable
     private void createBorder() {
     	for(int i = 0; i < this.cells[0].length; i++) {
@@ -128,20 +144,13 @@ public class Board {
     	return true;
     }
 
-    //FIXME Function Place Holder for the view
-    private void filling () {
-    	for (int i = 1; i < this.cells.length - 1; i++)
-    		for(int j = 1; j < this.cells[i].length - 1; j++)
-    				this.cells[i][j] = new Cell ();
-    }
-
     //FIXME: maybe Personage rather than Player for instanceof
     public boolean endOfLevel(){
-    	return (this.finish.getEntity() != null && this.finish.getEntity() instanceof Player) || !getPlayer().hasActionsLeft();
+    	return (this.finish.getEntity() != null && this.finish.getEntity() instanceof Player);
     }
 
     public void run() {
-    	for(Personage p : this.characters)
+    	for(Entity p : this.characters)
     		p.run();
     }
 

@@ -14,7 +14,9 @@ public class Key extends Entity {
     public Key(Board b, int xStart, int yStart) {
     	super(b,xStart,yStart);
     }
-    
+    public void run() {
+    	//FIXME : do nothing for now
+    }
     public String toString() {
     	return "key";
     }

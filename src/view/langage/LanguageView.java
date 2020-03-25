@@ -15,7 +15,7 @@ public class LanguageView extends JPanel {
 
     ControllerLanguage controller;
     Personage player;
-    
+
     EditPanel editPanel;
     ResourcePanel resourcePanel;
 
@@ -35,7 +35,9 @@ public class LanguageView extends JPanel {
 
         TestLanguageView.testInstructionPanelGeneratorClick(this, controller);
     }
-
+    public void setPlayer (Personage p){
+      this.player = p;
+    }
     public void setMovableObject(JPanel o) {
         movableObject = o;
     }
@@ -50,7 +52,7 @@ public class LanguageView extends JPanel {
 
         ActionPanel cur = editPanel.head;
         while (cur != null) {
-            Instruction instruction = cur.toInstruction();            
+            Instruction instruction = cur.toInstruction();
             if (instruction == null)
                 return;
             instruction.setPersonage(player);
@@ -70,7 +72,7 @@ public class LanguageView extends JPanel {
 
         if (movableObject != null) {
             g.drawRect(movableObject.getX(), movableObject.getY(), 100, 100);
-        }            
+        }
     }
 
     public void mousePressedGenerator(InstructionPanelGenerator generatorPanel) {
@@ -87,12 +89,12 @@ public class LanguageView extends JPanel {
     public void mouseReleasedOverInstructionPanel(InstructionPanel instructionPanel, InstructionPanel source) {
         System.out.println("mouse released over instruction panel");
 
-        Instruction instruction = instructionPanel.getInstruction();        
+        Instruction instruction = instructionPanel.getInstruction();
         if (instruction == null) {
             System.out.println("instruction morte");
             if (instructionPanel instanceof ConditionPanel)
                 mouseReleasedOverConditionPanel((ConditionPanel)instructionPanel, source);
-            else 
+            else
                 mouseReleasedOverActionPanel((ActionPanel)instructionPanel, source);
         }
         else {
@@ -104,19 +106,19 @@ public class LanguageView extends JPanel {
             }
         }
     }
-    
+
     private void mouseReleasedOverConditionPanel(ConditionPanel conditionPanel, InstructionPanel source) {
         // change model
         System.out.println("over condition panel");
         if (source.getInstruction() == null)
-            return;        
+            return;
         if (!source.getInstruction().getType().equals("condition"))
-            return;            
+            return;
 
         if (conditionPanel.getParentPanel() != null) {
             ControlFlowStatementPanel parent = (ControlFlowStatementPanel)conditionPanel.getParentPanel();
             parent.setConditionPanel((ConditionPanel)source);
-        }            
+        }
     }
 
     private void mouseReleasedOverActionPanel(ActionPanel ap, InstructionPanel source) {
@@ -127,7 +129,7 @@ public class LanguageView extends JPanel {
             return;
         if (source.getInstruction().getVersion().equals("begin"))
             return;
-        
-        ap.getParentPanel().addActionPanel((ActionPanel)source, ap);            
+
+        ap.getParentPanel().addActionPanel((ActionPanel)source, ap);
     }
 }

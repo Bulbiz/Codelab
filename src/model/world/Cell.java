@@ -28,6 +28,9 @@ public class Cell {
     protected void setEntity(Entity e) {
     	this.being = e;
     }
+    public void setDecor(Decor d) {
+    	this.decor = d;
+    }
     //Terminal View
     public String toString() {
     	String decorText = this.decor != null? Character.toString(this.decor.toString().charAt(0)) : "N";

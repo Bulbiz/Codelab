@@ -46,7 +46,6 @@ public abstract class Personage extends Entity {
     public void stay () {
     	//Do nothing
     }
-    abstract void run();
 
     public boolean obstacleFront(){
         int xFront = x + rotate [facing][0];
