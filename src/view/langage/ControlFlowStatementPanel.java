@@ -57,7 +57,7 @@ public class ControlFlowStatementPanel extends ActionPanel implements IActionPan
         if (cp.getParentPanel() != this) {
             ControlFlowStatementPanel parent = (ControlFlowStatementPanel)cp.getParentPanel();
             if (parent != null)
-                parent.setConditionPanel(createEmptyConditionPanel(parent));
+                parent.setConditionPanel(createEmptyConditionPanel(parent, controller));
         }
 
         conditionPanelPanel.remove(conditionPanel);
@@ -67,7 +67,7 @@ public class ControlFlowStatementPanel extends ActionPanel implements IActionPan
         revalidate();
     }
 
-    private ConditionPanel createEmptyConditionPanel(IActionPanelListable parent) {
+    public static ConditionPanel createEmptyConditionPanel(IParent parent, ControllerLanguage controller) {
         ConditionPanel cp = new ConditionPanel(controller, null);
         cp.setParentPanel(parent);
         return cp;

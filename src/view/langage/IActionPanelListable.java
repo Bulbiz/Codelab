@@ -3,7 +3,7 @@ package src.view.langage;
 
 import javax.swing.JPanel;
 
-interface IActionPanelListable {
+interface IActionPanelListable extends IParent {
 
     void addActionPanel(ActionPanel ap, ActionPanel previous);
     default void addRecursively(ActionPanel ap, IActionPanelListable parent, JPanel panel) {

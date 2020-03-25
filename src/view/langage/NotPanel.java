@@ -8,7 +8,7 @@ import javax.swing.JPanel;
 import src.controller.ControllerLanguage;
 import src.model.langage.*;
 
-public class NotPanel extends ConditionPanel {
+public class NotPanel extends ConditionPanel implements IParent {
 
     ConditionPanel conditionPanel;
     JPanel conditionPanelPanel = new JPanel();
@@ -21,6 +21,7 @@ public class NotPanel extends ConditionPanel {
     public void setUpPanel() {
         setLayout(new BoxLayout(this, BoxLayout.LINE_AXIS));
         add(new JLabel("NOT"));
+        conditionPanelPanel.add(ControlFlowStatementPanel.createEmptyConditionPanel(this, controller));
         add(conditionPanelPanel);
     }
 

@@ -35,7 +35,7 @@ public abstract class InstructionPanel extends JPanel implements IMouseReactive 
      */
     protected int y;
 
-    protected IActionPanelListable parent;
+    protected IParent parent;
 
     protected ControllerLanguage controller;
 
@@ -89,11 +89,11 @@ public abstract class InstructionPanel extends JPanel implements IMouseReactive 
         return instruction;
     }
 
-    public IActionPanelListable getParentPanel() {
+    public IParent getParentPanel() {
         return parent;
     }
 
-    public void setParentPanel(IActionPanelListable parent) {
+    public void setParentPanel(IParent parent) {
         this.parent = parent;
     }
 
