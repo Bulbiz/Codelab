@@ -15,6 +15,13 @@ public class Not extends Condition {
         condition = c;
     }    
 
+    @Override
+    public void setPersonage(Personage pers) {
+        if (condition != null)
+            condition.setPersonage(pers);
+        personage = pers;        
+    }
+
     public boolean isTrue() {
         return !condition.isTrue();
     }

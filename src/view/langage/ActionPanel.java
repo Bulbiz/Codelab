@@ -40,11 +40,4 @@ public class ActionPanel extends InstructionPanel {
       return (IActionPanelListable) parent; 
     }
 
-    /**
-     * 
-     */
-    public Instruction toInstruction() {
-      return instruction;
-	}
-
 }

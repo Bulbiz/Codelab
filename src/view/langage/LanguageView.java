@@ -49,14 +49,19 @@ public class LanguageView extends JPanel {
             instructionQueue.poll();
 
         ActionPanel cur = editPanel.head;
+        boolean wentOk = true;
         while (cur != null) {
             Instruction instruction = cur.toInstruction();            
-            if (instruction == null)
-                return;
+            if (instruction == null) {
+                wentOk = false;
+                break;
+            }
             instruction.setPersonage(player);
             instructionQueue.add((Action)instruction);
             cur = cur.next;
         }
+        if (!wentOk)
+            instructionQueue.clear();
     }
 
     public Queue<Instruction> toInstruction() {

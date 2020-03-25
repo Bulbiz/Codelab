@@ -119,7 +119,7 @@ public class ControlFlowStatementPanel extends ActionPanel implements IActionPan
 	public Instruction toInstruction() {
         ControlFlowStatement cfs = (ControlFlowStatement) instruction;
 
-        Condition condition = conditionPanel.getCondition();
+        Condition condition = (Condition) conditionPanel.toInstruction();
         if (condition == null) return null;
         cfs.setCondition(condition);
 

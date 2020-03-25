@@ -80,10 +80,9 @@ public abstract class InstructionPanel extends JPanel implements IMouseReactive 
         // TODO implement here
     }
 
-    /**
-     * 
-     */
-    public abstract Instruction toInstruction();
+    public Instruction toInstruction() {
+        return instruction;
+    }
 
     public Instruction getInstruction() {
         return instruction;

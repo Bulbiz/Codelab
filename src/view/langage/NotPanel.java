@@ -37,12 +37,20 @@ public class NotPanel extends ConditionPanel implements IConditionPanelAdjustabl
     public void changeConditionPanel(ConditionPanel cp) {
         changeConditionPanel(cp, conditionPanelPanel, controller);
         revalidate();
-    }
+    }    
 
     @Override
     public Instruction toInstruction() {
-        // TODO Auto-generated method stub
-        return null;
+
+        System.out.println("say Whaaaaaaaaat ?");
+
+        Not not = (Not) instruction;
+        if (conditionPanel.getCondition() == null)
+            return null;
+
+        System.out.println(instruction.getVersion());
+        not.setCondition(conditionPanel.getCondition());
+        return not;
     }
 
 }

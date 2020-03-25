@@ -34,10 +34,7 @@ public class ConditionPanel extends InstructionPanel {
 
     public Condition getCondition() {
         return (Condition)instruction;
-    }
+    }   
     
-    public Instruction toInstruction() {
-        return instruction;
-    }
 
 }
