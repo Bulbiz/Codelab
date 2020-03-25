@@ -5,6 +5,7 @@ import java.util.*;
 import src.model.langage.*;
 import src.view.world.*;
 import src.view.langage.*;
+import javax.swing.JOptionPane;
 
 public class ControllerLevel{
 	private Level level;
