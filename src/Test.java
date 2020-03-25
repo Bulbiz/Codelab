@@ -139,10 +139,10 @@ class Test {
     }
 
     public static void main(String[] args) throws Exception {
-        /*TestLanguageModel.run();
-        TestWorldModel.run();
-        TestLanguageView.run();
-        TestWorldView.run();*/
+        //TestLanguageModel.run();
+        //TestWorldModel.run();
+        //TestLanguageView.run();
+        TestWorldView.run();
         //testPasDansLeMainThierry();
         
        // begin();

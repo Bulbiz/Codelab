@@ -17,7 +17,7 @@ import java.awt.GridLayout;
 /**
  * 
  */
-public class ControlFlowStatementPanel extends ActionPanel implements IActionPanelListable {
+public class ControlFlowStatementPanel extends ActionPanel implements IActionPanelListable, IConditionPanelAdjustable {
 
     ActionPanel head;
 
@@ -28,8 +28,7 @@ public class ControlFlowStatementPanel extends ActionPanel implements IActionPan
         super(controller);
         instruction = InstructionFactory.createFlowControlStatement(cfs.getPersonage(), cfs.getVersion());
 
-        conditionPanel = new ConditionPanel(controller, null);
-        conditionPanel.setParentPanel(this);
+        conditionPanel = ControlFlowStatementPanel.createEmptyConditionPanel(this, controller);
         conditionPanelPanel = new JPanel();        
         conditionPanelPanel.add(conditionPanel);
 
@@ -53,18 +52,17 @@ public class ControlFlowStatementPanel extends ActionPanel implements IActionPan
     private ConditionPanel conditionPanel;
     private JPanel conditionPanelPanel;
     
-    public void setConditionPanel(ConditionPanel cp) {
-        if (cp.getParentPanel() != this) {
-            ControlFlowStatementPanel parent = (ControlFlowStatementPanel)cp.getParentPanel();
-            if (parent != null)
-                parent.setConditionPanel(createEmptyConditionPanel(parent, controller));
-        }
-
-        conditionPanelPanel.remove(conditionPanel);
-        conditionPanel = cp;
-        conditionPanel.setParentPanel(this);
-        conditionPanelPanel.add(cp);
+    public void changeConditionPanel(ConditionPanel cp) {
+        changeConditionPanel(cp, conditionPanelPanel, controller);
         revalidate();
+    }
+
+    public void setConditionPanel(ConditionPanel cp) {
+        conditionPanel = cp;
+    }
+
+    public ConditionPanel getConditionPanel() {
+        return conditionPanel;
     }
 
     public static ConditionPanel createEmptyConditionPanel(IParent parent, ControllerLanguage controller) {

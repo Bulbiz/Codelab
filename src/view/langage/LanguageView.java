@@ -114,8 +114,8 @@ public class LanguageView extends JPanel {
             return;            
 
         if (conditionPanel.getParentPanel() != null) {
-            ControlFlowStatementPanel parent = (ControlFlowStatementPanel)conditionPanel.getParentPanel();
-            parent.setConditionPanel((ConditionPanel)source);
+            IConditionPanelAdjustable parent = (IConditionPanelAdjustable) conditionPanel.getParentPanel();
+            parent.changeConditionPanel((ConditionPanel)source);
         }            
     }
 

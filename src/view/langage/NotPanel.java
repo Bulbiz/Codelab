@@ -8,7 +8,7 @@ import javax.swing.JPanel;
 import src.controller.ControllerLanguage;
 import src.model.langage.*;
 
-public class NotPanel extends ConditionPanel implements IParent {
+public class NotPanel extends ConditionPanel implements IConditionPanelAdjustable {
 
     ConditionPanel conditionPanel;
     JPanel conditionPanelPanel;
@@ -20,14 +20,23 @@ public class NotPanel extends ConditionPanel implements IParent {
     public void setUpPanel() {
         setLayout(new BoxLayout(this, BoxLayout.LINE_AXIS));
         add(new JLabel("NOT"));
+        conditionPanel = ControlFlowStatementPanel.createEmptyConditionPanel(this, controller);
         conditionPanelPanel = new JPanel();
-        conditionPanelPanel.add(ControlFlowStatementPanel.createEmptyConditionPanel(this, controller));
+        conditionPanelPanel.add(conditionPanel);
         add(conditionPanelPanel);
-        System.out.println("set up override");  
     }
 
     public void setConditionPanel(ConditionPanel cp) {
         conditionPanel = cp;
+    }
+
+    public ConditionPanel getConditionPanel() {
+        return conditionPanel;
+    }
+
+    public void changeConditionPanel(ConditionPanel cp) {
+        changeConditionPanel(cp, conditionPanelPanel, controller);
+        revalidate();
     }
 
     @Override

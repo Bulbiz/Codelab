@@ -26,7 +26,6 @@ public class ConditionPanel extends InstructionPanel {
 
     public void setUpPanel() {
         add(new JLabel(instruction != null ? instruction.getVersion() : "null"));
-        System.out.println("set up original");       
     }
 
     public void setCondition(Condition condition) {
