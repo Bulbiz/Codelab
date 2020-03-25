@@ -32,7 +32,11 @@ public class InstructionPanelGenerator extends JPanel implements IMouseReactive 
 
 	public InstructionPanel createInstructionPanel() {
 		switch (instruction.getType()) {
-			case "condition": return new ConditionPanel(controller, (Condition)instruction);
+			case "condition": 
+				if (instruction.getVersion().equals("not"))
+					return new NotPanel(controller, (Not) instruction);
+				else 
+					return new ConditionPanel(controller, (Condition)instruction);
 			case "action": return new ActionPanel(controller, (Action)instruction);
 			default: return new ControlFlowStatementPanel(controller, (ControlFlowStatement)instruction);
 		}

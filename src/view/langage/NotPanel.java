@@ -11,18 +11,19 @@ import src.model.langage.*;
 public class NotPanel extends ConditionPanel implements IParent {
 
     ConditionPanel conditionPanel;
-    JPanel conditionPanelPanel = new JPanel();
+    JPanel conditionPanelPanel;
 
-    public NotPanel(ControllerLanguage controller, Condition not) {
-        super(controller, not);
+    public NotPanel(ControllerLanguage controller, Not not) {
+        super(controller, not);           
     }
 
-    @Override 
     public void setUpPanel() {
         setLayout(new BoxLayout(this, BoxLayout.LINE_AXIS));
         add(new JLabel("NOT"));
+        conditionPanelPanel = new JPanel();
         conditionPanelPanel.add(ControlFlowStatementPanel.createEmptyConditionPanel(this, controller));
         add(conditionPanelPanel);
+        System.out.println("set up override");  
     }
 
     public void setConditionPanel(ConditionPanel cp) {

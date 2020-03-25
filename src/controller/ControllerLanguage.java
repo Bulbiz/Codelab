@@ -67,7 +67,6 @@ public class ControllerLanguage extends MouseAdapter {
     } 
 
     public void mouseDragged(MouseEvent me) {
-        System.out.println("drag");
         if (source == null) 
             return;
         
