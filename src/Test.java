@@ -151,7 +151,9 @@ public class Test {
         JFrame testWindows = TestWorldView.createWindows ("Test");
         testWindows.setContentPane(vueLevel);
         testWindows.pack();
-        testWindows.setContentPane(new LoadLevel("Niveau1"));
+        JFrame testLoad = TestWorldView.createWindows ("TestLoad");
+        testLoad.setContentPane(new LoadLevel());
+        testLoad.pack();
       }catch(Exception e){
         e.printStackTrace();
       }
