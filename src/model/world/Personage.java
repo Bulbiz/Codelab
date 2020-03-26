@@ -50,8 +50,6 @@ public abstract class Personage extends Entity {
     public boolean obstacleFront(){
         int xFront = x + rotate [facing][0];
         int yFront = y + rotate [facing][1];
-        if(levelBoard.getCells()[ xFront ][ yFront ].getDecor().getClass().getName().equals("Obstacle"))
-            return true;
-        return false;
+        return levelBoard.getCells()[ xFront ][ yFront ].getDecor() instanceof Obstacle;
     }
 }
