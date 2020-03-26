@@ -35,11 +35,7 @@ public class WorldThread extends Thread {
 			this.render();
 			this.waiting(1300);
 		}
-		if(board.win()){
-			this.controller.win();
-		}else{
-			this.controller.lose();
-		}
+		this.controller.endGame(this.board.win());
 		this.interrupt();
 	}
 }

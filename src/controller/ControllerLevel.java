@@ -32,16 +32,13 @@ public class ControllerLevel{
 			this.worldTime.start();
 		}
 	}
-	public void win(){
-		//TODO: maybe make something more specialuh
-		System.out.println("You WIN !");
-		restart();
+
+	public void endGame(boolean hasWon) {
+    String message = hasWon ? "You Win !" : "You Lose, PFFFFFF !";
+    System.out.println(message);
+    restart();
 	}
-	public void lose(){
-		//TODO: maybe make something more specialuh
-		System.out.println("You LOSE !PFFF");
-		restart();
-	}
+
 	public void restart() {
 		this.level.restart();
 		this.vueLevel.restart();
