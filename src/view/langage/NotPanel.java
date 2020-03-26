@@ -45,8 +45,7 @@ public class NotPanel extends ConditionPanel implements IConditionPanelAdjustabl
         Not not = (Not) instruction;
         if (conditionPanel.getCondition() == null)
             return null;
-
-        System.out.println(instruction.getVersion());
+        
         not.setCondition(conditionPanel.getCondition());
         return not;
     }
