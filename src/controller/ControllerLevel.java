@@ -42,8 +42,8 @@ public class ControllerLevel{
 
 	//TODO: method based on a generic example
 	public static void errorPopUp(String message) {
-		Object[] options = { "OK" };
-		JOptionPane error = new JOptionPane();
+		Object[] options = { "ACNH", "OK" };
+		//JOptionPane error = new JOptionPane();
 		JOptionPane.showOptionDialog(null, message, "A fatal error has occured",
 				JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE,
 				null, options, options[0]);
