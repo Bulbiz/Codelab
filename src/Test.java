@@ -151,6 +151,7 @@ public class Test {
         JFrame testWindows = TestWorldView.createWindows ("Test");
         testWindows.setContentPane(vueLevel);
         testWindows.pack();
+        testWindows.setContentPane(new LoadLevel("Niveau1"));
       }catch(Exception e){
         e.printStackTrace();
       }
@@ -163,7 +164,7 @@ public class Test {
         //testPasDansLeMainThierry();
 
         begin();
-        ControllerLevel.errorPopUp("Rémy répond pas dans Discord ce con...");
+        //ControllerLevel.errorPopUp("Rémy répond pas dans Discord ce con...");
         System.out.println("fin de test");
     }
 }
