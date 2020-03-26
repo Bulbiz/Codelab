@@ -4,6 +4,7 @@ import src.model.world.*;
 import src.view.langage.*;
 import src.view.world.*;
 import src.view.*;
+import src.controller.*;
 import java.util.*;
 import javax.swing.*;
 import java.awt.*;
@@ -150,6 +151,9 @@ public class Test {
         JFrame testWindows = TestWorldView.createWindows ("Test");
         testWindows.setContentPane(vueLevel);
         testWindows.pack();
+        JFrame testLoad = TestWorldView.createWindows ("TestLoad");
+        testLoad.setContentPane(new LoadLevel());
+        testLoad.pack();
       }catch(Exception e){
         e.printStackTrace();
       }
@@ -162,6 +166,7 @@ public class Test {
         //testPasDansLeMainThierry();
 
         begin();
+        //ControllerLevel.errorPopUp("Rémy répond pas dans Discord ce con...");
         System.out.println("fin de test");
     }
 }

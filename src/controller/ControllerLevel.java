@@ -5,6 +5,7 @@ import java.util.*;
 import src.model.langage.*;
 import src.view.world.*;
 import src.view.langage.*;
+import javax.swing.JOptionPane;
 
 public class ControllerLevel{
 	private Level level;
@@ -43,5 +44,14 @@ public class ControllerLevel{
 		this.level.restart();
 		this.vueLevel.restart();
 		this.worldTime = null;
+	}
+
+	//TODO: method based on a generic example
+	public static void errorPopUp(String message) {
+		Object[] options = { "ACNH", "OK" };
+		//JOptionPane error = new JOptionPane();
+		JOptionPane.showOptionDialog(null, message, "A fatal error has occured",
+				JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE,
+				null, options, options[0]);
 	}
 }
