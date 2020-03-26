@@ -25,6 +25,10 @@ public abstract class Personage extends Entity {
     	actions = a;
     }
 
+    public int getFacing(){
+        return facing;
+    }
+
     private void turn (int rotate) {
     	this.facing = ((this.facing + rotate) + 4) % 4; // "+ 4" is to always get positif modulus
     }
@@ -52,4 +56,6 @@ public abstract class Personage extends Entity {
         int yFront = y + rotate [facing][1];
         return levelBoard.getCells()[ xFront ][ yFront ].getDecor() instanceof Obstacle;
     }
+
+
 }

@@ -165,46 +165,115 @@ public class Board {
     }
 
 
-	public JSONArray toJson(){
-		JSONArray jsonCells = new JSONArray();
+	public void toJson(String nameJson){
+		JSONObject json = new JSONObject();
 		try{
-			for(int i = 0; i < this.cells.length; i++){
-				for(int j = 0; j < this.cells[i].length; j++){
-					jsonCells.put(CellToJson(cells[j][i],j,i));
-				}
-			}
-
-
-
-			FileWriter file = new FileWriter("resources/level.json");
-			file.write(jsonCells.toString(2));
+			json.put("goal",goalToJson());
+			json.put("entity",entityToJson());
+			json.put("decor",decorToJson());
+			json.put("perso",persoToJson());
+			FileWriter file = new FileWriter("resources/" + nameJson + ".json"); //override if the same name
+			file.write(json.toString(2));
 			file.flush();
-			//System.out.println(jsonCells.toString(2));	just to see the array
 		}catch(Exception e){
 			System.out.println("le json n'a pas pu être créer");
 		}
-		return jsonCells;
 	}
 
-	public JSONObject CellToJson(Cell c, int x, int y){
+
+	public JSONObject goalToJson(){
 		JSONObject json = new JSONObject();
 		try{
-			if(c.getDecor() == null)
-				json.put("decor","null");
-			else
-				json.put("decor",c.getDecor().toString());
+			json.put("xPosition",finish.getDecor().getXPosition());
+			json.put("yPosition",finish.getDecor().getYPosition());
 
-			if(c.getEntity() == null)
-				json.put("entity","null");
-			else
-				json.put("entity",c.getEntity().toString());
-
-			json.put("xPosition",x);
-			json.put("yPosition",y);
-			//System.out.println(json.toString(2));
 		}catch(Exception e){
 			System.out.println("le json n'a pas pu être créer");
 		}
 		return json;
+	}
+
+
+	public JSONObject soloDecorToJson(Cell c){
+		JSONObject json = new JSONObject();
+		try{
+			if(c.getDecor() == null)
+				json.put("nameDecor","null");
+			else
+				json.put("nameDecor",c.getDecor().getClass().getSimpleName());
+
+		}catch(Exception e){
+			System.out.println("le json n'a pas pu être créer");
+		}
+		return json;
+	}
+
+
+	public JSONArray decorToJson(){
+		JSONArray jsonArray = new JSONArray();
+		try{
+			for(int i = 0; i < this.cells.length; i++){
+				for(int j = 0; j < this.cells[i].length; j++){
+					jsonArray.put(soloDecorToJson(cells[i][j]));   //check with Antoine for the orientation
+				}
+			}
+
+		}catch(Exception e){
+			System.out.println("le json n'a pas pu être créer");
+		}
+		return jsonArray;
+	}
+
+
+	public JSONObject soloEntityToJson(Entity e){
+		JSONObject json = new JSONObject();
+		try{
+			json.put("nameEntity",e.getClass().getSimpleName());
+			json.put("xPosition",e.getX());
+			json.put("yPosition",e.getY());
+
+		}catch(Exception exception){
+			System.out.println("le json n'a pas pu être créer");
+		}
+		return json;
+	}
+
+	public JSONArray entityToJson(){
+		JSONArray jsonArray = new JSONArray();
+		try{
+			for(Entity e : characters){
+				if(!(e instanceof Personage))
+					jsonArray.put(soloEntityToJson(e));
+			}
+		}catch(Exception exception){
+			System.out.println("le json n'a pas pu être créer");
+		}
+		return jsonArray;
+	}
+
+	public JSONObject soloPersoToJson(Personage p){
+		JSONObject json = new JSONObject();
+		try{
+			json.put("namePerso",p.getClass().getSimpleName());
+			json.put("xPosition",p.getX());
+			json.put("yPosition",p.getY());
+			json.put("facing",p.getFacing());
+		}catch(Exception exception){
+			System.out.println("le json n'a pas pu être créer");
+		}
+		return json;
+	}
+
+	public JSONArray persoToJson(){
+		JSONArray jsonArray = new JSONArray();
+		try{
+			for(Entity e : characters){
+				if(e instanceof Personage)
+					jsonArray.put(soloPersoToJson((Personage)e));
+			}
+		}catch(Exception e){
+			System.out.println("le json n'a pas pu être créer");
+		}
+		return jsonArray;
 	}
 }
