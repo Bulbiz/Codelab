@@ -140,13 +140,13 @@ public class Test {
 
     public static void begin(){
       try{
-        JSONParser jsonParser = new JSONParser();
+        /*JSONParser jsonParser = new JSONParser();
         FileReader reader = new FileReader("resources/test.json");
         Object obj = jsonParser.parse(reader);
         JSONObject jsonLevel = (JSONObject) obj;
         //RECUPERATION DE JSON
-        Level levelTest = new Level(1,jsonLevel);
-        LevelPanel vueLevel = new LevelPanel (levelTest);
+        Level levelTest = new Level("test");*/
+        LevelPanel vueLevel = new LevelPanel ("test");
         JFrame testWindows = TestWorldView.createWindows ("Test");
         testWindows.setContentPane(vueLevel);
         testWindows.pack();

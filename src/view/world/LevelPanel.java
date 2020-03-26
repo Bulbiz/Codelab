@@ -16,24 +16,28 @@ public class LevelPanel extends JPanel{
 	private ControllerLevel levelController;
 
 	private WorldPanel worldView;
-	private LanguageView languageView;//FIXME : Place the LanguageView Here
+	private LanguageView languageView;
 	private JButton runOrStopButton;
 	private JButton restartButton;
 
-	public LevelPanel (Level l){
-		this.level = l;
-		this.levelController = new ControllerLevel (this.level, this);
+	public LevelPanel (String name){
+		try{
+			this.level = new Level(name);
+			this.levelController = new ControllerLevel (this.level, this);
 
-		ControllerLanguage controllerLanguage = new ControllerLanguage(null);
-		languageView = new LanguageView(controllerLanguage, level.getPlayer());
-		controllerLanguage.setView(languageView);
+			ControllerLanguage controllerLanguage = new ControllerLanguage(null);
+			languageView = new LanguageView(controllerLanguage, level.getPlayer());
+			controllerLanguage.setView(languageView);
 
-		initialiseWorldView();
-		initialiseRunOrStopButton(languageView);
-		initialiseRestartButton();
+			initialiseWorldView();
+			initialiseRunOrStopButton(languageView);
+			initialiseRestartButton();
 
-		layoutPlacement();
-		this.updateDisplay();
+			layoutPlacement();
+			this.updateDisplay();
+		}catch(Exception e){
+			//Afficher un message d'erreur
+		}
 	}
 
 	public void restart(){
