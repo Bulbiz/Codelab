@@ -35,11 +35,9 @@ public class ActionPanel extends InstructionPanel {
       super(controller, null);
     }
 
-    /**
-     * 
-     */
-    public Instruction toInstruction() {
-      return instruction;
-	}
+    @Override 
+    public IActionPanelListable getParentPanel() {
+      return (IActionPanelListable) parent; 
+    }
 
 }

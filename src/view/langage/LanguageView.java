@@ -51,14 +51,19 @@ public class LanguageView extends JPanel {
             instructionQueue.poll();
 
         ActionPanel cur = editPanel.head;
+        boolean wentOk = true;
         while (cur != null) {
-            Instruction instruction = cur.toInstruction();
-            if (instruction == null)
-                return;
+            Instruction instruction = cur.toInstruction();            
+            if (instruction == null) {
+                wentOk = false;
+                break;
+            }
             instruction.setPersonage(player);
             instructionQueue.add((Action)instruction);
             cur = cur.next;
         }
+        if (!wentOk)
+            instructionQueue.clear();
     }
 
     public Queue<Instruction> toInstruction() {
@@ -116,9 +121,9 @@ public class LanguageView extends JPanel {
             return;
 
         if (conditionPanel.getParentPanel() != null) {
-            ControlFlowStatementPanel parent = (ControlFlowStatementPanel)conditionPanel.getParentPanel();
-            parent.setConditionPanel((ConditionPanel)source);
-        }
+            IConditionPanelAdjustable parent = (IConditionPanelAdjustable) conditionPanel.getParentPanel();
+            parent.changeConditionPanel((ConditionPanel)source);
+        }            
     }
 
     private void mouseReleasedOverActionPanel(ActionPanel ap, InstructionPanel source) {

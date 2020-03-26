@@ -63,6 +63,7 @@ public class InstructionFactory {
         switch (version) {
             case "personageestdevant": return new PersonageEstDevant(pers);
             case "obstablefront": return new ObstableFront(pers);
+            case "not": return new Not(pers);
             default: return null;
         }
     }
