@@ -144,8 +144,7 @@ public class Board {
     	return true;
     }
 
-    //FIXME: maybe Personage rather than Player for instanceof
-    public boolean endOfLevel(){
+    public boolean win(){
     	return (this.finish.getEntity() != null && this.finish.getEntity() instanceof Player);
     }
 
