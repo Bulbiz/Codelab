@@ -17,7 +17,7 @@ public abstract class Personage extends Entity {
      * 2 => facing the top
      * 3 => facing the left */
     private static final int [][] rotate = {{1,0},{0,1},{-1,0},{0,-1}};
-    
+
     //FIXME we need a Board to create a Personage but we need a Personage to create a Board
     public Personage(Board b, int xStart, int yStart,int facingStart,Queue<Action> a) {
     	super(b,xStart,yStart);
@@ -50,8 +50,6 @@ public abstract class Personage extends Entity {
     public boolean obstacleFront(){
         int xFront = x + rotate [facing][0];
         int yFront = y + rotate [facing][1];
-        if(levelBoard.getCells()[ xFront ][ yFront ].getDecor().getClass().getName().equals("Obstacle"))
-            return true;
-        return false;
+        return levelBoard.getCells()[ xFront ][ yFront ].getDecor() instanceof Obstacle;
     }
 }
