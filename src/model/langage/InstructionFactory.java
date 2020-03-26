@@ -64,6 +64,7 @@ public class InstructionFactory {
             case "personageestdevant": return new PersonageEstDevant(pers);
             case "obstablefront": return new ObstableFront(pers);
             case "not": return new Not(pers);
+            case "false": return new False(pers);
             default: return null;
         }
     }

@@ -77,8 +77,31 @@ public class ControlFlowStatementPanel extends ActionPanel implements IActionPan
         return empty;
     }
 
+    public boolean isAddingToItself(ActionPanel ap) {
+
+        ActionPanel receiver = this;
+        IActionPanelListable receiverParent = this.getParentPanel();
+        IActionPanelListable apParent = (IActionPanelListable) ap.getParentPanel();
+
+        while (receiverParent != null && !(receiverParent instanceof EditPanel) && receiverParent != apParent) {
+            receiver = (ActionPanel) receiverParent;
+            receiverParent = (IActionPanelListable) receiver.getParentPanel();
+        }
+
+        if (apParent == null || receiverParent == null) 
+            return false;
+
+        if (receiverParent != apParent)
+            return false;
+            
+        return getIndexInPane(receiver, head) <= getIndexInPane(ap, head);
+        
+    }
     public void addActionPanel(ActionPanel ap, ActionPanel previous) {
         if (ap.getParentPanel() == previous.getParentPanel() && getIndexInPane(ap, head) <= getIndexInPane(previous, head))
+            return;
+
+        if (isAddingToItself(ap))
             return;
 
         if (ap.getParentPanel() != null) 
