@@ -147,10 +147,10 @@ public class Test {
         JSONObject jsonLevel = (JSONObject) obj;
         //RECUPERATION DE JSON
         Level levelTest = new Level("test");*/
-        LevelPanel vueLevel = new LevelPanel ("test");
+        /*LevelPanel vueLevel = new LevelPanel ("test");
         JFrame testWindows = TestWorldView.createWindows ("Test");
         testWindows.setContentPane(vueLevel);
-        testWindows.pack();
+        testWindows.pack();*/
         JFrame testLoad = TestWorldView.createWindows ("TestLoad");
         testLoad.setContentPane(new LoadLevel());
         testLoad.pack();
