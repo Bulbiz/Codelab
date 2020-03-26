@@ -14,7 +14,7 @@ public class WorldPanel extends JPanel implements IDisplayable {
 	private static final int tileLength = 32;
 	private Board boardModel;
 	private ImageLibrary spriteLibrary;
-	
+
     /**
      *
      */
@@ -24,15 +24,17 @@ public class WorldPanel extends JPanel implements IDisplayable {
     	this.spriteLibrary = new ImageLibrary ();
     	this.spriteLibrary.loadWorldImage();
     }
-    
+		public void setBoard(Board b){
+			this.boardModel = b ;
+		}
     private void initiateView() {
     	int length = Board.boardLength * tileLength;
     	this.setPreferredSize(new Dimension(length,length));
     	this.setMinimumSize(new Dimension(length,length));
     	this.setMaximumSize(new Dimension(length,length));
-    	
+
     }
-    
+
     public void paintComponent(Graphics g) {
     	super.paintComponent(g);
     	//Draw Here
@@ -43,16 +45,16 @@ public class WorldPanel extends JPanel implements IDisplayable {
     private void paintBoardDecor(Graphics g) {
     	for(int i = 0 ; i < Board.boardLength ; i++) {
     		for(int j = 0 ; j < Board.boardLength ; j++) {
-    			String decorSpriteName = boardModel.getDecor(i,j) != null ? boardModel.getDecor(j,i).toString(): "vide";
+    			String decorSpriteName = boardModel.getDecor(j,i) != null ? boardModel.getDecor(j,i).toString(): "vide";
     			spriteLibrary.getSprite(decorSpriteName).paintIcon(this,g,j*tileLength, i*tileLength);
     		}
     	}
     }
     //FIXME: Shouldn't this be painting Entity instead of just Personage ?
     private void paintPersonage (Graphics g) {
-    	for(Personage p : boardModel.getCharacter()) {
-    		String personageSpriteName = p.toString();
-			spriteLibrary.getSprite(personageSpriteName).paintIcon(this,g,p.getY()*tileLength, p.getX()*tileLength);
+    	for(Entity e : boardModel.getCharacter()) {
+    		String entitySpriteName = e.toString();
+			spriteLibrary.getSprite(entitySpriteName).paintIcon(this,g,e.getY()*tileLength, e.getX()*tileLength);
     	}
     }
     public void updateDisplay() {

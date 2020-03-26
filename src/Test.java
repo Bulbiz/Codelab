@@ -1,4 +1,3 @@
-
 package src;
 import src.model.langage.*;
 import src.model.world.*;
@@ -16,9 +15,9 @@ import org.json.simple.JSONArray;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-class Test {
+public class Test {
     //test of running the project
-    public static void begin(){
+  /* public static void begin(){
       ArrayList<Personage> p = new ArrayList();
       Board b = new Board(6, 1, p);
       Player steve = new Player(b, 6, 15, 1);
@@ -44,7 +43,7 @@ class Test {
       JFrame testWindows = TestWorldView.createWindows ("Test");
       testWindows.setContentPane(vueLevel);
       testWindows.pack();
-    }
+    }*/
 
 
 
@@ -85,6 +84,7 @@ class Test {
         }catch(Exception e){
             e.printStackTrace();
         }
+        System.out.println(s);
         return s;
     }
 
@@ -125,9 +125,9 @@ class Test {
     }
 
     private static void testPasDansLeMainThierry() {
-        Cell c = new Cell();
-        ArrayList<Personage> p = new ArrayList();
-        Board b = new Board(1,1,p);
+        //Cell c = new Cell();
+        //ArrayList<Personage> p = new ArrayList();
+        //Board b = new Board(1,1,p);
         //b.toJson();
         //int x = 5;
         //int y = 7;
@@ -138,14 +138,30 @@ class Test {
         System.out.println(jsonToStringGoal());
     }
 
+    public static void begin(){
+      try{
+        /*JSONParser jsonParser = new JSONParser();
+        FileReader reader = new FileReader("resources/test.json");
+        Object obj = jsonParser.parse(reader);
+        JSONObject jsonLevel = (JSONObject) obj;
+        //RECUPERATION DE JSON
+        Level levelTest = new Level("test");*/
+        LevelPanel vueLevel = new LevelPanel ("test");
+        JFrame testWindows = TestWorldView.createWindows ("Test");
+        testWindows.setContentPane(vueLevel);
+        testWindows.pack();
+      }catch(Exception e){
+        e.printStackTrace();
+      }
+    }
     public static void main(String[] args) throws Exception {
         //TestLanguageModel.run();
         //TestWorldModel.run();
         //TestLanguageView.run();
         TestWorldView.run();
         //testPasDansLeMainThierry();
-        
-       // begin();
+
+        begin();
         System.out.println("fin de test");
     }
 }

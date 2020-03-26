@@ -14,7 +14,9 @@ public class Coin extends Entity {
     public Coin(Board b, int xStart, int yStart) {
     	super(b,xStart,yStart);
     }
-    
+    public void run() {
+    	//FIXME : do nothing for now
+    }
     public String toString() {
     	return "coin";
     }

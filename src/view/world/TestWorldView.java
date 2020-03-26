@@ -13,6 +13,7 @@ import src.model.world.*;
 //import java.util.*;
 
 public class TestWorldView {
+
 	
 	public static JFrame createWindows (String title) {
 		JFrame frame = new JFrame();
@@ -39,7 +40,7 @@ public class TestWorldView {
 		WorldPanel worldView = new WorldPanel(boardTest);
 		worldTest.setContentPane(worldView);
 		worldTest.pack();
-	}*/
+	}
 	private static void testViewWorld() {
 		ArrayList<Personage> p = new ArrayList();
     	Board b = new Board(6, 1, p);
@@ -69,12 +70,8 @@ public class TestWorldView {
     	JFrame testWindows = TestWorldView.createWindows ("Test");
     	testWindows.setContentPane(vueLevel);
     	testWindows.pack();
-	}
+	}*/
+
     public static void run() {
-    	/*EventQueue.invokeLater(() ->{
-    		testDisplayLevel();
-        });*/
-    	//testDisplayLevel();
-    	testViewWorld();
     }
 }
