@@ -6,40 +6,40 @@ import java.util.*;
 
 public class ImageLibrary {
 	private HashMap<String,Icon> storedSprite;
-	
+
 	public ImageLibrary () {
 		this.storedSprite = new HashMap<String,Icon>();
 		this.putImage("vide", "vide.png");
 	}
-	
+
 	public Icon getSprite (String spriteName) {
 		return this.storedSprite.get(spriteName);
 	}
-	
+
 	private void putImage (String key, String filename) {
-		this.storedSprite.put(key,new ImageIcon(this.getClass().getResource("image/" + filename)));
+		this.storedSprite.put(key,new ImageIcon("resourcesImages/" + filename));
 	}
-	
+
 	public void loadWorldImage () {
 		loadDecorImage();
 		loadPlayerImage();
 		loadEntityImage();
 	}
-	
+
 	private void loadPlayerImage() {
 		this.putImage("player0", "player0.gif");
 		this.putImage("player1", "player1.gif");
 		this.putImage("player2", "player2.gif");
 		this.putImage("player3", "player3.gif");
 	}
-	
+
 	private void loadDecorImage() {
 		this.putImage("door", "door.png");
 		this.putImage("goal", "goal.png");
 		this.putImage("wall", "wall.png");
 		this.putImage("ground", "ground.png");
 	}
-	
+
 	private void loadEntityImage() {
 		this.putImage("coin", "coin.png");
 		this.putImage("key", "key.png");
