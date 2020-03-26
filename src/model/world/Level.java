@@ -123,7 +123,7 @@ public class Level {
     private void initiateBoardDecor(Board b, JSONArray jsonDecor) {
     	for(int i=0; i< 15 ; i++) {
     		for(int j=0; j< 15 ; j++) {
-    			JSONObject json = (JSONObject) jsonDecor.get(i* Board.boardLength + j);
+    			JSONObject json = (JSONObject) jsonDecor.get(i* 15 + j);
     			initiateDecor( b , json, j+1 , i+1);
     		}
     	}

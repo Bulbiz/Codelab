@@ -36,6 +36,7 @@ public class LevelPanel extends JPanel{
 			layoutPlacement();
 			this.updateDisplay();
 		}catch(Exception e){
+			e.printStackTrace();
 			//Afficher un message d'erreur
 		}
 	}
