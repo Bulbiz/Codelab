@@ -22,15 +22,21 @@ public class ControllerLevel{
 		if(this.worldTime == null) {
 			lv.fillInstructionQueue();
 			this.level.getBoard().initiatePlayerActions(script);
-			this.worldTime = new WorldThread (level.getBoard(), vueLevel.getWorldView());
+			this.worldTime = new WorldThread (level.getBoard(), vueLevel.getWorldView(),this);
 		}
 
 		if(this.worldTime.isAlive())
 			this.worldTime.stop();
 		else {
-			this.worldTime = new WorldThread (level.getBoard(), vueLevel.getWorldView());
+			this.worldTime = new WorldThread (level.getBoard(), vueLevel.getWorldView(),this);
 			this.worldTime.start();
 		}
+	}
+
+	public void endGame(boolean hasWon) {
+    String message = hasWon ? "You Win !" : "You Lose, PFFFFFF !";
+    System.out.println(message);
+    restart();
 	}
 
 	public void restart() {

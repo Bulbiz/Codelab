@@ -8,10 +8,12 @@ import src.view.langage.*;
 public class WorldThread extends Thread {
 	private Board board;
 	private WorldPanel vueWorld;
+	private ControllerLevel controller;
 
-	public WorldThread (Board b, WorldPanel v) {
+	public WorldThread (Board b, WorldPanel v,ControllerLevel c) {
 		this.board = b;
 		this.vueWorld = v;
+		this.controller = c;
 	}
 
 	private void tick () {
@@ -28,11 +30,12 @@ public class WorldThread extends Thread {
 	}
 
 	public void run() {
-		while(!board.endOfLevel() && this.board.getPlayer().hasActionsLeft()) {
+		while(this.board.getPlayer().hasActionsLeft() && !board.win()) {
 			this.tick();
 			this.render();
 			this.waiting(1300);
 		}
+		this.controller.endGame(this.board.win());
 		this.interrupt();
 	}
 }

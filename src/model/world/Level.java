@@ -36,12 +36,12 @@ public class Level {
         this.board.run();
         System.out.println(this.board + "\n ************* \n"); //Terminal View
     }
-    
+
     public void restart(){
       this.board = initiateBoard(jsonSave);
     }
-    public boolean endOfLevel(){
-    	return board.endOfLevel();
+    public boolean win(){
+    	return board.win();
     }
 
     public Board getBoard () {
