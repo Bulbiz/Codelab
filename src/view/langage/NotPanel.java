@@ -42,8 +42,6 @@ public class NotPanel extends ConditionPanel implements IConditionPanelAdjustabl
     @Override
     public Instruction toInstruction() {
 
-        System.out.println("say Whaaaaaaaaat ?");
-
         Not not = (Not) instruction;
         if (conditionPanel.getCondition() == null)
             return null;
