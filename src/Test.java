@@ -4,6 +4,7 @@ import src.model.world.*;
 import src.view.langage.*;
 import src.view.world.*;
 import src.view.*;
+import src.controller.*;
 import java.util.*;
 import javax.swing.*;
 import java.awt.*;
@@ -162,6 +163,7 @@ public class Test {
         //testPasDansLeMainThierry();
 
         begin();
+        ControllerLevel.errorPopUp("Rémy répond pas dans Discord ce con...");
         System.out.println("fin de test");
     }
 }
