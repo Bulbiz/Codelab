@@ -19,4 +19,13 @@ public abstract class Decor {
     	x = xPosition;
     	y = yPosition;
     }
+
+
+    public int getXPosition(){
+        return x;
+    }
+
+    public int getYPosition(){
+        return y;
+    }
 }
