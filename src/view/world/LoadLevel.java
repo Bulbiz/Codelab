@@ -23,6 +23,7 @@ public class LoadLevel extends JPanel{
                                             testWindows.pack();
                                           } catch(Exception exc){
                                             System.out.println("Le niveau n'existe pas");
+                                            //this.add(new JTextField("Le niveau portant le nom : " + this.placeholder.getText() + " n'existe pas"));
                                           }
                                           });
   }
