@@ -58,6 +58,7 @@ public class ControllerLanguage extends MouseAdapter {
         if (dest != null && source != null) {
             switch (dest.getDestType()) {
                 case "instructionPanel": view.mouseReleasedOverInstructionPanel((InstructionPanel)dest, (InstructionPanel)source); break;
+                case "deletePanel": view.mouseReleasedOverDeletePanel((InstructionPanel)source);
             }
         }
 
@@ -73,5 +74,5 @@ public class ControllerLanguage extends MouseAdapter {
         //JPanel src = (JPanel) source;
         // dessiner panel
     } 
-    
+
 }
