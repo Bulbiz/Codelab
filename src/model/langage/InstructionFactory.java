@@ -62,7 +62,7 @@ public class InstructionFactory {
     public static Condition createCondition(Personage pers, String version) {
         switch (version) {
             case "personageestdevant": return new PersonageEstDevant(pers);
-            case "obstablefront": return new ObstacleFront(pers);
+            case "obstaclefront": return new ObstacleFront(pers);
             case "not": return new Not(pers);
             case "false": return new False(pers);
             default: return null;
