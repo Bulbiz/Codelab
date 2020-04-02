@@ -12,6 +12,7 @@ public class ControllerEditor {
 	public ControllerEditor (BoardEditorPanel b, GeneratorsPanel g) {
 		this.boardEditor = b;
 		this.generator = g;
+		this.placementInstruction = null;
 	}
 	
 	public void setPlacementInstruction(PlacementInterface p) {
@@ -19,6 +20,7 @@ public class ControllerEditor {
 	}
 	
 	public void clicked (int y, int x) {
-		this.placementInstruction.placement(boardEditor.getBoard(), y, x);
+		if(placementInstruction != null)
+			this.placementInstruction.placement(boardEditor.getBoard(), y, x);
 	}
 }
