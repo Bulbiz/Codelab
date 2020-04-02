@@ -27,13 +27,13 @@ public class InstructionFactory {
         return null;
     }
 
-    //TODO gestion des erreurs 
+    //TODO gestion des erreurs
     public static Instruction loadInstructionFromJson(Personage pers, JSONObject json_instruction) {
 
         try {
-            String type = json_instruction.getString("type"); 
+            String type = json_instruction.getString("type");
             String version = json_instruction.getString("version");
-        
+
             switch (type) {
                 case "condition": return createCondition(pers, version);
                 case "action": return createAction(pers, version);
@@ -45,7 +45,7 @@ public class InstructionFactory {
 
     //TODO gestion des erreurs
     private static ControlFlowStatement createFlowControlStatementFromJson(Personage pers, String version, JSONObject json) {
-        
+
         ControlFlowStatement i = null;
 
         i = createFlowControlStatement(pers, version);
@@ -53,7 +53,7 @@ public class InstructionFactory {
         try {
             String conditionVersion = json.getJSONObject("condition").getString("version");
             i.setCondition((Condition)createCondition(pers, conditionVersion));
-        } catch (Exception e) { return i; }        
+        } catch (Exception e) { return i; }
 
         return i;
     }
@@ -62,7 +62,7 @@ public class InstructionFactory {
     public static Condition createCondition(Personage pers, String version) {
         switch (version) {
             case "personageestdevant": return new PersonageEstDevant(pers);
-            case "obstablefront": return new ObstableFront(pers);
+            case "obstaclefront": return new ObstacleFront(pers);
             case "not": return new Not(pers);
             case "false": return new False(pers);
             default: return null;
