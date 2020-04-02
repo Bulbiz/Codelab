@@ -7,7 +7,7 @@ public class PlacementButton extends JButton{
 	private final PlacementInterface placementInstruction;
 	private ControllerEditor controller;
 	
-	public PlacementButton(PlacementInterface p, ControllerEditor c) {
+	public PlacementButton(ControllerEditor c, PlacementInterface p) {
 		this.placementInstruction = p;
 		this.controller = c;
 		this.addActionListener((e) -> this.controller.setPlacementInstruction(p));

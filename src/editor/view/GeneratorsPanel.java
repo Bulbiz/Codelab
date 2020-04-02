@@ -5,7 +5,7 @@ import javax.swing.*;
 import src.controller.ControllerEditor;
 
 public class GeneratorsPanel extends JPanel {
-    private ControllerEditor controller
+    private ControllerEditor controller;
    
     public GeneratorsPanel(ControllerEditor c) {
         controller = c;
