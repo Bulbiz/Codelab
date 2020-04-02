@@ -14,10 +14,18 @@ public class If extends ControlFlowStatement {
         this.addAction(new FinIf(personage));
     }
 
-    class FinIf extends Action{
+    public Instruction createNewInstruction() {
+        return new If(personage);
+    }
+
+    class FinIf extends Action {
 
         public FinIf(Personage personage){
             super(personage);
+        }
+
+        public Instruction createNewInstruction() {
+            return new FinIf(personage);
         }
 
         public int run(){

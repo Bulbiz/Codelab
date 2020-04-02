@@ -80,62 +80,16 @@ public class LanguageView extends JPanel {
         }
     }
 
-    public void mousePressedGenerator(InstructionPanelGenerator generatorPanel) {
-        System.out.println("click generateur");
-        InstructionPanel createdPanel = generatorPanel.createInstructionPanel();
-        controller.setSource(createdPanel);
-        // display InstructionPanel
-    }
-    public void mousePressedInstructionPanel(InstructionPanel instructionPanel) {
-        System.out.println("click instruction panel");
-        controller.setSource(instructionPanel);
+    public void mousePressed(IMouseReactive source) {
+        IMouseReactive pressedPanelSource = source.getSourcePanel();
+        controller.setSource(pressedPanelSource);
     }
 
-    public void mouseReleasedOverInstructionPanel(InstructionPanel instructionPanel, InstructionPanel source) {
-        System.out.println("mouse released over instruction panel");
-
-        Instruction instruction = instructionPanel.getInstruction();
-        if (instruction == null) {
-            System.out.println("instruction morte");
-            if (instructionPanel instanceof ConditionPanel)
-                mouseReleasedOverConditionPanel((ConditionPanel)instructionPanel, source);
-            else
-                mouseReleasedOverActionPanel((ActionPanel)instructionPanel, source);
-        }
-        else {
-            System.out.println("instruction existe");
-
-            switch (instruction.getType()) {
-                case "condition": mouseReleasedOverConditionPanel((ConditionPanel)instructionPanel, source); break;
-                default: mouseReleasedOverActionPanel((ActionPanel)instructionPanel, source); break;
-            }
-        }
-    }
-
-    private void mouseReleasedOverConditionPanel(ConditionPanel conditionPanel, InstructionPanel source) {
-        // change model
-        System.out.println("over condition panel");
-        if (source.getInstruction() == null)
+    public void mouseReleased(IMouseReactive source, IMouseReactive dest) {
+        if (dest == null || source == null)
             return;
-        if (!source.getInstruction().getType().equals("condition"))
-            return;
-
-        if (conditionPanel.getParentPanel() != null) {
-            IConditionPanelAdjustable parent = (IConditionPanelAdjustable) conditionPanel.getParentPanel();
-            parent.changeConditionPanel((ConditionPanel)source);
-        }            
-    }
-
-    private void mouseReleasedOverActionPanel(ActionPanel ap, InstructionPanel source) {
-        System.out.println("over action panel");
-        if (source == null || source.getInstruction() == null)
-            return;
-        if (source.getInstruction().getType().equals("condition"))
-            return;
-        if (source.getInstruction().getVersion().equals("begin"))
-            return;
-
-        ap.getParentPanel().addActionPanel((ActionPanel)source, ap);
+        
+        dest.onRelease(source);
     }
 
     public void mouseReleasedOverDeletePanel(InstructionPanel source) {

@@ -13,6 +13,10 @@ public class TurnLeft extends Action {
     	super(personage);
     }
 
+    public Instruction createNewInstruction() {
+        return new TurnLeft(personage);
+    }
+
     /**
      * @return return the number of actions executed
      */
