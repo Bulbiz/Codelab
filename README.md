@@ -1,13 +1,12 @@
 # CODELAB 3
 
-## Update semaine du 23/03
+## Update semaine du 30/03
 
 Liste des choses ajoutées cette semaine
-- Remy a implémenté la condition de victoire lorsque le personnage atteint la case d'arrivée
-- Rémy a aussi réparé quelques bugs et fait de la gestion d'erreur
-- Personnellement j'ai implémenté graphiquement l'instruction Not et j'ai commencé à travailler sur un affichage visuel du glisser-déposer d'instruction
-- Thierry a implémenté des méthodes de conversion d'objets du plateau vers un fichier json, et les méthodes de conversion de fichier json vers des objets du plateau.
-- Antoine a fait des tests sur l'affichage du message d'erreur syntaxique en explorant notamment les fenêtres pop up que vous nous aviez recommandé. Il travaille actuellement sur comment charger un niveau à l'aide d'un nom de fichier json.
+- Grégoire a implémenté la suppression d'instruction, optimisé et factorisé le code des instructions, et commencé sur une autre branche a implémenter l'éditeur de niveau
+- Thierry a réparer les instructions If et While. 
+- Rémy a commencé sur une autre branche à implémenter sa partie de l'éditeur de niveau. La semaine prochaine, sa partie et celle de Grégoire seront fusionnées et ajouté à develop
+- Antoine a travaillé sur les popups mais n'a pas encore ajoutés ses implémentations à develop
 
 Instructions pour tester le code : 
 - Pour compiler et lancer, faites : make && make run
