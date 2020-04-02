@@ -4,9 +4,9 @@
 
 Liste des choses ajoutées cette semaine
 - Grégoire a implémenté la suppression d'instruction, optimisé et factorisé le code des instructions, et commencé sur une autre branche a implémenter l'éditeur de niveau
-- Thierry a réparer les instructions If et While. 
-- Rémy a commencé sur une autre branche à implémenter sa partie de l'éditeur de niveau. La semaine prochaine, sa partie et celle de Grégoire seront fusionnées et ajouté à develop
-- Antoine a travaillé sur les popups mais n'a pas encore ajoutés ses implémentations à develop
+- Thierry a réparé les instructions If et While. 
+- Rémy a commencé sur une autre branche à implémenter sa partie de l'éditeur de niveau. La semaine prochaine, sa partie et celle de Grégoire seront fusionnées et ajoutées à develop
+- Antoine a implémenté les popups de victoire et de défaite
 
 Instructions pour tester le code : 
 - Pour compiler et lancer, faites : make && make run
