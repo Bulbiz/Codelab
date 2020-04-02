@@ -1,8 +1,7 @@
 
 package src.editor.view;
 
-import javax.swing.JPanel;
-
+import javax.swing.*;
 import src.controller.ControllerEditor;
 
 public class GeneratorsPanel extends JPanel {
