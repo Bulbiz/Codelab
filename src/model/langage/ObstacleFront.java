@@ -6,10 +6,10 @@ import src.model.world.*;
 /**
  *
  */
-public class ObstableFront extends Condition {
+public class ObstacleFront extends Condition {
 
 
-    public ObstableFront(Personage personage) {
+    public ObstacleFront(Personage personage) {
     	super(personage);
     }
 
