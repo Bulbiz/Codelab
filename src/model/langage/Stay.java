@@ -13,6 +13,10 @@ public class Stay extends Action {
     	super(personage);
     }
 
+    public Instruction createNewInstruction() {
+        return new Stay(personage);
+    }
+
     /**
      * @return return the number of actions executed
      */

@@ -13,6 +13,10 @@ public class ConditionTrue extends Condition {
     	super(personage);
     }
 
+    public Instruction createNewInstruction() {
+        return new ConditionTrue(personage);
+    }
+
 
     public boolean isTrue() {
         return true;

@@ -20,6 +20,14 @@ public class DeletePanel extends JButton implements IMouseReactive {
 
     }
 
+    public void onRelease(IMouseReactive source) {
+        if (source == null)
+            return ;
+        
+        InstructionPanel src = (InstructionPanel) source;
+        src.delete();
+    }
+
     public String getDestType() {
         return "deletePanel";
     }

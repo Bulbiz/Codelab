@@ -9,6 +9,10 @@ public class False extends Condition {
         super(personage);
     }
 
+    public Instruction createNewInstruction() {
+        return new False(personage);
+    }
+
     @Override
     public boolean isTrue() {
         return false;

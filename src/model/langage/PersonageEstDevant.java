@@ -8,6 +8,10 @@ public class PersonageEstDevant extends Condition {
         super(personage);
     }
 
+    public Instruction createNewInstruction() {
+        return new PersonageEstDevant(personage);
+    }
+
     @Override
     public boolean isTrue() {
         // TODO Auto-generated method stub

@@ -26,7 +26,7 @@ public class ControlFlowStatementPanel extends ActionPanel implements IActionPan
      */
     public ControlFlowStatementPanel(ControllerLanguage controller, ControlFlowStatement cfs) {
         super(controller);
-        instruction = InstructionFactory.createFlowControlStatement(cfs.getPersonage(), cfs.getVersion());
+        instruction = InstructionFactory.createInstruction(cfs);
 
         conditionPanel = ControlFlowStatementPanel.createEmptyConditionPanel(this, controller);
         conditionPanelPanel = new JPanel();        
@@ -157,4 +157,7 @@ public class ControlFlowStatementPanel extends ActionPanel implements IActionPan
         return instruction;
 	}
 
+    public InstructionPanel createNewInstructionPanel(ControllerLanguage controller, Instruction instruction) {
+        return new ControlFlowStatementPanel(controller, (ControlFlowStatement)instruction);
+    }
 }

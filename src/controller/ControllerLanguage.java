@@ -31,14 +31,8 @@ public class ControllerLanguage extends MouseAdapter {
 
     public void mousePressed(MouseEvent me) {
         IMouseReactive src = (IMouseReactive) me.getSource();
-
-        if (src.getSourceType().equals("null"))
-            return;      
-
-        switch (src.getSourceType()) {
-            case "generatorPanel": view.mousePressedGenerator((InstructionPanelGenerator)src); break;
-            case "instructionPanel": view.mousePressedInstructionPanel((InstructionPanel)src); break;
-        }
+            
+        view.mousePressed(src);
         
     } 
 
@@ -55,12 +49,8 @@ public class ControllerLanguage extends MouseAdapter {
     }
 
     public void mouseReleased(MouseEvent me) {
-        if (dest != null && source != null) {
-            switch (dest.getDestType()) {
-                case "instructionPanel": view.mouseReleasedOverInstructionPanel((InstructionPanel)dest, (InstructionPanel)source); break;
-                case "deletePanel": view.mouseReleasedOverDeletePanel((InstructionPanel)source);
-            }
-        }
+        
+        view.mouseReleased(source, dest);
 
         view.setMovableObject(null);
         source = null;

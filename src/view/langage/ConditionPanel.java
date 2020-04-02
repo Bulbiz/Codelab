@@ -17,9 +17,9 @@ import src.model.langage.*;
 public class ConditionPanel extends InstructionPanel {
 
     public ConditionPanel(ControllerLanguage controller, Condition condition) {
-        super(controller, null);
+        super(controller);
         if (condition != null)
-            instruction = InstructionFactory.createCondition(condition.getPersonage(), condition.getVersion());                      
+            instruction = InstructionFactory.createInstruction(condition);                      
         setBackground(Color.CYAN);
         setUpPanel(); 
     }
@@ -41,6 +41,24 @@ public class ConditionPanel extends InstructionPanel {
         IConditionPanelAdjustable p = (IConditionPanelAdjustable) parent;
         p.changeConditionPanel(ControlFlowStatementPanel.createEmptyConditionPanel(parent, controller));
     }
+
+    public InstructionPanel createNewInstructionPanel(ControllerLanguage controller, Instruction instruction) {
+        return new ConditionPanel(controller, (Condition)instruction);
+    }
     
+    public void onRelease(IMouseReactive src) {
+        InstructionPanel source = (InstructionPanel) src;
+
+        System.out.println("over condition panel");
+        if (source.getInstruction() == null)
+            return;
+        if (!source.getInstruction().getType().equals("condition"))
+            return;
+
+        if (getParentPanel() != null) {
+            IConditionPanelAdjustable parent = (IConditionPanelAdjustable) getParentPanel();
+            parent.changeConditionPanel((ConditionPanel)source);
+        }  
+    }
 
 }

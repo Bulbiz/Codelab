@@ -25,6 +25,8 @@ public abstract class Instruction {
     	this.personage = personage;
     }
 
+    public abstract Instruction createNewInstruction();
+
     /**
      * @return the JSON representation of the instruction 
      */

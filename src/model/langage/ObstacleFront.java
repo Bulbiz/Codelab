@@ -13,6 +13,10 @@ public class ObstacleFront extends Condition {
     	super(personage);
     }
 
+    public Instruction createNewInstruction() {
+        return new ObstacleFront(personage); 
+    }
+
 
     public boolean isTrue() {
         return personage.obstacleFront();
