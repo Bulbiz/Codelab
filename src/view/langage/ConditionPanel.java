@@ -34,7 +34,13 @@ public class ConditionPanel extends InstructionPanel {
 
     public Condition getCondition() {
         return (Condition)instruction;
-    }   
+    }
+
+    @Override
+    public void delete() {
+        IConditionPanelAdjustable p = (IConditionPanelAdjustable) parent;
+        p.changeConditionPanel(ControlFlowStatementPanel.createEmptyConditionPanel(parent, controller));
+    }
     
 
 }

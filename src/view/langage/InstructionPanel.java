@@ -51,14 +51,6 @@ public abstract class InstructionPanel extends JPanel implements IMouseReactive 
      */
     protected int height;
 
-
-    /**
-     * 
-     */
-    public void Move() {
-        // TODO implement here
-    }
-
     /**
      * 
      */
@@ -69,16 +61,7 @@ public abstract class InstructionPanel extends JPanel implements IMouseReactive 
     /**
      * 
      */
-    public void Delete() {
-        // TODO implement here
-    }
-
-    /**
-     * 
-     */
-    public void Select() {
-        // TODO implement here
-    }
+    public abstract void delete();
 
     public Instruction toInstruction() {
         return instruction;

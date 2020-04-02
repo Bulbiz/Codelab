@@ -40,4 +40,11 @@ public class ActionPanel extends InstructionPanel {
       return (IActionPanelListable) parent; 
     }
 
+    @Override
+    public void delete() {
+      IActionPanelListable p = (IActionPanelListable) parent;
+      if (instruction != null && !instruction.getVersion().equals("begin"))
+        p.removeActionPanel(this);
+    }
+
 }

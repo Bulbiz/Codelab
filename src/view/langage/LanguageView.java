@@ -28,7 +28,7 @@ public class LanguageView extends JPanel {
         this.player = player;
 
         editPanel = new EditPanel(controller);
-        resourcePanel = new ResourcePanel();
+        resourcePanel = new ResourcePanel(controller);
 
         add(editPanel);
         add(resourcePanel);
@@ -136,5 +136,12 @@ public class LanguageView extends JPanel {
             return;
 
         ap.getParentPanel().addActionPanel((ActionPanel)source, ap);
+    }
+
+    public void mouseReleasedOverDeletePanel(InstructionPanel source) {
+        if (source == null)
+            return;
+
+        source.delete();
     }
 }
