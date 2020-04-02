@@ -6,6 +6,8 @@ import src.model.langage.*;
 import src.view.world.*;
 import src.view.langage.*;
 import javax.swing.JOptionPane;
+import javax.swing.JButton;
+import javax.swing.JDialog;
 
 public class ControllerLevel{
 	private Level level;
@@ -37,6 +39,9 @@ public class ControllerLevel{
 	public void endGame(boolean hasWon) {
     String message = hasWon ? "You Win !" : "You Lose, PFFFFFF !";
     System.out.println(message);
+		if(hasWon){
+			victoryPopUp();
+		}
     restart();
 	}
 
@@ -46,12 +51,20 @@ public class ControllerLevel{
 		this.worldTime = null;
 	}
 
-	//TODO: method based on a generic example
 	public static void errorPopUp(String message) {
-		Object[] options = { "ACNH", "OK" };
+		//JButton restart = new JButton("Restart");
+		Object[] options = {"OK"};
 		//JOptionPane error = new JOptionPane();
 		JOptionPane.showOptionDialog(null, message, "A fatal error has occured",
 				JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE,
+				null, options, options[0]);
+		//error.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+	}
+
+	public static void victoryPopUp(){
+		Object[] options = {"OK"};
+		JOptionPane.showOptionDialog(null, "Félicitation vous avez gagné la partie !", "Victoire !!",
+				JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE,
 				null, options, options[0]);
 	}
 }
