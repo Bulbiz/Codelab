@@ -41,6 +41,8 @@ public class ControllerLevel{
     System.out.println(message);
 		if(hasWon){
 			victoryPopUp();
+		} else {
+			defeatPopUp();
 		}
     restart();
 	}
@@ -64,6 +66,13 @@ public class ControllerLevel{
 	public static void victoryPopUp(){
 		Object[] options = {"OK"};
 		JOptionPane.showOptionDialog(null, "Félicitation vous avez gagné la partie !", "Victoire !!",
+				JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE,
+				null, options, options[0]);
+	}
+
+	public static void defeatPopUp(){
+		Object[] options = {"Recommencer"};
+		JOptionPane.showOptionDialog(null, "Oups, vous n'avez pas atteint l'objectif, réessayer ?", "Perdu...",
 				JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE,
 				null, options, options[0]);
 	}
