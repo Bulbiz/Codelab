@@ -43,5 +43,6 @@ public class ImageLibrary {
 	private void loadEntityImage() {
 		this.putImage("coin", "coin.png");
 		this.putImage("key", "key.png");
+		this.putImage("floor", "floor.png");
 	}
 }

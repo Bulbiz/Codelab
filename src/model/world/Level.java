@@ -133,6 +133,7 @@ public class Level {
     	switch(information.get("nameDecor").toString()) {
     		case "Door" : b.setDecor(new Door (b, x , y ), y , x); break;
     		case "Wall" : b.setDecor(new Wall (b, x , y ), y , x); break;
+    		case "Floor": b.setDecor(new Floor(b, x, y ), y , x);break;
     		default : b.setDecor(null,y,x); break;
     	}
     }
