@@ -79,8 +79,10 @@ public class Board {
     }
 
     public void initiateGoal(int yGoal, int xGoal) {
+    	if(this.finish != null) 
+    		this.finish.setDecor(new Floor(this,this.finish.getDecor().getXPosition(),this.finish.getDecor().getYPosition())); //Assure the unicity of Goal
     	this.finish = this.cells[yGoal][xGoal];
-    	this.finish.setDecor(new Goal(this, xGoal, yGoal));
+		this.finish.setDecor(new Goal(this, xGoal, yGoal));
     }
 
 	public Cell[][] getCells(){
