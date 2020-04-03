@@ -1,9 +1,11 @@
 
 public class CollectableGeneratorPanel extends JPannel{
+	private ControllerEditor controller;
 	private PlacementButton key;
 	private PlacementButton coin;
 	
 	public EntityGeneratorPanel (ControllerEditor c) {
+		this.controller = c;
 		this.key = new PlacementButton(c,(b,y,x) -> keyPlacement(b,y,x));
 		this.coin = new PlacementButton(c,(b,y,x) -> coinPlacement(b,y,x));
 		
