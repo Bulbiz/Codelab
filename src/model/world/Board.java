@@ -69,12 +69,14 @@ public class Board {
     }
     /*
      * @return true if the Cell dont have an obstacle or entity false otherwise
+     * FIXME : even if there is an Entity, we should be able to go there
      */
     private boolean isNotOccupied(int y, int x) {
     	return this.cells[y][x].getEntity() == null && !(this.cells[y][x].getDecor() instanceof Obstacle);
     }
 
     //method to initiate the entity when its not on the board
+    //FIXME : Can't ecrased an Entity here + when ecrased, should be removed from the list
     public boolean initiateEntity(int y, int x, Entity being) {
     	try {
     		if(isNotOccupied(y, x)) {

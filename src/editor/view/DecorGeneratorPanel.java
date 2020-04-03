@@ -11,6 +11,7 @@ public class DecorGeneratorPanel extends JPannel{
 	private PlacementButton goal;
 	
 	public DecorGeneratorPanel (ControllerEditor c) {
+		this.controller = c;
 		this.wall = new PlacementButton(c,(b,y,x) -> wallPlacement(b,y,x));
 		this.floor = new PlacementButton(c,(b,y,x) -> floorPlacement(b,y,x));
 		this.goal = new PlacementButton(c,(b,y,x) -> goalPlacement(b,y,x));
