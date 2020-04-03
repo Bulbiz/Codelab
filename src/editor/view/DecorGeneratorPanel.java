@@ -4,7 +4,7 @@ import javax.swing.*;
 import src.model.world.*;
 import src.controller.ControllerEditor;
 
-public class DecorGeneratorPanel extends JPannel{
+public class DecorGeneratorPanel extends JPanel{
 	private ControllerEditor controller;
 	private PlacementButton wall;
 	private PlacementButton floor;

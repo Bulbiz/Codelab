@@ -4,16 +4,16 @@ import javax.swing.*;
 import src.model.world.*;
 import src.controller.ControllerEditor;
 
-public class PersonageGeneratorPanel extends JPannel{
+public class PersonageGeneratorPanel extends JPanel{
 	private ControllerEditor controller;
 	private PlacementButton player;
 	
 	public PersonageGeneratorPanel (ControllerEditor c) {
 		this.controller = c;
-		this.player = new PlacementButton(c, (b,y,x) -> playerPlacement(b,y,x))
+		this.player = new PlacementButton(c, (b,y,x) -> playerPlacement(b,y,x));
 	}
 	
-	private void static playerPlacement(Board b, int y, int x) {
+	private static void playerPlacement(Board b, int y, int x) {
 		
 	}
 }
