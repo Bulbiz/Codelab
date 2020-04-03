@@ -1,3 +1,8 @@
+package src.editor.view;
+
+import javax.swing.*;
+import src.model.world.*;
+import src.controller.ControllerEditor;
 
 public class CollectableGeneratorPanel extends JPannel{
 	private ControllerEditor controller;
