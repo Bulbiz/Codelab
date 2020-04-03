@@ -13,21 +13,6 @@ public class Board {
 
 	public static final int boardLength = 17;
 
-    /*
-    public Board(int yFinish, int xFinish, ArrayList<Entity> characters) {
-
-    	this.cells = new Cell[boardLength][boardLength];
-    	this.characters = characters;
-    	createBorder();
-    	initiateCells();
-    	try{
-    	    this.finish = this.cells[yFinish][xFinish];
-    	} catch(Exception e){
-    	    System.out.println("Erreur : Les coordonnées sont hors limite");
-    	    return;
-    	}
-    }*/
-
     public Board () {
     	this.cells = new Cell[boardLength][boardLength];
 			this.characters = new ArrayList<Entity> ();
