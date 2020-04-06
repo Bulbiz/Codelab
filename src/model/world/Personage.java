@@ -28,7 +28,6 @@ public abstract class Personage extends Entity {
     public int getFacing(){
         return facing;
     }
-
     private void turn (int rotate) {
     	this.facing = ((this.facing + rotate) + 4) % 4; // "+ 4" is to always get positif modulus
     }
