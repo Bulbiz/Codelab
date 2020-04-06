@@ -26,23 +26,22 @@ public class ImageLibrary {
 		loadEntityImage();
 	}
 
-	private void loadPlayerImage() {
+	public void loadPlayerImage() {
 		this.putImage("player0", "player0.gif");
 		this.putImage("player1", "player1.gif");
 		this.putImage("player2", "player2.gif");
 		this.putImage("player3", "player3.gif");
 	}
 
-	private void loadDecorImage() {
+	public void loadDecorImage() {
 		this.putImage("door", "door.png");
 		this.putImage("goal", "goal.png");
 		this.putImage("wall", "wall.png");
-		this.putImage("ground", "ground.png");
+		this.putImage("floor", "floor.png");
 	}
 
-	private void loadEntityImage() {
+	public void loadEntityImage() {
 		this.putImage("coin", "coin.png");
 		this.putImage("key", "key.png");
-		this.putImage("floor", "floor.png");
 	}
 }

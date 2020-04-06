@@ -5,22 +5,27 @@ import src.model.world.*;
 import src.controller.ControllerEditor;
 import java.awt.Dimension;
 import javax.swing.border.TitledBorder;
+import src.view.world.ImageLibrary;
 
 public class CollectableGeneratorPanel extends JPanel{
 	private ControllerEditor controller;
 	private PlacementButton key;
 	private PlacementButton coin;
+	private ImageLibrary sprite;
 	
 	public CollectableGeneratorPanel (ControllerEditor c) {
 		this.controller = c;
-		this.key = new PlacementButton(c,(b,y,x) -> keyPlacement(b,y,x));
-		this.coin = new PlacementButton(c,(b,y,x) -> coinPlacement(b,y,x));
-		
+		loadSprite();
+		this.key = new PlacementButton(sprite.getSprite("key"),c,(b,y,x) -> keyPlacement(b,y,x));
+		this.coin = new PlacementButton(sprite.getSprite("coin"),c,(b,y,x) -> coinPlacement(b,y,x));
 		layoutPlacement();
 	}
-	
+	private void loadSprite() {
+		sprite = new ImageLibrary();
+		sprite.loadEntityImage();
+	}
 	private void layoutPlacement() {
-		TitledBorder title = BorderFactory.createTitledBorder("Collectable");
+		TitledBorder title = BorderFactory.createTitledBorder("Objet");
 		this.setBorder(title);
 		this.setLayout(new BoxLayout(this,BoxLayout.PAGE_AXIS));
 		this.addButton();

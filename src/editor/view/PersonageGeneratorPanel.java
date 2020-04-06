@@ -3,6 +3,7 @@ package src.editor.view;
 import javax.swing.*;
 import src.model.world.*;
 import src.controller.ControllerEditor;
+import src.view.world.ImageLibrary;
 import java.awt.Dimension;
 import javax.swing.border.TitledBorder;
 
@@ -10,12 +11,18 @@ public class PersonageGeneratorPanel extends JPanel{
 	private ControllerEditor controller;
 	private PlacementButton player;
 	private FacingButton facing;
+	private ImageLibrary sprite;
 	
 	public PersonageGeneratorPanel (ControllerEditor c) {
 		this.controller = c;
+		loadSprite();
 		this.facing = new FacingButton ();
-		this.player = new PlacementButton(c, (b,y,x) -> playerPlacement(b,y,x,facing.getFacing()));
+		this.player = new PlacementButton(sprite.getSprite("player0"),c, (b,y,x) -> playerPlacement(b,y,x,facing.getFacing()));
 		layoutPlacement();
+	}
+	private void loadSprite() {
+		sprite = new ImageLibrary();
+		sprite.loadPlayerImage();
 	}
 	
 	private void layoutPlacement() {
