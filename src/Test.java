@@ -4,6 +4,7 @@ import src.model.world.*;
 import src.view.langage.*;
 import src.view.world.*;
 import src.view.*;
+import src.editor.view.*;
 import src.controller.*;
 import java.util.*;
 import javax.swing.*;
@@ -158,14 +159,20 @@ public class Test {
         e.printStackTrace();
       }
     }
+    private static void testEditorButton(){
+    	JFrame testWindows = TestWorldView.createWindows ("Test");
+        testWindows.setContentPane(new GeneratorsPanel(null));
+        testWindows.pack();
+    }
+    
     public static void main(String[] args) throws Exception {
         //TestLanguageModel.run();
         //TestWorldModel.run();
         //TestLanguageView.run();
-        TestWorldView.run();
+        //TestWorldView.run();
         //testPasDansLeMainThierry();
-
-        begin();
+    	testEditorButton();
+        //begin();
         //ControllerLevel.errorPopUp("Rémy répond pas dans Discord ce con...");
         System.out.println("fin de test");
     }
