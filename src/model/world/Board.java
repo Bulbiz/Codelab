@@ -57,7 +57,7 @@ public class Board {
      * FIXME : even if there is an Entity, we should be able to go there
      */
     private boolean isNotOccupied(int y, int x) {
-    	return this.cells[y][x].getEntity() == null && !(this.cells[y][x].getDecor() instanceof Obstacle);
+    	return !(this.cells[y][x].getDecor() instanceof Obstacle);
     }
 
     //method to initiate the entity when its not on the board
@@ -65,6 +65,7 @@ public class Board {
     public boolean initiateEntity(int y, int x, Entity being) {
     	try {
     		if(isNotOccupied(y, x)) {
+    			this.characters.remove(this.cells[y][x].getEntity());
     			this.cells[y][x].setEntity(being);
     			this.characters.add(being);
     			return true;
