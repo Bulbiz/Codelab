@@ -61,7 +61,6 @@ public class Board {
     }
 
     //method to initiate the entity when its not on the board
-    //FIXME : Can't ecrased an Entity here + when ecrased, should be removed from the list
     public boolean initiateEntity(int y, int x, Entity being) {
     	try {
     		if(isNotOccupied(y, x)) {
