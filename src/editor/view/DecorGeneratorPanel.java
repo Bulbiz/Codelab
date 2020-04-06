@@ -26,9 +26,9 @@ public class DecorGeneratorPanel extends JPanel{
 	}
 	
 	private static void floorPlacement(Board b,int y,int x) {
-		b.setDecor(null,y,x);
+		b.setDecor(new Floor(b,y,x),y,x);
 	}
 	private static void goalPlacement (Board b, int y, int x) {
-		
+		b.initiateGoal(y,x);
 	}
 }
