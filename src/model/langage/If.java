@@ -38,22 +38,25 @@ public class If extends ControlFlowStatement {
 	public int run() {
 
         if(actions.peek() == null)       // end actions list for the if
-            return 1;
+            return InstructionEnum.endAction.getReturnValue();
 
 		int verification = actions.peek().run();
-		while(verification == 0) {
+
+		while(verification == InstructionEnum.noCostAction.getIdentity()) {
 			actions.poll();
+            if(actions.peek() == null)
+                return InstructionEnum.noCostAction.getReturnValue();
 			verification = actions.peek().run();
 		}
 
-        if(verification == 2){			//if is a controle flow statement, don't depile
-			return 2;
+        if(verification == InstructionEnum.ControlFlowStatementAction.getIdentity()){			//if is a controle flow statement, don't depile
+			return InstructionEnum.ControlFlowStatementAction.getReturnValue();
 		}
 
-		if(verification == 1){
+		if(verification == InstructionEnum.basicAction.getIdentity()){
 			actions.poll();
-			return 2;                          // continu to execute the actions list
+			return InstructionEnum.basicAction.getReturnValue();                          // continu to execute the actions list
 		}
-        return 1;
+        return InstructionEnum.endAction.getReturnValue();
 	}
 }
