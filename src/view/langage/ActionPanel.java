@@ -20,9 +20,9 @@ public class ActionPanel extends InstructionPanel {
      * Default constructor
      */
     public ActionPanel(ControllerLanguage controller, Action action) {
-      super(controller, null);
+      super(controller);
       if (action != null) {
-          instruction = InstructionFactory.createAction(action.getPersonage(), action.getVersion());
+          instruction = InstructionFactory.createInstruction(action);
           add(new JLabel(action.getVersion()));
       }
       else 
@@ -32,12 +32,37 @@ public class ActionPanel extends InstructionPanel {
     }
 
     public ActionPanel(ControllerLanguage controller) {
-      super(controller, null);
+      super(controller);
     }
 
     @Override 
     public IActionPanelListable getParentPanel() {
       return (IActionPanelListable) parent; 
+    }
+
+    @Override
+    public void delete() {
+      IActionPanelListable p = (IActionPanelListable) parent;
+      if (instruction != null && !instruction.getVersion().equals("begin"))
+        p.removeActionPanel(this);
+    }
+
+    public InstructionPanel createNewInstructionPanel(ControllerLanguage controller, Instruction instruction) {
+      return new ActionPanel(controller, (Action)instruction);
+    }
+
+    public void onRelease(IMouseReactive src) {
+      InstructionPanel source = (InstructionPanel) src;
+
+      System.out.println("over action panel");
+        if (source.getInstruction() == null)
+            return;
+        if (source.getInstruction().getType().equals("condition"))
+            return;
+        if (source.getInstruction().getVersion().equals("begin"))
+            return;
+
+        getParentPanel().addActionPanel((ActionPanel)source, this);
     }
 
 }

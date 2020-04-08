@@ -8,7 +8,7 @@ import src.controller.*;
 import java.util.*;
 import javax.swing.*;
 import java.awt.*;
-//import org.json.*;
+import org.json.*;
 import java.io.*;
 import java.io.FileReader;
 import org.json.simple.JSONObject;
@@ -141,19 +141,22 @@ public class Test {
 
     public static void begin(){
       try{
-        /*JSONParser jsonParser = new JSONParser();
-        FileReader reader = new FileReader("resources/test.json");
-        Object obj = jsonParser.parse(reader);
-        JSONObject jsonLevel = (JSONObject) obj;
         //RECUPERATION DE JSON
+
         Level levelTest = new Level("test");*/
         /*LevelPanel vueLevel = new LevelPanel ("test");
         JFrame testWindows = TestWorldView.createWindows ("Test");
         testWindows.setContentPane(vueLevel);
         testWindows.pack();*/
         JFrame testLoad = TestWorldView.createWindows ("TestLoad");
+
+        //test levelToJson
+        //levelTest.getBoard().toJson("hello");
+
+        //fin du test
+        /*JFrame testLoad = TestWorldView.createWindows ("TestLoad");
         testLoad.setContentPane(new LoadLevel());
-        testLoad.pack();
+        testLoad.pack();*/
       }catch(Exception e){
         e.printStackTrace();
       }

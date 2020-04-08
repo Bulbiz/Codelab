@@ -48,36 +48,24 @@ public class TestLanguageView {
 
     }
 
-    public static void testInstructionPanelGeneratorGenerating(LanguageView view, ControllerLanguage controller) {
-
-
-        InstructionPanelGenerator ig1 = new InstructionPanelGenerator(new If(null), controller);
-        InstructionPanelGenerator ig2 = new InstructionPanelGenerator(new Move(null), controller);
-        InstructionPanelGenerator ig3 = new InstructionPanelGenerator(new ObstableFront(null), controller);
-
-        view.resourcePanel.add(ig1.createInstructionPanel());
-        view.resourcePanel.add(ig2.createInstructionPanel());
-        view.resourcePanel.add(ig3.createInstructionPanel());
-    }
-
     public static void testInstructionPanelGeneratorClick(LanguageView view, ControllerLanguage controller) {
-        InstructionPanelGenerator ig1 = new InstructionPanelGenerator(new If(null), controller);
-        InstructionPanelGenerator ig2 = new InstructionPanelGenerator(new While(null), controller);
-        InstructionPanelGenerator ig3 = new InstructionPanelGenerator(new Move(null), controller);
-        InstructionPanelGenerator ig4 = new InstructionPanelGenerator(new TurnLeft(null), controller);
-        InstructionPanelGenerator ig5 = new InstructionPanelGenerator(new TurnRight(null), controller);
-        InstructionPanelGenerator ig6 = new InstructionPanelGenerator(new ObstableFront(null), controller);
-        InstructionPanelGenerator ig7 = new InstructionPanelGenerator(new PersonageEstDevant(null), controller);
-        InstructionPanelGenerator ig8 = new InstructionPanelGenerator(new Not(null), controller);
+        InstructionPanelGenerator ig1 = new InstructionPanelGenerator(new ControlFlowStatementPanel(controller, new If(null)));
+        InstructionPanelGenerator ig2 = new InstructionPanelGenerator(new ControlFlowStatementPanel(controller, new While(null)));
+        InstructionPanelGenerator ig3 = new InstructionPanelGenerator(new ActionPanel(controller, new Move(null)));
+        InstructionPanelGenerator ig4 = new InstructionPanelGenerator(new ActionPanel(controller, new TurnLeft(null)));
+        InstructionPanelGenerator ig5 = new InstructionPanelGenerator(new ActionPanel(controller, new TurnRight(null)));
+        InstructionPanelGenerator ig6 = new InstructionPanelGenerator(new ConditionPanel(controller, new ObstacleFront(null)));
+        InstructionPanelGenerator ig7 = new InstructionPanelGenerator(new ConditionPanel(controller, new False(null)));
+        InstructionPanelGenerator ig8 = new InstructionPanelGenerator(new NotPanel(controller, new Not(null)));
 
-        view.resourcePanel.add(ig1);
-        view.resourcePanel.add(ig2);
         view.resourcePanel.add(ig3);
         view.resourcePanel.add(ig4);
         view.resourcePanel.add(ig5);
-        view.resourcePanel.add(ig6);
+        view.resourcePanel.add(ig1);
+        view.resourcePanel.add(ig2);
         view.resourcePanel.add(ig7);
         view.resourcePanel.add(ig8);
+        view.resourcePanel.add(ig6);
     }
 
 }
