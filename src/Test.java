@@ -152,7 +152,7 @@ public class Test {
         testWindows.setContentPane(vueLevel);
         testWindows.pack();*/
         JFrame testLoad = TestWorldView.createWindows ("TestLoad");
-        testLoad.setContentPane(new LoadLevel());
+        testLoad.setContentPane(new LoadLevel(testLoad));
         testLoad.pack();
       }catch(Exception e){
         e.printStackTrace();
