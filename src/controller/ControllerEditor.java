@@ -19,8 +19,14 @@ public class ControllerEditor {
 		this.placementInstruction = p;
 	}
 	
+	private boolean creatable () {
+		return boardEditor.getBoard().creatable();
+	}
+	
 	public void clicked (int y, int x) {
 		if(placementInstruction != null)
 			this.placementInstruction.placement(boardEditor.getBoard(), y, x);
 	}
+	
+	
 }

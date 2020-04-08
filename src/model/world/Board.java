@@ -29,8 +29,6 @@ public class Board {
         player.setActions(script);
     }
 
-    //FIXME: not optimal yet
-    //FIXME: high risk of NullPointerException
     public Player getPlayer(){
 		Player player = null;
         for(Entity p: characters){
@@ -49,17 +47,19 @@ public class Board {
     	}
     }
 
+    //EDITOR + PLACEMENT
     public void setDecor(Decor d,int y, int x) {
     	this.cells[y][x].setDecor(d);
     }
+    
     /*
      * @return true if the Cell dont have an obstacle or entity false otherwise
-     * FIXME : even if there is an Entity, we should be able to go there
      */
     private boolean isNotOccupied(int y, int x) {
     	return !(this.cells[y][x].getDecor() instanceof Obstacle);
     }
-
+    
+    //EDITOR + PLACEMENT
     //method to initiate the entity when its not on the board
     public boolean initiateEntity(int y, int x, Entity being) {
     	try {
@@ -78,6 +78,7 @@ public class Board {
     	}
     }
 
+    //EDITOR + PLACEMENT
     public void initiateGoal(int yGoal, int xGoal) {
     	if(this.finish != null) 
     		this.finish.setDecor(new Floor(this,this.finish.getDecor().getXPosition(),this.finish.getDecor().getYPosition())); //Assure the unicity of Goal
@@ -141,7 +142,13 @@ public class Board {
     	for(Entity p : this.characters)
     		p.run();
     }
-
+    
+    //EDITOR + PLACEMENT
+    //Define if the board can be used as a level
+    public boolean creatable() {
+    	return this.getPlayer() != null && this.finish != null;
+    }
+    
     //Terminal View
     public String toString() {
     	String res = "";
