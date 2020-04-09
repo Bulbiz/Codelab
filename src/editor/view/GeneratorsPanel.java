@@ -15,6 +15,7 @@ public class GeneratorsPanel extends JPanel {
     private PersonageGeneratorPanel personage;
     private JTextField name;
     private JButton create;
+    private EraserGeneratorPanel eraser;
     
     public GeneratorsPanel(ControllerEditor c) {
         controller = c;
@@ -23,6 +24,7 @@ public class GeneratorsPanel extends JPanel {
         this.personage = new PersonageGeneratorPanel(c);
         this.name = fieldName();
         this.create = buttonCreate();
+        this.eraser = new EraserGeneratorPanel(c);
         layoutPlacement();
     }
     
@@ -48,6 +50,7 @@ public class GeneratorsPanel extends JPanel {
     	this.addWithSeparation(personage);
     	this.addWithSeparation(name);
     	this.addWithSeparation(create);
+    	this.addWithSeparation(eraser);
     }
     
     private void addWithSeparation(JComponent c) {
