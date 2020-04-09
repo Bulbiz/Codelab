@@ -142,15 +142,20 @@ public class Test {
     public static void begin(){
       try{
         //RECUPERATION DE JSON
+
         Level levelTest = new Level("test");
-        LevelPanel vueLevel = new LevelPanel ("test");
+        /*LevelPanel vueLevel = new LevelPanel ("test");
+        JFrame testWindows = TestWorldView.createWindows ("Test");
+        testWindows.setContentPane(vueLevel);
+        testWindows.pack();*/
+        JFrame testLoad = TestWorldView.createWindows ("TestLoad");
+        testLoad.setContentPane(new LoadLevel(testLoad));
+        testLoad.pack();
+
         //test levelToJson
         //levelTest.getBoard().toJson("hello");
 
         //fin du test
-        JFrame testWindows = TestWorldView.createWindows ("Test");
-        testWindows.setContentPane(vueLevel);
-        testWindows.pack();
         /*JFrame testLoad = TestWorldView.createWindows ("TestLoad");
         testLoad.setContentPane(new LoadLevel());
         testLoad.pack();*/
