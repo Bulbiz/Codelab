@@ -139,6 +139,26 @@ public class Test {
         System.out.println(jsonToStringGoal());
     }
 
+    public static void loadLevelForMenu(){
+        try{
+            Level levelTest = new Level("test");
+            JFrame testLoad = TestWorldView.createWindows ("TestLoad");
+            testLoad.setContentPane(new LoadLevel(testLoad));
+            testLoad.pack();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+    public static void beginMenu(){
+        try{
+            Level levelTest = new Level("test");
+            JFrame testMenuPanel = TestWorldView.createWindows ("testMenuPanel");
+            testMenuPanel.setContentPane(new MenuPanel(testMenuPanel));
+            testMenuPanel.pack();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
     public static void begin(){
       try{
         //RECUPERATION DE JSON
@@ -148,6 +168,7 @@ public class Test {
         JFrame testWindows = TestWorldView.createWindows ("Test");
         testWindows.setContentPane(vueLevel);
         testWindows.pack();*/
+
         JFrame testLoad = TestWorldView.createWindows ("TestLoad");
         testLoad.setContentPane(new LoadLevel(testLoad));
         testLoad.pack();
@@ -167,10 +188,12 @@ public class Test {
         //TestLanguageModel.run();
         //TestWorldModel.run();
         //TestLanguageView.run();
-        TestWorldView.run();
+        //TestWorldView.run();
         //testPasDansLeMainThierry();
 
-        begin();
+        //begin();
+        beginMenu();
+
         //ControllerLevel.errorPopUp("Rémy répond pas dans Discord ce con...");
         System.out.println("fin de test");
     }
