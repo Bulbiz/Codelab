@@ -20,6 +20,7 @@ public class PersonageGeneratorPanel extends JPanel{
 		this.player = new PlacementButton(sprite.getSprite("player0"),c, (b,y,x) -> playerPlacement(b,y,x,facing.getFacing()));
 		layoutPlacement();
 	}
+	
 	private void loadSprite() {
 		sprite = new ImageLibrary();
 		sprite.loadPlayerImage();
@@ -42,6 +43,11 @@ public class PersonageGeneratorPanel extends JPanel{
     }
 	
 	private static void playerPlacement(Board b, int y, int x, int face) {
+		if(b.entityPresent(y,x)) {
+			/* Message Erreur */
+			return;
+		}
+		
 		Player p = b.getPlayer();
 		if(p == null) {
 			b.initiateEntity(y,x,new Player (b,x,y,face));

@@ -46,6 +46,11 @@ public class DecorGeneratorPanel extends JPanel{
     }
 	
 	private static void wallPlacement(Board b,int y,int x) {
+		if(b.entityPresent(y,x)) {
+			/* Message Erreur */
+			return;
+		}
+		
 		b.setDecor(new Wall(b,x,y),y,x);
 	}
 	private static void floorPlacement(Board b,int y,int x) {
