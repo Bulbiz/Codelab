@@ -9,9 +9,9 @@ public class FacingButton extends JPanel{
 	
 	public FacingButton () {
 		this.facing = 0;
-		this.back = createFacingButton("Back",0);
+		this.back = createFacingButton("Back",2);
 		this.right = createFacingButton("Right",1);
-		this.front = createFacingButton("Front",2);
+		this.front = createFacingButton("Front",0);
 		this.left = createFacingButton("Left",3);
 		
 		this.layoutPlacement();
@@ -36,6 +36,7 @@ public class FacingButton extends JPanel{
 	public int getFacing () {
 		return facing;
 	}
+	
 	private JButton createFacingButton(String label, int facing) {
 		JButton button = new JButton(label);
 		button.addActionListener((e) -> this.facing = facing );
