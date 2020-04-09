@@ -1,8 +1,13 @@
 
 package src.controller;
 
+import java.io.FileReader;
+
 import src.editor.view.*;
 import src.model.world.*;
+import java.io.FileReader;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 public class ControllerEditor {
 	private BoardEditorPanel boardEditor;
@@ -21,6 +26,25 @@ public class ControllerEditor {
 	
 	private boolean creatable () {
 		return boardEditor.getBoard().creatable();
+	}
+	
+	public void create (String name) {
+		if(creatable() && nameUnique(name)) {
+			boardEditor.getBoard().toJson(name);
+			/* Creation Completed message */
+		} else {
+			/* Error message */
+		}
+	}
+	
+	private boolean nameUnique(String name) {
+		try {
+    		JSONParser jsonParser = new JSONParser();
+    		FileReader reader = new FileReader("resources/" + name + ".json");
+    		return false;
+    	}catch(Exception e) {
+    		return true;
+    	}
 	}
 	
 	public void clicked (int y, int x) {
