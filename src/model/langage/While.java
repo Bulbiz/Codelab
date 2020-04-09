@@ -44,7 +44,7 @@ public class While extends ControlFlowStatement {
 
 
 		int verification = actions.peek().run();
-		while(verification == 0) {				//do the no count actions.
+		while(verification == InstructionEnum.noCostAction.getIdentity()) {				//do the no count actions.
 			actions.offer(actions.poll());		//add this action in the end of the actions list
 			verification = actions.peek().run();
 		}
@@ -54,15 +54,15 @@ public class While extends ControlFlowStatement {
 			System.exit(0);
 		}
 
-		if(verification == 2){			//if is a controle flow statement, don't depile
-			return 2;
+		if(verification == InstructionEnum.ControlFlowStatementAction.getIdentity()){			//if is a controle flow statement, don't depile
+			return InstructionEnum.ControlFlowStatementAction.getReturnValue();
 		}
 
-		if(verification == 1){
+		if(verification == InstructionEnum.basicAction.getIdentity()){
 			actions.offer(actions.poll());
-			return 2;					//when the list isn't over
+			return InstructionEnum.basicAction.getReturnValue();					//when the list isn't over
 		}
 
-		return 1;						//when the list of actions is over
+		return InstructionEnum.endAction.getReturnValue();						//when the list of actions is over
 	}
 }

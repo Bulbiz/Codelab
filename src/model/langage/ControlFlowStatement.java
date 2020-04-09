@@ -22,6 +22,27 @@ public abstract class ControlFlowStatement extends Action {
         actions = new LinkedList<Action>();
     }
 
+    public enum InstructionEnum {
+
+        noCostAction(0,1), basicAction(1,2), ControlFlowStatementAction(2,2), endAction(-1,1);
+
+        private int identity;
+        private int returnValue;
+
+        InstructionEnum(int identity, int returnValue){
+            this.identity = identity;
+            this.returnValue = returnValue;
+        }
+
+        public int getReturnValue(){
+            return this.returnValue;
+        }
+
+        public int getIdentity(){
+            return this.identity;
+        }
+    }
+
     /**
      * @return
      */
