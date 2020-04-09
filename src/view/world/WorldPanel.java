@@ -40,8 +40,8 @@ public class WorldPanel extends JPanel implements IDisplayable {
     	//Draw Here
     	this.paintBoardDecor(g);
     	this.paintPersonage(g);
-
     }
+    
     private void paintBoardDecor(Graphics g) {
     	for(int i = 0 ; i < Board.boardLength ; i++) {
     		for(int j = 0 ; j < Board.boardLength ; j++) {
