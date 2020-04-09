@@ -43,6 +43,11 @@ public class PersonageGeneratorPanel extends JPanel{
     }
 	
 	private static void playerPlacement(Board b, int y, int x, int face) {
+		if(b.entityPresent(y,x)) {
+			/* Message Erreur */
+			return;
+		}
+		
 		Player p = b.getPlayer();
 		if(p == null) {
 			b.initiateEntity(y,x,new Player (b,x,y,face));

@@ -42,9 +42,17 @@ public class CollectableGeneratorPanel extends JPanel{
     }
 	
 	private static void keyPlacement(Board b, int x, int y) {
+		if(b.entityPresent(y,x)) {
+			/* Message Erreur */
+			return;
+		}
 		b.initiateEntity( y, x , new Key(b,x,y));
 	}
 	private static void coinPlacement(Board b, int x, int y) {
+		if(b.entityPresent(y,x)) {
+			/* Message Erreur */
+			return;
+		}
 		b.initiateEntity( y, x , new Coin(b,x,y));
 	}
 }
