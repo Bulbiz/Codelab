@@ -21,7 +21,7 @@ public class ControllerEditor extends MouseAdapter {
 	private PlacementInterface placementInstruction;
 	
 	public ControllerEditor () {
-		this.placementInstruction = null;
+		this.placementInstruction = (b,x,y) -> System.out.println("Vous n'avez rien choisi pour l'instant!");
 	}
 
 	public void setPanels(EditorPanel editorPanel) {
