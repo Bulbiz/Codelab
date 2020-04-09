@@ -44,4 +44,8 @@ public class ImageLibrary {
 		this.putImage("coin", "coin.png");
 		this.putImage("key", "key.png");
 	}
+	
+	public void loadEraserImage() {
+		/*Put a eraser Image here*/
+	}
 }

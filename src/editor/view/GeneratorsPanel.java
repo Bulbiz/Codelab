@@ -11,12 +11,14 @@ public class GeneratorsPanel extends JPanel {
     private DecorGeneratorPanel decor;
     private CollectableGeneratorPanel collectable;
     private PersonageGeneratorPanel personage;
+    private EraserGeneratorPanel eraser;
     
     public GeneratorsPanel(ControllerEditor c) {
         controller = c;
         this.decor = new DecorGeneratorPanel(c);
         this.collectable = new CollectableGeneratorPanel(c);
         this.personage = new PersonageGeneratorPanel(c);
+        this.eraser = new EraserGeneratorPanel(c);
         layoutPlacement();
     }
     private void layoutPlacement() {
@@ -28,6 +30,7 @@ public class GeneratorsPanel extends JPanel {
     	this.addWithSeparation(decor);
     	this.addWithSeparation(collectable);
     	this.addWithSeparation(personage);
+    	this.addWithSeparation(eraser);
     }
     
     private void addWithSeparation(JComponent c) {
