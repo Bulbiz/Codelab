@@ -50,4 +50,8 @@ public class NotPanel extends ConditionPanel implements IConditionPanelAdjustabl
         return not;
     }
 
+    public InstructionPanel createNewInstructionPanel(ControllerLanguage controller, Instruction instruction) {
+        return new NotPanel(controller, (Not)instruction);
+    }
+
 }

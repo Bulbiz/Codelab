@@ -9,6 +9,10 @@ public class Not extends Condition {
         super(personage);
     }
 
+    public Instruction createNewInstruction() {
+        return new Not(personage);
+    }
+
     Condition condition;
 
     public void setCondition(Condition c) {

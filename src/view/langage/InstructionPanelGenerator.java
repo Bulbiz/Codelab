@@ -18,11 +18,13 @@ public class InstructionPanelGenerator extends JPanel implements IMouseReactive 
 	protected int height, width, y;
 
 	Instruction instruction;
+	InstructionPanel instructionPanel;
 	ControllerLanguage controller;
 
-	public InstructionPanelGenerator(Instruction instruction, ControllerLanguage controller) {
-		this.instruction = instruction;
-		this.controller = controller;
+	public InstructionPanelGenerator(InstructionPanel instructionPanel) {
+		this.instruction = instructionPanel.getInstruction();
+		this.instructionPanel = instructionPanel;
+		this.controller = instructionPanel.getController();
 		addMouseListener(controller);
 		addMouseMotionListener(controller);
 		// pour les tests
@@ -31,19 +33,11 @@ public class InstructionPanelGenerator extends JPanel implements IMouseReactive 
 	}
 
 	public InstructionPanel createInstructionPanel() {
-		switch (instruction.getType()) {
-			case "condition": 
-				if (instruction.getVersion().equals("not"))
-					return new NotPanel(controller, (Not) instruction);
-				else 
-					return new ConditionPanel(controller, (Condition)instruction);
-			case "action": return new ActionPanel(controller, (Action)instruction);
-			default: return new ControlFlowStatementPanel(controller, (ControlFlowStatement)instruction);
-		}
+		return instructionPanel.createNewInstructionPanel(controller, instruction);
 	}
 
-	public String getSourceType() {
-		return "generatorPanel";
+	public IMouseReactive getSourcePanel() {
+		return createInstructionPanel();
 	}
 
 	public String getDestType() {

@@ -13,6 +13,10 @@ public class While extends ControlFlowStatement {
     public While(Personage personage) {
     	super(personage);
 		this.addAction(new FinWhile(personage));
+	}
+
+    public Instruction createNewInstruction() {
+        return new While(personage);
     }
 
 
@@ -20,6 +24,10 @@ public class While extends ControlFlowStatement {
 
 			public FinWhile(Personage personage){
 				super(personage);
+			}
+
+			public Instruction createNewInstruction() {
+				return new FinWhile(personage);
 			}
 
 			public int run(){

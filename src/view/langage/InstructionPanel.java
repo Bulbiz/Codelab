@@ -15,11 +15,8 @@ import java.awt.Graphics;
  */
 public abstract class InstructionPanel extends JPanel implements IMouseReactive {
 
-    /**
-     * Default constructor
-     */
-    public InstructionPanel(ControllerLanguage controller, Instruction instruction) {
-        this.instruction = instruction;
+
+    public InstructionPanel(ControllerLanguage controller) {
         this.controller = controller;
         addMouseListener(controller);
         addMouseMotionListener(controller);
@@ -51,14 +48,6 @@ public abstract class InstructionPanel extends JPanel implements IMouseReactive 
      */
     protected int height;
 
-
-    /**
-     * 
-     */
-    public void Move() {
-        // TODO implement here
-    }
-
     /**
      * 
      */
@@ -66,19 +55,12 @@ public abstract class InstructionPanel extends JPanel implements IMouseReactive 
         // TODO implement here
     }
 
-    /**
-     * 
-     */
-    public void Delete() {
-        // TODO implement here
-    }
+    public abstract InstructionPanel createNewInstructionPanel(ControllerLanguage controller, Instruction instruction);
 
     /**
      * 
      */
-    public void Select() {
-        // TODO implement here
-    }
+    public abstract void delete();
 
     public Instruction toInstruction() {
         return instruction;
@@ -86,6 +68,10 @@ public abstract class InstructionPanel extends JPanel implements IMouseReactive 
 
     public Instruction getInstruction() {
         return instruction;
+    }
+
+    public ControllerLanguage getController() {
+        return controller;
     }
 
     public IParent getParentPanel() {
@@ -101,8 +87,8 @@ public abstract class InstructionPanel extends JPanel implements IMouseReactive 
         super.paintComponent(g);
     }
 
-    public String getSourceType() {
-        return "instructionPanel";
+    public IMouseReactive getSourcePanel() {
+        return this;
     }
 
     public String getDestType() {
