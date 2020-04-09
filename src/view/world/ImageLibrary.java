@@ -46,6 +46,6 @@ public class ImageLibrary {
 	}
 	
 	public void loadEraserImage() {
-		/*Put a eraser Image here*/
+		this.putImage("eraser","eraser.png");
 	}
 }
