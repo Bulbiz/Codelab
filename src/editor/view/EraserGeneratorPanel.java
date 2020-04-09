@@ -41,6 +41,6 @@ public class EraserGeneratorPanel extends JPanel{
     }
 	
 	private static void eraserPlacement(Board b, int y, int x) {
-		/* Make a remove Function in Board */
+		b.erased(y,x);
 	}
 }

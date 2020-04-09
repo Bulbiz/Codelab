@@ -47,6 +47,13 @@ public class Board {
     	}
     }
     
+    public void erased (int y, int x) {
+    	if(entityPresent(y,x)) {
+    		this.characters.remove(this.cells[y][x].getEntity());
+    		this.cells[y][x].setEntity(null);
+    	}
+    }
+    
     public boolean entityPresent(int y, int x) {
     	return this.cells[y][x].getEntity() != null;
     }
