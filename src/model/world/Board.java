@@ -46,7 +46,11 @@ public class Board {
     		return null;
     	}
     }
-
+    
+    public boolean entityPresent(int y, int x) {
+    	return this.cells[y][x].getEntity() != null;
+    }
+    
     //EDITOR + PLACEMENT
     public void setDecor(Decor d,int y, int x) {
     	this.cells[y][x].setDecor(d);
@@ -56,7 +60,7 @@ public class Board {
      * @return true if the Cell dont have an obstacle or entity false otherwise
      */
     private boolean isNotOccupied(int y, int x) {
-    	return !(this.cells[y][x].getDecor() instanceof Obstacle);
+    	return this.cells[y][x].getEntity() == null && !(this.cells[y][x].getDecor() instanceof Obstacle);
     }
     
     //EDITOR + PLACEMENT
@@ -64,7 +68,6 @@ public class Board {
     public boolean initiateEntity(int y, int x, Entity being) {
     	try {
     		if(isNotOccupied(y, x)) {
-    			this.characters.remove(this.cells[y][x].getEntity());
     			this.cells[y][x].setEntity(being);
     			this.characters.add(being);
     			return true;
