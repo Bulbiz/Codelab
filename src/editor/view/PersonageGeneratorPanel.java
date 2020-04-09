@@ -47,13 +47,10 @@ public class PersonageGeneratorPanel extends JPanel{
 			/* Message Erreur */
 			return;
 		}
-		
 		Player p = b.getPlayer();
-		if(p == null) {
-			b.initiateEntity(y,x,new Player (b,x,y,face));
-		}else {
-			p.setFacing(face);
-			b.move(p.getY(),p.getX(),y,x);
+		if(p != null) {
+			b.erased(p.getY(),p.getX());
 		}
+		b.initiateEntity(y,x,new Player (b,x,y,face));
 	}
 }
