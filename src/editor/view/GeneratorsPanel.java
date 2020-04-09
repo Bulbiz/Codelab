@@ -32,6 +32,7 @@ public class GeneratorsPanel extends JPanel {
     	this.setLayout(new BoxLayout(this,BoxLayout.PAGE_AXIS));
     	this.addButton();
     }
+    
     private JTextField fieldName() {
     	JTextField text = new JTextField ("LevelName",20);
     	text.setMaximumSize(text.getPreferredSize());
@@ -40,7 +41,7 @@ public class GeneratorsPanel extends JPanel {
     
     private JButton buttonCreate() {
     	JButton c = new JButton ("Create");
-    	c.addActionListener((e)-> controller.create(name.getName()));
+    	c.addActionListener((e)-> controller.create(name.getText()));
     	return c;
     }
     

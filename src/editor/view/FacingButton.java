@@ -36,6 +36,7 @@ public class FacingButton extends JPanel{
 	public int getFacing () {
 		return facing;
 	}
+	
 	private JButton createFacingButton(String label, int facing) {
 		JButton button = new JButton(label);
 		button.addActionListener((e) -> this.facing = facing );
