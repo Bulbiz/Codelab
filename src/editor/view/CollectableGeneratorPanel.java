@@ -41,14 +41,14 @@ public class CollectableGeneratorPanel extends JPanel{
     	this.add(Box.createRigidArea(new Dimension(0,5)));
     }
 	
-	private static void keyPlacement(Board b, int x, int y) {
+	private static void keyPlacement(Board b, int y, int x) {
 		if(b.entityPresent(y,x)) {
 			/* Message Erreur */
 			return;
 		}
 		b.initiateEntity( y, x , new Key(b,x,y));
 	}
-	private static void coinPlacement(Board b, int x, int y) {
+	private static void coinPlacement(Board b, int y, int x) {
 		if(b.entityPresent(y,x)) {
 			/* Message Erreur */
 			return;
