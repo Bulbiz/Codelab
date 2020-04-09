@@ -100,6 +100,11 @@ public class Board {
 		return cells;
 	}
 
+	public Cell getCell(int x, int y) {
+		return cells[y][x];
+	}
+
+
 	public ArrayList<Entity> getCharacter(){
 		return this.characters;
 	}

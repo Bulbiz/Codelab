@@ -161,7 +161,11 @@ public class Test {
     }
     private static void testEditorButton(){
     	JFrame testWindows = TestWorldView.createWindows ("Test");
-        testWindows.setContentPane(new GeneratorsPanel(null));
+        
+        ControllerEditor controller = new ControllerEditor();
+        EditorPanel editorPanel = new EditorPanel(controller);
+        controller.setPanels(editorPanel);
+        testWindows.setContentPane(editorPanel);
         testWindows.pack();
     }
     

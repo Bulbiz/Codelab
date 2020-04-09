@@ -5,19 +5,28 @@ import java.io.FileReader;
 
 import src.editor.view.*;
 import src.model.world.*;
+
 import java.io.FileReader;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-public class ControllerEditor {
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
+public class ControllerEditor extends MouseAdapter {
+
+
 	private BoardEditorPanel boardEditor;
 	private GeneratorsPanel generator;
 	private PlacementInterface placementInstruction;
 	
-	public ControllerEditor (BoardEditorPanel b, GeneratorsPanel g) {
-		this.boardEditor = b;
-		this.generator = g;
+	public ControllerEditor () {
 		this.placementInstruction = null;
+	}
+
+	public void setPanels(EditorPanel editorPanel) {
+		boardEditor = editorPanel.getBoardPanel();
+		generator = editorPanel.getGeneratorsPanel();
 	}
 	
 	public void setPlacementInstruction(PlacementInterface p) {
@@ -26,6 +35,17 @@ public class ControllerEditor {
 	
 	private boolean creatable () {
 		return boardEditor.getBoard().creatable();
+	}
+
+	public void mouseClicked(MouseEvent me) {
+		System.out.println("click");
+		
+		if (placementInstruction != null) {
+			boardEditor.updateFromClick(me.getX(), me.getY());
+			/* il y a une inversion des x et y au niveau de l'affichage */
+			placementInstruction.placement(boardEditor.getBoard(), boardEditor.getSelectedX(), boardEditor.getSelectedY());
+			boardEditor.updateDisplay();
+		}
 	}
 	
 	public void create (String name) {
@@ -45,11 +65,6 @@ public class ControllerEditor {
     	}catch(Exception e) {
     		return true;
     	}
-	}
-	
-	public void clicked (int y, int x) {
-		if(placementInstruction != null)
-			this.placementInstruction.placement(boardEditor.getBoard(), y, x);
 	}
 	
 	
