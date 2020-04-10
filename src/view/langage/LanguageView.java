@@ -81,11 +81,13 @@ public class LanguageView extends JPanel {
     }
 
     public void mousePressed(IMouseReactive source) {
-        IMouseReactive pressedPanelSource = source.getSourcePanel();
+        InstructionPanel pressedPanelSource = source.getSourcePanel();
         controller.setSource(pressedPanelSource);
+        if (pressedPanelSource != null)
+            pressedPanelSource.highlight();
     }
 
-    public void mouseReleased(IMouseReactive source, IMouseReactive dest) {
+    public void mouseReleased(InstructionPanel source, IMouseReactive dest) {
         if (dest == null || source == null)
             return;
         
@@ -98,4 +100,6 @@ public class LanguageView extends JPanel {
 
         source.delete();
     }
+    
+    
 }

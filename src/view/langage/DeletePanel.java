@@ -1,17 +1,25 @@
 
 package src.view.langage;
 
+import java.awt.Dimension;
 import java.awt.Graphics;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.border.LineBorder;
+import java.awt.Color;
 
 import src.controller.ControllerLanguage;
 
-public class DeletePanel extends JButton implements IMouseReactive {
+public class DeletePanel extends JPanel implements IMouseReactive {
 
     public DeletePanel(ControllerLanguage controller) {
-        add(new JLabel("Delete"));
+        JLabel label = new JLabel("Delete");
+        add(label);
         addMouseListener(controller);
+
+        setBorder(new LineBorder(Color.BLACK));
+        setMinimumSize(new Dimension(200, 50));
     }
 
     @Override
@@ -20,12 +28,9 @@ public class DeletePanel extends JButton implements IMouseReactive {
 
     }
 
-    public void onRelease(IMouseReactive source) {
-        if (source == null)
-            return ;
-        
-        InstructionPanel src = (InstructionPanel) source;
-        src.delete();
+    public void onRelease(InstructionPanel source) {
+        if (source != null)
+            source.delete();
     }
 
     public String getDestType() {

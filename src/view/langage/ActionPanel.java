@@ -28,7 +28,9 @@ public class ActionPanel extends InstructionPanel {
       else 
           add(new JLabel("nothing"));
 
-      setBackground(Color.ORANGE);
+      normalColor = Color.ORANGE;
+      highlightColor = Color.YELLOW;
+      setBackground(normalColor);
     }
 
     public ActionPanel(ControllerLanguage controller) {
@@ -51,10 +53,10 @@ public class ActionPanel extends InstructionPanel {
       return new ActionPanel(controller, (Action)instruction);
     }
 
-    public void onRelease(IMouseReactive src) {
-      InstructionPanel source = (InstructionPanel) src;
+    public void onRelease(InstructionPanel source) {
+      super.onRelease(source);
 
-      System.out.println("over action panel");
+      System.out.println("over action panel: " + (instruction == null ? "null" : instruction.getVersion()));
         if (source.getInstruction() == null)
             return;
         if (source.getInstruction().getType().equals("condition"))
@@ -62,7 +64,18 @@ public class ActionPanel extends InstructionPanel {
         if (source.getInstruction().getVersion().equals("begin"))
             return;
 
-        getParentPanel().addActionPanel((ActionPanel)source, this);
+        if (getParentPanel() != null)
+          getParentPanel().addActionPanel((ActionPanel)source, this);
     }
 
+    public void highlight() {
+      super.highlight();
+      if (next != null)
+        next.highlight();
+    }
+    public void dehighlight() {
+      super.dehighlight();
+      if (next != null)
+        next.dehighlight();
+    }
 }

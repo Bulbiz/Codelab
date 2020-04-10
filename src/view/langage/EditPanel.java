@@ -4,10 +4,14 @@ package src.view.langage;
 import src.controller.ControllerLanguage;
 import src.model.langage.*;
 
+import java.awt.Color;
+import java.awt.Dimension;
 import java.util.*;
 
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
+import javax.swing.border.LineBorder;
+import javax.swing.border.TitledBorder;
 
 /**
  * 
@@ -26,8 +30,11 @@ public class EditPanel extends JPanel implements IActionPanelListable {
     public EditPanel(ControllerLanguage controller) {
         this.controller = controller;
 
-        setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
-        head = new ActionPanel( controller, new Begin(null) );
+        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        setPreferredSize(new Dimension(300, 600));
+        setBorder(new TitledBorder(new LineBorder(Color.blue), "Votre Code"));
+
+        head = new BeginPanel( controller, new Begin(null) );
         head.setParentPanel(this);
         add(head);
     }   

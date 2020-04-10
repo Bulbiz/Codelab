@@ -5,6 +5,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.event.MouseAdapter;
 import java.awt.Graphics;
 
@@ -27,6 +28,7 @@ public class InstructionPanelGenerator extends JPanel implements IMouseReactive 
 		this.controller = instructionPanel.getController();
 		addMouseListener(controller);
 		addMouseMotionListener(controller);
+		setMaximumSize(new Dimension(200, 32));
 		// pour les tests
 		add(new JLabel(instruction.getVersion()));
 		setBackground(Color.GRAY);
@@ -36,12 +38,8 @@ public class InstructionPanelGenerator extends JPanel implements IMouseReactive 
 		return instructionPanel.createNewInstructionPanel(controller, instruction);
 	}
 
-	public IMouseReactive getSourcePanel() {
+	public InstructionPanel getSourcePanel() {
 		return createInstructionPanel();
-	}
-
-	public String getDestType() {
-		return "generatorPanel";
 	}
 
 	public void paintComponent(Graphics g) {

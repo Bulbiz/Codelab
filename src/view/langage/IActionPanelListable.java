@@ -1,6 +1,8 @@
 
 package src.view.langage;
 
+import java.awt.Dimension;
+
 import javax.swing.JPanel;
 
 interface IActionPanelListable extends IParent {
@@ -11,6 +13,7 @@ interface IActionPanelListable extends IParent {
         while (cur != null) {
             panel.add(cur);
             cur.setParentPanel(parent);
+            panel.setMaximumSize(new Dimension(300, panel.getMaximumSize().height + cur.getMaximumSize().height));
             cur = cur.next;
         }
     }

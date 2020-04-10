@@ -5,7 +5,7 @@ import java.awt.Graphics;
 
 public interface IMouseReactive {
 
-    default IMouseReactive getSourcePanel() {
+    default InstructionPanel getSourcePanel() {
         return null;
     }
     
@@ -13,7 +13,10 @@ public interface IMouseReactive {
         return "null";
     }
 
-    default void onRelease(IMouseReactive source) { }
+    default void onRelease(InstructionPanel source) {
+        if (source != null)
+            source.dehighlight();
+    }
 
     void paintComponent(Graphics g);
 }
