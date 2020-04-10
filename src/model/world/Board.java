@@ -208,12 +208,12 @@ public class Board {
 		return json;
 	}
 
-
+//CHANGEMENT
 	public JSONArray decorToJson(){
 		JSONArray jsonArray = new JSONArray();
 		try{
-			for(int i = 0; i < this.cells.length; i++){
-				for(int j = 0; j < this.cells[i].length; j++){
+			for(int i = 1; i < this.cells.length-1; i++){
+				for(int j = 1; j < this.cells[i].length-1; j++){
 					jsonArray.put(soloDecorToJson(cells[i][j]));   //check with Antoine for the orientation
 				}
 			}
