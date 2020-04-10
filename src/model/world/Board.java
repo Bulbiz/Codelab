@@ -67,7 +67,7 @@ public class Board {
      * @return true if the Cell dont have an obstacle or entity false otherwise
      */
     private boolean isNotOccupied(int y, int x) {
-    	return this.cells[y][x].getEntity() == null && !(this.cells[y][x].getDecor() instanceof Obstacle);
+    	return !(this.cells[y][x].getDecor() instanceof Obstacle);
     }
     
     //EDITOR + PLACEMENT
