@@ -11,8 +11,8 @@ import javax.imageio.ImageIO;
  *
  */
 public class WorldPanel extends JPanel implements IDisplayable {
-	private static final int tileLength = 32;
-	private Board boardModel;
+	protected static final int tileLength = 32;
+	protected Board boardModel;
 	private ImageLibrary spriteLibrary;
 
     /**
@@ -40,15 +40,15 @@ public class WorldPanel extends JPanel implements IDisplayable {
     	//Draw Here
     	this.paintBoardDecor(g);
     	this.paintPersonage(g);
-
     }
+    
     private void paintBoardDecor(Graphics g) {
     	for(int i = 0 ; i < Board.boardLength ; i++) {
     		for(int j = 0 ; j < Board.boardLength ; j++) {
-    			String decorSpriteName = boardModel.getDecor(j,i) != null ? boardModel.getDecor(j,i).toString(): "vide";
-    			spriteLibrary.getSprite(decorSpriteName).paintIcon(this,g,j*tileLength, i*tileLength);
+				String decorSpriteName = boardModel.getDecor(j,i) != null ? boardModel.getDecor(j,i).toString(): "vide";
+				spriteLibrary.getSprite(decorSpriteName).paintIcon(this,g,j*tileLength, i*tileLength);
     		}
-    	}
+		}
     }
     //FIXME: Shouldn't this be painting Entity instead of just Personage ?
     private void paintPersonage (Graphics g) {

@@ -25,7 +25,7 @@ public class Cell {
     	return this.decor;
     }
     
-    protected void setEntity(Entity e) {
+    public void setEntity(Entity e) {
     	this.being = e;
     }
     public void setDecor(Decor d) {

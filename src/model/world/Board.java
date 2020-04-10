@@ -13,21 +13,6 @@ public class Board {
 
 	public static final int boardLength = 17;
 
-    /*
-    public Board(int yFinish, int xFinish, ArrayList<Entity> characters) {
-
-    	this.cells = new Cell[boardLength][boardLength];
-    	this.characters = characters;
-    	createBorder();
-    	initiateCells();
-    	try{
-    	    this.finish = this.cells[yFinish][xFinish];
-    	} catch(Exception e){
-    	    System.out.println("Erreur : Les coordonnées sont hors limite");
-    	    return;
-    	}
-    }*/
-
     public Board () {
     	this.cells = new Cell[boardLength][boardLength];
 			this.characters = new ArrayList<Entity> ();
@@ -44,8 +29,6 @@ public class Board {
         player.setActions(script);
     }
 
-    //FIXME: not optimal yet
-    //FIXME: high risk of NullPointerException
     public Player getPlayer(){
 		Player player = null;
         for(Entity p: characters){
@@ -63,17 +46,31 @@ public class Board {
     		return null;
     	}
     }
-
+    
+    public void erased (int y, int x) {
+    	if(entityPresent(y,x)) {
+    		this.characters.remove(this.cells[y][x].getEntity());
+    		this.cells[y][x].setEntity(null);
+    	}
+    }
+    
+    public boolean entityPresent(int y, int x) {
+    	return this.cells[y][x].getEntity() != null;
+    }
+    
+    //EDITOR + PLACEMENT
     public void setDecor(Decor d,int y, int x) {
     	this.cells[y][x].setDecor(d);
     }
+    
     /*
      * @return true if the Cell dont have an obstacle or entity false otherwise
      */
     private boolean isNotOccupied(int y, int x) {
     	return this.cells[y][x].getEntity() == null && !(this.cells[y][x].getDecor() instanceof Obstacle);
     }
-
+    
+    //EDITOR + PLACEMENT
     //method to initiate the entity when its not on the board
     public boolean initiateEntity(int y, int x, Entity being) {
     	try {
@@ -91,14 +88,22 @@ public class Board {
     	}
     }
 
+    //EDITOR + PLACEMENT
     public void initiateGoal(int yGoal, int xGoal) {
+    	if(this.finish != null) 
+    		this.finish.setDecor(new Floor(this,this.finish.getDecor().getXPosition(),this.finish.getDecor().getYPosition())); //Assure the unicity of Goal
     	this.finish = this.cells[yGoal][xGoal];
-    	this.finish.setDecor(new Goal(this, xGoal, yGoal));
+		this.finish.setDecor(new Goal(this, xGoal, yGoal));
     }
 
 	public Cell[][] getCells(){
 		return cells;
 	}
+
+	public Cell getCell(int x, int y) {
+		return cells[y][x];
+	}
+
 
 	public ArrayList<Entity> getCharacter(){
 		return this.characters;
@@ -119,7 +124,7 @@ public class Board {
     	for(int i = 0; i < this.cells.length; i++) {
     		for(int j = 0; j < this.cells[0].length; j++) {
     			if(this.cells[i][j] == null) {
-    				this.cells[i][j] = new Cell();
+    				this.cells[i][j] = new Cell(new Floor(this,i,j));
     			}
     		}
     	}
@@ -152,7 +157,13 @@ public class Board {
     	for(Entity p : this.characters)
     		p.run();
     }
-
+    
+    //EDITOR + PLACEMENT
+    //Define if the board can be used as a level
+    public boolean creatable() {
+    	return this.getPlayer() != null && this.finish != null;
+    }
+    
     //Terminal View
     public String toString() {
     	String res = "";

@@ -4,6 +4,7 @@ import src.model.world.*;
 import src.view.langage.*;
 import src.view.world.*;
 import src.view.*;
+import src.editor.view.*;
 import src.controller.*;
 import java.util.*;
 import javax.swing.*;
@@ -18,7 +19,7 @@ import org.json.simple.parser.ParseException;
 
 public class Test {
     //test of running the project
-  /* public static void begin(){
+   /*public static void begin(){
       ArrayList<Personage> p = new ArrayList();
       Board b = new Board(6, 1, p);
       Player steve = new Player(b, 6, 15, 1);
@@ -139,6 +140,36 @@ public class Test {
         System.out.println(jsonToStringGoal());
     }
 
+    public static void loadLevelForMenu(){
+        try{
+            Level levelTest = new Level("test");
+            JFrame testLoad = TestWorldView.createWindows ("TestLoad");
+            testLoad.setContentPane(new LoadLevel(testLoad));
+            testLoad.pack();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    public static void editorForMenu(){
+        JFrame testWindows = TestWorldView.createWindows ("Test");
+        ControllerEditor controller = new ControllerEditor();
+        EditorPanel editorPanel = new EditorPanel(controller);
+        controller.setPanels(editorPanel);
+        testWindows.setContentPane(editorPanel);
+        testWindows.pack();
+    }
+
+    public static void beginMenu(){
+        try{
+            Level levelTest = new Level("test");
+            JFrame testMenuPanel = TestWorldView.createWindows ("testMenuPanel");
+            testMenuPanel.setContentPane(new MenuPanel(testMenuPanel));
+            testMenuPanel.pack();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
     public static void begin(){
       try{
         //RECUPERATION DE JSON
@@ -148,6 +179,7 @@ public class Test {
         JFrame testWindows = TestWorldView.createWindows ("Test");
         testWindows.setContentPane(vueLevel);
         testWindows.pack();*/
+
         JFrame testLoad = TestWorldView.createWindows ("TestLoad");
         testLoad.setContentPane(new LoadLevel(testLoad));
         testLoad.pack();
@@ -163,14 +195,25 @@ public class Test {
         e.printStackTrace();
       }
     }
+    private static void testEditorButton(){
+    	JFrame testWindows = TestWorldView.createWindows ("Test");
+
+        ControllerEditor controller = new ControllerEditor();
+        EditorPanel editorPanel = new EditorPanel(controller);
+        controller.setPanels(editorPanel);
+        testWindows.setContentPane(editorPanel);
+        testWindows.pack();
+    }
+
     public static void main(String[] args) throws Exception {
         //TestLanguageModel.run();
         //TestWorldModel.run();
         //TestLanguageView.run();
-        TestWorldView.run();
+        //TestWorldView.run();
         //testPasDansLeMainThierry();
-
-        begin();
+    	//testEditorButton();
+        //begin();
+        beginMenu();
         //ControllerLevel.errorPopUp("Rémy répond pas dans Discord ce con...");
         System.out.println("fin de test");
     }

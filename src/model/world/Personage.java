@@ -21,14 +21,13 @@ public abstract class Personage extends Entity {
     //FIXME we need a Board to create a Personage but we need a Personage to create a Board
     public Personage(Board b, int xStart, int yStart,int facingStart,Queue<Action> a) {
     	super(b,xStart,yStart);
-    	facing = (this.facing + 4) % 4; // "+ 4" is to always get positif modulus
+    	facing = (facingStart + 4) % 4; // "+ 4" is to always get positif modulus
     	actions = a;
     }
 
     public int getFacing(){
         return facing;
     }
-
     private void turn (int rotate) {
     	this.facing = ((this.facing + rotate) + 4) % 4; // "+ 4" is to always get positif modulus
     }

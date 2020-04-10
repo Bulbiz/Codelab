@@ -39,6 +39,10 @@ public class Player extends Personage {
     	return !(this.actions.isEmpty());
     }
     
+    public void setFacing(int facing) {
+    	this.facing = (this.facing + 4) % 4;;
+    }
+    
     public String toString() {
     	return "player"+this.facing;
     }
