@@ -7,8 +7,6 @@ import java.util.*;
  *
  */
 public abstract class Decor {
-
-
     protected Board levelBoard;
 	protected int x;
 	protected int y;

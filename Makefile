@@ -2,7 +2,7 @@ JCC = javac
 JFLAGS = -g
 CLASSPATH = .:json.jar:json-simple.jar
 
-all: modell modelw viewl vieww controller testall
+all: modell modelw viewl vieww editor controller testall
 	cp -r json.jar bin
 	cp -r json-simple.jar bin
 
@@ -17,6 +17,9 @@ viewl:
 
 vieww:
 	javac -cp $(CLASSPATH) src/view/langage/*.java -d bin
+
+editor:
+	javac -cp $(CLASSPATH) src/editor/view/*.java -d bin
 
 controller:
 	javac -cp $(CLASSPATH) src/controller/*.java -d bin

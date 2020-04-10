@@ -4,6 +4,7 @@ import src.model.world.*;
 import src.view.langage.*;
 import src.view.world.*;
 import src.view.*;
+import src.editor.view.*;
 import src.controller.*;
 import java.util.*;
 import javax.swing.*;
@@ -18,7 +19,7 @@ import org.json.simple.parser.ParseException;
 
 public class Test {
     //test of running the project
-  /* public static void begin(){
+   /*public static void begin(){
       ArrayList<Personage> p = new ArrayList();
       Board b = new Board(6, 1, p);
       Player steve = new Player(b, 6, 15, 1);
@@ -184,16 +185,24 @@ public class Test {
         e.printStackTrace();
       }
     }
+    private static void testEditorButton(){
+    	JFrame testWindows = TestWorldView.createWindows ("Test");
+
+        ControllerEditor controller = new ControllerEditor();
+        EditorPanel editorPanel = new EditorPanel(controller);
+        controller.setPanels(editorPanel);
+        testWindows.setContentPane(editorPanel);
+        testWindows.pack();
+    }
+
     public static void main(String[] args) throws Exception {
         //TestLanguageModel.run();
         //TestWorldModel.run();
         //TestLanguageView.run();
         //TestWorldView.run();
         //testPasDansLeMainThierry();
-
+    	testEditorButton();
         //begin();
-        beginMenu();
-
         //ControllerLevel.errorPopUp("Rémy répond pas dans Discord ce con...");
         System.out.println("fin de test");
     }
