@@ -150,6 +150,16 @@ public class Test {
             e.printStackTrace();
         }
     }
+
+    public static void editorForMenu(){
+        JFrame testWindows = TestWorldView.createWindows ("Test");
+        ControllerEditor controller = new ControllerEditor();
+        EditorPanel editorPanel = new EditorPanel(controller);
+        controller.setPanels(editorPanel);
+        testWindows.setContentPane(editorPanel);
+        testWindows.pack();
+    }
+
     public static void beginMenu(){
         try{
             Level levelTest = new Level("test");
@@ -201,8 +211,9 @@ public class Test {
         //TestLanguageView.run();
         //TestWorldView.run();
         //testPasDansLeMainThierry();
-    	testEditorButton();
+    	//testEditorButton();
         //begin();
+        beginMenu();
         //ControllerLevel.errorPopUp("Rémy répond pas dans Discord ce con...");
         System.out.println("fin de test");
     }

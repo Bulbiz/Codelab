@@ -26,7 +26,8 @@ public class MenuPanel extends JPanel{
         });
 
         editor.addActionListener((e) -> {
-            //waiting for the implementation for the editor of lvl.
+            Test.editorForMenu();
+            parent.dispose();
         });
 
         this.add(load);
