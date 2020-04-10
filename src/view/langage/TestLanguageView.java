@@ -58,14 +58,14 @@ public class TestLanguageView {
         InstructionPanelGenerator ig7 = new InstructionPanelGenerator(new ConditionPanel(controller, new False(null)));
         InstructionPanelGenerator ig8 = new InstructionPanelGenerator(new NotPanel(controller, new Not(null)));
 
-        view.resourcePanel.add(ig3);
-        view.resourcePanel.add(ig4);
-        view.resourcePanel.add(ig5);
-        view.resourcePanel.add(ig1);
-        view.resourcePanel.add(ig2);
-        view.resourcePanel.add(ig7);
-        view.resourcePanel.add(ig8);
-        view.resourcePanel.add(ig6);
+        view.resourcePanel.addGenerator(ig3);
+        view.resourcePanel.addGenerator(ig4);
+        view.resourcePanel.addGenerator(ig5);
+        view.resourcePanel.addGenerator(ig1);
+        view.resourcePanel.addGenerator(ig2);
+        view.resourcePanel.addGenerator(ig7);
+        view.resourcePanel.addGenerator(ig8);
+        view.resourcePanel.addGenerator(ig6);
     }
 
 }

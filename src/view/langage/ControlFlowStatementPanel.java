@@ -12,6 +12,7 @@ import javax.swing.JPanel;
 import java.awt.event.MouseAdapter;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.GridLayout;
 
 /**
@@ -28,33 +29,56 @@ public class ControlFlowStatementPanel extends ActionPanel implements IActionPan
         super(controller);
         instruction = InstructionFactory.createInstruction(cfs);
 
-        conditionPanel = ControlFlowStatementPanel.createEmptyConditionPanel(this, controller);
-        conditionPanelPanel = new JPanel();        
-        conditionPanelPanel.add(conditionPanel);
-
-        ActionPanel ap = new ActionPanel(controller, null);
-        ap.setParentPanel(this);
-        head = ap;
-        actionPanelsPanel = new JPanel();
-        actionPanelsPanel.setLayout(new BoxLayout(actionPanelsPanel, BoxLayout.PAGE_AXIS));
-        actionPanelsPanel.add(ap);
-
-        setLayout(new GridLayout(2, 2));
-        add(new JLabel(cfs.getVersion()));
-        add(conditionPanelPanel);
-        add(new JLabel("do"));
-        add(actionPanelsPanel);
-        setBackground(Color.GREEN);
+        normalColor = Color.green.darker();
+        highlightColor = Color.green;
+        
+        initPanelSetUp();
+        
+        actionPanelsPanel.setMaximumSize(new Dimension(300, 32));
+        setMinimumSize(new Dimension(300, 64));
+        setMaximumSize(new Dimension(300, 64));
     }
 
     private JPanel actionPanelsPanel;
 
     private ConditionPanel conditionPanel;
     private JPanel conditionPanelPanel;
+
+    private void initPanelSetUp() {
+        conditionPanel = ControlFlowStatementPanel.createEmptyConditionPanel(this, controller);
+        conditionPanelPanel = new JPanel();        
+        conditionPanelPanel.setLayout(new BoxLayout(conditionPanelPanel, BoxLayout.Y_AXIS));
+        conditionPanelPanel.add(conditionPanel);
+
+        ActionPanel ap = new ActionPanel(controller, null);
+        ap.setParentPanel(this);
+        head = ap;
+        actionPanelsPanel = new JPanel();
+        actionPanelsPanel.setLayout(new BoxLayout(actionPanelsPanel, BoxLayout.Y_AXIS));
+        actionPanelsPanel.add(ap);
+
+        setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
+        JPanel up = new JPanel();
+        up.setLayout(new BoxLayout(up, BoxLayout.LINE_AXIS));
+        JLabel l1 = new JLabel(instruction.getVersion());
+        up.add(l1);
+        up.add(conditionPanelPanel);
+        JPanel down = new JPanel();
+        down.setLayout(new BoxLayout(down, BoxLayout.LINE_AXIS));
+        JLabel l2 = new JLabel("do");
+        down.add(l2);
+        down.add(actionPanelsPanel);
+        add(up);
+        add(down);
+        up.setBackground(Color.GREEN);
+        down.setBackground(Color.GREEN);
+        actionPanelsPanel.setBackground(Color.GREEN);
+    }
     
     public void changeConditionPanel(ConditionPanel cp) {
         changeConditionPanel(cp, conditionPanelPanel, controller);
-        revalidate();
+        updateSize();
+        validate();
     }
 
     public void setConditionPanel(ConditionPanel cp) {
@@ -78,7 +102,7 @@ public class ControlFlowStatementPanel extends ActionPanel implements IActionPan
     }
 
     public boolean isAddingToItself(ActionPanel ap) {
-
+        
         ActionPanel receiver = this;
         IActionPanelListable receiverParent = this.getParentPanel();
         IActionPanelListable apParent = (IActionPanelListable) ap.getParentPanel();
@@ -92,8 +116,8 @@ public class ControlFlowStatementPanel extends ActionPanel implements IActionPan
             return false;
 
         if (receiverParent != apParent)
-            return false;
-            
+            return false; 
+
         return getIndexInPane(receiver, head) <= getIndexInPane(ap, head);
         
     }
@@ -115,8 +139,11 @@ public class ControlFlowStatementPanel extends ActionPanel implements IActionPan
         else
             updateNext(ap, previous);
 
+        System.out.println("bonjour");
+
         addRecursively(ap, this, actionPanelsPanel);
-        revalidate();
+        updateSize();
+        validate();
     }
 
     public void removeActionPanel(ActionPanel ap) {
@@ -132,7 +159,8 @@ public class ControlFlowStatementPanel extends ActionPanel implements IActionPan
             head = createEmptyActionPanel();
             actionPanelsPanel.add(head);
         }
-        revalidate();
+        updateSize();
+        validate();
     }
 
     public String getListType() {
@@ -159,5 +187,36 @@ public class ControlFlowStatementPanel extends ActionPanel implements IActionPan
 
     public InstructionPanel createNewInstructionPanel(ControllerLanguage controller, Instruction instruction) {
         return new ControlFlowStatementPanel(controller, (ControlFlowStatement)instruction);
+    }
+
+    public void highlight() {
+        JPanel up = (JPanel) this.getComponent(0);
+        up.setBackground(highlightColor);
+        JPanel down = (JPanel) this.getComponent(1);
+        down.setBackground(highlightColor);
+    }
+
+    public void dehighlight() {
+        JPanel up = (JPanel) this.getComponent(0);
+        up.setBackground(normalColor);
+        JPanel down = (JPanel) this.getComponent(1);
+        down.setBackground(normalColor);
+    }
+
+    private void updateSize() {        
+        int aph = 0;
+        ActionPanel ap = head;
+        while (ap != null) {            
+            aph += ap.getMaximumSize().height;
+            ap = ap.next;
+        }
+        actionPanelsPanel.setMaximumSize(new Dimension(300, aph));
+
+
+        int w = 300;
+        int h = 0;
+        h += conditionPanel.getMaximumSize().getHeight();
+        h += actionPanelsPanel.getMaximumSize().getHeight();
+        setMaximumSize(new Dimension(w, h));        
     }
 }

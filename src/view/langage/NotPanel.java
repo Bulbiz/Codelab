@@ -1,6 +1,9 @@
 
 package src.view.langage;
 
+import java.awt.Color;
+import java.awt.Dimension;
+
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -22,12 +25,18 @@ public class NotPanel extends ConditionPanel implements IConditionPanelAdjustabl
         add(new JLabel("NOT"));
         conditionPanel = ControlFlowStatementPanel.createEmptyConditionPanel(this, controller);
         conditionPanelPanel = new JPanel();
+        conditionPanelPanel.setLayout(new BoxLayout(conditionPanelPanel, BoxLayout.Y_AXIS));
         conditionPanelPanel.add(conditionPanel);
         add(conditionPanelPanel);
+        conditionPanelPanel.setBackground(Color.cyan);
+
+        setMaximumSize(new Dimension(300, 32 + conditionPanel.getMaximumSize().height));
     }
 
     public void setConditionPanel(ConditionPanel cp) {
         conditionPanel = cp;
+        setMaximumSize(new Dimension(300, 32 + cp.getMaximumSize().height));
+        System.out.println(getMaximumSize().height);
     }
 
     public ConditionPanel getConditionPanel() {
@@ -36,7 +45,7 @@ public class NotPanel extends ConditionPanel implements IConditionPanelAdjustabl
 
     public void changeConditionPanel(ConditionPanel cp) {
         changeConditionPanel(cp, conditionPanelPanel, controller);
-        revalidate();
+        validate();
     }    
 
     @Override
@@ -52,6 +61,16 @@ public class NotPanel extends ConditionPanel implements IConditionPanelAdjustabl
 
     public InstructionPanel createNewInstructionPanel(ControllerLanguage controller, Instruction instruction) {
         return new NotPanel(controller, (Not)instruction);
+    }
+
+    public void highlight() {
+        super.highlight();
+        conditionPanelPanel.setBackground(highlightColor);
+    }
+
+    public void dehighlight() {
+        super.dehighlight();
+        conditionPanelPanel.setBackground(normalColor);
     }
 
 }

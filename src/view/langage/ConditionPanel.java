@@ -20,7 +20,9 @@ public class ConditionPanel extends InstructionPanel {
         super(controller);
         if (condition != null)
             instruction = InstructionFactory.createInstruction(condition);                      
-        setBackground(Color.CYAN);
+        normalColor = Color.CYAN.darker();
+        highlightColor = Color.CYAN;
+        setBackground(normalColor);
         setUpPanel(); 
     }
 
@@ -46,8 +48,8 @@ public class ConditionPanel extends InstructionPanel {
         return new ConditionPanel(controller, (Condition)instruction);
     }
     
-    public void onRelease(IMouseReactive src) {
-        InstructionPanel source = (InstructionPanel) src;
+    public void onRelease(InstructionPanel source) {
+        super.onRelease(source);
 
         System.out.println("over condition panel");
         if (source.getInstruction() == null)
