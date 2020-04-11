@@ -142,7 +142,6 @@ public class Test {
 
     public static void loadLevelForMenu(){
         try{
-            Level levelTest = new Level("test");
             JFrame testLoad = TestWorldView.createWindows ("TestLoad");
             testLoad.setContentPane(new LoadLevel(testLoad));
             testLoad.pack();
@@ -162,7 +161,6 @@ public class Test {
 
     public static void beginMenu(){
         try{
-            Level levelTest = new Level("test");
             JFrame testMenuPanel = TestWorldView.createWindows ("testMenuPanel");
             testMenuPanel.setContentPane(new MenuPanel(testMenuPanel));
             testMenuPanel.pack();
@@ -170,31 +168,7 @@ public class Test {
             e.printStackTrace();
         }
     }
-    public static void begin(){
-      try{
-        //RECUPERATION DE JSON
 
-        Level levelTest = new Level("test");
-        /*LevelPanel vueLevel = new LevelPanel ("test");
-        JFrame testWindows = TestWorldView.createWindows ("Test");
-        testWindows.setContentPane(vueLevel);
-        testWindows.pack();*/
-
-        JFrame testLoad = TestWorldView.createWindows ("TestLoad");
-        testLoad.setContentPane(new LoadLevel(testLoad));
-        testLoad.pack();
-
-        //test levelToJson
-        //levelTest.getBoard().toJson("hello");
-
-        //fin du test
-        /*JFrame testLoad = TestWorldView.createWindows ("TestLoad");
-        testLoad.setContentPane(new LoadLevel());
-        testLoad.pack();*/
-      }catch(Exception e){
-        e.printStackTrace();
-      }
-    }
     private static void testEditorButton(){
     	JFrame testWindows = TestWorldView.createWindows ("Test");
 
