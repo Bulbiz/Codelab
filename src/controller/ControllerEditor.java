@@ -57,14 +57,14 @@ public class ControllerEditor extends MouseAdapter {
 		}
 	}
 	
-	private boolean nameUnique(String name) {
-		try {
-    		JSONParser jsonParser = new JSONParser();
-    		FileReader reader = new FileReader("resources/" + name + ".json");
-    		return false;
-    	}catch(Exception e) {
-    		return true;
-    	}
+	public static boolean nameUnique(String name) {
+	    try {
+		JSONParser jsonParser = new JSONParser();
+		FileReader reader = new FileReader("resources/" + name + ".json");
+		return false;
+	    }catch(Exception e) {
+		return true;
+	    }
 	}
 	
 	
