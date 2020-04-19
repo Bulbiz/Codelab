@@ -46,6 +46,9 @@ public class LevelPanel extends JPanel{
 		this.worldView.setBoard(level.getBoard());
 	}
 
+	public void endOfLevel() {
+		restart();
+	}
 	private void initialiseWorldView() {
 		this.worldView = new WorldPanel (this.level.getBoard());
 	}
