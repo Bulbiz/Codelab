@@ -1,4 +1,5 @@
 package src.view.world;
+import src.controller.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -18,16 +19,16 @@ public class LoadLevel extends JPanel{
     this.add(confirm);
 
     this.confirm.addActionListener((e) -> {
-                                          try{
-                                            LevelPanel vueLevel = new LevelPanel (this.placeholder.getText());
-                                            JFrame testWindows = TestWorldView.createWindows (this.placeholder.getText());
-                                            testWindows.setContentPane(vueLevel);
-                                            testWindows.pack();
-                                            parent.dispose();
-                                          } catch(Exception exc){
-                                            System.out.println("Le niveau n'existe pas");
-                                            //this.add(new JTextField("Le niveau portant le nom : " + this.placeholder.getText() + " n'existe pas"));
-                                          }
-                                          });
+	    if(!ControllerEditor.nameUnique(this.placeholder.getText())){
+		LevelPanel vueLevel = new LevelPanel (this.placeholder.getText());
+		JFrame testWindows = TestWorldView.createWindows (this.placeholder.getText());
+		testWindows.setContentPane(vueLevel);
+		testWindows.pack();
+		parent.dispose();
+	    } else {			     
+		ControllerLevel.errorPopUp("Le niveau portant le nom : \"" + this.placeholder.getText() + "\" n'existe pas");
+		//this.add(new JTextField("Le niveau portant le nom : " + this.placeholder.getText() + " n'existe pas"));
+	    }
+	});
   }
 }
