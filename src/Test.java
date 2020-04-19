@@ -6,6 +6,7 @@ import src.view.world.*;
 import src.view.*;
 import src.editor.view.*;
 import src.controller.*;
+import src.story.*;
 import java.util.*;
 import javax.swing.*;
 import java.awt.*;
@@ -179,6 +180,12 @@ public class Test {
         testWindows.pack();
     }
 
+    public static void storyForMenu(){
+    	JFrame testWindows = TestWorldView.createWindows ("Story");
+        testWindows.setContentPane(new StoryPanel(1,testWindows));
+        testWindows.pack();
+    }
+    
     public static void main(String[] args) throws Exception {
         //TestLanguageModel.run();
         //TestWorldModel.run();
@@ -188,6 +195,7 @@ public class Test {
     	//testEditorButton();
         //begin();
         beginMenu();
+    	//testStory();
         //ControllerLevel.errorPopUp("Rémy répond pas dans Discord ce con...");
         System.out.println("fin de test");
     }

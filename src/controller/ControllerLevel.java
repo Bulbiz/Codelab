@@ -41,12 +41,18 @@ public class ControllerLevel{
     System.out.println(message);
 		if(hasWon){
 			victoryPopUp();
+			endOfLevel();
 		} else {
 			defeatPopUp();
+			restart();
 		}
-    restart();
 	}
 
+	public void endOfLevel() {
+		this.level.restart();
+		this.vueLevel.endOfLevel();
+		this.worldTime = null;
+	}
 	public void restart() {
 		this.level.restart();
 		this.vueLevel.restart();
