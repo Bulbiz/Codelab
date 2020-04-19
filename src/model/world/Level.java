@@ -28,7 +28,7 @@ public class Level {
 
     public Level (String name) throws Exception {
     	this.actions = null;
-      this.save = readJSON(name);
+        this.save = readJSON(name);
     	this.board = initiateBoard (this.save);
     }
 
@@ -69,7 +69,7 @@ public class Level {
     public Player getPlayer() {
     	return this.board.getPlayer();
     }
-    //FIXME : Should be changed to JSON
+
     private Board initiateBoard (JSONObject json) throws Exception{
 
     	Board board = new Board ();

@@ -24,9 +24,12 @@ public class WorldPanel extends JPanel implements IDisplayable {
     	this.spriteLibrary = new ImageLibrary ();
     	this.spriteLibrary.loadWorldImage();
     }
-		public void setBoard(Board b){
-			this.boardModel = b ;
-		}
+
+
+	public void setBoard(Board b){
+		this.boardModel = b ;
+	}
+	
     private void initiateView() {
     	int length = Board.boardLength * tileLength;
     	this.setPreferredSize(new Dimension(length,length));
@@ -35,13 +38,14 @@ public class WorldPanel extends JPanel implements IDisplayable {
 
     }
 
+
     public void paintComponent(Graphics g) {
     	super.paintComponent(g);
     	//Draw Here
     	this.paintBoardDecor(g);
     	this.paintPersonage(g);
     }
-    
+
     private void paintBoardDecor(Graphics g) {
     	for(int i = 0 ; i < Board.boardLength ; i++) {
     		for(int j = 0 ; j < Board.boardLength ; j++) {
