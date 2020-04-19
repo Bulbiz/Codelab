@@ -12,7 +12,7 @@ public class CollectableGeneratorPanel extends JPanel{
 	private PlacementButton key;
 	private PlacementButton coin;
 	private ImageLibrary sprite;
-	
+
 	public CollectableGeneratorPanel (ControllerEditor c) {
 		this.controller = c;
 		loadSprite();
@@ -30,17 +30,17 @@ public class CollectableGeneratorPanel extends JPanel{
 		this.setLayout(new BoxLayout(this,BoxLayout.PAGE_AXIS));
 		this.addButton();
 	}
-	
+
 	private void addButton() {
 		this.addWithSeparation(key);
 		this.addWithSeparation(coin);
 	}
-	
+
 	private void addWithSeparation(JComponent c) {
     	this.add(c);
     	this.add(Box.createRigidArea(new Dimension(0,5)));
     }
-	
+
 	private static void keyPlacement(Board b, int y, int x) {
 		if(b.entityPresent(y,x)) {
 			/* Message Erreur */
