@@ -6,6 +6,8 @@ import javax.swing.*;
 import java.awt.*;
 import org.json.simple.JSONObject;
 import java.io.FileReader;
+import java.io.FileWriter;
+
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
@@ -30,9 +32,21 @@ public class StoryPanel extends JPanel{
 		}
 	}
 	
-	private int getAdvancement() {
+	private static int getAdvancement() {
 		JSONObject save = readJSON ("story/sauvegarde");
 		return Integer.parseInt(save.get("advancement").toString());
+	}
+	
+	private static void setAdvancement(int advancement) {
+		try {
+			JSONObject save = readJSON ("story/sauvegarde");
+			save.put("advancement",advancement);
+			FileWriter file = new FileWriter("resources/story/sauvegarde.json");
+			file.write(save.toString());
+			file.flush();
+		}catch(Exception e) {
+			System.out.println("OOOF, la sauvegarde a disparu alors la c'est TRES GRAVE");
+		}
 	}
 	
 	private JPanel victoryPanel() {
@@ -48,6 +62,7 @@ public class StoryPanel extends JPanel{
 	
 	private static void loadNextLevel(int advancement) {
 		JFrame windows = createWindows("Story");
+		setAdvancement(advancement);
 		windows.setContentPane(new StoryPanel(windows));
 		windows.pack();
 	}
@@ -68,7 +83,7 @@ public class StoryPanel extends JPanel{
 				null, options, options[0]);
 	}
 	
-	private JSONObject readJSON (String name){
+	private static JSONObject readJSON (String name){
     	try {
     		JSONParser jsonParser = new JSONParser();
     		FileReader reader = new FileReader("resources/" + name + ".json");
