@@ -16,18 +16,23 @@ public class StoryPanel extends JPanel{
 	private String storyMessage;
 	private JFrame parent;
 	
-	public StoryPanel (int advancement, JFrame parent) {
+	public StoryPanel (JFrame parent) {
 		this.parent = parent;
 		if(advancement > nbOfLevel) {
 			this.add(victoryPanel());
 		}else {
 			System.out.println("new Level" + advancement);
-			this.advancement = advancement;
+			this.advancement = getAdvancement();
 			this.level = new StoryLevel("story/" + advancement, this);
 			this.storyMessage = readJSON("story/" + advancement).get("story").toString();
 			this.add(level);
 			storyPopUp(storyMessage);
 		}
+	}
+	
+	private int getAdvancement() {
+		JSONObject save = readJSON ("story/sauvegarde");
+		return Integer.parseInt(save.get("advancement").toString());
 	}
 	
 	private JPanel victoryPanel() {
@@ -43,9 +48,10 @@ public class StoryPanel extends JPanel{
 	
 	private static void loadNextLevel(int advancement) {
 		JFrame windows = createWindows("Story");
-		windows.setContentPane(new StoryPanel(advancement, windows));
+		windows.setContentPane(new StoryPanel(windows));
 		windows.pack();
 	}
+	
 	private static JFrame createWindows (String title) {
 		JFrame frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

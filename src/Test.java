@@ -182,7 +182,7 @@ public class Test {
 
     public static void storyForMenu(){
     	JFrame testWindows = TestWorldView.createWindows ("Story");
-        testWindows.setContentPane(new StoryPanel(1,testWindows));
+        testWindows.setContentPane(new StoryPanel(testWindows));
         testWindows.pack();
     }
     
