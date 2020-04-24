@@ -15,7 +15,7 @@ public class StoryPanel extends JPanel{
 	private LevelPanel level;
 	private String storyMessage;
 	private JFrame parent;
-	
+
 	public StoryPanel (int advancement, JFrame parent) {
 		this.parent = parent;
 		if(advancement > nbOfLevel) {
@@ -24,23 +24,24 @@ public class StoryPanel extends JPanel{
 			System.out.println("new Level" + advancement);
 			this.advancement = advancement;
 			this.level = new StoryLevel("story/" + advancement, this);
+			this.level.setLevelFrame(parent);
 			this.storyMessage = readJSON("story/" + advancement).get("story").toString();
 			this.add(level);
 			storyPopUp(storyMessage);
 		}
 	}
-	
+
 	private JPanel victoryPanel() {
 		JPanel victory = new JPanel ();
 		victory.add(new JLabel("Ouais cette page est moche mais tu as gagné !"));
 		return victory;
 	}
-	
+
 	public void nextLevel() {
 		loadNextLevel(advancement+1);
 		this.parent.dispose();
 	}
-	
+
 	private static void loadNextLevel(int advancement) {
 		JFrame windows = createWindows("Story");
 		windows.setContentPane(new StoryPanel(advancement, windows));
@@ -54,14 +55,14 @@ public class StoryPanel extends JPanel{
         frame.setVisible(true);
         return frame;
 	}
-	
+
 	private static void storyPopUp(String message){
 		Object[] options = {"OK"};
 		JOptionPane.showOptionDialog(null, message, "Histoire",
 				JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE,
 				null, options, options[0]);
 	}
-	
+
 	private JSONObject readJSON (String name){
     	try {
     		JSONParser jsonParser = new JSONParser();

@@ -8,10 +8,14 @@ import src.view.langage.*;
 import javax.swing.*;
 import java.awt.*;
 import java.util.*;
+import src.Test;
 
 /*FIXME : Should add the Language to the View*/
 public class LevelPanel extends JPanel{
 	private Level level;
+
+	private JFrame levelFrame;
+  	private JButton backToMenu;
 
 	private ControllerLevel levelController;
 
@@ -29,16 +33,29 @@ public class LevelPanel extends JPanel{
 			languageView = new LanguageView(controllerLanguage, level.getPlayer());
 			controllerLanguage.setView(languageView);
 
+			this.backToMenu = new JButton("<--");
+    		this.add(backToMenu);
+
 			initialiseWorldView();
 			initialiseRunOrStopButton(languageView);
 			initialiseRestartButton();
 
 			layoutPlacement();
 			this.updateDisplay();
+
+			this.backToMenu.addActionListener((e) -> {
+        		levelFrame.dispose();
+        		Test.beginMenu();
+			});
+
 		}catch(Exception e){
 			e.printStackTrace();
 			//Afficher un message d'erreur
 		}
+	}
+
+	public void setLevelFrame(JFrame levelFrame){
+		this.levelFrame = levelFrame;
 	}
 
 	public void restart(){
