@@ -26,6 +26,7 @@ public class StoryPanel extends JPanel{
 			System.out.println("new Level" + advancement);
 			this.advancement = getAdvancement();
 			this.level = new StoryLevel("story/" + advancement, this);
+			this.level.setLevelFrame(parent);
 			this.storyMessage = readJSON("story/" + advancement).get("story").toString();
 			this.add(level);
 			storyPopUp(storyMessage);
@@ -54,12 +55,12 @@ public class StoryPanel extends JPanel{
 		victory.add(new JLabel("Ouais cette page est moche mais tu as gagné !"));
 		return victory;
 	}
-	
+
 	public void nextLevel() {
 		loadNextLevel(advancement+1);
 		this.parent.dispose();
 	}
-	
+
 	private static void loadNextLevel(int advancement) {
 		JFrame windows = createWindows("Story");
 		setAdvancement(advancement);
@@ -75,7 +76,7 @@ public class StoryPanel extends JPanel{
         frame.setVisible(true);
         return frame;
 	}
-	
+
 	private static void storyPopUp(String message){
 		Object[] options = {"OK"};
 		JOptionPane.showOptionDialog(null, message, "Histoire",
