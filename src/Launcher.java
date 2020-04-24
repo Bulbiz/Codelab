@@ -18,7 +18,38 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 public class Launcher{
+    //Auxiliary methods used for other purpose :
     
+    public static void loadLevelForMenu(){
+        try{
+            JFrame testLoad = TestWorldView.createWindows ("TestLoad");
+            testLoad.setContentPane(new LoadLevel(testLoad));
+            testLoad.pack();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    public static void editorForMenu(){
+        JFrame testWindows = TestWorldView.createWindows ("Test");
+        ControllerEditor controller = new ControllerEditor();
+        EditorPanel editorPanel = new EditorPanel(controller);
+        controller.setPanels(editorPanel);
+        testWindows.setContentPane(editorPanel);
+        testWindows.pack();
+    }
+
+    private static void testEditorButton(){
+    	JFrame testWindows = TestWorldView.createWindows ("Test");
+
+        ControllerEditor controller = new ControllerEditor();
+        EditorPanel editorPanel = new EditorPanel(controller);
+        controller.setPanels(editorPanel);
+        testWindows.setContentPane(editorPanel);
+        testWindows.pack();
+    }
+    
+    //Executing the game
     public static void beginMenu(){
         try{
             JFrame menuPanel = TestWorldView.createWindows ("Main Menu");
