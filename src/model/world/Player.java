@@ -8,6 +8,8 @@ import src.model.langage.*;
  */
 public class Player extends Personage {
 
+    protected ArrayList<Collectable> inventory = new ArrayList<Collectable>();
+
 	/*The list of actions have to be set after the player has been created because the 
 	 * actions need to have the player to be created
 	 */
@@ -33,6 +35,14 @@ public class Player extends Personage {
 
         if(verification == 1)
             actions.poll();
+    }
+
+    public void addToInventory(Collectable collectable) {
+        inventory.add(collectable);
+    }
+
+    public ArrayList<Collectable> getInventory() {
+        return inventory;
     }
     
     public boolean hasActionsLeft () {

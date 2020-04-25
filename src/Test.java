@@ -158,6 +158,25 @@ public class Test {
         testWindows.setContentPane(editorPanel);
         testWindows.pack();
     }
+    public static void begin(){
+      try{
+        /*JSONParser jsonParser = new JSONParser();
+        FileReader reader = new FileReader("resources/test.json");
+        Object obj = jsonParser.parse(reader);
+        JSONObject jsonLevel = (JSONObject) obj;
+        //RECUPERATION DE JSON
+        Level levelTest = new Level("test");*/
+        /**/LevelPanel vueLevel = new LevelPanel ("test");
+        JFrame testWindows = TestWorldView.createWindows ("Test");
+        testWindows.setContentPane(vueLevel);
+        testWindows.pack();/**/
+        /*JFrame testLoad = TestWorldView.createWindows ("TestLoad");
+        testLoad.setContentPane(new LoadLevel());
+        testLoad.pack(); */
+      }catch(Exception e){
+        e.printStackTrace();
+      }
+    }
 
     public static void beginMenu(){
         try{

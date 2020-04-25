@@ -11,7 +11,7 @@ import javax.imageio.ImageIO;
  *
  */
 public class WorldPanel extends JPanel implements IDisplayable {
-	protected static final int tileLength = 32;
+	public static final int tileLength = 32;
 	protected Board boardModel;
 	private ImageLibrary spriteLibrary;
 
@@ -59,5 +59,9 @@ public class WorldPanel extends JPanel implements IDisplayable {
     }
     public void updateDisplay() {
     	repaint();
-    }
+	}
+	
+	public ImageLibrary getImageLibrary() {
+		return spriteLibrary;
+	}
 }

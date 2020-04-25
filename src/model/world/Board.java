@@ -67,7 +67,11 @@ public class Board {
      * @return true if the Cell dont have an obstacle or entity false otherwise
      */
     private boolean isNotOccupied(int y, int x) {
-    	return !(this.cells[y][x].getDecor() instanceof Obstacle);
+		Decor d = this.cells[y][x].getDecor();
+		if (!(d instanceof Obstacle))
+			return true;
+		Door door = (Door)d;
+		return door.isOpen();
     }
     
     //EDITOR + PLACEMENT
@@ -135,6 +139,12 @@ public class Board {
     public boolean move (int yStart, int xStart, int yEnd, int xEnd) {
     	try {
     		if(isNotOccupied(yEnd, xEnd)) {
+				Entity e = this.cells[yEnd][xEnd].getEntity();
+				if (e != null && e instanceof Collectable) {
+					Collectable c = (Collectable)e;
+					c.isCollected(getPlayer());
+				}
+
     			this.cells[yEnd][xEnd].setEntity(this.cells[yStart][xStart].getEntity());
     			this.cells[yStart][xStart].setEntity(null);
     		} else {
@@ -154,15 +164,36 @@ public class Board {
     }
 
     public void run() {
-    	for(Entity p : this.characters)
-    		p.run();
+		int i = 0;
+		while (i < this.characters.size()) {			
+			Entity e = this.characters.get(i);
+			int size = this.characters.size();
+			e.run();
+			if (size == this.characters.size())
+				i++;
+
+		}
+    		
     }
     
     //EDITOR + PLACEMENT
     //Define if the board can be used as a level
     public boolean creatable() {
     	return this.getPlayer() != null && this.finish != null;
-    }
+	}
+	
+	public void openDoor(int id) {
+		for (Cell[] raw : cells) {
+			for (Cell c : raw) {
+				Decor d = c.getDecor();
+				if (d != null && d instanceof Door) {
+					Door door = (Door)d;
+					if (door.getId() == id)
+						door.open();
+				}
+			}
+		}
+	}
     
     //Terminal View
     public String toString() {

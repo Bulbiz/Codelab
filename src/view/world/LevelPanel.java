@@ -19,6 +19,7 @@ public class LevelPanel extends JPanel{
 	private LanguageView languageView;
 	private JButton runOrStopButton;
 	private JButton restartButton;
+	private InventoryPanel inventoryPanel;
 
 	public LevelPanel (String name){
 		try{
@@ -32,6 +33,7 @@ public class LevelPanel extends JPanel{
 			initialiseWorldView();
 			initialiseRunOrStopButton(languageView);
 			initialiseRestartButton();
+			initialiseInventoryPanel();
 
 			layoutPlacement();
 			this.updateDisplay();
@@ -59,6 +61,11 @@ public class LevelPanel extends JPanel{
 	private void initialiseRestartButton() {
 		this.restartButton = new JButton ("Restart");
 		this.restartButton.addActionListener((e) -> levelController.restart());
+	}
+
+	private void initialiseInventoryPanel() {
+		inventoryPanel = new InventoryPanel(level.getPlayer().getInventory());
+		inventoryPanel.add(new JLabel("inventory : "));
 	}
 
 	public WorldPanel getWorldView () {
@@ -122,6 +129,7 @@ public class LevelPanel extends JPanel{
 		executionPanel.setAlignmentX(LEFT_ALIGNMENT);
 		executionPanel.add(this.runOrStopButton);
 		executionPanel.add(this.restartButton);
+		executionPanel.add(this.inventoryPanel);
 		return executionPanel;
 	}
 
