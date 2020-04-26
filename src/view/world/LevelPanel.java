@@ -64,8 +64,7 @@ public class LevelPanel extends JPanel{
 	}
 
 	private void initialiseInventoryPanel() {
-		inventoryPanel = new InventoryPanel(level.getPlayer().getInventory(), worldView.getImageLibrary());
-		inventoryPanel.add(new JLabel("inventory : "));
+		inventoryPanel = new InventoryPanel(level.getPlayer().getInventory(), worldView.getImageLibrary());		
 	}
 
 	public WorldPanel getWorldView () {
