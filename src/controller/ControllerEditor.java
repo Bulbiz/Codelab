@@ -49,11 +49,15 @@ public class ControllerEditor extends MouseAdapter {
 	}
 
 	public void create (String name) {
-		if(creatable() && nameUnique(name)) {
+		if(!creatable()) {
+			ControllerLevel.errorPopUp("Impossible de sauvegarder ! Il faut une Joueur et un coffre !");
+		} 
+		else if (!nameUnique(name)) {
+			ControllerLevel.errorPopUp("Impossible de sauvegarder ! Ce nom est déjà pris");
+		}
+		else {
 			boardEditor.getBoard().toJson(name);
 			/* Creation Completed message */
-		} else {
-			/* Error message */
 		}
 	}
 
