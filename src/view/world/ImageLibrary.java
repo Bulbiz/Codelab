@@ -48,4 +48,10 @@ public class ImageLibrary {
 	public void loadEraserImage() {
 		this.putImage("eraser","eraser.png");
 	}
+	
+	public void loadMenuImage() {
+		this.putImage("story","story.png");
+		this.putImage("editor","editor.png");
+		this.putImage("load","load.png");
+	}
 }

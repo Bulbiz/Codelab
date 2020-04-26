@@ -2,11 +2,11 @@
 package src.editor.view;
 
 import javax.swing.*;
+import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 
 import src.controller.ControllerEditor;
 import java.awt.*;
-import java.awt.Dimension;
 
 public class GeneratorsPanel extends JPanel {
 
@@ -32,6 +32,7 @@ public class GeneratorsPanel extends JPanel {
         this.create = buttonCreate();
         this.eraser = new EraserGeneratorPanel(c);
         layoutPlacement();
+        this.setBorder(new TitledBorder(new LineBorder(Color.blue), "Palette"));
     }
 
     private void layoutPlacement() {
