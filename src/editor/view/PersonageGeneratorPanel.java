@@ -2,7 +2,7 @@ package src.editor.view;
 
 import javax.swing.*;
 import src.model.world.*;
-import src.controller.ControllerEditor;
+import src.controller.*;
 import src.view.world.ImageLibrary;
 import java.awt.Dimension;
 import javax.swing.border.TitledBorder;
@@ -43,14 +43,18 @@ public class PersonageGeneratorPanel extends JPanel{
     }
 	
 	private static void playerPlacement(Board b, int y, int x, int face) {
-		if(b.entityPresent(y,x)) {
-			/* Message Erreur */
-			return;
+		if(!entityPresent(y,x,b)) {
+			Player p = b.getPlayer();
+			if(p != null) {
+				b.erased(p.getY(),p.getX());
+			}
+			b.initiateEntity(y,x,new Player (b,x,y,face));
 		}
-		Player p = b.getPlayer();
-		if(p != null) {
-			b.erased(p.getY(),p.getX());
-		}
-		b.initiateEntity(y,x,new Player (b,x,y,face));
+	}
+	
+	private static boolean entityPresent(int y, int x , Board b) {
+		if(b.entityPresent(y,x)) 
+			ControllerLevel.errorPopUp("Impossible ! Il y a une entité dans la case choisie ! Supprimer la d'abord");
+		return b.entityPresent(y,x);
 	}
 }

@@ -2,7 +2,7 @@ package src.editor.view;
 
 import javax.swing.*;
 import src.model.world.*;
-import src.controller.ControllerEditor;
+import src.controller.*;
 import java.awt.Dimension;
 import javax.swing.border.TitledBorder;
 import src.view.world.ImageLibrary;
@@ -42,17 +42,18 @@ public class CollectableGeneratorPanel extends JPanel{
     }
 
 	private static void keyPlacement(Board b, int y, int x) {
-		if(b.entityPresent(y,x)) {
-			/* Message Erreur */
-			return;
-		}
-		b.initiateEntity( y, x , new Key(b,x,y));
+		if(!entityPresent(y,x,b)) 
+			b.initiateEntity( y, x , new Key(b,x,y));
 	}
+	
 	private static void coinPlacement(Board b, int y, int x) {
-		if(b.entityPresent(y,x)) {
-			/* Message Erreur */
-			return;
-		}
-		b.initiateEntity( y, x , new Coin(b,x,y));
+		if(!entityPresent(y,x,b)) 
+			b.initiateEntity( y, x , new Coin(b,x,y));
+	}
+	
+	private static boolean entityPresent(int y, int x, Board b) {
+		if(b.entityPresent(y,x)) 
+			ControllerLevel.errorPopUp("Warning ! Warning ! Il y a une entité ici ! ");
+		return b.entityPresent(y,x);
 	}
 }

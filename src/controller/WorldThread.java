@@ -33,7 +33,7 @@ public class WorldThread extends Thread {
 		while(this.board.getPlayer().hasActionsLeft() && !board.win()) {
 			this.tick();
 			this.render();
-			this.waiting(1300);
+			this.waiting(500);
 		}
 		this.controller.endGame(this.board.win());
 		this.interrupt();

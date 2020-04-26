@@ -2,7 +2,7 @@ package src.editor.view;
 
 import javax.swing.*;
 import src.model.world.*;
-import src.controller.ControllerEditor;
+import src.controller.*;
 import java.awt.Dimension;
 import javax.swing.border.TitledBorder;
 import src.view.world.ImageLibrary;
@@ -47,16 +47,27 @@ public class DecorGeneratorPanel extends JPanel{
 	
 	private static void wallPlacement(Board b,int y,int x) {
 		if(b.entityPresent(y,x)) {
-			/* Message Erreur */
+			ControllerLevel.errorPopUp("Impossible ! Il y a une entité dans la case choisie ! Supprimer la d'abord");
 			return;
 		}
-		
-		b.setDecor(new Wall(b,x,y),y,x);
+		if(!isBorder(y,x))
+			b.setDecor(new Wall(b,x,y),y,x);
 	}
+	
 	private static void floorPlacement(Board b,int y,int x) {
-		b.setDecor(new Floor(b,y,x),y,x);
+		if(!isBorder(y,x))
+			b.setDecor(new Floor(b,y,x),y,x);
 	}
+	
 	private static void goalPlacement (Board b, int y, int x) {
-		b.initiateGoal(y,x);
+		if(!isBorder(y,x))
+			b.initiateGoal(y,x);
 	}
+	
+	private static boolean isBorder(int y, int x) {
+		if(x == 0 || y ==0 || x == Board.boardLength - 1 || y == Board.boardLength - 1)
+			ControllerLevel.errorPopUp("Cette Case est au bord ! Impossible de la modifier");
+		
+    	return x == 0 || y ==0 || x == Board.boardLength - 1 || y == Board.boardLength - 1;
+    }
 }
