@@ -30,7 +30,7 @@ public class Player extends Personage {
             actions.poll();
             if(!this.hasActionsLeft())
             	return;
-            verification = actions.peek().run();
+            verification = actions.peek().run();            
         }
 
         if(verification == 1)

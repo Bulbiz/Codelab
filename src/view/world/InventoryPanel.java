@@ -10,14 +10,16 @@ import java.awt.Graphics;
 public class InventoryPanel extends JPanel {
 
     ArrayList<Collectable> inventory;
+    ImageLibrary spriteLibrary;
 
-    public InventoryPanel(ArrayList<Collectable> inventory) {
+    public InventoryPanel(ArrayList<Collectable> inventory, ImageLibrary spriteLibrary) {
         this.inventory = inventory;
+        this.spriteLibrary = spriteLibrary;
     }
 
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        //drawInventory(spriteLibrary, g);
+        drawInventory(spriteLibrary, g);
     }
 
     public void drawInventory(ImageLibrary spriteLibrary, Graphics g) {

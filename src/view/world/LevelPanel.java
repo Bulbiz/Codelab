@@ -64,7 +64,7 @@ public class LevelPanel extends JPanel{
 	}
 
 	private void initialiseInventoryPanel() {
-		inventoryPanel = new InventoryPanel(level.getPlayer().getInventory());
+		inventoryPanel = new InventoryPanel(level.getPlayer().getInventory(), worldView.getImageLibrary());
 		inventoryPanel.add(new JLabel("inventory : "));
 	}
 
@@ -121,6 +121,7 @@ public class LevelPanel extends JPanel{
 		west.add(this.worldView);
 		west.add(Box.createRigidArea(new Dimension(0,20)));
 		west.add(constructExecutionButton());
+		west.add(this.inventoryPanel);
 		return west;
 	}
 
@@ -128,13 +129,12 @@ public class LevelPanel extends JPanel{
 		JPanel executionPanel = new JPanel (new FlowLayout());
 		executionPanel.setAlignmentX(LEFT_ALIGNMENT);
 		executionPanel.add(this.runOrStopButton);
-		executionPanel.add(this.restartButton);
-		executionPanel.add(this.inventoryPanel);
+		executionPanel.add(this.restartButton);		
 		return executionPanel;
 	}
 
 	public void updateDisplay() {
-
+		repaint();
 	}
 	public void setEnablerunOrStopButton(boolean activation) {
 		this.runOrStopButton.setEnabled(activation);

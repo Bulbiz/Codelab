@@ -25,13 +25,13 @@ public class ControllerLevel{
 		if(this.worldTime == null) {
 			lv.fillInstructionQueue();
 			this.level.getBoard().initiatePlayerActions(script);
-			this.worldTime = new WorldThread (level.getBoard(), vueLevel.getWorldView(),this);
+			this.worldTime = new WorldThread (level.getBoard(), vueLevel,this);
 		}
 
 		if(this.worldTime.isAlive())
 			this.worldTime.stop();
 		else {
-			this.worldTime = new WorldThread (level.getBoard(), vueLevel.getWorldView(),this);
+			this.worldTime = new WorldThread (level.getBoard(), vueLevel,this);
 			this.worldTime.start();
 		}
 	}

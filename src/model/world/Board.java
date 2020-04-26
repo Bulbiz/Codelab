@@ -142,7 +142,7 @@ public class Board {
 				Entity e = this.cells[yEnd][xEnd].getEntity();
 				if (e != null && e instanceof Collectable) {
 					Collectable c = (Collectable)e;
-					c.isCollected(getPlayer());
+					c.isCollected(getPlayer());					
 				}
 
     			this.cells[yEnd][xEnd].setEntity(this.cells[yStart][xStart].getEntity());
