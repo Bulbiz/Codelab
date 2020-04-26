@@ -41,13 +41,11 @@ public class LevelPanel extends JPanel{
 			initialiseRestartButton();
 
 			layoutPlacement();
-			this.updateDisplay();
 
 			this.backToMenu.addActionListener((e) -> {
         		levelFrame.dispose();
         		Test.beginMenu();
 			});
-
 		}catch(Exception e){
 			e.printStackTrace();
 			//Afficher un message d'erreur
@@ -125,9 +123,7 @@ public class LevelPanel extends JPanel{
 		east.add(messagetemp);
 		return east;
 	}
-	private void removeRightPanel(){
 
-	}
 	private JPanel constructRightPanel() {
 		JPanel west = new JPanel ();
 		west.setLayout(new BoxLayout(west,BoxLayout.Y_AXIS));
@@ -145,9 +141,6 @@ public class LevelPanel extends JPanel{
 		return executionPanel;
 	}
 
-	public void updateDisplay() {
-
-	}
 	public void setEnablerunOrStopButton(boolean activation) {
 		this.runOrStopButton.setEnabled(activation);
 	}
