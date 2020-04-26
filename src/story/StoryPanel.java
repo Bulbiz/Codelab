@@ -11,7 +11,7 @@ import org.json.simple.parser.ParseException;
 
 public class StoryPanel extends JPanel{
 	private int advancement;
-	private static final int nbOfLevel = 3;
+	private static final int nbOfLevel = 8;
 	private LevelPanel level;
 	private String storyMessage;
 	private JFrame parent;
