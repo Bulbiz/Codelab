@@ -19,7 +19,7 @@ public class ControllerEditor extends MouseAdapter {
 	private BoardEditorPanel boardEditor;
 	private GeneratorsPanel generator;
 	private PlacementInterface placementInstruction;
-	
+
 	public ControllerEditor () {
 		this.placementInstruction = (b,x,y) -> System.out.println("Vous n'avez rien choisi pour l'instant!");
 	}
@@ -28,18 +28,18 @@ public class ControllerEditor extends MouseAdapter {
 		boardEditor = editorPanel.getBoardPanel();
 		generator = editorPanel.getGeneratorsPanel();
 	}
-	
+
 	public void setPlacementInstruction(PlacementInterface p) {
 		this.placementInstruction = p;
 	}
-	
+
 	private boolean creatable () {
 		return boardEditor.getBoard().creatable();
 	}
 
 	public void mouseClicked(MouseEvent me) {
 		System.out.println("click");
-		
+
 		if (placementInstruction != null) {
 			boardEditor.updateFromClick(me.getX(), me.getY());
 			/* il y a une inversion des x et y au niveau de l'affichage */
@@ -47,17 +47,32 @@ public class ControllerEditor extends MouseAdapter {
 			boardEditor.updateDisplay();
 		}
 	}
-	
+
 	public void create (String name) {
-		if(creatable() && nameUnique(name)) {
+		if(!creatable()) {
+			ControllerLevel.errorPopUp("Impossible de sauvegarder ! Il faut une Joueur et un coffre !");
+		} 
+		else if (!nameUnique(name)) {
+			ControllerLevel.errorPopUp("Impossible de sauvegarder ! Ce nom est déjà pris");
+		}
+		else {
 			boardEditor.getBoard().toJson(name);
 			/* Creation Completed message */
-		} else {
+		}
+	}
+
+	public void load (String name) {
+		try{
+			Level level = new Level(name);
+			boardEditor.setBoard(level.getBoard());
+			boardEditor.updateUI();
+			/* Creation Completed message */
+		}catch(Exception e){
 			/* Error message */
 		}
 	}
-	
-	private boolean nameUnique(String name) {
+
+	public static boolean nameUnique(String name) {
 		try {
     		JSONParser jsonParser = new JSONParser();
     		FileReader reader = new FileReader("resources/" + name + ".json");
@@ -66,6 +81,5 @@ public class ControllerEditor extends MouseAdapter {
     		return true;
     	}
 	}
-	
 	
 }

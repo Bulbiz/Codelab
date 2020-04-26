@@ -11,15 +11,25 @@ import java.awt.*;
 import java.util.*;
 
 public class MenuPanel extends JPanel{
-
+	private ImageLibrary menuSprite;
+	
     public MenuPanel(JFrame parent){
-        GridLayout g = new GridLayout(1,2);
-        g.setHgap(200);
+    	this.menuSprite = new ImageLibrary ();
+    	this.menuSprite.loadMenuImage();
+    	
+        GridLayout g = new GridLayout(1,3);
+       // g.setHgap(50);
         this.setLayout(g);
 
-        JButton load = new JButton("Load");
-        JButton editor = new JButton("Editor");
+        JButton story = new JButton(this.menuSprite.getSprite ("story"));
+        JButton load = new JButton(this.menuSprite.getSprite ("load"));
+        JButton editor = new JButton(this.menuSprite.getSprite ("editor"));
 
+        story.addActionListener((e) -> {
+            Test.storyForMenu();
+            parent.dispose();
+        });
+        
         load.addActionListener((e) -> {
             Test.loadLevelForMenu();
             parent.dispose();
@@ -30,6 +40,7 @@ public class MenuPanel extends JPanel{
             parent.dispose();
         });
 
+        this.add(story);
         this.add(load);
         this.add(editor);
     }

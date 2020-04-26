@@ -60,9 +60,10 @@ public class Board {
     
     //EDITOR + PLACEMENT
     public void setDecor(Decor d,int y, int x) {
-    	this.cells[y][x].setDecor(d);
+    	if(this.cells[y][x] != this.finish)
+    		this.cells[y][x].setDecor(d);
     }
-    
+
     /*
      * @return true if the Cell dont have an obstacle or entity false otherwise
      */

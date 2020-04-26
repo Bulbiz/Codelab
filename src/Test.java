@@ -6,6 +6,7 @@ import src.view.world.*;
 import src.view.*;
 import src.editor.view.*;
 import src.controller.*;
+import src.story.*;
 import java.util.*;
 import javax.swing.*;
 import java.awt.*;
@@ -153,7 +154,7 @@ public class Test {
     public static void editorForMenu(){
         JFrame testWindows = TestWorldView.createWindows ("Test");
         ControllerEditor controller = new ControllerEditor();
-        EditorPanel editorPanel = new EditorPanel(controller);
+        EditorPanel editorPanel = new EditorPanel(controller, testWindows);
         controller.setPanels(editorPanel);
         testWindows.setContentPane(editorPanel);
         testWindows.pack();
@@ -192,9 +193,15 @@ public class Test {
     	JFrame testWindows = TestWorldView.createWindows ("Test");
 
         ControllerEditor controller = new ControllerEditor();
-        EditorPanel editorPanel = new EditorPanel(controller);
+        EditorPanel editorPanel = new EditorPanel(controller, testWindows);
         controller.setPanels(editorPanel);
         testWindows.setContentPane(editorPanel);
+        testWindows.pack();
+    }
+
+    public static void storyForMenu(){
+    	JFrame testWindows = TestWorldView.createWindows ("Story");
+        testWindows.setContentPane(new StoryPanel(testWindows));
         testWindows.pack();
     }
 
@@ -207,6 +214,7 @@ public class Test {
     	//testEditorButton();
         //begin();
         beginMenu();
+    	//testStory();
         //ControllerLevel.errorPopUp("Rémy répond pas dans Discord ce con...");
         System.out.println("fin de test");
     }
