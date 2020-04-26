@@ -20,11 +20,12 @@ public class StoryPanel extends JPanel{
 	
 	public StoryPanel (JFrame parent) {
 		this.parent = parent;
+		this.advancement = getAdvancement();
 		if(advancement > nbOfLevel) {
 			this.add(victoryPanel());
+			setAdvancement(1);
 		}else {
-			System.out.println("new Level" + advancement);
-			this.advancement = getAdvancement();
+			System.out.println("new Level" + advancement);			
 			this.level = new StoryLevel("story/" + advancement, this);
 			this.level.setLevelFrame(parent);
 			this.storyMessage = readJSON("story/" + advancement).get("story").toString();
@@ -57,6 +58,7 @@ public class StoryPanel extends JPanel{
 	}
 
 	public void nextLevel() {
+		System.out.println(advancement);
 		loadNextLevel(advancement+1);
 		this.parent.dispose();
 	}
