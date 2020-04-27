@@ -45,7 +45,7 @@ public class EditPanel extends JPanel implements IActionPanelListable {
      */
     public void addActionPanel(ActionPanel ap, ActionPanel previous) {
         // TODO merge with ControlFlowStatementPanel's version
-        if (ap.getParentPanel() == previous.getParentPanel() && getIndexInPane(ap, head) <= getIndexInPane(previous, head))
+        if (IActionPanelListable.cantAdd(ap, previous))
             return;
 
         if (ap.getParentPanel() != null) 
@@ -72,6 +72,10 @@ public class EditPanel extends JPanel implements IActionPanelListable {
 
     public String getListType() {
         return "editPanelList";
+    }
+
+    public ActionPanel getHead() {
+        return head;
     }
 
     /**
