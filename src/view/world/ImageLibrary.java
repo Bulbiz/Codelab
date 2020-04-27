@@ -35,6 +35,7 @@ public class ImageLibrary {
 
 	public void loadDecorImage() {
 		this.putImage("door", "door.png");
+		this.putImage("opendoor", "opendoor.png");
 		this.putImage("goal", "goal.png");
 		this.putImage("wall", "wall.png");
 		this.putImage("floor", "floor.png");

@@ -7,10 +7,10 @@ import src.view.langage.*;
 
 public class WorldThread extends Thread {
 	private Board board;
-	private WorldPanel vueWorld;
+	private LevelPanel vueWorld;
 	private ControllerLevel controller;
 
-	public WorldThread (Board b, WorldPanel v,ControllerLevel c) {
+	public WorldThread (Board b, LevelPanel v,ControllerLevel c) {
 		this.board = b;
 		this.vueWorld = v;
 		this.controller = c;

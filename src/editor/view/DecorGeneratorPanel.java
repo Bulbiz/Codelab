@@ -12,6 +12,7 @@ public class DecorGeneratorPanel extends JPanel{
 	private PlacementButton wall;
 	private PlacementButton floor;
 	private PlacementButton goal;
+	private PlacementButton door;
 	private ImageLibrary sprite;
 	
 	public DecorGeneratorPanel (ControllerEditor c) {
@@ -19,8 +20,8 @@ public class DecorGeneratorPanel extends JPanel{
 		loadSprite();
 		this.wall = new PlacementButton(sprite.getSprite("wall"),c,(b,y,x) -> wallPlacement(b,y,x));
 		this.floor = new PlacementButton(sprite.getSprite("floor"),c,(b,y,x) -> floorPlacement(b,y,x));
-		this.goal = new PlacementButton(sprite.getSprite("goal"),c,(b,y,x) -> goalPlacement(b,y,x));
-		
+		this.goal = new PlacementButton(sprite.getSprite("goal"),c,(b,y,x) -> goalPlacement(b,y,x));		
+		this.door = new PlacementButton(sprite.getSprite("door"),c,(b,y,x) -> doorPlacement(b,y,x));
 		layoutPlacement();
 	}
 	private void loadSprite() {
@@ -38,6 +39,7 @@ public class DecorGeneratorPanel extends JPanel{
 		this.addWithSeparation(wall);
 		this.addWithSeparation(floor);
 		this.addWithSeparation(goal);
+		this.addWithSeparation(door);
 	}
 	
 	private void addWithSeparation(JComponent c) {
@@ -58,7 +60,9 @@ public class DecorGeneratorPanel extends JPanel{
 		if(!isBorder(y,x))
 			b.setDecor(new Floor(b,y,x),y,x);
 	}
-	
+	private static void doorPlacement(Board b,int y,int x) {
+		b.setDecor(new Door(b,y,x),y,x);
+	}
 	private static void goalPlacement (Board b, int y, int x) {
 		if(!isBorder(y,x))
 			b.initiateGoal(y,x);

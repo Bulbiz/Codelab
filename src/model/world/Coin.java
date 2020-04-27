@@ -6,7 +6,7 @@ import java.util.*;
 /**
  * 
  */
-public class Coin extends Entity {
+public class Coin extends Collectable {
 
     /**
      * Default constructor

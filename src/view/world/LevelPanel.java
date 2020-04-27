@@ -23,6 +23,7 @@ public class LevelPanel extends JPanel{
 	private LanguageView languageView;
 	private JButton runOrStopButton;
 	private JButton restartButton;
+	private InventoryPanel inventoryPanel;
 
 	public LevelPanel (String name){
 		try{
@@ -39,6 +40,7 @@ public class LevelPanel extends JPanel{
 			initialiseWorldView();
 			initialiseRunOrStopButton(languageView);
 			initialiseRestartButton();
+			initialiseInventoryPanel();
 
 			layoutPlacement();
 
@@ -77,6 +79,10 @@ public class LevelPanel extends JPanel{
 	private void initialiseRestartButton() {
 		this.restartButton = new JButton ("Restart");
 		this.restartButton.addActionListener((e) -> levelController.restart());
+	}
+
+	private void initialiseInventoryPanel() {
+		inventoryPanel = new InventoryPanel(level.getPlayer().getInventory(), worldView.getImageLibrary());		
 	}
 
 	public WorldPanel getWorldView () {
@@ -130,6 +136,7 @@ public class LevelPanel extends JPanel{
 		west.add(this.worldView);
 		west.add(Box.createRigidArea(new Dimension(0,20)));
 		west.add(constructExecutionButton());
+		west.add(this.inventoryPanel);
 		return west;
 	}
 
@@ -137,10 +144,13 @@ public class LevelPanel extends JPanel{
 		JPanel executionPanel = new JPanel (new FlowLayout());
 		executionPanel.setAlignmentX(LEFT_ALIGNMENT);
 		executionPanel.add(this.runOrStopButton);
-		executionPanel.add(this.restartButton);
+		executionPanel.add(this.restartButton);		
 		return executionPanel;
 	}
 
+	public void updateDisplay() {
+		repaint();
+	}
 	public void setEnablerunOrStopButton(boolean activation) {
 		this.runOrStopButton.setEnabled(activation);
 	}
