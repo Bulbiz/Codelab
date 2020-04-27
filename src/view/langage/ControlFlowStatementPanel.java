@@ -101,31 +101,8 @@ public class ControlFlowStatementPanel extends ActionPanel implements IActionPan
         return empty;
     }
 
-    public boolean isAddingToItself(ActionPanel ap) {
-        
-        ActionPanel receiver = this;
-        IActionPanelListable receiverParent = this.getParentPanel();
-        IActionPanelListable apParent = (IActionPanelListable) ap.getParentPanel();
-
-        while (receiverParent != null && !(receiverParent instanceof EditPanel) && receiverParent != apParent) {
-            receiver = (ActionPanel) receiverParent;
-            receiverParent = (IActionPanelListable) receiver.getParentPanel();
-        }
-
-        if (apParent == null || receiverParent == null) 
-            return false;
-
-        if (receiverParent != apParent)
-            return false; 
-
-        return getIndexInPane(receiver, head) <= getIndexInPane(ap, head);
-        
-    }
     public void addActionPanel(ActionPanel ap, ActionPanel previous) {
-        if (ap.getParentPanel() == previous.getParentPanel() && getIndexInPane(ap, head) <= getIndexInPane(previous, head))
-            return;
-
-        if (isAddingToItself(ap))
+        if (IActionPanelListable.cantAdd(ap, previous))
             return;
 
         if (ap.getParentPanel() != null) 
@@ -167,6 +144,10 @@ public class ControlFlowStatementPanel extends ActionPanel implements IActionPan
         return "flowControlStatementList";
     }
 
+    public ActionPanel getHead() {
+        return head;
+    }
+
 	public Instruction toInstruction() {
         ControlFlowStatement cfs = (ControlFlowStatement) instruction;
 
@@ -194,6 +175,8 @@ public class ControlFlowStatementPanel extends ActionPanel implements IActionPan
         up.setBackground(highlightColor);
         JPanel down = (JPanel) this.getComponent(1);
         down.setBackground(highlightColor);
+        if (next != null)
+            next.highlight();
     }
 
     public void dehighlight() {
@@ -201,9 +184,11 @@ public class ControlFlowStatementPanel extends ActionPanel implements IActionPan
         up.setBackground(normalColor);
         JPanel down = (JPanel) this.getComponent(1);
         down.setBackground(normalColor);
+        if (next != null)
+            next.dehighlight();
     }
 
-    private void updateSize() {        
+    public void updateSize() {        
         int aph = 0;
         ActionPanel ap = head;
         while (ap != null) {            
@@ -218,5 +203,10 @@ public class ControlFlowStatementPanel extends ActionPanel implements IActionPan
         h += conditionPanel.getMaximumSize().getHeight();
         h += actionPanelsPanel.getMaximumSize().getHeight();
         setMaximumSize(new Dimension(w, h));        
+
+        if (parent != null && parent instanceof ControlFlowStatementPanel) {
+            ControlFlowStatementPanel p = (ControlFlowStatementPanel) parent;
+            p.updateSize();
+        }
     }
 }

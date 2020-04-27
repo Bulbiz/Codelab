@@ -66,11 +66,13 @@ public class NotPanel extends ConditionPanel implements IConditionPanelAdjustabl
     public void highlight() {
         super.highlight();
         conditionPanelPanel.setBackground(highlightColor);
+        conditionPanel.highlight();
     }
 
     public void dehighlight() {
         super.dehighlight();
         conditionPanelPanel.setBackground(normalColor);
+        conditionPanel.dehighlight();
     }
 
 }

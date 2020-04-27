@@ -36,16 +36,6 @@ interface IActionPanelListable extends IParent {
         else 
             last.next = null;
     }
-    default int getIndexInPane(ActionPanel ap, ActionPanel head) {
-        ActionPanel cur = head;
-        int index = 0;
-        while (cur != null && cur != ap) {
-            index ++;
-            cur = cur.next;            
-        }
-
-        return cur == null ? -1 : index;
-    }
     default ActionPanel getLast(ActionPanel ap) {
         ActionPanel last = ap;
         while (last.next != null)
@@ -58,6 +48,26 @@ interface IActionPanelListable extends IParent {
             cur = cur.next;
         
         return cur;
+    }
+    ActionPanel getHead();
+
+    public static boolean cantAdd(ActionPanel ap, ActionPanel previous) {
+
+        while (ap != null) {
+            if (ap == previous)
+                return true;
+            
+            if (ap instanceof IActionPanelListable) {
+                IActionPanelListable cur = (IActionPanelListable) ap;
+                boolean stop = cantAdd(cur.getHead(), previous);
+                if (stop)
+                    return true;
+            }
+
+            ap = ap.next;
+        }
+
+        return false;
     }
 
     String getListType();
