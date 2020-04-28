@@ -2,6 +2,7 @@
 package src.view.langage;
 
 import src.controller.ControllerLanguage;
+import src.controller.ControllerLevel;
 import src.model.langage.*;
 
 import java.util.*;
@@ -152,13 +153,19 @@ public class ControlFlowStatementPanel extends ActionPanel implements IActionPan
         ControlFlowStatement cfs = (ControlFlowStatement) instruction;
 
         Condition condition = (Condition) conditionPanel.toInstruction();
-        if (condition == null) return null;
+        if (condition == null) {
+            ControllerLevel.errorPopUp("Il manque une condition");
+            return null;
+        }
         cfs.setCondition(condition);
 
         ActionPanel cur = head;
         while (cur != null) {
             Action a = (Action)cur.toInstruction();
-            if (a == null) return null;
+            if (a == null) {
+                ControllerLevel.errorPopUp("Il manque une action");
+                return null;
+            }
             cfs.addAction(a);
             cur = cur.next;
         }
