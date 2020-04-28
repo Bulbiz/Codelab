@@ -26,9 +26,6 @@ public class Key extends Collectable {
 
     public void isCollected(Player player) {
         super.isCollected(player);
-        
-        System.out.println("collectée");
-
-        levelBoard.openDoor(id);
+        levelBoard.openDoor();
     }
 }

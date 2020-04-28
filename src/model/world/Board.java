@@ -179,14 +179,13 @@ public class Board {
     	return this.getPlayer() != null && this.finish != null;
 	}
 	
-	public void openDoor(int id) {
+	public void openDoor() {
 		for (Cell[] raw : cells) {
 			for (Cell c : raw) {
 				Decor d = c.getDecor();
 				if (d != null && d instanceof Door) {
 					Door door = (Door)d;
-					if (door.getId() == id)
-						door.open();
+					door.open();
 				}
 			}
 		}
