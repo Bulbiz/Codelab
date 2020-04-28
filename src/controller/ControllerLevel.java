@@ -37,8 +37,9 @@ public class ControllerLevel{
 	}
 
 	public void endGame(boolean hasWon) {
-    String message = hasWon ? "You Win !" : "You Lose, PFFFFFF !";
-    System.out.println(message);
+    	String message = hasWon ? "You Win !" : "You Lose, PFFFFFF !";
+		System.out.println(message);
+
 		if(hasWon){
 			victoryPopUp();
 			endOfLevel();

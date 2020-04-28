@@ -30,6 +30,10 @@ public class InventoryPanel extends JPanel {
         setPreferredSize(new Dimension(WorldPanel.tileLength, WorldPanel.tileLength + ymarge * 2));
     }
 
+    public void setInventory(ArrayList<Collectable> inv) {
+        inventory = inv;
+    }
+
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         drawInventory(spriteLibrary, g);
@@ -37,11 +41,14 @@ public class InventoryPanel extends JPanel {
 
     public void drawInventory(ImageLibrary spriteLibrary, Graphics g) {
 
-        for (int i = 0; i < inventory.size(); i++) {
+        int i = 0;
+        System.out.println(inventory.size());
+        while (i < inventory.size()) {
             Collectable c = inventory.get(i);
             String entitySpriteName = c.toString();
             int length = WorldPanel.tileLength;
             spriteLibrary.getSprite(entitySpriteName).paintIcon(this,g, xmarge + i*(length + spaceBetweenItems), ymarge + ymarge / 2);
+            i++;
         }
     }
 }

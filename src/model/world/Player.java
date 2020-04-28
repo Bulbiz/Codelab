@@ -41,6 +41,10 @@ public class Player extends Personage {
         inventory.add(collectable);
     }
 
+    public void emptyInventory() {
+        inventory.clear();
+    }
+
     public ArrayList<Collectable> getInventory() {
         return inventory;
     }
