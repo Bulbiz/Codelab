@@ -5,6 +5,8 @@ import src.model.world.*;
 import src.view.langage.*;
 import src.view.world.*;
 import src.view.*;
+import src.story.*;
+import src.editor.view.*;
 import src.controller.*;
 import javax.swing.*;
 import java.awt.*;
@@ -26,17 +28,17 @@ public class MenuPanel extends JPanel{
         JButton editor = new JButton(this.menuSprite.getSprite ("editor"));
 
         story.addActionListener((e) -> {
-            Test.storyForMenu();
+            MenuPanel.storyForMenu();
             parent.dispose();
         });
         
         load.addActionListener((e) -> {
-            Test.loadLevelForMenu();
+        	MenuPanel.loadLevelForMenu();
             parent.dispose();
         });
 
         editor.addActionListener((e) -> {
-            Test.editorForMenu();
+        	MenuPanel.editorForMenu();
             parent.dispose();
         });
 
@@ -44,4 +46,48 @@ public class MenuPanel extends JPanel{
         this.add(load);
         this.add(editor);
     }
+    
+    public static void storyForMenu(){
+    	JFrame testWindows = createWindows ();
+        testWindows.setContentPane(new StoryPanel(testWindows));
+        testWindows.pack();
+    }
+    
+    public static void beginMenu(){
+        try{
+            JFrame testMenuPanel = createWindows ();
+            testMenuPanel.setContentPane(new MenuPanel(testMenuPanel));
+            testMenuPanel.pack();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+    
+    public static void editorForMenu(){
+        JFrame testWindows = createWindows ();
+        ControllerEditor controller = new ControllerEditor();
+        EditorPanel editorPanel = new EditorPanel(controller, testWindows);
+        controller.setPanels(editorPanel);
+        testWindows.setContentPane(editorPanel);
+        testWindows.pack();
+    }
+    
+    public static void loadLevelForMenu(){
+        try{
+            JFrame testLoad = createWindows ();
+            testLoad.setContentPane(new LoadLevel(testLoad));
+            testLoad.pack();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+    
+    public static JFrame createWindows () {
+		JFrame frame = new JFrame();
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setTitle("CodeLab de Bronze");
+        frame.setMinimumSize(new Dimension(1300,700));
+        frame.setVisible(true);
+        return frame;
+	}
 }

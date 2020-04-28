@@ -13,16 +13,6 @@ import src.model.world.*;
 //import java.util.*;
 
 public class TestWorldView {
-
-	
-	public static JFrame createWindows (String title) {
-		JFrame frame = new JFrame();
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setTitle(title);
-        frame.setMinimumSize(new Dimension(1300,700));
-        frame.setVisible(true);
-        return frame;
-	}
 	/*
 	private static void testDisplayLevel() {
 		JFrame levelTest = TestWorldView.createWindows("Test Level View");

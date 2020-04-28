@@ -2,7 +2,7 @@ JCC = javac
 JFLAGS = -g
 CLASSPATH = .:json.jar:json-simple.jar
 
-all: modell modelw viewl vieww editor controller story testall
+all: modell modelw viewl vieww editor controller story launcher testall
 	cp -r json.jar bin
 	cp -r json-simple.jar bin
 
@@ -30,8 +30,11 @@ story:
 testall:
 	javac -cp $(CLASSPATH) src/Test.java -d bin
 
+launcher:
+	javac -cp $(CLASSPATH) src/Launcher.java -d bin
+
 run:
-	java -cp bin:json.jar:json-simple.jar src.Test
+	java -cp bin:json.jar:json-simple.jar src.Launcher
 
 andrun:	all run
 

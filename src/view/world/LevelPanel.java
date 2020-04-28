@@ -46,7 +46,7 @@ public class LevelPanel extends JPanel{
 
 			this.backToMenu.addActionListener((e) -> {
         		levelFrame.dispose();
-        		Test.beginMenu();
+        		MenuPanel.beginMenu();
 			});
 		}catch(Exception e){
 			e.printStackTrace();
