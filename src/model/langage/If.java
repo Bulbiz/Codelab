@@ -40,31 +40,6 @@ public class If extends ControlFlowStatement {
             }						//condition is not verify
         }
     }
-
-	/*public int run() {
-
-        if(actions.peek() == null)       // end actions list for the if
-            return InstructionEnum.endAction.getReturnValue();
-
-		int verification = actions.peek().run();
-
-		while(verification == InstructionEnum.noCostAction.getIdentity()) {
-			actions.poll();
-            if(actions.peek() == null)
-                return InstructionEnum.noCostAction.getReturnValue();
-			verification = actions.peek().run();
-		}
-
-        if(verification == InstructionEnum.ControlFlowStatementAction.getIdentity()){			//if is a controle flow statement, don't depile
-			return InstructionEnum.ControlFlowStatementAction.getReturnValue();
-		}
-
-		if(verification == InstructionEnum.basicAction.getIdentity()){
-			actions.poll();
-			return InstructionEnum.basicAction.getReturnValue();                          // continu to execute the actions list
-		}
-        return InstructionEnum.endAction.getReturnValue();
-	}*/
     
     public int run() {
 		int verification = actions.peek().run();
