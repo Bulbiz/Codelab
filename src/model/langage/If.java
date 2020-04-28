@@ -47,13 +47,17 @@ public class If extends ControlFlowStatement {
         actions.add(action);
     }
     
+    private void transfertSavetoAction () {
+    	this.actions = this.save;
+    	this.save = new LinkedList<Action> ();
+    }
+    
 	public int run() {
 	   if(!hasBeenActionned) 
 		   hasBeenActionned = true;
 	   
        if(actions.peek() == null) {// end actions list for the if
-        	this.actions = this.save;
-        	this.save = new LinkedList<Action> ();
+    	   	transfertSavetoAction();
             return InstructionEnum.endAction.getReturnValue();
         }
        
@@ -62,8 +66,7 @@ public class If extends ControlFlowStatement {
 		while(verification == InstructionEnum.noCostAction.getIdentity()) {
 			save.offer(actions.poll());
             if(actions.peek() == null) {
-            	this.actions = this.save;
-            	this.save = new LinkedList<Action> ();
+            	transfertSavetoAction();
                 return InstructionEnum.noCostAction.getReturnValue();
             }
 			verification = actions.peek().run();
