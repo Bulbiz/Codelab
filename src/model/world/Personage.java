@@ -56,5 +56,15 @@ public abstract class Personage extends Entity {
         return levelBoard.getCells()[ yFront ][ xFront ].getDecor() instanceof Obstacle;
     }
 
+    public boolean chestFront(){
+        int xFront = x + rotate [facing][0];
+        int yFront = y + rotate [facing][1];
+        return levelBoard.getCells()[ yFront ][ xFront ].getDecor() instanceof Goal;
+    }
 
+    public boolean coinFront(){
+        int xFront = x + rotate [facing][0];
+        int yFront = y + rotate [facing][1];
+        return levelBoard.getCells()[ yFront ][ xFront ].getEntity() instanceof Coin;
+    }
 }
