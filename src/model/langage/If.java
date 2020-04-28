@@ -51,7 +51,6 @@ public class If extends ControlFlowStatement {
 	   if(!hasBeenActionned) 
 		   hasBeenActionned = true;
 	   
-	   System.out.println("actionned");
        if(actions.peek() == null) {// end actions list for the if
         	this.actions = this.save;
         	this.save = new LinkedList<Action> ();
