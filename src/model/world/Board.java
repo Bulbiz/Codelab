@@ -71,8 +71,11 @@ public class Board {
 		Decor d = this.cells[y][x].getDecor();
 		if (!(d instanceof Obstacle))
 			return true;
-		Door door = (Door)d;
-		return door.isOpen();
+		if(d instanceof Door) {
+			Door door = (Door)d;
+			return door.isOpen();
+		}
+		return false;
     }
     
     //EDITOR + PLACEMENT
