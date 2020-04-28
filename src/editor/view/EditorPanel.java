@@ -9,6 +9,7 @@ import java.util.*;
 import src.controller.ControllerEditor;
 import src.model.world.Board;
 import src.Test;
+import src.view.world.MenuPanel;
 
 public class EditorPanel extends JPanel {
 
@@ -28,7 +29,7 @@ public class EditorPanel extends JPanel {
 
         this.backToMenu.addActionListener((e) -> {
             parent.dispose();
-            Test.beginMenu();
+            MenuPanel.beginMenu();
 	    });
     }
 

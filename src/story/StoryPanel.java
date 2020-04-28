@@ -64,7 +64,7 @@ public class StoryPanel extends JPanel{
 	}
 
 	private static void loadNextLevel(int advancement) {
-		JFrame windows = createWindows("Story");
+		JFrame windows = MenuPanel.createWindows();
 		setAdvancement(advancement);
 		windows.setContentPane(new StoryPanel(windows));
 		windows.pack();

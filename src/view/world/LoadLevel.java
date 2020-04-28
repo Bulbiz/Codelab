@@ -27,7 +27,7 @@ public class LoadLevel extends JPanel{
     this.confirm.addActionListener((e) -> {
 	    if(!ControllerEditor.nameUnique(this.placeholder.getText())){
 		LevelPanel vueLevel = new LevelPanel (this.placeholder.getText());
-		JFrame testWindows = TestWorldView.createWindows (this.placeholder.getText());
+		JFrame testWindows = MenuPanel.createWindows ();
 		testWindows.setContentPane(vueLevel);
         vueLevel.setLevelFrame(testWindows);
 		testWindows.pack();
@@ -40,7 +40,7 @@ public class LoadLevel extends JPanel{
 
     this.backToMenu.addActionListener((e) -> {
         parent.dispose();
-        Test.beginMenu();
+        MenuPanel.beginMenu();
 	});
   }
 }
