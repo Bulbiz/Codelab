@@ -7,11 +7,14 @@ import src.model.world.*;
  *
  */
 public class If extends ControlFlowStatement {
-
-
+	private Queue<Action> save;
+	private boolean hasBeenActionned;
+	
     public If(Personage personage) {
     	super(personage);
         this.addAction(new FinIf(personage));
+        this.save = new LinkedList<Action> ();
+        this.hasBeenActionned = false;
     }
 
     public Instruction createNewInstruction() {
@@ -35,17 +38,35 @@ public class If extends ControlFlowStatement {
         }
     }
 
+    @Override
+    public void addAction(Action action) {
+    	if(hasBeenActionned) {
+    		hasBeenActionned = false;
+    		this.actions = new LinkedList<Action>();
+    	}
+        actions.add(action);
+    }
+    
 	public int run() {
-
-        if(actions.peek() == null)       // end actions list for the if
+	   if(!hasBeenActionned) 
+		   hasBeenActionned = true;
+	   
+	   System.out.println("actionned");
+       if(actions.peek() == null) {// end actions list for the if
+        	this.actions = this.save;
+        	this.save = new LinkedList<Action> ();
             return InstructionEnum.endAction.getReturnValue();
-
+        }
+       
 		int verification = actions.peek().run();
 
 		while(verification == InstructionEnum.noCostAction.getIdentity()) {
-			actions.poll();
-            if(actions.peek() == null)
+			save.offer(actions.poll());
+            if(actions.peek() == null) {
+            	this.actions = this.save;
+            	this.save = new LinkedList<Action> ();
                 return InstructionEnum.noCostAction.getReturnValue();
+            }
 			verification = actions.peek().run();
 		}
 
@@ -54,7 +75,7 @@ public class If extends ControlFlowStatement {
 		}
 
 		if(verification == InstructionEnum.basicAction.getIdentity()){
-			actions.poll();
+			save.offer(actions.poll());
 			return InstructionEnum.basicAction.getReturnValue();                          // continu to execute the actions list
 		}
         return InstructionEnum.endAction.getReturnValue();
