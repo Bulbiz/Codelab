@@ -13,7 +13,7 @@ public abstract class Decor {
 
 
     public Decor(Board b, int xPosition, int yPosition) {
-      levelBoard = b;
+    	levelBoard = b;
     	x = xPosition;
     	y = yPosition;
     }

@@ -50,11 +50,6 @@ public class WorldPanel extends JPanel implements IDisplayable {
     	for(int i = 0 ; i < Board.boardLength ; i++) {
     		for(int j = 0 ; j < Board.boardLength ; j++) {
 				String decorSpriteName = boardModel.getDecor(j,i) != null ? boardModel.getDecor(j,i).toString(): "vide";
-				if (decorSpriteName.equals("door")) {
-					Door d = (Door) boardModel.getDecor(j,i);
-					if (d.isOpen())
-						decorSpriteName = "opendoor";
-				}
 				spriteLibrary.getSprite(decorSpriteName).paintIcon(this,g,j*tileLength, i*tileLength);
     		}
 		}

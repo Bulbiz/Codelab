@@ -68,11 +68,7 @@ public class Board {
      * @return true if the Cell dont have an obstacle or entity false otherwise
      */
     private boolean isNotOccupied(int y, int x) {
-		Decor d = this.cells[y][x].getDecor();
-		if (!(d instanceof Obstacle))
-			return true;
-		Door door = (Door)d;
-		return door.isOpen();
+		return !(this.cells[y][x].getDecor() instanceof Obstacle);
     }
     
     //EDITOR + PLACEMENT
@@ -183,14 +179,13 @@ public class Board {
     	return this.getPlayer() != null && this.finish != null;
 	}
 	
-	public void openDoor(int id) {
+	public void openDoor() {
 		for (Cell[] raw : cells) {
 			for (Cell c : raw) {
 				Decor d = c.getDecor();
 				if (d != null && d instanceof Door) {
 					Door door = (Door)d;
-					if (door.getId() == id)
-						door.open();
+					door.open();
 				}
 			}
 		}
