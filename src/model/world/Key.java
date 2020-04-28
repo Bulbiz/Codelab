@@ -30,15 +30,5 @@ public class Key extends Collectable {
         System.out.println("collectée");
 
         levelBoard.openDoor(id);
-        
-        Cell[][] tab = levelBoard.getCells();
-        for (Cell[] raw : tab)
-            for (Cell c : raw) {
-                if (c.getDecor() instanceof Door) {
-                    System.out.println("trouvée");
-                    Door d = (Door)c.getDecor();
-                    System.out.println(d.isOpen());
-                }
-            }
     }
 }

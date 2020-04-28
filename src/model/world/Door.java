@@ -8,7 +8,6 @@ import java.util.*;
  */
 public class Door extends Decor implements Obstacle {
 
-    protected boolean isOpen = false;
     private static int nbDoors = 0;
     protected int id;
 
@@ -25,11 +24,7 @@ public class Door extends Decor implements Obstacle {
     }
     
     public void open() {
-        isOpen = true;
-    }
-
-    public boolean isOpen() {
-        return isOpen;
+    	this.levelBoard.setDecor(new Floor(this.levelBoard,x,y),y,x);
     }
 
     public int getId() {
