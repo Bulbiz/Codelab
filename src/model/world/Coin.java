@@ -4,7 +4,7 @@ package src.model.world;
 import java.util.*;
 
 /**
- * 
+ *
  */
 public class Coin extends Collectable {
 
@@ -14,9 +14,9 @@ public class Coin extends Collectable {
     public Coin(Board b, int xStart, int yStart) {
     	super(b,xStart,yStart);
     }
-    public void run() {
-    	//FIXME : do nothing for now
-    }
+    
+    public void run() {}
+
     public String toString() {
     	return "coin";
     }

@@ -4,7 +4,7 @@ package src.model.world;
 import java.util.*;
 
 /**
- * 
+ *
  */
 public class Key extends Collectable {
 
@@ -17,9 +17,8 @@ public class Key extends Collectable {
         id = nbKeys;
         nbKeys ++;
     }
-    public void run() {
-    	//FIXME : do nothing for now
-    }
+    public void run() {}
+      
     public String toString() {
     	return "key";
     }

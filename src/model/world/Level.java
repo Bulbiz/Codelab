@@ -18,7 +18,7 @@ public class Level {
     private ArrayList<Action> actions; /*actions is the action the player can do for the level */
     private JSONObject save;
     /**
-     * FIXME : Use a JSON as a argument should be better
+     * Use a JSON as a argument should be better
 
     public Level(Board b, int id, ArrayList<Action> a) {
         this.board = b;
