@@ -29,7 +29,7 @@ public class WorldPanel extends JPanel implements IDisplayable {
 	public void setBoard(Board b){
 		this.boardModel = b ;
 	}
-	
+
     private void initiateView() {
     	int length = Board.boardLength * tileLength;
     	this.setPreferredSize(new Dimension(length,length));
@@ -54,7 +54,7 @@ public class WorldPanel extends JPanel implements IDisplayable {
     		}
 		}
     }
-    //FIXME: Shouldn't this be painting Entity instead of just Personage ?
+
     private void paintPersonage (Graphics g) {
     	for(Entity e : boardModel.getCharacter()) {
     		String entitySpriteName = e.toString();

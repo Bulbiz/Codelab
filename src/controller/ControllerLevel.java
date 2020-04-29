@@ -19,7 +19,6 @@ public class ControllerLevel{
 		this.vueLevel = v;
 	}
 
-	//FIXME : Run should also initiate the program for the player
 	public void runOrStop (LanguageView lv) {
 		Queue<Action> script = lv.getInstructionQueue();
 		if(this.worldTime == null) {

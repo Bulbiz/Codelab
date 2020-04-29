@@ -10,7 +10,6 @@ import java.awt.*;
 import java.util.*;
 import src.Test;
 
-/*FIXME : Should add the Language to the View*/
 public class LevelPanel extends JPanel{
 	private Level level;
 
@@ -97,19 +96,6 @@ public class LevelPanel extends JPanel{
 		worldPane.add(constructBodyPanel());
 		this.add(worldPane);
 		this.add(languageView);
-	}
-	//FIXME : Place Holder Panel
-	private JPanel constructTopPanel() {
-		JPanel north = new JPanel ();
-		north.setLayout(new FlowLayout());
-		north.add(new JButton("Retour"));
-		north.add(new JButton("1"));
-		north.add(new JButton("2"));
-		north.add(new JButton("3"));
-		north.add(new JButton("4"));
-		north.add(new JButton("5"));
-		north.setPreferredSize(new Dimension(1000,30));
-		return north;
 	}
 
 	private JPanel constructBodyPanel() {
