@@ -2,7 +2,6 @@
 package src.view.langage;
 
 import java.awt.Dimension;
-
 import javax.swing.JPanel;
 
 interface IActionPanelListable extends IParent {

@@ -1,13 +1,11 @@
 
 package src.view.langage;
 
-import javax.swing.JPanel;
-
 import src.controller.ControllerLanguage;
 import src.model.langage.*;
 import src.model.world.Personage;
 
-import java.awt.Graphics;
+import javax.swing.JPanel;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -21,8 +19,6 @@ public class LanguageView extends JPanel {
 
     Queue<Action> instructionQueue = new LinkedList<Action>();
 
-    JPanel movableObject;
-
     public LanguageView(ControllerLanguage controller, Personage player) {
         this.controller = controller;
         this.player = player;
@@ -35,20 +31,17 @@ public class LanguageView extends JPanel {
 
         TestLanguageView.testInstructionPanelGeneratorClick(this, controller);
     }
+    
     public void setPlayer (Personage p){
       this.player = p;
     }
-    public void setMovableObject(JPanel o) {
-        movableObject = o;
-    }
-
+    
     public Queue<Action> getInstructionQueue() {
         return instructionQueue;
     }
 
     public void fillInstructionQueue() {
-        while(!instructionQueue.isEmpty())
-            instructionQueue.poll();
+        instructionQueue.clear();
 
         ActionPanel cur = editPanel.head;
         boolean wentOk = true;
@@ -64,20 +57,6 @@ public class LanguageView extends JPanel {
         }
         if (!wentOk)
             instructionQueue.clear();
-    }
-
-    public Queue<Instruction> toInstruction() {
-
-        return null;
-    }
-
-    @Override
-    public void paintComponent(Graphics g) {
-        super.paintComponent(g);
-
-        if (movableObject != null) {
-            g.drawRect(movableObject.getX(), movableObject.getY(), 100, 100);
-        }
     }
 
     public void mousePressed(IMouseReactive source) {

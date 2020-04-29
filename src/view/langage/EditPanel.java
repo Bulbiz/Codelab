@@ -6,7 +6,6 @@ import src.model.langage.*;
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.util.*;
 
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
@@ -14,37 +13,27 @@ import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 
 /**
- * 
+ * Panel containing the user's InstructionPanel
+ * of his code
  */
 public class EditPanel extends JPanel implements IActionPanelListable {
 
-    /**
-     * 
-     */
     protected ActionPanel head;
     protected ControllerLanguage controller;
 
-    /**
-     * Default constructor
-     */
     public EditPanel(ControllerLanguage controller) {
         this.controller = controller;
 
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         setPreferredSize(new Dimension(300, 600));
-        setBorder(new TitledBorder(new LineBorder(Color.blue), "Votre Code"));
+        setBorder(new TitledBorder(new LineBorder(Color.blue), "Your Code"));
 
         head = new BeginPanel( controller, new Begin(null) );
         head.setParentPanel(this);
         add(head);
     }   
 
-
-    /**
-     * 
-     */
     public void addActionPanel(ActionPanel ap, ActionPanel previous) {
-        // TODO merge with ControlFlowStatementPanel's version
         if (IActionPanelListable.cantAdd(ap, previous))
             return;
 
@@ -55,11 +44,7 @@ public class EditPanel extends JPanel implements IActionPanelListable {
         addRecursively(ap, this, this);
     }
 
-    /**
-     * 
-     */
     public void removeActionPanel(ActionPanel ap) {
-        // TODO merge with ControlFlowStatementPanel's version
         if (ap.getInstruction() == null)
             return;
 
@@ -76,14 +61,6 @@ public class EditPanel extends JPanel implements IActionPanelListable {
 
     public ActionPanel getHead() {
         return head;
-    }
-
-    /**
-     * @return
-     */
-    public ArrayList<Instruction> convertToInstructions() {
-        // TODO implement here
-        return null;
     }
 
 }

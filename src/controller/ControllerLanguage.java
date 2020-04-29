@@ -9,7 +9,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import javax.swing.JComponent;
-import javax.swing.JPanel;
 import javax.swing.border.*;
 
 public class ControllerLanguage extends MouseAdapter {
@@ -72,7 +71,7 @@ public class ControllerLanguage extends MouseAdapter {
             d.setBorder(new LineBorder(Color.black));
             dest = null;
         }
-        view.setMovableObject(null);
+
         source = null;
         view.updateUI();
     } 
@@ -80,9 +79,6 @@ public class ControllerLanguage extends MouseAdapter {
     public void mouseDragged(MouseEvent me) {
         if (source == null) 
             return;
-        
-        //JPanel src = (JPanel) source;
-        // dessiner panel
     } 
 
 }
