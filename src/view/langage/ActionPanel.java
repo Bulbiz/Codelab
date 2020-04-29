@@ -1,13 +1,11 @@
 
 package src.view.langage;
 
-import java.awt.Color;
-
-import javax.swing.JLabel;
-import java.awt.event.MouseAdapter;
-
 import src.controller.ControllerLanguage;
 import src.model.langage.*;
+
+import java.awt.Color;
+import javax.swing.JLabel;
 
 /**
  * 
@@ -16,17 +14,12 @@ public class ActionPanel extends InstructionPanel {
 
     protected ActionPanel next;
 
-    /**
-     * Default constructor
-     */
     public ActionPanel(ControllerLanguage controller, Action action) {
       super(controller);
-      if (action != null) {
-          instruction = InstructionFactory.createInstruction(action);
-          add(new JLabel(action.getVersion()));
-      }
-      else 
-          add(new JLabel("nothing"));
+      if (action != null)
+        instruction = InstructionFactory.createInstruction(action);
+      
+      add(new JLabel(action != null ? action.getVersion() : "nothing"));
 
       normalColor = Color.ORANGE;
       highlightColor = Color.YELLOW;
@@ -45,8 +38,7 @@ public class ActionPanel extends InstructionPanel {
     @Override
     public void delete() {
       IActionPanelListable p = (IActionPanelListable) parent;
-      if (instruction != null && !instruction.getVersion().equals("begin"))
-        p.removeActionPanel(this);
+      p.removeActionPanel(this);
     }
 
     public InstructionPanel createNewInstructionPanel(ControllerLanguage controller, Instruction instruction) {
@@ -56,16 +48,13 @@ public class ActionPanel extends InstructionPanel {
     public void onRelease(InstructionPanel source) {
       super.onRelease(source);
 
-      System.out.println("over action panel: " + (instruction == null ? "null" : instruction.getVersion()));
-        if (source.getInstruction() == null)
-            return;
-        if (source.getInstruction().getType().equals("condition"))
-            return;
-        if (source.getInstruction().getVersion().equals("begin"))
-            return;
+      if (source instanceof ConditionPanel)
+          return;
 
-        if (getParentPanel() != null)
-          getParentPanel().addActionPanel((ActionPanel)source, this);
+      if (source instanceof BeginPanel)
+          return;
+
+      getParentPanel().addActionPanel((ActionPanel)source, this);
     }
 
     public void highlight() {

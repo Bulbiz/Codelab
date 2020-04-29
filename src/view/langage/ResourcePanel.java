@@ -14,13 +14,12 @@ import java.awt.Dimension;
 import java.util.*;
 
 /**
- * 
+ * Panel containing the delete button and
+ * all the InstructionPanelGenerators
  */
 public class ResourcePanel extends JPanel {
 
-    /**
-     * Default constructor
-     */
+
     public ResourcePanel(ControllerLanguage controller) {
         setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
         setPreferredSize(new Dimension(200, 600));
@@ -31,21 +30,8 @@ public class ResourcePanel extends JPanel {
         add(Box.createVerticalGlue());
     }
 
-    /**
-     * 
-     */
-    private ArrayList<InstructionPanelGenerator> generators;
-
-    /**
-     * 
-     */
-    private EditPanel editPanel;
-
     public void addGenerator(InstructionPanelGenerator g) {
         add(g);
         add(Box.createVerticalGlue());
     }
-
-
-
 }

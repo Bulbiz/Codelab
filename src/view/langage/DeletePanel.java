@@ -22,12 +22,6 @@ public class DeletePanel extends JPanel implements IMouseReactive {
         setMinimumSize(new Dimension(200, 50));
     }
 
-    @Override
-    public void paintComponent(Graphics g) {
-        // TODO Auto-generated method stub
-
-    }
-
     public void onRelease(InstructionPanel source) {
         if (source != null)
             source.delete();

@@ -1,8 +1,6 @@
 
 package src.view.langage;
 
-import java.awt.Graphics;
-
 public interface IMouseReactive {
 
     default InstructionPanel getSourcePanel() {
@@ -17,6 +15,4 @@ public interface IMouseReactive {
         if (source != null)
             source.dehighlight();
     }
-
-    void paintComponent(Graphics g);
 }

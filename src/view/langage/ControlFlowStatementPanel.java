@@ -5,27 +5,24 @@ import src.controller.ControllerLanguage;
 import src.controller.ControllerLevel;
 import src.model.langage.*;
 
-import java.util.*;
-
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import java.awt.event.MouseAdapter;
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.GridLayout;
 
-/**
- * 
- */
+
+
 public class ControlFlowStatementPanel extends ActionPanel implements IActionPanelListable, IConditionPanelAdjustable {
 
     ActionPanel head;
 
-    /**
-     * Default constructor
-     */
+    private JPanel actionPanelsPanel;
+
+    private ConditionPanel conditionPanel;
+    private JPanel conditionPanelPanel;
+
     public ControlFlowStatementPanel(ControllerLanguage controller, ControlFlowStatement cfs) {
         super(controller);
         instruction = InstructionFactory.createInstruction(cfs);
@@ -33,47 +30,53 @@ public class ControlFlowStatementPanel extends ActionPanel implements IActionPan
         normalColor = Color.green.darker();
         highlightColor = Color.green;
         
-        initPanelSetUp();
+        initPanel();
         
         actionPanelsPanel.setMaximumSize(new Dimension(300, 32));
         setMinimumSize(new Dimension(300, 64));
         setMaximumSize(new Dimension(300, 64));
-    }
+        actionPanelsPanel.setBackground(Color.GREEN);
+    }    
 
-    private JPanel actionPanelsPanel;
-
-    private ConditionPanel conditionPanel;
-    private JPanel conditionPanelPanel;
-
-    private void initPanelSetUp() {
+    private void initConditionPanelPanel() {
         conditionPanel = ControlFlowStatementPanel.createEmptyConditionPanel(this, controller);
         conditionPanelPanel = new JPanel();        
         conditionPanelPanel.setLayout(new BoxLayout(conditionPanelPanel, BoxLayout.Y_AXIS));
         conditionPanelPanel.add(conditionPanel);
-
+    }
+    private void initActionPanelsPanel() {
         ActionPanel ap = new ActionPanel(controller, null);
         ap.setParentPanel(this);
         head = ap;
         actionPanelsPanel = new JPanel();
         actionPanelsPanel.setLayout(new BoxLayout(actionPanelsPanel, BoxLayout.Y_AXIS));
         actionPanelsPanel.add(ap);
-
+    }
+    private void initUpPanel() {
         setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
         JPanel up = new JPanel();
         up.setLayout(new BoxLayout(up, BoxLayout.LINE_AXIS));
         JLabel l1 = new JLabel(instruction.getVersion());
         up.add(l1);
         up.add(conditionPanelPanel);
+        up.setBackground(Color.GREEN);
+        add(up);
+    }
+    private void initDownPanel() {
         JPanel down = new JPanel();
         down.setLayout(new BoxLayout(down, BoxLayout.LINE_AXIS));
         JLabel l2 = new JLabel("do");
         down.add(l2);
         down.add(actionPanelsPanel);
-        add(up);
-        add(down);
-        up.setBackground(Color.GREEN);
         down.setBackground(Color.GREEN);
-        actionPanelsPanel.setBackground(Color.GREEN);
+        add(down);
+    }
+    private void initPanel() {
+        initConditionPanelPanel();
+        initActionPanelsPanel();
+
+        initUpPanel();
+        initDownPanel();
     }
     
     public void changeConditionPanel(ConditionPanel cp) {
@@ -117,8 +120,6 @@ public class ControlFlowStatementPanel extends ActionPanel implements IActionPan
         else
             updateNext(ap, previous);
 
-        System.out.println("bonjour");
-
         addRecursively(ap, this, actionPanelsPanel);
         updateSize();
         validate();
@@ -149,26 +150,39 @@ public class ControlFlowStatementPanel extends ActionPanel implements IActionPan
         return head;
     }
 
-	public Instruction toInstruction() {
-        ControlFlowStatement cfs = (ControlFlowStatement) instruction;
-
+    private boolean convertConditionToInstruction(ControlFlowStatement cfs) {
         Condition condition = (Condition) conditionPanel.toInstruction();
+        
         if (condition == null) {
             ControllerLevel.errorPopUp("Il manque une condition");
-            return null;
+            return false;
         }
-        cfs.setCondition(condition);
 
+        cfs.setCondition(condition);
+        return true;
+    }
+    private boolean convertActionsToInstructions(ControlFlowStatement cfs) {
         ActionPanel cur = head;
         while (cur != null) {
             Action a = (Action)cur.toInstruction();
             if (a == null) {
                 ControllerLevel.errorPopUp("Il manque une action");
-                return null;
+                return false;
             }
             cfs.addAction(a);
             cur = cur.next;
         }
+
+        return true;
+    }
+	public Instruction toInstruction() {
+        ControlFlowStatement cfs = (ControlFlowStatement) instruction;
+
+        if (!convertConditionToInstruction(cfs))
+            return null;
+
+        if (!convertActionsToInstructions(cfs))
+            return null;
 
         return instruction;
 	}
@@ -195,7 +209,7 @@ public class ControlFlowStatementPanel extends ActionPanel implements IActionPan
             next.dehighlight();
     }
 
-    public void updateSize() {        
+    private void updateActionPanelsPanelSize() {
         int aph = 0;
         ActionPanel ap = head;
         while (ap != null) {            
@@ -203,7 +217,9 @@ public class ControlFlowStatementPanel extends ActionPanel implements IActionPan
             ap = ap.next;
         }
         actionPanelsPanel.setMaximumSize(new Dimension(300, aph));
-
+    }
+    public void updateSize() {        
+        updateActionPanelsPanelSize();
 
         int w = 300;
         int h = 0;
@@ -211,7 +227,7 @@ public class ControlFlowStatementPanel extends ActionPanel implements IActionPan
         h += actionPanelsPanel.getMaximumSize().getHeight();
         setMaximumSize(new Dimension(w, h));        
 
-        if (parent != null && parent instanceof ControlFlowStatementPanel) {
+        if (parent instanceof ControlFlowStatementPanel) {
             ControlFlowStatementPanel p = (ControlFlowStatementPanel) parent;
             p.updateSize();
         }
