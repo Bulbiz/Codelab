@@ -59,6 +59,8 @@ public class TestLanguageView {
         InstructionPanelGenerator ig8 = new InstructionPanelGenerator(new ConditionPanel(controller, new ChestFront(null)));
         InstructionPanelGenerator ig9 = new InstructionPanelGenerator(new NotPanel(controller, new Not(null)));
         InstructionPanelGenerator ig10 = new InstructionPanelGenerator(new IfElsePanel(controller, new IfElse(null)));
+        InstructionPanelGenerator ig11 = new InstructionPanelGenerator(new ConditionPanel(controller, new ObstacleRight(null)));
+        InstructionPanelGenerator ig12 = new InstructionPanelGenerator(new ConditionPanel(controller, new ObstacleLeft(null)));
 
         view.resourcePanel.addGenerator(ig3);
         view.resourcePanel.addGenerator(ig4);
@@ -68,6 +70,8 @@ public class TestLanguageView {
         view.resourcePanel.addGenerator(ig10);
         view.resourcePanel.addGenerator(ig9);
         view.resourcePanel.addGenerator(ig6);
+        view.resourcePanel.addGenerator(ig11);
+        view.resourcePanel.addGenerator(ig12);
         view.resourcePanel.addGenerator(ig7);
         view.resourcePanel.addGenerator(ig8);
     }
