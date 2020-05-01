@@ -60,6 +60,7 @@ public class LevelPanel extends JPanel{
 	public void restart(){
 		this.languageView.setPlayer(level.getPlayer());
 		inventoryPanel.setInventory(level.getPlayer().getInventory());
+		inventoryPanel.repaint();
 		this.worldView.setBoard(level.getBoard());
 	}
 
