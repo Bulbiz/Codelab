@@ -48,26 +48,8 @@ interface IActionPanelListable extends IParent {
         
         return cur;
     }
-    ActionPanel getHead();
+    ActionPanel getHead(ActionPanel ap);
 
-    public static boolean cantAdd(ActionPanel ap, ActionPanel previous) {
-
-        while (ap != null) {
-            if (ap == previous)
-                return true;
-            
-            if (ap instanceof IActionPanelListable) {
-                IActionPanelListable cur = (IActionPanelListable) ap;
-                boolean stop = cantAdd(cur.getHead(), previous);
-                if (stop)
-                    return true;
-            }
-
-            ap = ap.next;
-        }
-
-        return false;
-    }
 
     String getListType();
 }

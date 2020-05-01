@@ -7,14 +7,19 @@ import src.model.world.*;
  *
  */
 public class If extends ControlFlowStatement {
-	private Queue<Action> save;
-	private boolean hasBeenActionned;
-	
+	protected Queue<Action> save;
+    protected boolean hasBeenActionned;
+    
     public If(Personage personage) {
-    	super(personage);
-        this.addAction(new FinIf(personage));
+        super(personage);        
         this.save = new LinkedList<Action> ();
+        this.actions = new LinkedList<Action>();
         this.hasBeenActionned = false;
+        addFirstAction();
+    }
+
+    protected void addFirstAction() {
+        this.addAction(new FinIf(personage));
     }
 
     public Instruction createNewInstruction() {
@@ -42,14 +47,15 @@ public class If extends ControlFlowStatement {
     public void addAction(Action action) {
     	if(hasBeenActionned) {
     		hasBeenActionned = false;
-    		this.actions = new LinkedList<Action>();
+    		this.actions.clear();
     	}
         actions.add(action);
     }
     
     private void transfertSavetoAction () {
-    	this.actions = this.save;
-    	this.save = new LinkedList<Action> ();
+        this.actions.clear();
+        this.actions.addAll(this.save);
+        this.save.clear();
     }
     
 	public int run() {

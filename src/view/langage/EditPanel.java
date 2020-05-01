@@ -34,7 +34,7 @@ public class EditPanel extends JPanel implements IActionPanelListable {
     }   
 
     public void addActionPanel(ActionPanel ap, ActionPanel previous) {
-        if (IActionPanelListable.cantAdd(ap, previous))
+        if (!ap.canAdd(previous))
             return;
 
         if (ap.getParentPanel() != null) 
@@ -59,7 +59,7 @@ public class EditPanel extends JPanel implements IActionPanelListable {
         return "editPanelList";
     }
 
-    public ActionPanel getHead() {
+    public ActionPanel getHead(ActionPanel ap) {
         return head;
     }
 

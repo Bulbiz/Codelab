@@ -11,17 +11,19 @@ import javax.swing.JPanel;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.util.LinkedList;
+import java.util.Queue;
 
 
 
 public class ControlFlowStatementPanel extends ActionPanel implements IActionPanelListable, IConditionPanelAdjustable {
 
-    ActionPanel head;
+    protected ActionPanel head;
 
-    private JPanel actionPanelsPanel;
+    protected JPanel actionPanelsPanel;
 
-    private ConditionPanel conditionPanel;
-    private JPanel conditionPanelPanel;
+    protected ConditionPanel conditionPanel;
+    protected JPanel conditionPanelPanel;
 
     public ControlFlowStatementPanel(ControllerLanguage controller, ControlFlowStatement cfs) {
         super(controller);
@@ -30,6 +32,8 @@ public class ControlFlowStatementPanel extends ActionPanel implements IActionPan
         normalColor = Color.green.darker();
         highlightColor = Color.green;
         
+        conditionPanelPanel = new JPanel();  
+        actionPanelsPanel = new JPanel();
         initPanel();
         
         actionPanelsPanel.setMaximumSize(new Dimension(300, 32));
@@ -38,43 +42,51 @@ public class ControlFlowStatementPanel extends ActionPanel implements IActionPan
         actionPanelsPanel.setBackground(Color.GREEN);
     }    
 
+    public ControlFlowStatementPanel(ControllerLanguage controller, ControlFlowStatement cfs, int i) {
+        super(controller);
+        instruction = InstructionFactory.createInstruction(cfs);
+
+        normalColor = Color.green.darker();
+        highlightColor = Color.green;
+
+        System.out.println("constructeur 2");
+    }
+
     private void initConditionPanelPanel() {
-        conditionPanel = ControlFlowStatementPanel.createEmptyConditionPanel(this, controller);
-        conditionPanelPanel = new JPanel();        
+        conditionPanel = ControlFlowStatementPanel.createEmptyConditionPanel(this, controller);              
         conditionPanelPanel.setLayout(new BoxLayout(conditionPanelPanel, BoxLayout.Y_AXIS));
         conditionPanelPanel.add(conditionPanel);
     }
-    private void initActionPanelsPanel() {
+    protected ActionPanel initActionPanelsPanel(JPanel actionPanelsPanel) {
         ActionPanel ap = new ActionPanel(controller, null);
-        ap.setParentPanel(this);
-        head = ap;
-        actionPanelsPanel = new JPanel();
+        ap.setParentPanel(this);    
         actionPanelsPanel.setLayout(new BoxLayout(actionPanelsPanel, BoxLayout.Y_AXIS));
         actionPanelsPanel.add(ap);
+
+        return ap;
     }
-    private void initUpPanel() {
-        setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
-        JPanel up = new JPanel();
-        up.setLayout(new BoxLayout(up, BoxLayout.LINE_AXIS));
-        JLabel l1 = new JLabel(instruction.getVersion());
-        up.add(l1);
-        up.add(conditionPanelPanel);
-        up.setBackground(Color.GREEN);
-        add(up);
+    protected void linkLabelAndPanel(String labelTxt, JPanel panel) {
+        JPanel link = new JPanel();
+
+        link.setLayout(new BoxLayout(link, BoxLayout.LINE_AXIS));
+        link.add(new JLabel(labelTxt));
+        link.add(panel);
+        link.setBackground(Color.GREEN);
+
+        add(link);
+    }
+    private void initUpPanel() {  
+        String txt = instruction instanceof If ? "if" : "while";
+        linkLabelAndPanel(txt, conditionPanelPanel);
     }
     private void initDownPanel() {
-        JPanel down = new JPanel();
-        down.setLayout(new BoxLayout(down, BoxLayout.LINE_AXIS));
-        JLabel l2 = new JLabel("do");
-        down.add(l2);
-        down.add(actionPanelsPanel);
-        down.setBackground(Color.GREEN);
-        add(down);
+        linkLabelAndPanel("do", actionPanelsPanel);
     }
     private void initPanel() {
         initConditionPanelPanel();
-        initActionPanelsPanel();
+        head = initActionPanelsPanel(actionPanelsPanel);
 
+        setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
         initUpPanel();
         initDownPanel();
     }
@@ -105,22 +117,32 @@ public class ControlFlowStatementPanel extends ActionPanel implements IActionPan
         return empty;
     }
 
+    public boolean canAdd(ActionPanel ap) {
+        if (head != null && !head.canAdd(ap))
+            return false;
+            
+        return super.canAdd(ap);
+    }
+
     public void addActionPanel(ActionPanel ap, ActionPanel previous) {
-        if (IActionPanelListable.cantAdd(ap, previous))
+        if (!ap.canAdd(previous))
             return;
 
         if (ap.getParentPanel() != null) 
             ap.getParentPanel().removeActionPanel(ap);
 
+        JPanel receivingPanel = getReceivingPanel(getHead(previous));
+
         if (previous.getInstruction() == null) { 
-            actionPanelsPanel.remove(head);           
-            head = ap;
+            ActionPanel h = getHead(previous);
+            receivingPanel.remove(h);            
+            changeHead(h, ap);
             updateNext(ap, null);
         }
         else
             updateNext(ap, previous);
 
-        addRecursively(ap, this, actionPanelsPanel);
+        addRecursively(ap, this, receivingPanel);
         updateSize();
         validate();
     }
@@ -129,14 +151,18 @@ public class ControlFlowStatementPanel extends ActionPanel implements IActionPan
         if (ap.getInstruction() == null)
             return;
 
-        removeRecursively(ap, actionPanelsPanel);
+        ActionPanel h = getHead(ap);
+        JPanel receivingPanel = getReceivingPanel(h);
+        
+        removeRecursively(ap, receivingPanel);
 
-        ActionPanel previous = getPrevious(ap, head);
+        ActionPanel previous = getPrevious(ap, h);
         if (previous != null)
             previous.next = null;
         else {
-            head = createEmptyActionPanel();
-            actionPanelsPanel.add(head);
+            h = changeHead(h, createEmptyActionPanel());
+            receivingPanel.add(h);
+            System.out.println("wesh");
         }
         updateSize();
         validate();
@@ -146,11 +172,20 @@ public class ControlFlowStatementPanel extends ActionPanel implements IActionPan
         return "flowControlStatementList";
     }
 
-    public ActionPanel getHead() {
+    public ActionPanel getHead(ActionPanel ap) {
         return head;
     }
 
-    private boolean convertConditionToInstruction(ControlFlowStatement cfs) {
+    public ActionPanel changeHead(ActionPanel h, ActionPanel newHead) {
+        head = newHead;
+        return head;
+    }
+
+    public JPanel getReceivingPanel(ActionPanel head) {
+        return actionPanelsPanel;
+    }
+
+    protected boolean convertConditionToInstruction(ControlFlowStatement cfs) {
         Condition condition = (Condition) conditionPanel.toInstruction();
         
         if (condition == null) {
@@ -161,19 +196,22 @@ public class ControlFlowStatementPanel extends ActionPanel implements IActionPan
         cfs.setCondition(condition);
         return true;
     }
-    private boolean convertActionsToInstructions(ControlFlowStatement cfs) {
-        ActionPanel cur = head;
+    protected Queue<Action> convertActionsToInstructions(ControlFlowStatement cfs, ActionPanel h) {
+        Queue<Action> q = new LinkedList<Action>();
+
+        ActionPanel cur = h;
         while (cur != null) {
             Action a = (Action)cur.toInstruction();
             if (a == null) {
                 ControllerLevel.errorPopUp("Il manque une action");
-                return false;
+                return null;
             }
-            cfs.addAction(a);
+            q.add(a);
+
             cur = cur.next;
         }
 
-        return true;
+        return q;
     }
 	public Instruction toInstruction() {
         ControlFlowStatement cfs = (ControlFlowStatement) instruction;
@@ -181,10 +219,12 @@ public class ControlFlowStatementPanel extends ActionPanel implements IActionPan
         if (!convertConditionToInstruction(cfs))
             return null;
 
-        if (!convertActionsToInstructions(cfs))
+        Queue<Action> q = convertActionsToInstructions(cfs, head);
+        if (q == null)
             return null;
+        cfs.addActions(q);
 
-        return instruction;
+        return cfs;
 	}
 
     public InstructionPanel createNewInstructionPanel(ControllerLanguage controller, Instruction instruction) {
@@ -209,22 +249,34 @@ public class ControlFlowStatementPanel extends ActionPanel implements IActionPan
             next.dehighlight();
     }
 
-    private void updateActionPanelsPanelSize() {
+    protected void updateActionPanelsPanelSize(ActionPanel head) {
         int aph = 0;
         ActionPanel ap = head;
         while (ap != null) {            
             aph += ap.getMaximumSize().height;
             ap = ap.next;
         }
-        actionPanelsPanel.setMaximumSize(new Dimension(300, aph));
+        
+        JPanel receivingPanel = getReceivingPanel(head);
+        receivingPanel.setMaximumSize(new Dimension(300, aph));
     }
-    public void updateSize() {        
-        updateActionPanelsPanelSize();
-
-        int w = 300;
+    protected void updatePanelsSize() {
+        updateActionPanelsPanelSize(head);
+    }
+    protected int calculateHeight() {
         int h = 0;
         h += conditionPanel.getMaximumSize().getHeight();
         h += actionPanelsPanel.getMaximumSize().getHeight();
+
+        return h;
+    }
+    
+    public void updateSize() {        
+        updatePanelsSize();
+
+        int w = 300;
+        int h = calculateHeight();
+        
         setMaximumSize(new Dimension(w, h));        
 
         if (parent instanceof ControlFlowStatementPanel) {
