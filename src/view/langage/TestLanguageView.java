@@ -58,12 +58,14 @@ public class TestLanguageView {
         InstructionPanelGenerator ig7 = new InstructionPanelGenerator(new ConditionPanel(controller, new CoinFront(null)));
         InstructionPanelGenerator ig8 = new InstructionPanelGenerator(new ConditionPanel(controller, new ChestFront(null)));
         InstructionPanelGenerator ig9 = new InstructionPanelGenerator(new NotPanel(controller, new Not(null)));
+        InstructionPanelGenerator ig10 = new InstructionPanelGenerator(new IfElsePanel(controller, new IfElse(null)));
 
         view.resourcePanel.addGenerator(ig3);
         view.resourcePanel.addGenerator(ig4);
         view.resourcePanel.addGenerator(ig5);
         view.resourcePanel.addGenerator(ig1);
         view.resourcePanel.addGenerator(ig2);
+        view.resourcePanel.addGenerator(ig10);
         view.resourcePanel.addGenerator(ig9);
         view.resourcePanel.addGenerator(ig6);
         view.resourcePanel.addGenerator(ig7);

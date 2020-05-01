@@ -80,6 +80,10 @@ public abstract class ControlFlowStatement extends Action {
         this.condition = condition;
     }
 
+    public void addActions(Queue<Action> q) {
+        actions.addAll(q);
+    }
+
     public void addAction(Action action) {
         actions.add(action);
     }

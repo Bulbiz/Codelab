@@ -48,6 +48,9 @@ public class ActionPanel extends InstructionPanel {
     public void onRelease(InstructionPanel source) {
       super.onRelease(source);
 
+      if (source.getInstruction() == null)
+        return;
+
       if (source instanceof ConditionPanel)
           return;
 
@@ -55,6 +58,15 @@ public class ActionPanel extends InstructionPanel {
           return;
 
       getParentPanel().addActionPanel((ActionPanel)source, this);
+    }
+
+    public boolean canAdd(ActionPanel ap) {
+      if (this == ap)
+        return false;
+
+      if (next != null)
+        return next.canAdd(ap);
+      return true;
     }
 
     public void highlight() {
