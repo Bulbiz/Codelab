@@ -3,6 +3,7 @@ package src.model.langage;
 
 import java.util.*;
 import src.model.world.*;
+import src.controller.*;
 /**
  *
  */
@@ -51,7 +52,8 @@ public class While extends ControlFlowStatement {
 
 		if(limit>100){
 			System.out.println("Boucle infini");
-			System.exit(0);
+			ControllerLevel.errorPopUp("An infinite loop is occuring in your code");
+			ControllerLevel.isInfinite = true;
 		}
 
 		if(verification == InstructionEnum.ControlFlowStatementAction.getIdentity()){			//if is a controle flow statement, don't depile

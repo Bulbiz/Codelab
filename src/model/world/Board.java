@@ -4,6 +4,7 @@ import java.util.*;
 import org.json.*;
 import java.io.FileWriter;
 import src.model.langage.Action;
+import src.controller.*;
 
 public class Board {
 
@@ -46,18 +47,18 @@ public class Board {
     		return null;
     	}
     }
-    
+
     public void erased (int y, int x) {
     	if(entityPresent(y,x)) {
     		this.characters.remove(this.cells[y][x].getEntity());
     		this.cells[y][x].setEntity(null);
     	}
     }
-    
+
     public boolean entityPresent(int y, int x) {
     	return this.cells[y][x].getEntity() != null;
     }
-    
+
     //EDITOR + PLACEMENT
     public void setDecor(Decor d,int y, int x) {
     	if(this.cells[y][x] != this.finish)
@@ -70,7 +71,7 @@ public class Board {
     private boolean isNotOccupied(int y, int x) {
 		return !(this.cells[y][x].getDecor() instanceof Obstacle);
     }
-    
+
     //EDITOR + PLACEMENT
     //method to initiate the entity when its not on the board
     public boolean initiateEntity(int y, int x, Entity being) {
@@ -91,7 +92,7 @@ public class Board {
 
     //EDITOR + PLACEMENT
     public void initiateGoal(int yGoal, int xGoal) {
-    	if(this.finish != null) 
+    	if(this.finish != null)
     		this.finish.setDecor(new Floor(this,this.finish.getDecor().getXPosition(),this.finish.getDecor().getYPosition())); //Assure the unicity of Goal
     	this.finish = this.cells[yGoal][xGoal];
 		this.finish.setDecor(new Goal(this, xGoal, yGoal));
@@ -132,14 +133,13 @@ public class Board {
     }
 
     //TODO the method should verify that the entity isnt trying to go into an obstacle
-    //TODO what happens if a player entity try to go into an ennemy entity ?
     public boolean move (int yStart, int xStart, int yEnd, int xEnd) {
     	try {
     		if(isNotOccupied(yEnd, xEnd)) {
 				Entity e = this.cells[yEnd][xEnd].getEntity();
 				if (e != null && e instanceof Collectable) {
 					Collectable c = (Collectable)e;
-					c.isCollected(getPlayer());					
+					c.isCollected(getPlayer());
 				}
 
     			this.cells[yEnd][xEnd].setEntity(this.cells[yStart][xStart].getEntity());
@@ -157,12 +157,17 @@ public class Board {
     }
 
     public boolean win(){
-    	return (this.finish.getEntity() != null && this.finish.getEntity() instanceof Player);
+	if(ControllerLevel.isInfinite){
+	    System.out.println("false");
+	    return true;
+	} else {
+	    return (this.finish.getEntity() != null && this.finish.getEntity() instanceof Player);
+	}
     }
 
     public void run() {
 		int i = 0;
-		while (i < this.characters.size()) {			
+		while (i < this.characters.size()) {
 			Entity e = this.characters.get(i);
 			int size = this.characters.size();
 			e.run();
@@ -170,15 +175,15 @@ public class Board {
 				i++;
 
 		}
-    		
+
     }
-    
+
     //EDITOR + PLACEMENT
     //Define if the board can be used as a level
     public boolean creatable() {
     	return this.getPlayer() != null && this.finish != null;
 	}
-	
+
 	public void openDoor() {
 		for (Cell[] raw : cells) {
 			for (Cell c : raw) {
@@ -190,7 +195,7 @@ public class Board {
 			}
 		}
 	}
-    
+
     //Terminal View
     public String toString() {
     	String res = "";

@@ -14,6 +14,7 @@ public class ControllerLevel{
 	private LevelPanel vueLevel;
 	private WorldThreadSwitch worldInterrupter;
 	private boolean isRunning;
+	public static boolean isInfinite = false;
 
 	public ControllerLevel (Level l, LevelPanel v) {
 		this.level = l;
@@ -47,7 +48,7 @@ public class ControllerLevel{
     	String message = hasWon ? "You Win !" : "You Lose, PFFFFFF !";
 		System.out.println(message);
 
-		if(hasWon){
+		if(hasWon && !isInfinite){
 			victoryPopUp();
 			endOfLevel();
 		} else {
@@ -67,6 +68,7 @@ public class ControllerLevel{
 		isRunning = false;
 		this.level.restart();
 		this.vueLevel.restart();
+		this.isInfinite = false;
 		this.worldInterrupter.switchOff();
 	}
 
