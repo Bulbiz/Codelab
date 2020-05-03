@@ -32,8 +32,10 @@ public class ConditionPanel extends InstructionPanel {
 
     @Override
     public void delete() {
-        IConditionPanelAdjustable p = (IConditionPanelAdjustable) parent;
-        p.changeConditionPanel(ControlFlowStatementPanel.createEmptyConditionPanel(parent, controller));
+        if (parent != null) {
+            IConditionPanelAdjustable p = (IConditionPanelAdjustable) parent;
+            p.changeConditionPanel(ControlFlowStatementPanel.createEmptyConditionPanel(parent, controller));
+        }
     }
 
     public InstructionPanel createNewInstructionPanel(ControllerLanguage controller, Instruction instruction) {
@@ -46,8 +48,13 @@ public class ConditionPanel extends InstructionPanel {
         if (!(source instanceof ConditionPanel))
             return;
 
-        IConditionPanelAdjustable parent = (IConditionPanelAdjustable) getParentPanel();
-        parent.changeConditionPanel((ConditionPanel)source);
+        if (source.getInstruction() == null)
+            return;
+
+        if (getParentPanel() != null) {
+            IConditionPanelAdjustable parent = (IConditionPanelAdjustable) getParentPanel();
+            parent.changeConditionPanel((ConditionPanel)source);
+        }
     }
 
 }
