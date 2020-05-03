@@ -16,10 +16,12 @@ public abstract class ControlFlowStatement extends Action {
 
     protected Condition condition;
     protected Queue<Action> actions;
+    protected boolean hasBeenActionned;
 
     public ControlFlowStatement(Personage personage) {
         super(personage);
         actions = new LinkedList<Action>();
+        this.hasBeenActionned = false;
     }
 
     public enum InstructionEnum {
@@ -81,10 +83,15 @@ public abstract class ControlFlowStatement extends Action {
     }
 
     public void addActions(Queue<Action> q) {
-        actions.addAll(q);
+    	for(Action a : q)
+    		this.addAction(a);
     }
 
     public void addAction(Action action) {
+    	if(hasBeenActionned) {
+    		hasBeenActionned = false;
+    		this.actions.clear();
+    	}
         actions.add(action);
     }
 
