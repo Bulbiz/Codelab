@@ -86,7 +86,9 @@ public class MenuPanel extends JPanel{
 		JFrame frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setTitle("CodeLab de Bronze");
-        frame.setMinimumSize(new Dimension(1300,700));
+        frame.setMinimumSize(Toolkit.getDefaultToolkit().getScreenSize());
+        frame.setMaximumSize(Toolkit.getDefaultToolkit().getScreenSize());
+        frame.setLocationRelativeTo(null);
         frame.setVisible(true);
         return frame;
 	}

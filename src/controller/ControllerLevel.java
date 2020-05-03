@@ -82,6 +82,16 @@ public class ControllerLevel{
 		//error.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
 	}
 
+	public static void successPopUp(String message) {
+		//JButton restart = new JButton("Restart");
+		Object[] options = {"OK"};
+		//JOptionPane error = new JOptionPane();
+		JOptionPane.showOptionDialog(null, message, "Success",
+				JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE,
+				null, options, options[0]);
+		//error.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+	}
+	
 	public static void victoryPopUp(){
 		Object[] options = {"OK"};
 		JOptionPane.showOptionDialog(null, "Félicitation vous avez gagné la partie !", "Victoire !!",

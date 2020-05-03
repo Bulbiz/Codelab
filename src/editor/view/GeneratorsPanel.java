@@ -47,7 +47,7 @@ public class GeneratorsPanel extends JPanel {
     }
 
     private JTextField fieldNameLoad() {
-    	JTextField text = new JTextField ("LevelName",20);
+    	JTextField text = new JTextField ("Load here",20);
     	text.setMaximumSize(text.getPreferredSize());
     	return text;
     }

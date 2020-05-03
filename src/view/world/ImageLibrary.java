@@ -55,4 +55,7 @@ public class ImageLibrary {
 		this.putImage("editor","editor.png");
 		this.putImage("load","load.png");
 	}
+	public void loadDialogue() {
+		this.putImage("dialogue", "dialogue.gif");
+	}
 }

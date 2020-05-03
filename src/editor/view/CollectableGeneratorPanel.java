@@ -27,7 +27,7 @@ public class CollectableGeneratorPanel extends JPanel{
 	private void layoutPlacement() {
 		TitledBorder title = BorderFactory.createTitledBorder("Objet");
 		this.setBorder(title);
-		this.setLayout(new BoxLayout(this,BoxLayout.PAGE_AXIS));
+		this.setLayout(new BoxLayout(this,BoxLayout.LINE_AXIS));
 		this.addButton();
 	}
 
@@ -38,7 +38,7 @@ public class CollectableGeneratorPanel extends JPanel{
 
 	private void addWithSeparation(JComponent c) {
     	this.add(c);
-    	this.add(Box.createRigidArea(new Dimension(0,5)));
+    	this.add(Box.createRigidArea(new Dimension(5,0)));
     }
 
 	private static void keyPlacement(Board b, int y, int x) {
