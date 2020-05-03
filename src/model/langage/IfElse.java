@@ -29,7 +29,7 @@ public class IfElse extends If {
     public void addElseAction(Action action) {
     	if(hasBeenActionned) {
     		hasBeenActionned = false;
-    		this.elseActions.clear();
+            this.elseActions.clear();
     	}
     	elseActions.add(action);
     }
@@ -39,9 +39,17 @@ public class IfElse extends If {
     }
 
     public void setPersonage(Personage pers) {
-        super.setPersonage(pers);
+        this.personage = pers;
+        if (condition != null)
+            condition.setPersonage(pers);
+        for (Action a : ifActions) 
+            a.setPersonage(pers);
         for (Action a : elseActions) 
             a.setPersonage(pers);
+    }
+
+    protected Fin getConditionCheck() {
+        return new FinIfElse(personage);
     }
     
     class FinIfElse extends FinIf {

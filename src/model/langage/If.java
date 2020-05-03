@@ -24,7 +24,7 @@ public class If extends ControlFlowStatement {
         return new If(personage);
     }
 
-    class FinIf extends Action {
+    class FinIf extends Fin {
 
         public FinIf(Personage personage){
             super(personage);
@@ -39,6 +39,10 @@ public class If extends ControlFlowStatement {
                 return 0;
             return -1;						//condition is not verify
         }
+    }
+
+    protected Fin getConditionCheck() {
+        return new FinIf(personage);
     }
     
     private void transfertSavetoAction () {
@@ -55,7 +59,7 @@ public class If extends ControlFlowStatement {
     	   	transfertSavetoAction();
             return InstructionEnum.endAction.getReturnValue();
         }
-       
+    
 		int verification = actions.peek().run();
 
 		while(verification == InstructionEnum.noCostAction.getIdentity()) {
