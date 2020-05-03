@@ -57,7 +57,7 @@ public class ControllerEditor extends MouseAdapter {
 		}
 		else {
 			boardEditor.getBoard().toJson(name);
-			/* Creation Completed message */
+			ControllerLevel.successPopUp("Le Niveau a bien été créer sous le nom de \"" + name + "\"");
 		}
 	}
 

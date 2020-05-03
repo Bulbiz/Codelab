@@ -16,6 +16,7 @@ public class StoryPanel extends JPanel{
 	private LevelPanel level;
 	private String storyMessage;
 	private JFrame parent;
+	private  static ImageLibrary sprite = initiateSprite();
 	
 	public StoryPanel (JFrame parent) {
 		this.parent = parent;
@@ -33,6 +34,11 @@ public class StoryPanel extends JPanel{
 		}
 	}
 	
+	private static ImageLibrary initiateSprite() {
+		ImageLibrary sprite = new ImageLibrary ();
+		sprite.loadDialogue();
+		return sprite;
+	}
 	private static int getAdvancement() {
 		org.json.simple.JSONObject save = readJSON ("story/sauvegarde");
 		return Integer.parseInt(save.get("advancement").toString());
@@ -80,9 +86,7 @@ public class StoryPanel extends JPanel{
 
 	private static void storyPopUp(String message){
 		Object[] options = {"OK"};
-		JOptionPane.showOptionDialog(null, message, "Histoire",
-				JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE,
-				null, options, options[0]);
+		JOptionPane.showMessageDialog(null,message,"Story",JOptionPane.DEFAULT_OPTION,sprite.getSprite("dialogue"));
 	}
 	
 	private static org.json.simple.JSONObject readJSON (String name){
