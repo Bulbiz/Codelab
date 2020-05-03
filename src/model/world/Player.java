@@ -14,7 +14,7 @@ public class Player extends Personage {
 	 * actions need to have the player to be created
 	 */
     public Player(Board b, int xStart, int yStart,int facingStart) {
-    	super(b,xStart,yStart,facingStart,null);
+    	super(b,xStart,yStart,facingStart,new LinkedList<Action> ());
     }
     
     public void setActions (Queue<Action> actions) {
