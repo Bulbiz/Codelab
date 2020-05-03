@@ -12,26 +12,34 @@ import javax.swing.JDialog;
 public class ControllerLevel{
 	private Level level;
 	private LevelPanel vueLevel;
-	private WorldThread worldTime;
+	private WorldThreadSwitch worldInterrupter;
+	private boolean isRunning;
 
 	public ControllerLevel (Level l, LevelPanel v) {
 		this.level = l;
 		this.vueLevel = v;
+		this.isRunning = false;
+		this.worldInterrupter = new WorldThreadSwitch(this);
 	}
 
+	public Board getBoard() {
+		return this.level.getBoard();
+	}
+	public LevelPanel getVueLevel() {
+		return this.vueLevel;
+	}
 	public void runOrStop (LanguageView lv) {
-		Queue<Action> script = lv.getInstructionQueue();
-		if(this.worldTime == null) {
+		if(!isRunning) {
+			isRunning = true;
+			Queue<Action> script = lv.getInstructionQueue();
 			lv.fillInstructionQueue();
 			this.level.getBoard().initiatePlayerActions(script);
-			this.worldTime = new WorldThread (level.getBoard(), vueLevel,this);
 		}
 
-		if(this.worldTime.isAlive())
-			this.worldTime.stop();
-		else {
-			this.worldTime = new WorldThread (level.getBoard(), vueLevel,this);
-			this.worldTime.start();
+		if(this.worldInterrupter.getOn()) {
+			this.worldInterrupter.switchOff();
+		}else {
+			this.worldInterrupter.switchOn();
 		}
 	}
 
@@ -49,14 +57,17 @@ public class ControllerLevel{
 	}
 
 	public void endOfLevel() {
+		isRunning = false;
 		this.level.restart();
 		this.vueLevel.endOfLevel();
-		this.worldTime = null;
+		this.worldInterrupter.switchOff();
 	}
+
 	public void restart() {
+		isRunning = false;
 		this.level.restart();
 		this.vueLevel.restart();
-		this.worldTime = null;
+		this.worldInterrupter.switchOff();
 	}
 
 	public static void errorPopUp(String message) {
