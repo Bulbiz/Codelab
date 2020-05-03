@@ -37,8 +37,10 @@ public class ActionPanel extends InstructionPanel {
 
     @Override
     public void delete() {
-      IActionPanelListable p = (IActionPanelListable) parent;
-      p.removeActionPanel(this);
+      if (parent != null) {
+        IActionPanelListable p = (IActionPanelListable) parent;
+        p.removeActionPanel(this);
+      }
     }
 
     public InstructionPanel createNewInstructionPanel(ControllerLanguage controller, Instruction instruction) {
@@ -46,10 +48,7 @@ public class ActionPanel extends InstructionPanel {
     }
 
     public void onRelease(InstructionPanel source) {
-      super.onRelease(source);
-
-      if (source.getInstruction() == null)
-        return;
+      super.onRelease(source);      
 
       if (source instanceof ConditionPanel)
           return;
@@ -57,7 +56,11 @@ public class ActionPanel extends InstructionPanel {
       if (source instanceof BeginPanel)
           return;
 
-      getParentPanel().addActionPanel((ActionPanel)source, this);
+      if (source.getInstruction() == null)
+        return;
+
+      if (getParentPanel() != null)
+        getParentPanel().addActionPanel((ActionPanel)source, this);
     }
 
     public boolean canAdd(ActionPanel ap) {
