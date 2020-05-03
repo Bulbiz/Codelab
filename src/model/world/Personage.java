@@ -55,6 +55,18 @@ public abstract class Personage extends Entity {
         return levelBoard.getCells()[ yFront ][ xFront ].getDecor() instanceof Obstacle;
     }
 
+    public boolean obstacleRight(){
+        int xRight = x + rotate [(facing-1 + 4)%4][0];  // "+ 4" is to always get positif modulus
+        int yRight = y + rotate [(facing-1 + 4)%4][1];  // "+ 4" is to always get positif modulus
+        return levelBoard.getCells()[ yRight ][ xRight ].getDecor() instanceof Obstacle;
+    }
+
+    public boolean obstacleLeft(){
+        int xLeft = x + rotate [(facing+1 + 4)%4][0];   // "+ 4" is to always get positif modulus
+        int yLeft = y + rotate [(facing+1 + 4)%4][1];   // "+ 4" is to always get positif modulus
+        return levelBoard.getCells()[ yLeft ][ xLeft ].getDecor() instanceof Obstacle;
+    }
+
     public boolean chestFront(){
         int xFront = x + rotate [facing][0];
         int yFront = y + rotate [facing][1];
