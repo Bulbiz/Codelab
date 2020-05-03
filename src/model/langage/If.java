@@ -8,13 +8,11 @@ import src.model.world.*;
  */
 public class If extends ControlFlowStatement {
 	protected Queue<Action> save;
-    protected boolean hasBeenActionned;
     
     public If(Personage personage) {
         super(personage);        
         this.save = new LinkedList<Action> ();
         this.actions = new LinkedList<Action>();
-        this.hasBeenActionned = false;
         addFirstAction();
     }
 
@@ -41,15 +39,6 @@ public class If extends ControlFlowStatement {
                 return 0;
             return -1;						//condition is not verify
         }
-    }
-
-    @Override
-    public void addAction(Action action) {
-    	if(hasBeenActionned) {
-    		hasBeenActionned = false;
-    		this.actions.clear();
-    	}
-        actions.add(action);
     }
     
     private void transfertSavetoAction () {

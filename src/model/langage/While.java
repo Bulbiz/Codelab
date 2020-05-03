@@ -42,7 +42,8 @@ public class While extends ControlFlowStatement {
 
 
 	public int run() {
-
+		 if(!hasBeenActionned) 
+			   hasBeenActionned = true;
 
 		int verification = actions.peek().run();
 		while(verification == InstructionEnum.noCostAction.getIdentity()) {				//do the no count actions.

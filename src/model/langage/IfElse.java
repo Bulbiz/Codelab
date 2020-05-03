@@ -22,9 +22,18 @@ public class IfElse extends If {
     }
 
     public void addElseActions(Queue<Action> q) {
-        elseActions.addAll(q);
+    	for(Action a : q)
+    		this.addElseAction(a);
     }
 
+    public void addElseAction(Action action) {
+    	if(hasBeenActionned) {
+    		hasBeenActionned = false;
+    		this.elseActions.clear();
+    	}
+    	elseActions.add(action);
+    }
+    
     public Instruction createNewInstruction() {
         return new IfElse(personage);
     }
