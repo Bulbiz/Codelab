@@ -4,12 +4,11 @@ import src.model.langage.*;
 import src.view.world.*;
 import javax.swing.*;
 import java.awt.*;
-import org.json.simple.JSONObject;
-import java.io.FileReader;
-import java.io.FileWriter;
-
+import org.json.*;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+import java.io.FileReader;
+import java.io.FileWriter;
 
 public class StoryPanel extends JPanel{
 	private int advancement;
@@ -35,17 +34,17 @@ public class StoryPanel extends JPanel{
 	}
 	
 	private static int getAdvancement() {
-		JSONObject save = readJSON ("story/sauvegarde");
+		org.json.simple.JSONObject save = readJSON ("story/sauvegarde");
 		return Integer.parseInt(save.get("advancement").toString());
 	}
 	
 	private static void setAdvancement(int advancement) {
 		try {
-			JSONObject save = readJSON ("story/sauvegarde");
-			save.put("advancement",advancement);
-			FileWriter file = new FileWriter("resources/story/sauvegarde.json");
-			file.write(save.toString());
-			file.flush();
+			JSONObject jsonAdv = new JSONObject();
+			jsonAdv.put("advancement", advancement);
+			FileWriter fw = new FileWriter("resources/story/sauvegarde.json");
+			fw.write(jsonAdv.toString());
+			fw.flush();
 		}catch(Exception e) {
 			System.out.println("OOOF, la sauvegarde a disparu alors la c'est TRES GRAVE");
 		}
@@ -86,12 +85,12 @@ public class StoryPanel extends JPanel{
 				null, options, options[0]);
 	}
 	
-	private static JSONObject readJSON (String name){
+	private static org.json.simple.JSONObject readJSON (String name){
     	try {
     		JSONParser jsonParser = new JSONParser();
     		FileReader reader = new FileReader("resources/" + name + ".json");
     		Object obj = jsonParser.parse(reader);
-    		JSONObject jsonLevel = (JSONObject) obj;
+    		org.json.simple.JSONObject jsonLevel = (org.json.simple.JSONObject) obj;
     		return jsonLevel;
     	}catch(Exception e) {
     		e.printStackTrace();
