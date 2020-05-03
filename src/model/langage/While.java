@@ -21,7 +21,7 @@ public class While extends ControlFlowStatement {
     }
 
 
-	class FinWhile extends Action{
+	class FinWhile extends Fin {
 
 			public FinWhile(Personage personage){
 				super(personage);
@@ -40,15 +40,24 @@ public class While extends ControlFlowStatement {
 			}
 		}
 
+	protected Fin getConditionCheck() {
+		return new FinWhile(personage);
+	}
 
 	public int run() {
 		 if(!hasBeenActionned) 
 			   hasBeenActionned = true;
 
 		int verification = actions.peek().run();
-		while(verification == InstructionEnum.noCostAction.getIdentity()) {				//do the no count actions.
+		int countUseless = 0;
+		while(verification == InstructionEnum.noCostAction.getIdentity() && countUseless < 30) {				//do the no count actions.
 			actions.offer(actions.poll());		//add this action in the end of the actions list
 			verification = actions.peek().run();
+			countUseless ++;
+		}
+		if (countUseless >= 30) {
+			System.out.println("infinite loop");
+			return InstructionEnum.endAction.getReturnValue();
 		}
 
 		if(limit>100){

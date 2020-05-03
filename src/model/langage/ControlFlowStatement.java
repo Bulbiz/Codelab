@@ -45,6 +45,12 @@ public abstract class ControlFlowStatement extends Action {
         }
     }
 
+    protected abstract class Fin extends Action {
+        protected Fin(Personage personage){
+            super(personage);
+        }
+    }
+
     /**
      * @return
      */
@@ -90,10 +96,12 @@ public abstract class ControlFlowStatement extends Action {
     public void addAction(Action action) {
     	if(hasBeenActionned) {
     		hasBeenActionned = false;
-    		this.actions.clear();
+            this.actions.clear();
     	}
         actions.add(action);
     }
+
+    protected abstract Fin getConditionCheck();
 
     public void printTypeAndVersion() {
         super.printTypeAndVersion();
