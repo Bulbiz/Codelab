@@ -222,7 +222,7 @@ public class ControlFlowStatementPanel extends ActionPanel implements IActionPan
         Queue<Action> q = convertActionsToInstructions(cfs, head);
         if (q == null)
             return null;
-        cfs.addActions(q);
+        cfs.setActions(q);
 
         return cfs;
 	}

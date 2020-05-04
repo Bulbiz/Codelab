@@ -12,12 +12,6 @@ public class If extends ControlFlowStatement {
     public If(Personage personage) {
         super(personage);        
         this.save = new LinkedList<Action> ();
-        this.actions = new LinkedList<Action>();
-        addFirstAction();
-    }
-
-    protected void addFirstAction() {
-        this.addAction(new FinIf(personage));
     }
 
     public Instruction createNewInstruction() {
@@ -52,8 +46,6 @@ public class If extends ControlFlowStatement {
     }
     
 	public int run() {
-	   if(!hasBeenActionned) 
-		   hasBeenActionned = true;
 	   
        if(actions.peek() == null) {// end actions list for the if
     	   	transfertSavetoAction();
@@ -78,7 +70,8 @@ public class If extends ControlFlowStatement {
 		if(verification == InstructionEnum.basicAction.getIdentity()){
 			save.offer(actions.poll());
 			return InstructionEnum.basicAction.getReturnValue();                          // continu to execute the actions list
-		}
+        }
+        
         return InstructionEnum.endAction.getReturnValue();
 	}
 }

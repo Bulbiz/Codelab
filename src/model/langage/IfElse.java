@@ -7,31 +7,19 @@ import src.model.world.Personage;
 
 public class IfElse extends If {
 
-    protected Queue<Action> elseActions;
-    protected Queue<Action> ifActions;
+    public Queue<Action> elseActions;
+    public Queue<Action> ifActions;
 
     public IfElse(Personage personage) {
         super(personage);
         ifActions = actions;
         elseActions = new LinkedList<Action>();
+    }
+
+    public void setElseActions(Queue<Action> q) {
+        elseActions.clear();
         elseActions.add(new FinIfElse(personage));
-    }
-
-    protected void addFirstAction() {
-        this.addAction(new FinIfElse(personage));
-    }
-
-    public void addElseActions(Queue<Action> q) {
-    	for(Action a : q)
-    		this.addElseAction(a);
-    }
-
-    public void addElseAction(Action action) {
-    	if(hasBeenActionned) {
-    		hasBeenActionned = false;
-            this.elseActions.clear();
-    	}
-    	elseActions.add(action);
+        elseActions.addAll(q);
     }
     
     public Instruction createNewInstruction() {
