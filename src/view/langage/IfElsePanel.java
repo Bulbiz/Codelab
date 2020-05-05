@@ -90,7 +90,7 @@ public class IfElsePanel extends ControlFlowStatementPanel {
         Queue<Action> q = convertActionsToInstructions(cfs, elseHead);
         if (q == null)
             return null;
-        cfs.addElseActions(q);
+        cfs.setElseActions(q);
 
         return cfs;
 	}

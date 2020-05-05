@@ -13,7 +13,6 @@ public class While extends ControlFlowStatement {
 
     public While(Personage personage) {
     	super(personage);
-		this.addAction(new FinWhile(personage));
 	}
 
     public Instruction createNewInstruction() {
@@ -45,8 +44,6 @@ public class While extends ControlFlowStatement {
 	}
 
 	public int run() {
-		 if(!hasBeenActionned) 
-			   hasBeenActionned = true;
 
 		int verification = actions.peek().run();
 		int countUseless = 0;
@@ -76,5 +73,9 @@ public class While extends ControlFlowStatement {
 		}
 
 		return InstructionEnum.endAction.getReturnValue();						//when the list of actions is over
+	}
+
+	protected void addFirstAction() {
+		this.actions.add(new FinWhile(personage));
 	}
 }
