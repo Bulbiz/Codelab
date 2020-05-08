@@ -219,7 +219,7 @@ public class Board {
 			file.write(json.toString(2));
 			file.flush();
 		}catch(Exception e){
-			System.out.println("le json n'a pas pu être créer");
+			System.out.println("The JSON could not be created");
 		}
 	}
 

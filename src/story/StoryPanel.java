@@ -17,7 +17,7 @@ public class StoryPanel extends JPanel{
 	private String storyMessage;
 	private JFrame parent;
 	private  static ImageLibrary sprite = initiateSprite();
-	
+
 	public StoryPanel (JFrame parent) {
 		this.parent = parent;
 		this.advancement = getAdvancement();
@@ -25,7 +25,7 @@ public class StoryPanel extends JPanel{
 			this.add(victoryPanel());
 			setAdvancement(1);
 		}else {
-			System.out.println("new Level" + advancement);			
+			System.out.println("new Level" + advancement);
 			this.level = new StoryLevel("story/" + advancement, this);
 			this.level.setLevelFrame(parent);
 			this.storyMessage = readJSON("story/" + advancement).get("story").toString();
@@ -33,7 +33,7 @@ public class StoryPanel extends JPanel{
 			storyPopUp(storyMessage);
 		}
 	}
-	
+
 	private static ImageLibrary initiateSprite() {
 		ImageLibrary sprite = new ImageLibrary ();
 		sprite.loadDialogue();
@@ -44,7 +44,7 @@ public class StoryPanel extends JPanel{
 		org.json.simple.JSONObject save = readJSON ("story/sauvegarde");
 		return Integer.parseInt(save.get("advancement").toString());
 	}
-	
+
 	private static void setAdvancement(int advancement) {
 		try {
 			JSONObject jsonAdv = new JSONObject();
@@ -53,10 +53,10 @@ public class StoryPanel extends JPanel{
 			fw.write(jsonAdv.toString());
 			fw.flush();
 		}catch(Exception e) {
-			System.out.println("OOOF, la sauvegarde a disparu alors la c'est TRES GRAVE");
+
 		}
 	}
-	
+
 	private JPanel victoryPanel() {
 		JPanel victory = new JPanel ();
 		JButton b = new JButton("<--");
@@ -81,7 +81,7 @@ public class StoryPanel extends JPanel{
 		windows.setContentPane(new StoryPanel(windows));
 		windows.pack();
 	}
-	
+
 	private static JFrame createWindows (String title) {
 		JFrame frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -95,7 +95,7 @@ public class StoryPanel extends JPanel{
 		Object[] options = {"OK"};
 		JOptionPane.showMessageDialog(null,message,"Story",JOptionPane.DEFAULT_OPTION,sprite.getSprite("dialogue"));
 	}
-	
+
 	private static org.json.simple.JSONObject readJSON (String name){
     	try {
     		JSONParser jsonParser = new JSONParser();

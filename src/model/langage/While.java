@@ -57,12 +57,10 @@ public class While extends ControlFlowStatement {
 			countUseless ++;
 		}
 		if (countUseless >= 30) {
-			System.out.println("infinite loop");
 			return InstructionEnum.endAction.getReturnValue();
 		}
 
 		if(limit>100){
-			System.out.println("Boucle infini");
 			ControllerLevel.errorPopUp("An infinite loop is occuring in your code");
 			ControllerLevel.isInfinite = true;
 			limit = 0;

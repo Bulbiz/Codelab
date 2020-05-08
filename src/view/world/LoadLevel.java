@@ -29,7 +29,7 @@ public class LoadLevel extends JPanel{
 		testWindows.pack();
 		parent.dispose();
 	    } else {
-		ControllerLevel.errorPopUp("Le niveau portant le nom : \"" + this.placeholder.getText() + "\" n'existe pas");
+		ControllerLevel.errorPopUp("The Level bearing the name : \"" + this.placeholder.getText() + "\" don't exist");
 		//this.add(new JTextField("Le niveau portant le nom : " + this.placeholder.getText() + " n'existe pas"));
 	    }
 	});

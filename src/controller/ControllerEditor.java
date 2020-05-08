@@ -21,7 +21,7 @@ public class ControllerEditor extends MouseAdapter {
 	private PlacementInterface placementInstruction;
 
 	public ControllerEditor () {
-		this.placementInstruction = (b,x,y) -> System.out.println("Vous n'avez rien choisi pour l'instant!");
+		this.placementInstruction = (b,x,y) -> System.out.println("You didn't choose anything for now!");
 	}
 
 	public void setPanels(EditorPanel editorPanel) {
@@ -47,14 +47,14 @@ public class ControllerEditor extends MouseAdapter {
 
 	public void create (String name) {
 		if(!creatable()) {
-			ControllerLevel.errorPopUp("Impossible de sauvegarder ! Il faut une Joueur et un coffre !");
-		} 
+			ControllerLevel.errorPopUp("Saving process failed ! You need a Chest and a Player !");
+		}
 		else if (!nameUnique(name)) {
-			ControllerLevel.errorPopUp("Impossible de sauvegarder ! Ce nom est déjà pris");
+			ControllerLevel.errorPopUp("Saving process failed ! This name has already been used");
 		}
 		else {
 			boardEditor.getBoard().toJson(name);
-			ControllerLevel.successPopUp("Le Niveau a bien été créer sous le nom de \"" + name + "\"");
+			ControllerLevel.successPopUp("The Level has been succesfully created with the name \"" + name + "\"");
 		}
 	}
 
@@ -78,5 +78,5 @@ public class ControllerEditor extends MouseAdapter {
     		return true;
     	}
 	}
-	
+
 }
