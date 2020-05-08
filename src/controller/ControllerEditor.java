@@ -21,7 +21,7 @@ public class ControllerEditor extends MouseAdapter {
 	private PlacementInterface placementInstruction;
 
 	public ControllerEditor () {
-		this.placementInstruction = (b,x,y) -> System.out.println("You didn't choose anything for now!");
+		this.placementInstruction = (b,x,y) -> ControllerLevel.errorPopUp("Aucun bouton n'a été choisi !");
 	}
 
 	public void setPanels(EditorPanel editorPanel) {

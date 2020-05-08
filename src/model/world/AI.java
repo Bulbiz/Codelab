@@ -15,15 +15,9 @@ public abstract class AI extends Personage {
     
     /* 0 => Action qui ne compte pas comme une action (turn)
      * 1 => Action terminer
-     * 2 => Action n'est pas terminer (cas dans le if/while) */
+     * 2 => Action n'est pas terminer (cas dans le if/while) 
+     TODO : make the run*/
     public void run () {
-        int verification = actions.peek().run();
-        while (verification == 0) {
-            actions.offer(actions.poll());
-            verification = actions.peek().run();
-        }
 
-        if(verification == 1)
-        	actions.offer(actions.poll());
     }
 }

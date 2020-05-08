@@ -24,7 +24,8 @@ public class Player extends Personage {
 
     /* 0 => Action qui ne compte pas comme une action (turn)
      * 1 => Action terminer
-     * 2 => Action n'est pas terminer (cas dans le if/while) */
+     * 2 => Action n'est pas terminer (cas dans le if/while) 
+     */
     public void run () {
         int verification = actions.peek().run();
         while (verification == 0) {
@@ -38,6 +39,7 @@ public class Player extends Personage {
             actions.poll();
     }
 
+    
     public void addToInventory(Collectable collectable) {
         inventory.add(collectable);
     }

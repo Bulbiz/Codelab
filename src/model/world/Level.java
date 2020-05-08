@@ -9,25 +9,13 @@ import org.json.simple.JSONArray;
 import java.io.FileReader;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-/**
- *
- */
+
 public class Level {
 
     private Board board;
-    private ArrayList<Action> actions; /*actions is the action the player can do for the level */
     private JSONObject save;
-    /**
-     * Use a JSON as a argument should be better
-
-    public Level(Board b, int id, ArrayList<Action> a) {
-        this.board = b;
-        this.id = id;
-        this.actions = a;
-    }*/
 
     public Level (String name) throws Exception {
-    	this.actions = null;
         this.save = readJSON(name);
     	this.board = initiateBoard (this.save);
     }
@@ -45,7 +33,6 @@ public class Level {
     }
     public void run () {
         this.board.run();
-        System.out.println(this.board + "\n ************* \n"); //Terminal View
     }
 
     public void restart(){
@@ -54,7 +41,7 @@ public class Level {
       try{
         this.board = initiateBoard(this.save);
       }catch(Exception e){
-        
+		  
       }
     }
     public boolean win(){
@@ -65,9 +52,6 @@ public class Level {
     	return this.board;
     }
 
-    public ArrayList<Action> getActions () {
-    	return this.actions;
-    }
     public Player getPlayer() {
     	return this.board.getPlayer();
     }

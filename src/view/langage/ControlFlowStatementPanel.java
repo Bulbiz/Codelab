@@ -48,6 +48,7 @@ public class ControlFlowStatementPanel extends ActionPanel implements IActionPan
 
         normalColor = Color.green.darker();
         highlightColor = Color.green;
+
     }
 
     private void initConditionPanelPanel() {

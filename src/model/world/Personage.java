@@ -19,15 +19,20 @@ public abstract class Personage extends Entity {
 
     public Personage(Board b, int xStart, int yStart,int facingStart,Queue<Action> a) {
     	super(b,xStart,yStart);
-    	facing = (facingStart + 4) % 4; // "+ 4" is to always get positif modulus
+    	facing = calculPositifModulusFour (facingStart); // "+ 4" is to always get positif modulus
     	actions = a;
     }
 
     public int getFacing(){
         return facing;
     }
+    
+    private int calculPositifModulusFour (int facing){
+        return ((facing % 4) + 4 ) % 4;
+    }
+
     private void turn (int rotate) {
-    	this.facing = ((this.facing + rotate) + 4) % 4; // "+ 4" is to always get positif modulus
+    	this.facing = calculPositifModulusFour (facing + rotate); // "+ 4" is to always get positif modulus
     }
 
     public void turnLeft () {
@@ -44,8 +49,9 @@ public abstract class Personage extends Entity {
     		y = y + rotate [facing][1];
     	}
     }
+    /* do nothing */
     public void stay () {
-    	//Do nothing
+    	
     }
 
     public boolean obstacleFront(){

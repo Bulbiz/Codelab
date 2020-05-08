@@ -13,6 +13,7 @@ public abstract class Entity {
     	x = xStart;
     	y = yStart;
     }
+    
     public int getX () {
     	return this.x;
     }

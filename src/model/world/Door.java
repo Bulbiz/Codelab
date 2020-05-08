@@ -9,9 +9,6 @@ public class Door extends Decor implements Obstacle {
     private static int nbDoors = 0;
     protected int id;
 
-    /**
-     * Default constructor
-     */
     public Door(Board b, int xPosition, int yPosition) {
         super(b,xPosition,yPosition);
         id = nbDoors;

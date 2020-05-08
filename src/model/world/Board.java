@@ -16,7 +16,7 @@ public class Board {
 
     public Board () {
     	this.cells = new Cell[boardLength][boardLength];
-			this.characters = new ArrayList<Entity> ();
+		this.characters = new ArrayList<Entity> ();
     	createBorder();
     	initiateCells();
     }
@@ -24,7 +24,7 @@ public class Board {
     public void initiatePlayerActions(Queue<Action> script){
         Player player = getPlayer();
         if(player == null) {
-        	System.out.println("Erreur le joueur n'est pas initialiser ! ");
+        	System.out.println("Erreur le joueur n'est pas initialiser !");
         	return;
         }
         player.setActions(script);
@@ -59,7 +59,6 @@ public class Board {
     	return this.cells[y][x].getEntity() != null;
     }
 
-    //EDITOR + PLACEMENT
     public void setDecor(Decor d,int y, int x) {
     	if(this.cells[y][x] != this.finish)
     		this.cells[y][x].setDecor(d);
@@ -72,7 +71,6 @@ public class Board {
 		return !(this.cells[y][x].getDecor() instanceof Obstacle);
     }
 
-    //EDITOR + PLACEMENT
     //method to initiate the entity when its not on the board
     public boolean initiateEntity(int y, int x, Entity being) {
     	try {
@@ -90,7 +88,6 @@ public class Board {
     	}
     }
 
-    //EDITOR + PLACEMENT
     public void initiateGoal(int yGoal, int xGoal) {
     	if(this.finish != null)
     		this.finish.setDecor(new Floor(this,this.finish.getDecor().getXPosition(),this.finish.getDecor().getYPosition())); //Assure the unicity of Goal
@@ -121,7 +118,6 @@ public class Board {
     	}
     }
 
-    //This method will initiate all cells remaining that are still = null
     private void initiateCells() {
     	for(int i = 0; i < this.cells.length; i++) {
     		for(int j = 0; j < this.cells[0].length; j++) {
@@ -132,7 +128,6 @@ public class Board {
     	}
     }
 
-    //TODO the method should verify that the entity isnt trying to go into an obstacle
     public boolean move (int yStart, int xStart, int yEnd, int xEnd) {
     	try {
     		if(isNotOccupied(yEnd, xEnd)) {
@@ -141,7 +136,6 @@ public class Board {
 					Collectable c = (Collectable)e;
 					c.isCollected(getPlayer());
 				}
-
     			this.cells[yEnd][xEnd].setEntity(this.cells[yStart][xStart].getEntity());
     			this.cells[yStart][xStart].setEntity(null);
     		} else {
@@ -152,17 +146,16 @@ public class Board {
     		System.out.println("[Erreur] : Le déplacement n'a pas pu se faire");
     		return false;
     	}
-    	System.out.println("("+xStart+":"+yStart+")"+" -> ("+ xEnd + ":" + yEnd + ")");
     	return true;
     }
 
+    
     public boolean win(){
-	if(ControllerLevel.isInfinite){
-	    System.out.println("false");
-	    return true;
-	} else {
-	    return (this.finish.getEntity() != null && this.finish.getEntity() instanceof Player);
-	}
+    	if(ControllerLevel.isInfinite){
+    		return true;
+    	} else {
+    		return (this.finish.getEntity() != null && this.finish.getEntity() instanceof Player);
+    	}	
     }
 
     public void run() {
@@ -178,7 +171,6 @@ public class Board {
 
     }
 
-    //EDITOR + PLACEMENT
     //Define if the board can be used as a level
     public boolean creatable() {
     	return this.getPlayer() != null && this.finish != null;
@@ -196,7 +188,6 @@ public class Board {
 		}
 	}
 
-    //Terminal View
     public String toString() {
     	String res = "";
     	for(int i = 0; i< this.cells.length ; i++) {
@@ -229,7 +220,6 @@ public class Board {
 		try{
 			json.put("xPosition",finish.getDecor().getXPosition());
 			json.put("yPosition",finish.getDecor().getYPosition());
-
 		}catch(Exception e){
 			System.out.println("le json n'a pas pu être créer");
 		}
@@ -251,13 +241,12 @@ public class Board {
 		return json;
 	}
 
-//CHANGEMENT
 	public JSONArray decorToJson(){
 		JSONArray jsonArray = new JSONArray();
 		try{
 			for(int i = 1; i < this.cells.length-1; i++){
 				for(int j = 1; j < this.cells[i].length-1; j++){
-					jsonArray.put(soloDecorToJson(cells[i][j]));   //check with Antoine for the orientation
+					jsonArray.put(soloDecorToJson(cells[i][j]));
 				}
 			}
 
