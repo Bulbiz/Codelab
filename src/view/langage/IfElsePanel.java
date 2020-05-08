@@ -2,9 +2,7 @@ package src.view.langage;
 
 import java.awt.Dimension;
 import java.util.Queue;
-
 import javax.swing.JPanel;
-
 import src.controller.ControllerLanguage;
 import src.model.langage.Action;
 import src.model.langage.IfElse;

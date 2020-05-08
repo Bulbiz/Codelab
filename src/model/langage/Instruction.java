@@ -1,7 +1,7 @@
 
 package src.model.langage;
-import src.model.world.*;
 
+import src.model.world.*;
 import java.util.*;
 import org.json.*;
 

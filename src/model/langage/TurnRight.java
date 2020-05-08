@@ -1,7 +1,6 @@
 
 package src.model.langage;
 
-import java.util.*;
 import src.model.world.*;
 /**
  *

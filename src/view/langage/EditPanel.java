@@ -3,10 +3,8 @@ package src.view.langage;
 
 import src.controller.ControllerLanguage;
 import src.model.langage.*;
-
 import java.awt.Color;
 import java.awt.Dimension;
-
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;

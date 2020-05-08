@@ -1,14 +1,10 @@
 package src.view.world;
 
 import src.model.world.*;
-import src.model.langage.*;
-import src.model.langage.Action;
 import src.controller.*;
 import src.view.langage.*;
 import javax.swing.*;
 import java.awt.*;
-import java.util.*;
-import src.Test;
 
 public class LevelPanel extends JPanel{
 	private Level level;

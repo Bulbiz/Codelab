@@ -2,7 +2,6 @@ package src.model.langage;
 
 import java.util.LinkedList;
 import java.util.Queue;
-
 import src.model.world.Personage;
 
 public class IfElse extends If {

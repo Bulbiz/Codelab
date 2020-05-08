@@ -1,9 +1,6 @@
 package src.view;
 
 import javax.swing.*;
-import java.awt.*;
-import src.view.world.*;
-import src.view.langage.*;
 
 public class GameWindows{
     private JFrame windows;

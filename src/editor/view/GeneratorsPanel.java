@@ -4,7 +4,6 @@ package src.editor.view;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
-
 import src.controller.ControllerEditor;
 import java.awt.*;
 

@@ -1,7 +1,5 @@
 package src.model.world;
 
-import java.util.*;
-
 public class Cell {
 
 	private Decor decor;

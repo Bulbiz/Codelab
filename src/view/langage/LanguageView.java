@@ -4,7 +4,6 @@ package src.view.langage;
 import src.controller.ControllerLanguage;
 import src.model.langage.*;
 import src.model.world.Personage;
-
 import javax.swing.JPanel;
 import java.util.LinkedList;
 import java.util.Queue;
