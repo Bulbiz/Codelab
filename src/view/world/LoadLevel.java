@@ -1,11 +1,7 @@
 package src.view.world;
+
 import src.controller.*;
-
 import javax.swing.*;
-import java.awt.*;
-import java.util.*;
-import src.Test;
-
 
 public class LoadLevel extends JPanel{
 

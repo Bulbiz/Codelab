@@ -3,7 +3,6 @@ package src.view.langage;
 
 import src.controller.ControllerLanguage;
 import src.model.langage.*;
-
 import java.awt.Color;
 import javax.swing.JLabel;
 

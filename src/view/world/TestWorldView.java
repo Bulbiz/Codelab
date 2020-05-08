@@ -8,9 +8,7 @@ import src.view.*;
 import java.util.*;
 import javax.swing.*;
 import java.awt.*;
-
 import src.model.world.*;
-//import java.util.*;
 
 public class TestWorldView {
 	/*

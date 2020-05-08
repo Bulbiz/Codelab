@@ -2,7 +2,6 @@
 package src.view.langage;
 
 import javax.swing.JPanel;
-
 import src.controller.ControllerLanguage;
 
             

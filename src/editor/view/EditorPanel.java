@@ -2,13 +2,8 @@
 package src.editor.view;
 
 import javax.swing.*;
-import java.awt.*;
-import java.util.*;
-
-
 import src.controller.ControllerEditor;
 import src.model.world.Board;
-import src.Test;
 import src.view.world.MenuPanel;
 
 public class EditorPanel extends JPanel {

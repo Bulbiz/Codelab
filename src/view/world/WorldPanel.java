@@ -3,10 +3,7 @@ package src.view.world;
 import src.model.world.*;
 import javax.swing.*;
 import java.awt.*;
-import java.util.*;
-import java.io.File;
-import java.awt.Image;
-import javax.imageio.ImageIO;
+
 /**
  *
  */

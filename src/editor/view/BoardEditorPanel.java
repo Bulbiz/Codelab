@@ -1,7 +1,6 @@
 
 package src.editor.view;
 
-import javax.swing.JPanel;
 import src.model.world.*;
 import src.view.world.WorldPanel;
 import src.controller.ControllerEditor;

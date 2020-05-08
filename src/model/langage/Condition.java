@@ -2,10 +2,8 @@
 package src.model.langage;
 
 import java.util.*;
-
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import src.model.world.*;
 
 /**

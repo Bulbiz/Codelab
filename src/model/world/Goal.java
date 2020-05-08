@@ -1,7 +1,5 @@
 package src.model.world;
 
-import java.util.*;
-
 public class Goal extends Decor {
 
     private boolean haveDoor;

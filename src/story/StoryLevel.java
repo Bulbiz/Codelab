@@ -1,8 +1,6 @@
 package src.story;
 
 import src.view.world.*;
-import javax.swing.*;
-import java.awt.*;
 
 public class StoryLevel extends LevelPanel{
 	

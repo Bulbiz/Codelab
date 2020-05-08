@@ -1,7 +1,5 @@
 package src.model.world;
 
-import java.util.*;
-
 /**
  * An Entity is an object in the board of a level
  */

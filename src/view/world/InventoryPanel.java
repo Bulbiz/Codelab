@@ -1,14 +1,10 @@
 package src.view.world;
 
 import java.util.ArrayList;
-
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
-
 import src.model.world.Collectable;
-
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;

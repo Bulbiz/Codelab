@@ -3,7 +3,7 @@ package src.model.world;
 
 import java.util.*;
 import src.model.langage.*;
-//import src.controller.*;
+
 /**
  * Define the Player
  */

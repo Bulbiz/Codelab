@@ -2,22 +2,10 @@
 package src.view.langage;
 
 import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
-
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.event.MouseListener;
-import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.Queue;
-
 import src.controller.ControllerLanguage;
 import src.model.langage.*;
-import src.model.world.*;
-import src.view.world.LevelPanel;
+
 
 public class TestLanguageView {
     public static void run() {

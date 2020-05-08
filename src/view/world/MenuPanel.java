@@ -1,16 +1,10 @@
 package src.view.world;
-import src.*;
-import src.model.langage.*;
-import src.model.world.*;
-import src.view.langage.*;
-import src.view.world.*;
-import src.view.*;
+
 import src.story.*;
 import src.editor.view.*;
 import src.controller.*;
 import javax.swing.*;
 import java.awt.*;
-import java.util.*;
 
 public class MenuPanel extends JPanel{
 	private ImageLibrary menuSprite;

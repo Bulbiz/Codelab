@@ -2,8 +2,6 @@
 package src.view.langage;
 
 import java.awt.Dimension;
-import java.awt.Graphics;
-import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
