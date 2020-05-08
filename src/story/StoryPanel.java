@@ -37,6 +37,7 @@ public class StoryPanel extends JPanel{
 	private static ImageLibrary initiateSprite() {
 		ImageLibrary sprite = new ImageLibrary ();
 		sprite.loadDialogue();
+		sprite.loadStoryFinished();
 		return sprite;
 	}
 	private static int getAdvancement() {
@@ -58,7 +59,13 @@ public class StoryPanel extends JPanel{
 	
 	private JPanel victoryPanel() {
 		JPanel victory = new JPanel ();
-		victory.add(new JLabel("Ouais cette page est moche mais tu as gagné !"));
+		JButton b = new JButton("<--");
+		b.addActionListener((e) -> {
+			parent.dispose();
+			MenuPanel.beginMenu();
+		});
+		victory.add(b);
+		victory.add(new JLabel(sprite.getSprite("storyFinished")));
 		return victory;
 	}
 

@@ -58,4 +58,7 @@ public class ImageLibrary {
 	public void loadDialogue() {
 		this.putImage("dialogue", "dialogue.gif");
 	}
+	public void loadStoryFinished(){
+		this.putImage("storyFinished", "storyFinished.png");
+	}
 }
