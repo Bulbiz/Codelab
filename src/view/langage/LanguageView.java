@@ -28,7 +28,7 @@ public class LanguageView extends JPanel {
         add(editPanel);
         add(resourcePanel);
 
-        TestLanguageView.testInstructionPanelGeneratorClick(this, controller);
+        resourcePanel.loadLevel(0);
     }
     
     public void setPlayer (Personage p){
@@ -79,5 +79,7 @@ public class LanguageView extends JPanel {
         source.delete();
     }
     
-    
+    public void loadResourcePanel(int idLevel) {
+        resourcePanel.loadLevel(idLevel);
+    }
 }
