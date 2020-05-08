@@ -26,6 +26,7 @@ public class StoryPanel extends JPanel{
 			setAdvancement(1);
 		}else {		
 			this.level = new StoryLevel("story/" + advancement, this);
+			this.level.loadResourcePanel(advancement);
 			this.level.setLevelFrame(parent);
 			this.storyMessage = readJSON("story/" + advancement).get("story").toString();
 			this.add(level);

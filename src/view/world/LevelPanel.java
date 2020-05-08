@@ -53,6 +53,10 @@ public class LevelPanel extends JPanel{
 		this.levelFrame = levelFrame;
 	}
 
+	public void loadResourcePanel(int idLevel) {
+		languageView.loadResourcePanel(idLevel);
+	}
+
 	public void restart(){
 		this.languageView.setPlayer(level.getPlayer());
 		inventoryPanel.setInventory(level.getPlayer().getInventory());
