@@ -1,26 +1,66 @@
 
 package src.view.langage;
 
+import javax.swing.JComponent;
+import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
+import java.awt.Point;
+
 import src.controller.ControllerLanguage;
 
             
 public interface IConditionPanelAdjustable extends IParent {
-    void changeConditionPanel(ConditionPanel cp);
-    default void changeConditionPanel(ConditionPanel cp, JPanel conditionPanelPanel, ControllerLanguage controller) {
-        if (cp.getParentPanel() != this) {
-            IConditionPanelAdjustable parent = (IConditionPanelAdjustable)cp.getParentPanel();
-            if (parent != null)
-                parent.changeConditionPanel(ControlFlowStatementPanel.createEmptyConditionPanel(parent, controller));
-        }
+    
+    default InstructionPanel removeConditionPanel() {
+        InstructionPanel parent = ((InstructionPanel)this);
+        ConditionPanel cp = this.getConditionPanel();
+        ControllerLanguage controller = parent.getController();
+        ConditionPanel newcp = ControlFlowStatementPanel.createEmptyConditionPanel(this, controller);
 
-        conditionPanelPanel.remove(getConditionPanel());
-        setConditionPanel(cp);
-        getConditionPanel().setParentPanel(this);
-        conditionPanelPanel.add(cp);
+        parent.remove(cp);
+        parent.add(newcp);
+
+        setConditionPanel(newcp);        
+        newcp.setParentPanel(this);
+
+        findEditPanel().updatePlacement();   
+
+        return newcp;
+    }
+
+    default void addConditionPanel(ConditionPanel newcp) {
+        InstructionPanel parent = ((InstructionPanel)this);
+
+        parent.remove(getConditionPanel());
+        parent.add(newcp);
+
+        setConditionPanel(newcp);        
+        newcp.setParentPanel(this);
         
+        findEditPanel().updatePlacement();   
     }
 
     void setConditionPanel(ConditionPanel cp);
     ConditionPanel getConditionPanel();
+
+    default void setToDragAndDropLayer(InstructionPanel ip, JLayeredPane layeredPanel) {
+        layeredPanel.setLayer(ip, JLayeredPane.DRAG_LAYER); 
+        layeredPanel.add(ip);        
+    }
+    default void setToDefaultLayer(InstructionPanel ip, JLayeredPane layeredPanel) {
+        //srcPanel.remove(ip);
+        layeredPanel.setLayer(ip, JLayeredPane.DEFAULT_LAYER);
+    }
+
+    default EditPanel findEditPanel() {
+        IParent p = ((InstructionPanel)this).getParentPanel();
+        while (!(p instanceof EditPanel)) {
+            p = ((InstructionPanel)p).getParentPanel();
+        }
+        return (EditPanel)p;
+    }
+    
+    default InstructionPanel removePanel(InstructionPanel ip) {
+        return removeConditionPanel();
+    }
 }

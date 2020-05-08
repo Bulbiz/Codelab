@@ -53,6 +53,7 @@ public class TestLanguageView {
         view.resourcePanel.addGenerator(ig3);
         view.resourcePanel.addGenerator(ig4);
         view.resourcePanel.addGenerator(ig5);
+        
         view.resourcePanel.addGenerator(ig1);
         view.resourcePanel.addGenerator(ig2);
         view.resourcePanel.addGenerator(ig10);
@@ -62,6 +63,7 @@ public class TestLanguageView {
         view.resourcePanel.addGenerator(ig12);
         view.resourcePanel.addGenerator(ig7);
         view.resourcePanel.addGenerator(ig8);
+        
     }
 
 }

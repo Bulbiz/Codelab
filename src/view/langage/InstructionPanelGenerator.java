@@ -17,16 +17,24 @@ public class InstructionPanelGenerator extends JPanel implements IMouseReactive 
 	InstructionPanel instructionPanel;
 	ControllerLanguage controller;
 
+	public static final int standardWidth = ResourcePanel.width - 2*ResourcePanel.margeleft;
+
 	public InstructionPanelGenerator(InstructionPanel instructionPanel) {
 		this.instruction = instructionPanel.getInstruction();
 		this.instructionPanel = instructionPanel;
 		this.controller = instructionPanel.getController();
 		addMouseListener(controller);
 		addMouseMotionListener(controller);
-		setMaximumSize(new Dimension(200, 32));
 		
-		add(new JLabel(instruction.getVersion()));
-		setBackground(Color.GRAY);
+		InstructionPanel ip = createInstructionPanel();
+		ip.setPosition(0, 0, standardWidth);
+		ip.removeMouseListener(controller);
+		ip.removeMouseMotionListener(controller);
+		add(ip);
+	}
+
+	public int getHeight() {
+		return instructionPanel.getHeight();
 	}
 
 	public InstructionPanel createInstructionPanel() {

@@ -11,8 +11,7 @@ public interface IMouseReactive {
         return "null";
     }
 
-    default void onRelease(InstructionPanel source) {
-        if (source != null)
-            source.dehighlight();
+    default boolean onRelease(InstructionPanel source) {
+        return false;
     }
 }

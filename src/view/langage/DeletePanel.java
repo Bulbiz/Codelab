@@ -17,15 +17,15 @@ public class DeletePanel extends JPanel implements IMouseReactive {
         addMouseListener(controller);
 
         setBorder(new LineBorder(Color.BLACK));
-        setMinimumSize(new Dimension(200, 50));
+        setBounds(32, 32, 128, 64);
     }
 
-    public void onRelease(InstructionPanel source) {
-        if (source != null)
-            if (source.getInstruction() != null)
-                source.delete();
-            else 
-                source.dehighlight();
+    public boolean onRelease(InstructionPanel source) {
+        if (source != null) {
+            source.delete();
+            return true;
+        }
+        return false;
     }
 
     public String getDestType() {

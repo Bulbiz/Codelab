@@ -2,6 +2,8 @@ package src.view.langage;
 
 import java.awt.Dimension;
 import java.util.Queue;
+
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import src.controller.ControllerLanguage;
 import src.model.langage.Action;
@@ -11,24 +13,24 @@ import src.model.langage.Instruction;
 public class IfElsePanel extends ControlFlowStatementPanel {
 
     protected ActionPanel elseHead;
-
-    JPanel elsePanel;
+    protected JLabel elseLabel;
 
     public IfElsePanel(ControllerLanguage controller, IfElse cfs) {
         super(controller, cfs);
 
-        elsePanel = new JPanel();
-        initElsePanel();
+        height = 96;
+        conditionLabel.setText("if");
 
-        setMinimumSize(new Dimension(300, 96));
-        setMaximumSize(new Dimension(300, 96));
+        elseLabel = new JLabel("else");
+        elseLabel.setBounds(0, 64, 64, 32);
+        add(elseLabel);
 
-    }
+        elseHead = createEmptyActionPanel();
+        elseHead.removeMouseListener(controller);
+        elseHead.removeMouseMotionListener(controller);
 
-    private void initElsePanel() {        
-        elseHead = initActionPanelsPanel(elsePanel);
-        linkLabelAndPanel("else", elsePanel);
-        elsePanel.setMaximumSize(new Dimension(300, 32));
+        elseHead.next = createEmptyActionPanel();
+        add(elseHead.next);       
     }
 
     public InstructionPanel createNewInstructionPanel(ControllerLanguage controller, Instruction instruction) {        
@@ -42,44 +44,23 @@ public class IfElsePanel extends ControlFlowStatementPanel {
                 return head;
             cur = cur.next;
         }
+
+        cur = elseHead;
+        while (cur != null) {
+            if (cur == ap)
+                return elseHead;
+            cur = cur.next;
+        }
         
-        return elseHead;
+        return null;
     }
 
-    public ActionPanel changeHead(ActionPanel h, ActionPanel newHead) {
-        if (h == head)
-            head = newHead;        
-        else 
-            elseHead = newHead;
-        
-        return newHead;
-    }
+    public void changeHeadNext(ActionPanel h, ActionPanel newHead) {
 
-    public JPanel getReceivingPanel(ActionPanel h) {
-        if (head == h)
-            return actionPanelsPanel;
-        
-        return elsePanel; 
-    }
-
-    protected void updatePanelsSize() {
-        updateActionPanelsPanelSize(head);
-        updateActionPanelsPanelSize(elseHead);
-    }
-
-    public boolean canAdd(ActionPanel ap) {
-        if (elseHead != null && !elseHead.canAdd(ap))
-            return false;
-
-        return super.canAdd(ap);
-    }
-
-    protected int calculateHeight() {
-        int h = 0;
-        h += super.calculateHeight();
-        h += elsePanel.getMaximumSize().getHeight();
-
-        return h;
+        ActionPanel selectedHead = h == head ? head : elseHead ;
+        remove(selectedHead.next);
+        selectedHead.next = newHead;
+        add(newHead);
     }
 
     public Instruction toInstruction() {
@@ -93,16 +74,19 @@ public class IfElsePanel extends ControlFlowStatementPanel {
         return cfs;
 	}
 
-    public void highlight() {
-        super.highlight();
-        JPanel elsePanel = (JPanel) this.getComponent(2);
-        elsePanel.setBackground(highlightColor);
+    public void setPosition(int x, int y, int w) {
+        setPosConditionAndActions(x, y, w);        
+
+        ActionPanel cur = elseHead.next;
+        elseLabel.setBounds(0, height, 64, 32);
+        while (cur != null) {
+            cur.setPosition(64, height, w - 64);
+            height += cur.getHeight();
+            cur = cur.next;
+        }
+
+        superSetPosition(x, y, w);
     }
 
-    public void dehighlight() {
-        super.dehighlight();
-        JPanel elsePanel = (JPanel) this.getComponent(2);
-        elsePanel.setBackground(normalColor);
-    }
 
 }

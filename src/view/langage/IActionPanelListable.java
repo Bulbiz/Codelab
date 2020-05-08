@@ -2,29 +2,17 @@
 package src.view.langage;
 
 import java.awt.Dimension;
-import javax.swing.JPanel;
 
-interface IActionPanelListable extends IParent {
+import javax.swing.JComponent;
+import javax.swing.JLayeredPane;
+import javax.swing.JPanel;
+import java.awt.Point;
+
+public interface IActionPanelListable extends IParent {
 
     void addActionPanel(ActionPanel ap, ActionPanel previous);
-    default void addRecursively(ActionPanel ap, IActionPanelListable parent, JPanel panel) {
-        ActionPanel cur = ap;
-        while (cur != null) {
-            panel.add(cur);
-            cur.setParentPanel(parent);
-            panel.setMaximumSize(new Dimension(300, panel.getMaximumSize().height + cur.getMaximumSize().height));
-            cur = cur.next;
-        }
-    }
-    void removeActionPanel(ActionPanel ap);
-    default void removeRecursively(ActionPanel ap, JPanel panel) {
-        ActionPanel cur = ap;
-        while (cur != null) {
-            panel.remove(cur);
-            cur.setParentPanel(null);
-            cur = cur.next;
-        }
-    }
+    InstructionPanel removeActionPanel(ActionPanel ap);
+    
     default void updateNext(ActionPanel ap, ActionPanel previous) {
         ActionPanel last = getLast(ap);
 
@@ -50,6 +38,20 @@ interface IActionPanelListable extends IParent {
     }
     ActionPanel getHead(ActionPanel ap);
 
-
     String getListType();
+
+    default void setToDragAndDropLayer(InstructionPanel ip, JLayeredPane layeredPanel) {
+
+        layeredPanel.setLayer(ip, JLayeredPane.DRAG_LAYER); 
+        layeredPanel.add(ip);
+    }
+    default void setToDefaultLayer(InstructionPanel ip, JLayeredPane layeredPanel) {
+               
+        layeredPanel.setLayer(ip, JLayeredPane.DEFAULT_LAYER);
+        //layeredPanel.remove(ip);
+    }
+
+    default InstructionPanel removePanel(InstructionPanel ip) {
+        return removeActionPanel((ActionPanel) ip);
+    }
 }
