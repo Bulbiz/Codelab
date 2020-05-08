@@ -2,9 +2,6 @@
 package src.model.world;
 
 
-/**
- *
- */
 public class Key extends Collectable {
 
     private static int nbKeys = 0;
@@ -16,6 +13,7 @@ public class Key extends Collectable {
         id = nbKeys;
         nbKeys ++;
     }
+    
     public void run() {}
       
     public String toString() {
