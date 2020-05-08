@@ -43,6 +43,11 @@ public class While extends ControlFlowStatement {
 		return new FinWhile(personage);
 	}
 
+	public void setActions(Queue<Action> q) {
+		super.setActions(q);
+		limit = 0;
+	}
+	
 	public int run() {
 
 		int verification = actions.peek().run();
@@ -61,6 +66,7 @@ public class While extends ControlFlowStatement {
 			System.out.println("Boucle infini");
 			ControllerLevel.errorPopUp("An infinite loop is occuring in your code");
 			ControllerLevel.isInfinite = true;
+			limit = 0;
 		}
 
 		if(verification == InstructionEnum.ControlFlowStatementAction.getIdentity()){			//if is a controle flow statement, don't depile
