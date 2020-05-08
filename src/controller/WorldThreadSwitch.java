@@ -1,9 +1,5 @@
 package src.controller;
 
-import src.model.world.*;
-import src.view.world.*;
-
-
 public class WorldThreadSwitch {
 	
     private  WorldThread worldTime;
@@ -25,7 +21,7 @@ public class WorldThreadSwitch {
     public void switchOn(){
     	System.out.println("on");
         this.on = true;
-        this.worldTime = new WorldThread(this.controller.getBoard(),this.controller.getVueLevel(),this.controller,this);
+        this.worldTime = new WorldThread(this.controller.getBoard(),this.controller.getVueLevel(),this.controller);
         worldTime.start();
     }
 
