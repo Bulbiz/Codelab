@@ -21,6 +21,13 @@ public class Launcher{
     //Auxiliary methods used for other purpose :
 
      public static void main(String[] args) throws Exception {
-        MenuPanel.beginMenu();
+        EventQueue.invokeLater(() -> {
+            try{
+                UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+            }catch(Exception e){
+                //Do nothing
+            }
+            MenuPanel.beginMenu();
+        });
     }
 }
