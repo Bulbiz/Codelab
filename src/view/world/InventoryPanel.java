@@ -38,7 +38,6 @@ public class InventoryPanel extends JPanel {
     public void drawInventory(ImageLibrary spriteLibrary, Graphics g) {
 
         int i = 0;
-        System.out.println(inventory.size());
         while (i < inventory.size()) {
             Collectable c = inventory.get(i);
             String entitySpriteName = c.toString();

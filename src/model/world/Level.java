@@ -49,12 +49,12 @@ public class Level {
     }
 
     public void restart(){
-      getPlayer().emptyInventory();	
+      getPlayer().emptyInventory();
 
       try{
-        this.board = initiateBoard(this.save);        
+        this.board = initiateBoard(this.save);
       }catch(Exception e){
-        System.out.println("Si initiateBoard marche une fois ça devrait pas bugguer la deuxieme je pense");
+        
       }
     }
     public boolean win(){

@@ -25,7 +25,7 @@ public class CollectableGeneratorPanel extends JPanel{
 		sprite.loadEntityImage();
 	}
 	private void layoutPlacement() {
-		TitledBorder title = BorderFactory.createTitledBorder("Objet");
+		TitledBorder title = BorderFactory.createTitledBorder("Items");
 		this.setBorder(title);
 		this.setLayout(new BoxLayout(this,BoxLayout.LINE_AXIS));
 		this.addButton();
@@ -42,18 +42,18 @@ public class CollectableGeneratorPanel extends JPanel{
     }
 
 	private static void keyPlacement(Board b, int y, int x) {
-		if(!entityPresent(y,x,b)) 
+		if(!entityPresent(y,x,b))
 			b.initiateEntity( y, x , new Key(b,x,y));
 	}
-	
+
 	private static void coinPlacement(Board b, int y, int x) {
-		if(!entityPresent(y,x,b)) 
+		if(!entityPresent(y,x,b))
 			b.initiateEntity( y, x , new Coin(b,x,y));
 	}
-	
+
 	private static boolean entityPresent(int y, int x, Board b) {
-		if(b.entityPresent(y,x)) 
-			ControllerLevel.errorPopUp("Warning ! Warning ! Il y a une entité ici ! ");
+		if(b.entityPresent(y,x))
+			ControllerLevel.errorPopUp("Warning ! There is an Entity here ! ");
 		return b.entityPresent(y,x);
 	}
 }
