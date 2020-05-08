@@ -14,11 +14,10 @@ public class ConditionPanel extends InstructionPanel {
 
         if (condition != null)
             instruction = InstructionFactory.createInstruction(condition);                      
-        normalColor = Color.CYAN.darker();
-        highlightColor = Color.CYAN;
+        color = Color.CYAN.darker(); 
 
-        setBackground(normalColor);
-        add(new JLabel(instruction != null ? instruction.getVersion() : "null"));
+        setBackground(color);
+        add(new JLabel(instruction != null ? instruction.getVersion() : "null"));        
     }
 
     public void setCondition(Condition condition) {
@@ -29,31 +28,25 @@ public class ConditionPanel extends InstructionPanel {
         return (Condition)instruction;
     }
 
-    @Override
-    public void delete() {
-        if (parent != null) {
-            IConditionPanelAdjustable p = (IConditionPanelAdjustable) parent;
-            p.changeConditionPanel(ControlFlowStatementPanel.createEmptyConditionPanel(parent, controller));
-        }
-    }
-
     public InstructionPanel createNewInstructionPanel(ControllerLanguage controller, Instruction instruction) {
         return new ConditionPanel(controller, (Condition)instruction);
     }
     
-    public void onRelease(InstructionPanel source) {
-        super.onRelease(source);
+    public boolean onRelease(InstructionPanel source) {
 
         if (!(source instanceof ConditionPanel))
-            return;
+            return false;
 
         if (source.getInstruction() == null)
-            return;
+            return false;
 
         if (getParentPanel() != null) {
             IConditionPanelAdjustable parent = (IConditionPanelAdjustable) getParentPanel();
-            parent.changeConditionPanel((ConditionPanel)source);
+            parent.addConditionPanel((ConditionPanel)source);
+            return true;
         }
+
+        return false;
     }
 
 }

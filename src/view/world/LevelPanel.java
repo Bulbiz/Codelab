@@ -13,6 +13,7 @@ public class LevelPanel extends JPanel{
   	private JButton backToMenu;
 
 	private ControllerLevel levelController;
+	ControllerLanguage controllerLanguage;
 
 	private WorldPanel worldView;
 	private LanguageView languageView;
@@ -25,7 +26,7 @@ public class LevelPanel extends JPanel{
 			this.level = new Level(name);
 			this.levelController = new ControllerLevel (this.level, this);
 
-			ControllerLanguage controllerLanguage = new ControllerLanguage(null);
+			controllerLanguage = new ControllerLanguage(null);
 			languageView = new LanguageView(controllerLanguage, level.getPlayer());
 			controllerLanguage.setView(languageView);
 
@@ -51,6 +52,7 @@ public class LevelPanel extends JPanel{
 
 	public void setLevelFrame(JFrame levelFrame){
 		this.levelFrame = levelFrame;
+		controllerLanguage.setFrame(levelFrame);
 	}
 
 	public void loadResourcePanel(int idLevel) {

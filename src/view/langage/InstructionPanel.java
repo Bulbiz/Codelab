@@ -18,25 +18,71 @@ public abstract class InstructionPanel extends JPanel implements IMouseReactive 
 
     protected Instruction instruction;
 
-    protected boolean isHighlighted;
-    protected Color normalColor;
-    protected Color highlightColor;
+    protected Color color;
+
+    int x = 0;
+    int y = 0;
+    int height = 32;
+    int width = standardWidth;
+
+    public static final int standardWidth = EditPanel.width - 2*EditPanel.margeleft;
 
     public InstructionPanel(ControllerLanguage controller) {
         this.controller = controller;
-        this.isHighlighted = false;
 
         addMouseListener(controller);
         addMouseMotionListener(controller);
 
-        setPreferredSize(new Dimension(300, 32));
-        setMaximumSize(new Dimension(300, 32));
+
         setBorder(new LineBorder(Color.black));
     }    
 
+    public void setPosition(int x, int y, int w) {
+        this.x = x;
+        this.y = y;
+        this.width = w;        
+        setBounds(x, y, width, height);
+    }
+
+    public void setPosition(int x, int y) {
+        setPosition(x, y, width);
+    }
+    
+
+    public int getX() {
+        return x;
+    }
+    public int getY() {
+        return y;
+    }
+
+    public void setHeight(int h) {
+        height = h;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public void setWidth(int w) {
+        width = w;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public void updatePosition(int x, int y, int width, int height) {
+        setBounds(x, y, width, height);
+    }
+
     public abstract InstructionPanel createNewInstructionPanel(ControllerLanguage controller, Instruction instruction);
 
-    public abstract void delete();
+    public void delete() {
+        if (getParent() != null)
+            getParent().remove(this);
+        setVisible(false);
+    }
 
     public Instruction toInstruction() {
         return instruction;
@@ -66,17 +112,4 @@ public abstract class InstructionPanel extends JPanel implements IMouseReactive 
         return "instructionPanel";
     }
 
-    public void highlight() {
-        if (!isHighlighted) {
-            setBackground(highlightColor);
-            isHighlighted = true;
-        }
-    }
-    
-    public void dehighlight() {
-        if (isHighlighted) {
-            setBackground(normalColor);
-            isHighlighted = false;
-        }
-    }
 }

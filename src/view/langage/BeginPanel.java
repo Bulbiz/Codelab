@@ -11,7 +11,4 @@ public class BeginPanel extends ActionPanel {
 
     public void delete() { }
 
-    public void highlight() { }
-    public void dehighlight() { }
-    
 }

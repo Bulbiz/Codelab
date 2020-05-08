@@ -3,6 +3,8 @@ package src.view.langage;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
+import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 import javax.swing.border.*;
 import java.awt.Color;
@@ -10,30 +12,47 @@ import src.controller.ControllerLanguage;
 import src.model.langage.*;
 
 import java.awt.Dimension;
+import java.awt.Point;
+import java.util.*;
 
 /**
- * Panel containing the delete button and
- * all the InstructionPanelGenerators
+ * Panel containing the delete button and all the InstructionPanelGenerators
  */
 public class ResourcePanel extends JPanel {
+
+    ArrayList<InstructionPanelGenerator> generators;
+
+    public static final int margeleft = 3;
+    public static final int width = 200;
+    public static final int height = 800;
 
     ControllerLanguage controller;
 
     public ResourcePanel(ControllerLanguage controller) {
         this.controller = controller;
-        setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
-        setPreferredSize(new Dimension(200, 600));
 
-        setBorder(new TitledBorder(new LineBorder(Color.blue), "Instructions"));        
+        setLayout(null);
+
+        setBorder(new TitledBorder(new LineBorder(Color.blue), "Instructions"));
+
+        add(new DeletePanel(controller));
+
+        generators = new ArrayList<InstructionPanelGenerator>();
     }
 
-    public void addGenerator(InstructionPanelGenerator g) {
+    public void addGenerator(InstructionPanelGenerator g) {        
+        int margey = 128;
+        for (InstructionPanelGenerator ipg : generators)
+            margey += ipg.getHeight() + 8;
+        g.setBounds(margeleft, margey, InstructionPanelGenerator.standardWidth, g.getHeight());
+
         add(g);
-        add(Box.createVerticalGlue());
+        generators.add(g);
     }
 
     public void loadLevel(int idLevel) {
         this.removeAll();
+        generators.clear();
         add(new DeletePanel(controller));
         add(Box.createVerticalGlue());
         
