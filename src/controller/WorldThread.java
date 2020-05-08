@@ -1,22 +1,18 @@
 package src.controller;
 
 import src.model.world.*;
-import src.model.langage.*;
 import src.view.world.*;
-import src.view.langage.*;
 
 public class WorldThread extends Thread {
 	private Board board;
 	private LevelPanel vueWorld;
 	private ControllerLevel controller;
-	private WorldThreadSwitch interrupter;
 	private boolean interrupted;
 
-	public WorldThread (Board b, LevelPanel v,ControllerLevel c, WorldThreadSwitch i) {
+	public WorldThread (Board b, LevelPanel v,ControllerLevel c) {
 		this.board = b;
 		this.vueWorld = v;
 		this.controller = c;
-		this.interrupter = i;
 		this.interrupted = false;
 	}
 

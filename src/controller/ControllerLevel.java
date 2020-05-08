@@ -6,8 +6,6 @@ import src.model.langage.*;
 import src.view.world.*;
 import src.view.langage.*;
 import javax.swing.JOptionPane;
-import javax.swing.JButton;
-import javax.swing.JDialog;
 
 public class ControllerLevel{
 	private Level level;
@@ -45,9 +43,6 @@ public class ControllerLevel{
 	}
 
 	public void endGame(boolean hasWon) {
-    	String message = hasWon ? "You Win !" : "You Lose, PFFFFFF !";
-		System.out.println(message);
-
 		if(hasWon && !isInfinite){
 			victoryPopUp();
 			endOfLevel();
@@ -68,28 +63,22 @@ public class ControllerLevel{
 		isRunning = false;
 		this.level.restart();
 		this.vueLevel.restart();
-		this.isInfinite = false;
+		isInfinite = false;
 		this.worldInterrupter.switchOff();
 	}
 
 	public static void errorPopUp(String message) {
-		//JButton restart = new JButton("Restart");
 		Object[] options = {"OK"};
-		//JOptionPane error = new JOptionPane();
 		JOptionPane.showOptionDialog(null, message, "A fatal error has occured",
 				JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE,
 				null, options, options[0]);
-		//error.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
 	}
 
 	public static void successPopUp(String message) {
-		//JButton restart = new JButton("Restart");
 		Object[] options = {"OK"};
-		//JOptionPane error = new JOptionPane();
 		JOptionPane.showOptionDialog(null, message, "Success",
 				JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE,
 				null, options, options[0]);
-		//error.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
 	}
 	
 	public static void victoryPopUp(){

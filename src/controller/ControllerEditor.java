@@ -38,11 +38,8 @@ public class ControllerEditor extends MouseAdapter {
 	}
 
 	public void mouseClicked(MouseEvent me) {
-		System.out.println("click");
-
 		if (placementInstruction != null) {
 			boardEditor.updateFromClick(me.getX(), me.getY());
-			/* il y a une inversion des x et y au niveau de l'affichage */
 			placementInstruction.placement(boardEditor.getBoard(), boardEditor.getSelectedX(), boardEditor.getSelectedY());
 			boardEditor.updateDisplay();
 		}
