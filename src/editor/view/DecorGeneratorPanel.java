@@ -4,8 +4,11 @@ import javax.swing.*;
 import src.model.world.*;
 import src.controller.*;
 import java.awt.Dimension;
+
+import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 import src.view.world.ImageLibrary;
+import java.awt.Color;
 
 public class DecorGeneratorPanel extends JPanel{
 	private ControllerEditor controller;
@@ -40,24 +43,35 @@ public class DecorGeneratorPanel extends JPanel{
 		TitledBorder title = BorderFactory.createTitledBorder("Decoration");
 		this.setBorder(title);
 		this.setLayout(new BoxLayout(this,BoxLayout.LINE_AXIS));
-		this.addButton();
+		this.addButtons();
 	}
 
-	private void addButton() {
-		this.addWithSeparation(floor);
-		this.addWithSeparation(sand);
-		this.addWithSeparation(cobble);
-		this.addWithSeparation(goal);
-		this.addWithSeparation(door);
-		this.addWithSeparation(wall);
-		this.addWithSeparation(river);
-		this.addWithSeparation(ruin);
+	private void addButtonToType(JPanel panel, PlacementButton button) {
+		panel.add(button);
+    	panel.add(Box.createRigidArea(new Dimension(5,0)));
 	}
+	private JPanel createAndAddButtonTypePanel(String type) {
+		JPanel panel = new JPanel();
+		TitledBorder titleBorder = new TitledBorder(new LineBorder(Color.gray), type);
+		titleBorder.setTitlePosition(TitledBorder.BOTTOM);
+		panel.setBorder(titleBorder);
+		add(panel);
 
-	private void addWithSeparation(JComponent c) {
-    	this.add(c);
-    	this.add(Box.createRigidArea(new Dimension(5,0)));
-    }
+		return panel;
+	}
+	private void addButtons() {
+		JPanel floors = createAndAddButtonTypePanel("floor");
+		addButtonToType(floors, floor);
+		addButtonToType(floors, sand);
+		addButtonToType(floors, cobble);
+		JPanel obstacles = createAndAddButtonTypePanel("obstacle");		
+		addButtonToType(obstacles, wall);
+		addButtonToType(obstacles, river);
+		addButtonToType(obstacles, ruin);
+		JPanel others = createAndAddButtonTypePanel("other");
+		addButtonToType(others, goal);
+		addButtonToType(others, door);
+	}
 
 	private static void wallPlacement(Board b,int y,int x) {
 		if(b.entityPresent(y,x)) {
