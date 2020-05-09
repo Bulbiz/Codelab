@@ -18,7 +18,8 @@ public abstract class InstructionPanel extends JPanel implements IMouseReactive 
 
     protected Instruction instruction;
 
-    protected Color color;
+    protected Color normalColor;
+    protected Color highlightColor;
 
     int x = 0;
     int y = 0;
@@ -112,4 +113,11 @@ public abstract class InstructionPanel extends JPanel implements IMouseReactive 
         return "instructionPanel";
     }
 
+    public void highlight() {
+        setBackground(highlightColor);
+    }
+
+    public void dehighlight() {
+        setBackground(normalColor);
+    }
 }

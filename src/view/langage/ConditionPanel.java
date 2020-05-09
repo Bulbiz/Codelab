@@ -13,10 +13,12 @@ public class ConditionPanel extends InstructionPanel {
         super(controller);
 
         if (condition != null)
-            instruction = InstructionFactory.createInstruction(condition);                      
-        color = Color.CYAN.darker(); 
+            instruction = InstructionFactory.createInstruction(condition);      
 
-        setBackground(color);
+        normalColor = Color.CYAN.darker(); 
+        highlightColor = Color.CYAN;
+
+        setBackground(normalColor);
         add(new JLabel(instruction != null ? instruction.getVersion() : "null"));        
     }
 
@@ -43,6 +45,7 @@ public class ConditionPanel extends InstructionPanel {
         if (getParentPanel() != null) {
             IConditionPanelAdjustable parent = (IConditionPanelAdjustable) getParentPanel();
             parent.addConditionPanel((ConditionPanel)source);
+            source.dehighlight();
             return true;
         }
 

@@ -88,5 +88,23 @@ public class IfElsePanel extends ControlFlowStatementPanel {
         superSetPosition(x, y, w);
     }
 
+    public void highlight() {
+        ActionPanel cur = elseHead.next;
+        while (cur != null) {
+            cur.highlight();
+            cur = cur.next;
+        }
+        super.highlight();
+    }
+
+    public void dehighlight() {
+        ActionPanel cur = elseHead.next;
+        while (cur != null) {
+            cur.dehighlight();
+            cur = cur.next;
+        }
+        super.dehighlight();
+    }
+
 
 }

@@ -22,7 +22,7 @@ public class NotPanel extends ConditionPanel implements IConditionPanelAdjustabl
         
         setLayout(null);
         notLabel = new JLabel("Not");
-        notLabel.setBackground(color);
+        notLabel.setBackground(normalColor);
         notLabel.setBounds(0, 0, 64, 32);
         add(notLabel);
 
@@ -56,5 +56,15 @@ public class NotPanel extends ConditionPanel implements IConditionPanelAdjustabl
     public void setPosition(int x, int y, int w) {
         conditionPanel.setPosition(64, 0, w - 64);
         super.setPosition(x, y, w);
+    }
+
+    public void highlight() {
+        conditionPanel.highlight();
+        super.highlight();
+    }
+
+    public void dehighlight() {
+        conditionPanel.dehighlight();
+        super.dehighlight();
     }
 }
