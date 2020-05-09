@@ -11,6 +11,10 @@ public interface IMouseReactive {
         return "null";
     }
 
+    default boolean needCursorHand() {
+        return true;
+    }
+
     default boolean onRelease(InstructionPanel source) {
         return false;
     }

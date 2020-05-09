@@ -24,14 +24,15 @@ import java.util.Queue;
 
 public class LanguageView extends JLayeredPane {
 
-    public static final int width = 500;
+    public static final int width = 500 + 32;
     public static final int height = 600;
 
     ControllerLanguage controller;
     Personage player;
 
+    JScrollPane editScroll;
     EditPanel editPanel;
-    JScrollPane scrollPanel;
+    JScrollPane resourceScroll;
     ResourcePanel resourcePanel;
 
     Queue<Action> instructionQueue = new LinkedList<Action>();
@@ -45,18 +46,24 @@ public class LanguageView extends JLayeredPane {
         editPanel = new EditPanel(controller);
         resourcePanel = new ResourcePanel(controller);        
         
-        editPanel.setBounds(0, 0, EditPanel.width, EditPanel.height);
-        add(editPanel, JLayeredPane.DEFAULT_LAYER);
+        editScroll = new JScrollPane(editPanel);
+        int margeright = 24;
+        editPanel.setPreferredSize(new Dimension(EditPanel.width, EditPanel.height));
+        editScroll.setViewportBorder(null);
+        editScroll.setBounds(0, 0, EditPanel.width + margeright, height);
+        editScroll.setBorder(new TitledBorder(new LineBorder(Color.blue), "Your Code"));
+        add(editScroll, JLayeredPane.DEFAULT_LAYER);
+                
         
-        scrollPanel = new JScrollPane(resourcePanel);
+        resourceScroll = new JScrollPane(resourcePanel);
         resourcePanel.setPreferredSize(new Dimension(ResourcePanel.width, ResourcePanel.height));
-        scrollPanel.setViewportBorder(null);
-        scrollPanel.setBounds(300, 0, ResourcePanel.width, height);
-        scrollPanel.setBorder(new TitledBorder(new LineBorder(Color.blue), "Instructions"));
-        add(scrollPanel, JLayeredPane.DEFAULT_LAYER);             
+        resourceScroll.setViewportBorder(null);
+        resourceScroll.setBounds(EditPanel.width + margeright, 0, ResourcePanel.width, height);
+        resourceScroll.setBorder(new TitledBorder(new LineBorder(Color.blue), "Instructions"));
+        add(resourceScroll, JLayeredPane.DEFAULT_LAYER);             
 
         setPreferredSize(new Dimension(width, height));
-        setBounds(0, 0, 500, 600);
+        setBounds(0, 0, width, height);
 
         resourcePanel.loadLevel(0);
     }
@@ -92,14 +99,12 @@ public class LanguageView extends JLayeredPane {
             instructionQueue.clear();
     }
 
-    public void updateEditPanelPlacement() {
-        editPanel.updatePlacement();
-    }
-
     public void mousePressed(IMouseReactive source, int mousex, int mousey) {
         InstructionPanel pressedPanelSource = source.getSourcePanel();
-        if (pressedPanelSource instanceof BeginPanel)
+        if (pressedPanelSource == null || pressedPanelSource instanceof BeginPanel) {
+            controller.setSource(null);
             return;
+        }
 
         controller.setSource(pressedPanelSource);        
 

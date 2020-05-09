@@ -9,6 +9,10 @@ public class BeginPanel extends ActionPanel {
         super(controller, begin);
     }
 
+    public boolean needCursorHand() {
+        return false;
+    }
+
     public void delete() { }
 
 }

@@ -89,7 +89,10 @@ public class ControllerLanguage extends MouseAdapter {
     } 
 
     public void mouseEntered(MouseEvent me) {
-        frame.setCursor(hand);
+        IMouseReactive src = (IMouseReactive)me.getSource();
+        if (src.needCursorHand())
+            frame.setCursor(hand);
+
         if (source == null)
             return;        
 
