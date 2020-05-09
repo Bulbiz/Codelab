@@ -63,7 +63,7 @@ public class While extends ControlFlowStatement {
 			return InstructionEnum.endAction.getReturnValue();
 		}
 
-		if(limit>100){
+		if(limit>10000){
 			ControllerLevel.errorPopUp("An infinite loop is occuring in your code");
 			ControllerLevel.isInfinite = true;
 			limit = 0;
