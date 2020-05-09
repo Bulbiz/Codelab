@@ -19,7 +19,7 @@ public class EditPanel extends JPanel implements IActionPanelListable {
     protected ActionPanel head;
     protected ControllerLanguage controller;
 
-    private int margey = 32;
+    private int margey = 16;
     public static final int margeleft = 3;
     public static final int width = 300;
     public static final int height = 600;
@@ -27,8 +27,7 @@ public class EditPanel extends JPanel implements IActionPanelListable {
     public EditPanel(ControllerLanguage controller) {
         this.controller = controller;
 
-        setLayout(null);
-        setBorder(new TitledBorder(new LineBorder(Color.blue), "Your Code"));
+        setLayout(null);        
 
         head = new BeginPanel( controller, new Begin(null) );
         head.setParentPanel(this);
@@ -71,6 +70,14 @@ public class EditPanel extends JPanel implements IActionPanelListable {
             y += cur.getHeight();
             cur = cur.next;
         }            
+        
+        if (y > this.getPreferredSize().getHeight())
+            setPreferredSize(new Dimension(this.getWidth(), y));
+        else if (y > EditPanel.height)
+            setPreferredSize(new Dimension(this.getWidth(), y));
+        else 
+            setPreferredSize(new Dimension(this.getWidth(), EditPanel.height));
+            
     }
 
     public String getListType() {

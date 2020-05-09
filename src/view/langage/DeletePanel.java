@@ -20,6 +20,10 @@ public class DeletePanel extends JPanel implements IMouseReactive {
         setBounds(32, 32, 128, 64);
     }
 
+    public boolean needCursorHand() {
+        return false;
+    }
+
     public boolean onRelease(InstructionPanel source) {
         if (source != null) {
             source.delete();
