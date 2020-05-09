@@ -51,28 +51,25 @@ public class ResourcePanel extends JPanel{
         add(g);
         generators.add(g);
     }
-
+    
     public void loadLevel(int idLevel) {
         this.removeAll();
         generators.clear();
         add(new DeletePanel(controller));
         add(Box.createVerticalGlue());
         
-        switch (idLevel) {
-            case 1 : pattern.loadLevel1(controller); break;
-            case 2 : pattern.loadLevel2(controller); break;
-            case 3 : pattern.loadLevel3(controller); break;
-            case 4 : pattern.loadLevel4(controller); break;
-            case 5 : pattern.loadLevel5(controller); break;
-            default : pattern.loadAll(controller); break;
-        }
+        pattern.loadBasicActions(controller);
+        if (idLevel >= 3) pattern.loadWhileAndFirstCondition(controller);
+        if (idLevel >= 4) pattern.loadIfAndManyCondition(controller);
+        if (idLevel >= 6) pattern.loadIfElse(controller);
+        if (idLevel >= 7) pattern.loadAll(controller);
     }
 
     private ResourcePanelPattern pattern = new ResourcePanelPattern();
 
-    public class ResourcePanelPattern {        
+    public class ResourcePanelPattern {   
 
-        public ResourcePanel loadLevel1(ControllerLanguage controller) {
+        public void loadBasicActions(ControllerLanguage controller) {
             ResourcePanel rp = ResourcePanel.this;
 
             InstructionPanelGenerator move = new InstructionPanelGenerator(new ActionPanel(controller, new Move(null)));
@@ -82,27 +79,19 @@ public class ResourcePanel extends JPanel{
             rp.addGenerator(move);
             rp.addGenerator(turnleft);
             rp.addGenerator(turnright);
-            
-            return rp;
         }
 
-        public ResourcePanel loadLevel2(ControllerLanguage controller) {
-            return loadLevel1(controller);
-        }
-
-        public ResourcePanel loadLevel3(ControllerLanguage controller) {
-            ResourcePanel rp = loadLevel1(controller);
+        public void loadWhileAndFirstCondition(ControllerLanguage controller) {
+            ResourcePanel rp = ResourcePanel.this;
 
             InstructionPanelGenerator w = new InstructionPanelGenerator(new ControlFlowStatementPanel(controller, new While(null)));
             InstructionPanelGenerator notonchest = new InstructionPanelGenerator(new ConditionPanel(controller, new NotOnChest(null)));
             rp.addGenerator(w);
             rp.addGenerator(notonchest);
-
-            return rp;
         }
 
-        public ResourcePanel loadLevel4(ControllerLanguage controller) {
-            ResourcePanel rp = loadLevel3(controller);
+        public void loadIfAndManyCondition(ControllerLanguage controller) {
+            ResourcePanel rp = ResourcePanel.this;
 
             InstructionPanelGenerator i = new InstructionPanelGenerator(new ControlFlowStatementPanel(controller, new If(null)));
             InstructionPanelGenerator not = new InstructionPanelGenerator(new NotPanel(controller, new Not(null)));
@@ -114,16 +103,20 @@ public class ResourcePanel extends JPanel{
             rp.addGenerator(obstacleleft);
             rp.addGenerator(obstacleright);
             rp.addGenerator(obstaclefront);
-
-            return rp;
         }
 
-        public ResourcePanel loadLevel5(ControllerLanguage controller) {
-            return loadLevel4(controller);
+        public void loadIfElse(ControllerLanguage controller) {
+            ResourcePanel rp = ResourcePanel.this;
+
+            InstructionPanelGenerator ifElse = new InstructionPanelGenerator(new IfElsePanel(controller, new IfElse(null)));
+            rp.addGenerator(ifElse);
         }
 
-        public ResourcePanel loadAll(ControllerLanguage controller) {
-            return loadLevel5(controller);
+        public void loadAll(ControllerLanguage controller) {
+            ResourcePanel rp = ResourcePanel.this;
+
+            InstructionPanelGenerator coinfront = new InstructionPanelGenerator(new ConditionPanel(controller, new CoinFront(null)));
+            rp.addGenerator(coinfront);
         }
     }
 }

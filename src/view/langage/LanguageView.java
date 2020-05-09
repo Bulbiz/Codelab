@@ -65,7 +65,7 @@ public class LanguageView extends JLayeredPane {
         setPreferredSize(new Dimension(width, height));
         setBounds(0, 0, width, height);
 
-        resourcePanel.loadLevel(0);
+        resourcePanel.loadLevel(100);
     }
 
     public ResourcePanel getResourcePanel() {
