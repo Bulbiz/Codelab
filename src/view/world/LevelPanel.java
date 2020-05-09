@@ -19,6 +19,7 @@ public class LevelPanel extends JPanel{
 	private LanguageView languageView;
 	private JButton runOrStopButton;
 	private JButton restartButton;
+	private JButton fastForward;
 	private InventoryPanel inventoryPanel;
 
 	public LevelPanel (String name){
@@ -37,6 +38,7 @@ public class LevelPanel extends JPanel{
 			initialiseRunOrStopButton(languageView);
 			initialiseRestartButton();
 			initialiseInventoryPanel();
+			initialiseFastForwardButton();
 
 			layoutPlacement();
 
@@ -44,6 +46,7 @@ public class LevelPanel extends JPanel{
         		levelFrame.dispose();
         		MenuPanel.beginMenu();
 			});
+			this.levelController.speedReset();
 		}catch(Exception e){
 			e.printStackTrace();
 			//Afficher un message d'erreur
@@ -63,6 +66,7 @@ public class LevelPanel extends JPanel{
 		this.languageView.setPlayer(level.getPlayer());
 		inventoryPanel.setInventory(level.getPlayer().getInventory());
 		inventoryPanel.repaint();
+		this.levelController.speedReset();
 		this.worldView.setBoard(level.getBoard());
 	}
 
@@ -77,6 +81,11 @@ public class LevelPanel extends JPanel{
 		this.runOrStopButton = new JButton ("Run Or Stop");
 		this.runOrStopButton.addActionListener((e) -> levelController.runOrStop(languageView));
 		//PlaceLanguageHere
+	}
+
+	private void initialiseFastForwardButton () {
+		this.fastForward = new JButton ("Faster/Slower");
+		this.fastForward.addActionListener((e) -> levelController.acceleration());
 	}
 
 	private void initialiseRestartButton() {
@@ -134,7 +143,8 @@ public class LevelPanel extends JPanel{
 		JPanel executionPanel = new JPanel (new FlowLayout());
 		executionPanel.setAlignmentX(LEFT_ALIGNMENT);
 		executionPanel.add(this.runOrStopButton);
-		executionPanel.add(this.restartButton);		
+		executionPanel.add(this.restartButton);	
+		executionPanel.add(this.fastForward);		
 		return executionPanel;
 	}
 

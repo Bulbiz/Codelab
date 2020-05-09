@@ -52,6 +52,17 @@ public class ControllerLevel{
 		}
 	}
 
+	public void acceleration (){
+		if(WorldThread.speed == 400)
+			WorldThread.speed = 100;
+		else
+			WorldThread.speed = 400;
+	}
+	
+	public void speedReset(){
+		WorldThread.speed = 400;
+	}
+
 	public void endOfLevel() {
 		isRunning = false;
 		this.level.restart();
