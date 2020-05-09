@@ -10,7 +10,11 @@ import src.view.world.ImageLibrary;
 public class DecorGeneratorPanel extends JPanel{
 	private ControllerEditor controller;
 	private PlacementButton wall;
+	private PlacementButton river;
+	private PlacementButton ruin;
 	private PlacementButton floor;
+	private PlacementButton sand;
+	private PlacementButton cobble;
 	private PlacementButton goal;
 	private PlacementButton door;
 	private ImageLibrary sprite;
@@ -20,7 +24,11 @@ public class DecorGeneratorPanel extends JPanel{
 		loadSprite();
 		this.wall = new PlacementButton(sprite.getSprite("wall"),c,(b,y,x) -> wallPlacement(b,y,x));
 		this.floor = new PlacementButton(sprite.getSprite("floor"),c,(b,y,x) -> floorPlacement(b,y,x));
-		this.goal = new PlacementButton(sprite.getSprite("goal"),c,(b,y,x) -> goalPlacement(b,y,x));
+		this.sand = new PlacementButton(sprite.getSprite("sand"),c,(b,y,x) -> sandPlacement(b,y,x));
+		this.cobble = new PlacementButton(sprite.getSprite("cobble"),c,(b,y,x) -> cobblePlacement(b,y,x));
+		this.river = new PlacementButton(sprite.getSprite("river"),c,(b,y,x) -> riverPlacement(b,y,x));
+		this.ruin = new PlacementButton(sprite.getSprite("ruin"),c,(b,y,x) -> ruinPlacement(b,y,x));
+		this.goal = new PlacementButton(sprite.getSprite("goal"),c,(b,y,x) -> goalPlacement(b,y,x));		
 		this.door = new PlacementButton(sprite.getSprite("door"),c,(b,y,x) -> doorPlacement(b,y,x));
 		layoutPlacement();
 	}
@@ -36,10 +44,14 @@ public class DecorGeneratorPanel extends JPanel{
 	}
 
 	private void addButton() {
-		this.addWithSeparation(wall);
 		this.addWithSeparation(floor);
+		this.addWithSeparation(sand);
+		this.addWithSeparation(cobble);
 		this.addWithSeparation(goal);
 		this.addWithSeparation(door);
+		this.addWithSeparation(wall);
+		this.addWithSeparation(river);
+		this.addWithSeparation(ruin);
 	}
 
 	private void addWithSeparation(JComponent c) {
@@ -55,13 +67,48 @@ public class DecorGeneratorPanel extends JPanel{
 		if(!isBorder(y,x))
 			b.setDecor(new Wall(b,x,y),y,x);
 	}
+	
+	private static void riverPlacement(Board b,int y,int x) {
+		if(b.entityPresent(y,x)) {
+			ControllerLevel.errorPopUp("Impossible ! Il y a une entité dans la case choisie ! Supprimer la d'abord");
+			return;
+		}
+		if(!isBorder(y,x))
+			b.setDecor(new River(b,x,y),y,x);
+	}
+
+	private static void ruinPlacement(Board b,int y,int x) {
+		if(b.entityPresent(y,x)) {
+			ControllerLevel.errorPopUp("Impossible ! Il y a une entité dans la case choisie ! Supprimer la d'abord");
+			return;
+		}
+		if(!isBorder(y,x))
+			b.setDecor(new Ruin(b,x,y),y,x);
+	}
+
 
 	private static void floorPlacement(Board b,int y,int x) {
 		if(!isBorder(y,x))
 			b.setDecor(new Floor(b,y,x),y,x);
 	}
+
+	private static void sandPlacement(Board b,int y,int x) {
+		if(!isBorder(y,x))
+			b.setDecor(new Sand(b,y,x),y,x);
+	}
+
+	private static void cobblePlacement(Board b,int y,int x) {
+		if(!isBorder(y,x))
+			b.setDecor(new Cobble(b,y,x),y,x);
+	}
+	
 	private static void doorPlacement(Board b,int y,int x) {
-		b.setDecor(new Door(b,y,x),y,x);
+		if(b.entityPresent(y,x)) {
+			ControllerLevel.errorPopUp("Impossible ! Il y a une entité dans la case choisie ! Supprimer la d'abord");
+			return;
+		}
+		if(!isBorder(y,x))
+			b.setDecor(new Door(b,x,y),y,x);
 	}
 	private static void goalPlacement (Board b, int y, int x) {
 		if(!isBorder(y,x))

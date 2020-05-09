@@ -53,10 +53,13 @@ public class WorldPanel extends JPanel implements IDisplayable {
     }
 
     private void paintPersonage (Graphics g) {
-    	for(Entity e : boardModel.getCharacter()) {
+		int i = 0;
+		while(i < boardModel.getCharacter().size()){
+			Entity e = boardModel.getCharacter().get(i);
     		String entitySpriteName = e.toString();
 			spriteLibrary.getSprite(entitySpriteName).paintIcon(this,g,e.getY()*tileLength, e.getX()*tileLength);
-    	}
+			i ++;
+		}
     }
     public void updateDisplay() {
     	repaint();

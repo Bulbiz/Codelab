@@ -39,6 +39,10 @@ public class ImageLibrary {
 		this.putImage("goal", "goal.png");
 		this.putImage("wall", "wall.png");
 		this.putImage("floor", "floor.png");
+		this.putImage("cobble", "cobble.png");
+		this.putImage("sand", "sand.png");
+		this.putImage("river", "river.png");
+		this.putImage("ruin", "ruin.png");
 	}
 
 	public void loadEntityImage() {
