@@ -9,6 +9,9 @@
     "xPosition": 15,
     "yPosition": 8
   },
+
+  "story" : "Chapitre 9 : Parcours Gauche, la solution à tous nos problèmes." ,
+
   "decor": [
     {"nameDecor": "Cobble"},
     {"nameDecor": "Wall"},
