@@ -12,7 +12,7 @@ import java.io.FileWriter;
 
 public class StoryPanel extends JPanel{
 	private int advancement;
-	private static final int nbOfLevel = 8;
+	private static final int nbOfLevel = 9;
 	private LevelPanel level;
 	private String storyMessage;
 	private JFrame parent;

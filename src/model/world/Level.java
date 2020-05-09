@@ -118,8 +118,12 @@ public class Level {
     private void initiateDecor (Board b, JSONObject information, int y , int x) {
     	switch(information.get("nameDecor").toString()) {
     		case "Door" : b.setDecor(new Door (b, x , y ), y , x); break;
-    		case "Wall" : b.setDecor(new Wall (b, x , y ), y , x); break;
-    		case "Floor": b.setDecor(new Floor(b, x, y ), y , x);break;
+        case "Wall" : b.setDecor(new Wall (b, x , y ), y , x); break;
+        case "River" : b.setDecor(new River (b, x , y ), y , x); break;
+        case "Ruin" : b.setDecor(new Ruin (b, x , y ), y , x); break;
+        case "Floor": b.setDecor(new Floor(b, x, y ), y , x);break;
+        case "Sand": b.setDecor(new Sand(b, x, y ), y , x);break;
+        case "Cobble": b.setDecor(new Cobble(b, x, y ), y , x);break;
     		default : b.setDecor(null,y,x); break;
     	}
     }

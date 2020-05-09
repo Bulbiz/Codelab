@@ -9,9 +9,6 @@
     "xPosition": 5,
     "yPosition": 7
   },
-
-  "story" : "Chapitre 3 : Traversée du fort de l'Apelage" ,
-    
   "decor": [
     {"nameDecor": "River"},
     {"nameDecor": "River"},
