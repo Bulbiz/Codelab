@@ -6,6 +6,7 @@ import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
+import javax.swing.Scrollable;
 import javax.swing.border.*;
 import java.awt.Color;
 import src.controller.ControllerLanguage;
@@ -18,22 +19,20 @@ import java.util.*;
 /**
  * Panel containing the delete button and all the InstructionPanelGenerators
  */
-public class ResourcePanel extends JPanel {
+public class ResourcePanel extends JPanel{
 
     ArrayList<InstructionPanelGenerator> generators;
 
-    public static final int margeleft = 3;
+    public static final int margeright = 32;
     public static final int width = 200;
-    public static final int height = 800;
+    public static final int height = 600;
 
     ControllerLanguage controller;
 
     public ResourcePanel(ControllerLanguage controller) {
         this.controller = controller;
 
-        setLayout(null);
-
-        setBorder(new TitledBorder(new LineBorder(Color.blue), "Instructions"));
+        setLayout(null);        
 
         add(new DeletePanel(controller));
 
@@ -44,7 +43,10 @@ public class ResourcePanel extends JPanel {
         int margey = 128;
         for (InstructionPanelGenerator ipg : generators)
             margey += ipg.getHeight() + 8;
-        g.setBounds(margeleft, margey, InstructionPanelGenerator.standardWidth, g.getHeight());
+        g.setBounds(0, margey, InstructionPanelGenerator.standardWidth, g.getHeight());
+
+        if (margey + g.getHeight() > this.getHeight())
+            this.setPreferredSize(new Dimension(this.getWidth(), margey + g.getHeight()));
 
         add(g);
         generators.add(g);

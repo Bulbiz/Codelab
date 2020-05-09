@@ -17,7 +17,7 @@ public class InstructionPanelGenerator extends JPanel implements IMouseReactive 
 	InstructionPanel instructionPanel;
 	ControllerLanguage controller;
 
-	public static final int standardWidth = ResourcePanel.width - 2*ResourcePanel.margeleft;
+	public static final int standardWidth = ResourcePanel.width - ResourcePanel.margeright;
 
 	public InstructionPanelGenerator(InstructionPanel instructionPanel) {
 		this.instruction = instructionPanel.getInstruction();
