@@ -22,7 +22,7 @@ public class EditPanel extends JPanel implements IActionPanelListable {
     private int margey = 32;
     public static final int margeleft = 3;
     public static final int width = 300;
-    public static final int height = 800;
+    public static final int height = 600;
 
     public EditPanel(ControllerLanguage controller) {
         this.controller = controller;
