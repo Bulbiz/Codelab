@@ -21,8 +21,10 @@ public class ActionPanel extends InstructionPanel {
       
       add(new JLabel(action != null ? action.getVersion() : "nothing"));
 
-      color = Color.ORANGE;
-      setBackground(color);
+      normalColor = Color.ORANGE;
+      highlightColor = normalColor.brighter();
+
+      setBackground(normalColor);
     }
 
     public ActionPanel(ControllerLanguage controller) {
@@ -51,6 +53,7 @@ public class ActionPanel extends InstructionPanel {
 
       if (getParentPanel() != null) {
         getParentPanel().addActionPanel((ActionPanel)source, this);
+        source.dehighlight();
         return true;
       }
 

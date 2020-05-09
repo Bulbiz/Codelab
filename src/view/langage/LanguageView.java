@@ -115,6 +115,7 @@ public class LanguageView extends JLayeredPane {
         }
         else {
             setLayer(pressedPanelSource, JLayeredPane.DRAG_LAYER);
+            pressedPanelSource.highlight();
             add(pressedPanelSource);
         }
 

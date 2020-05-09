@@ -82,7 +82,7 @@ public class ControllerLanguage extends MouseAdapter {
         sourceClickX = me.getX();
         view.mousePressed(src, 
             (int)mouse.getX() - sourceClickX, 
-            (int)mouse.getY());
+            (int)mouse.getY() - 16);
 
         if (source != null)
             frame.setCursor(hand);
@@ -166,7 +166,7 @@ public class ControllerLanguage extends MouseAdapter {
         Point mouse = locateMouse(me);   
         view.mouseDrag(source, 
             (int)mouse.getX() - sourceClickX, 
-            (int)mouse.getY());
+            (int)mouse.getY() - 16);
         
     }
 

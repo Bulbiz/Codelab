@@ -32,7 +32,8 @@ public class ControlFlowStatementPanel extends ActionPanel implements IActionPan
         super(controller);
         instruction = InstructionFactory.createInstruction(cfs);
 
-        color = Color.green.darker();
+        normalColor = new Color(Color.GREEN.getRed() + 40, Color.GREEN.getGreen() - 40, Color.GREEN.getBlue() + 40);
+        highlightColor = Color.GREEN;
         
         conditionPanel = createEmptyConditionPanel(this, controller);
         add(conditionPanel);
@@ -53,14 +54,14 @@ public class ControlFlowStatementPanel extends ActionPanel implements IActionPan
         add(actionsLabel);
 
         setLayout(null);
-        setBackground(Color.GREEN);
+        setBackground(normalColor);
     }    
 
     public ControlFlowStatementPanel(ControllerLanguage controller, ControlFlowStatement cfs, int i) {
         super(controller);
         instruction = InstructionFactory.createInstruction(cfs);
 
-        color = Color.green.darker();
+        normalColor = Color.green.darker();
     }  
 
     protected void setPosConditionAndActions(int x, int y, int w) {
@@ -229,6 +230,26 @@ public class ControlFlowStatementPanel extends ActionPanel implements IActionPan
             return IConditionPanelAdjustable.super.removePanel(ip);
         else
             return IActionPanelListable.super.removePanel(ip);
+    }
+
+    public void highlight() {
+        conditionPanel.highlight();
+        ActionPanel cur = head.next;
+        while (cur != null) {
+            cur.highlight();
+            cur = cur.next;
+        }
+        super.highlight();
+    }
+
+    public void dehighlight() {
+        conditionPanel.dehighlight();
+        ActionPanel cur = head.next;
+        while (cur != null) {
+            cur.dehighlight();
+            cur = cur.next;
+        }
+        super.dehighlight();
     }
 
 }

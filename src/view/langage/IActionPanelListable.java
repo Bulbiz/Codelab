@@ -43,12 +43,12 @@ public interface IActionPanelListable extends IParent {
     default void setToDragAndDropLayer(InstructionPanel ip, JLayeredPane layeredPanel) {
 
         layeredPanel.setLayer(ip, JLayeredPane.DRAG_LAYER); 
+        ip.highlight();
         layeredPanel.add(ip);
     }
     default void setToDefaultLayer(InstructionPanel ip, JLayeredPane layeredPanel) {
-               
         layeredPanel.setLayer(ip, JLayeredPane.DEFAULT_LAYER);
-        //layeredPanel.remove(ip);
+        ip.dehighlight();
     }
 
     default InstructionPanel removePanel(InstructionPanel ip) {
