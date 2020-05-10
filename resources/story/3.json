@@ -11,6 +11,7 @@
   },
 
   "story" : "Chapitre 3 : Arrivée au village de Klésouporte" ,
+  "hint" : "L'instruction while permet d'exécuter une série d'instructions plusieurs fois d'affilée. La série d'instructions est exécutée tant que la condition (en bleue) est vraie. C'est très pratique pour ne pas répéter 10 fois la meme instruction.",
     
   "decor": [
     {"nameDecor": "Cobble"},

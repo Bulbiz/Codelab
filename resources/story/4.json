@@ -11,6 +11,7 @@
   },
 
   "story" : "Chapitre 4 : Passage du fort de l'Apelage Furidôme" ,
+  "hint" : "L'instruction if exécute une série d'instructions uniquement si la condition (en bleue) est vraie. C'est très pratique pour éviter de se cogner contre un mur. La condition Not permet de transformer une condition en la rendant vraie si elle est fausse, et inversement.",
     
   "decor": [
     {"nameDecor": "River"},

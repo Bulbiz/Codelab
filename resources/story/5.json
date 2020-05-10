@@ -11,6 +11,7 @@
   },
 
   "story" : "Chapitre 5 : A la recherche de l'Oeil de Vérité\n perdu au tombeau des Braves" ,
+  "hint" : "Il existe souvent plusieurs méthodes pour résoudre un niveau. Soyez créatif.",
     
   "decor": [
     {"nameDecor": "Floor"},

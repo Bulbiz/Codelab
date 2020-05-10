@@ -11,6 +11,7 @@
   },
 
   "story" : "Chapitre 2 : Fuite vers le désert Deuçable" ,
+  "hint" : "Si vous avez mis des instructions dans le mauvais ordre, vous pouvez facilement les repositionner. Vous pouvez notamment insérer ou retirer une instructions au milieu de votre code. Enfin pour en supprimer une, il suffit de la sélectionner et de la relacher au dessus de la poubelle en haut à droite.",
     
   "decor": [
     {"nameDecor": "Cobble"},
