@@ -9,6 +9,7 @@ public class StoryLevel extends LevelPanel{
 	public StoryLevel(String name,StoryPanel story) {
 		super(name);
 		this.story = story;
+		setMessageText(story.getHint());
 	}
 	
 	public void endOfLevel() {
