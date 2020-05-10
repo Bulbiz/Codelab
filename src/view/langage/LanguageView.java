@@ -25,7 +25,7 @@ import java.util.Queue;
 public class LanguageView extends JLayeredPane {
 
     public static final int width = 500 + 32;
-    public static final int height = 600;
+    public static final int height = 500;
 
     ControllerLanguage controller;
     Personage player;

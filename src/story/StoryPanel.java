@@ -15,20 +15,24 @@ public class StoryPanel extends JPanel{
 	private static final int nbOfLevel = 9;
 	private LevelPanel level;
 	private String storyMessage;
+	private String storyHint;
 	private JFrame parent;
 	private  static ImageLibrary sprite = initiateSprite();
 
 	public StoryPanel (JFrame parent) {
 		this.parent = parent;
 		this.advancement = getAdvancement();
+		this.storyHint = "Bonne Chance !";
 		if(advancement > nbOfLevel) {
 			this.add(victoryPanel());
 			setAdvancement(1);
 		}else {		
+			org.json.simple.JSONObject json = readJSON("story/" + advancement);
+			this.storyMessage = json.get("story") != null ? json.get("story").toString() : "Start !";
+			this.storyHint = json.get("hint") != null ? json.get("hint").toString() : "Bonne Chance !";
 			this.level = new StoryLevel("story/" + advancement, this);
 			this.level.loadResourcePanel(advancement);
-			this.level.setLevelFrame(parent);
-			this.storyMessage = readJSON("story/" + advancement).get("story").toString();
+			this.level.setLevelFrame(parent);			
 			this.add(level);
 			storyPopUp(storyMessage);
 		}
@@ -107,5 +111,9 @@ public class StoryPanel extends JPanel{
     		e.printStackTrace();
     		return null;
     	}
-    }
+	}
+	
+	public String getHint() {
+		return this.storyHint;
+	}
 }

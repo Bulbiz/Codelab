@@ -4,6 +4,8 @@ import src.model.world.*;
 import src.controller.*;
 import src.view.langage.*;
 import javax.swing.*;
+import javax.swing.border.TitledBorder;
+
 import java.awt.*;
 
 public class LevelPanel extends JPanel{
@@ -20,6 +22,7 @@ public class LevelPanel extends JPanel{
 	private JButton runOrStopButton;
 	private JButton restartButton;
 	private JButton fastForward;
+	private JLabel message;
 	private InventoryPanel inventoryPanel;
 
 	public LevelPanel (String name){
@@ -120,11 +123,34 @@ public class LevelPanel extends JPanel{
 		worldPane.setLayout(new BoxLayout(worldPane,BoxLayout.Y_AXIS));
 		worldPane.add(constructBodyPanel());
 		this.add(worldPane);
-		this.add(languageView);
+
+		JPanel languagePane = new JPanel();
+		languagePane.setLayout(new BoxLayout(languagePane,BoxLayout.Y_AXIS));
+		languagePane.add(languageView);
+		
+		message = new JLabel ();
+		setMessageText(this.getMessageText());
+		message.setFont(new Font("SANS_SERIF", Font.BOLD,10));
+		message.setMinimumSize(new Dimension(332,100));
+		message.setMaximumSize(new Dimension(332,100));
+		message.setPreferredSize(new Dimension(332,100));
+		TitledBorder border = BorderFactory.createTitledBorder("Message");
+		message.setBorder(border);
+		languagePane.add(message);
+
+		this.add(languagePane);
+	}
+
+	protected void setMessageText(String s) {
+		message.setText("<html>" + s + "</html>");
+	}
+
+	protected String getMessageText(){
+		return "Bienvenue dans le Codelab de Bronze, bonne chance pour ce niveau ! N'hésitez pas à liker, partager, nous suivre sur les réseaux sociaux et créer vos propres niveaux !";
 	}
 
 	private JPanel constructBodyPanel() {
-		JPanel body = new JPanel (new GridLayout (1,2));
+		JPanel body = new JPanel ();
 		body.add(constructRightPanel());
 		return body;
 	}
@@ -141,7 +167,7 @@ public class LevelPanel extends JPanel{
 
 	private JPanel constructExecutionButton() {
 		JPanel executionPanel = new JPanel (new FlowLayout());
-		executionPanel.setAlignmentX(LEFT_ALIGNMENT);
+		//executionPanel.setAlignmentX(LEFT_ALIGNMENT);
 		executionPanel.add(this.runOrStopButton);
 		executionPanel.add(this.restartButton);	
 		executionPanel.add(this.fastForward);		
