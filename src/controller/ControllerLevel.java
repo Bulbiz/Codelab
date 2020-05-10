@@ -59,6 +59,9 @@ public class ControllerLevel{
 			WorldThread.speed = 400;
 	}
 	
+	public boolean isAccelerated (){
+		return WorldThread.speed == 100;
+	}
 	public void speedReset(){
 		WorldThread.speed = 400;
 	}
