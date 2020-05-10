@@ -2,9 +2,9 @@ package src.controller;
 
 import src.model.world.*;
 import java.util.*;
-import src.model.langage.*;
+import src.model.language.*;
 import src.view.world.*;
-import src.view.langage.*;
+import src.view.language.*;
 import javax.swing.JOptionPane;
 
 public class ControllerLevel{

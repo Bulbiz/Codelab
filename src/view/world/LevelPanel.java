@@ -2,7 +2,7 @@ package src.view.world;
 
 import src.model.world.*;
 import src.controller.*;
-import src.view.langage.*;
+import src.view.language.*;
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 

@@ -3,7 +3,7 @@ package src.model.world;
 import java.util.*;
 import org.json.*;
 import java.io.FileWriter;
-import src.model.langage.Action;
+import src.model.language.Action;
 import src.controller.*;
 
 public class Board {

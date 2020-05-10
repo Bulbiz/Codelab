@@ -1,8 +1,8 @@
 package src.view.world;
 
-import src.model.langage.*;
+import src.model.language.*;
 import src.model.world.*;
-import src.view.langage.*;
+import src.view.language.*;
 import src.view.world.*;
 import src.view.*;
 import java.util.*;
@@ -33,7 +33,7 @@ public class TestWorldView {
 		ArrayList<Personage> p = new ArrayList();
     	Board b = new Board(6, 1, p);
     	Player steve = new Player(b, 6, 15, 1);
-    	Queue<src.model.langage.Action> action = new LinkedList <src.model.langage.Action>();
+    	Queue<src.model.language.Action> action = new LinkedList <src.model.language.Action>();
     	action.offer(new TurnLeft(steve));
     	for(int i = 5; i>1; i--){
     		action.offer(new Move(steve));
