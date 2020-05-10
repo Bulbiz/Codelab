@@ -1,6 +1,6 @@
 package src.story;
 
-import src.model.langage.*;
+import src.model.language.*;
 import src.view.world.*;
 import javax.swing.*;
 import java.awt.*;

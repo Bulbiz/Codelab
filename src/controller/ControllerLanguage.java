@@ -1,8 +1,8 @@
 
 package src.controller;
 
-import src.model.langage.*;
-import src.view.langage.*;
+import src.model.language.*;
+import src.view.language.*;
 
 import java.awt.Color;
 import java.awt.Cursor;
