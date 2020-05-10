@@ -22,6 +22,10 @@ public class Stay extends Action {
     public int run() {
         this.personage.stay();
 		return 1;
-	}
+    }
+
+    public String toString() {
+        return "Stay";
+    }
 
 }

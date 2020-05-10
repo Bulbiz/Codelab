@@ -19,7 +19,7 @@ public class ActionPanel extends InstructionPanel {
       if (action != null)
         instruction = InstructionFactory.createInstruction(action);
       
-      add(new JLabel(action != null ? action.getVersion() : "nothing"));
+      add(new JLabel(action != null ? action.toString() : "nothing"));
 
       normalColor = Color.ORANGE;
       highlightColor = normalColor.brighter();

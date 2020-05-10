@@ -74,4 +74,8 @@ public class If extends ControlFlowStatement {
         
         return InstructionEnum.endAction.getReturnValue();
 	}
+
+    public String toString() {
+        return "If";
+    }
 }

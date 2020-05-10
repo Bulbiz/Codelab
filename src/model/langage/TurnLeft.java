@@ -24,4 +24,7 @@ public class TurnLeft extends Action {
     	return 0;
     }
 
+    public String toString() {
+        return "Turn left";
+    }
 }

@@ -19,7 +19,7 @@ public class ConditionPanel extends InstructionPanel {
         highlightColor = Color.CYAN;
 
         setBackground(normalColor);
-        add(new JLabel(instruction != null ? instruction.getVersion() : "null"));        
+        add(new JLabel(instruction != null ? instruction.toString() : "nothing"));        
     }
 
     public void setCondition(Condition condition) {

@@ -22,6 +22,10 @@ public class TurnRight extends Action {
     public int run() {
     	this.personage.turnRight();
     	return 0;
-	}
+    }
+    
+    public String toString() {
+        return "Turn Right";
+    }
 
 }

@@ -19,6 +19,10 @@ public class ObstacleRight extends Condition {
 
     public boolean isTrue() {
         return personage.obstacleRight();
-	}
+    }
+    
+    public String toString() {
+        return "Obstacle on Right";
+    }
 
 }
