@@ -11,6 +11,7 @@
   },
 
   "story" : "Chapitre 1 : La menace de l'Oeil de Providence" ,
+  "hint" : "Pour construire votre code, cliquez sur instruction à droite et relachez là au dessus d'une instruction à gauche (au dessus de Begin par exemple).",
     
   "decor": [
     {"nameDecor": "Cobble"},
