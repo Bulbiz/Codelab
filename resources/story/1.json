@@ -239,5 +239,16 @@
     {"nameDecor": "Wall"},
     {"nameDecor": "Cobble"}
   ],
-  "entity": []
+  "entity": [
+    {
+      "xPosition": 15,
+      "yPosition": 15,
+      "nameEntity": "Coin"
+    },
+    {
+      "xPosition": 15,
+      "yPosition": 1,
+      "nameEntity": "Coin"
+    }
+  ]
 }
