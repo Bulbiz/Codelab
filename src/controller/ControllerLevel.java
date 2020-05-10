@@ -78,7 +78,8 @@ public class ControllerLevel{
 		this.level.restart();
 		this.vueLevel.restart();
 		isInfinite = false;
-		this.worldInterrupter.switchOff();
+		if(this.worldInterrupter.getOn())
+			this.worldInterrupter.switchOff();
 	}
 
 	public static void errorPopUp(String message) {
