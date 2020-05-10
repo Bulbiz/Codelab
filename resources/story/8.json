@@ -239,16 +239,5 @@
     {"nameDecor": "Floor"},
     {"nameDecor": "Floor"}
   ],
-  "entity": [
-    {
-      "xPosition": 7,
-      "yPosition": 1,
-      "nameEntity": "Key"
-    },
-    {
-      "xPosition": 15,
-      "yPosition": 14,
-      "nameEntity": "Coin"
-    }
-  ]
+  "entity": []
 }
