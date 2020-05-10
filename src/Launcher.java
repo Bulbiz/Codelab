@@ -1,8 +1,8 @@
 package src;
 
-import src.model.langage.*;
+import src.model.language.*;
 import src.model.world.*;
-import src.view.langage.*;
+import src.view.language.*;
 import src.view.world.*;
 import src.view.*;
 import src.editor.view.*;

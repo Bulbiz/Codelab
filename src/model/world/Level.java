@@ -1,7 +1,7 @@
 
 package src.model.world;
 
-import src.model.langage.*;
+import src.model.language.*;
 import src.Test;
 import java.util.*;
 import org.json.simple.JSONObject;
