@@ -84,4 +84,8 @@ public class While extends ControlFlowStatement {
 	protected void addFirstAction() {
 		this.actions.add(new FinWhile(personage));
 	}
+
+    public String toString() {
+        return "While";
+    }
 }

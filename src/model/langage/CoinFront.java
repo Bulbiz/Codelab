@@ -19,6 +19,10 @@ public class CoinFront extends Condition {
 
     public boolean isTrue() {
         return personage.coinFront();
-	}
+    }
+    
+    public String toString() {
+        return "Coin is ahead";
+    }
 
 }

@@ -17,4 +17,7 @@ public class NotOnChest extends Condition {
         return new NotOnChest(personage);
     }
     
+    public String toString() {
+        return "Goal isn't reached";
+    }
 }

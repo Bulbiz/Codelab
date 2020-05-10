@@ -19,10 +19,10 @@ public class IfElsePanel extends ControlFlowStatementPanel {
         super(controller, cfs);
 
         height = 96;
-        conditionLabel.setText("if");
+        conditionLabel.setText("If");
 
-        elseLabel = new JLabel("else");
-        elseLabel.setBounds(0, 64, 64, 32);
+        elseLabel = new JLabel("Else");
+        elseLabel.setBounds(0, 64, labelWidth, 32);
         add(elseLabel);
 
         elseHead = createEmptyActionPanel();
@@ -78,9 +78,9 @@ public class IfElsePanel extends ControlFlowStatementPanel {
         setPosConditionAndActions(x, y, w);        
 
         ActionPanel cur = elseHead.next;
-        elseLabel.setBounds(0, height, 64, 32);
+        elseLabel.setBounds(0, height, labelWidth, 32);
         while (cur != null) {
-            cur.setPosition(64, height, w - 64);
+            cur.setPosition(labelWidth, height, w - labelWidth);
             height += cur.getHeight();
             cur = cur.next;
         }

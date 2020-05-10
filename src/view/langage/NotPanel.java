@@ -16,14 +16,15 @@ public class NotPanel extends ConditionPanel implements IConditionPanelAdjustabl
     ConditionPanel conditionPanel;
 
     JLabel notLabel;
+    int labelWidth = 32;
 
     public NotPanel(ControllerLanguage controller, Not not) {
         super(controller, not); 
         
         setLayout(null);
-        notLabel = new JLabel("Not");
+        notLabel = new JLabel("Not");        
         notLabel.setBackground(normalColor);
-        notLabel.setBounds(0, 0, 64, 32);
+        notLabel.setBounds(0, 0, labelWidth, 32);
         add(notLabel);
 
         conditionPanel = ControlFlowStatementPanel.createEmptyConditionPanel(this, controller);
@@ -54,7 +55,7 @@ public class NotPanel extends ConditionPanel implements IConditionPanelAdjustabl
     }
 
     public void setPosition(int x, int y, int w) {
-        conditionPanel.setPosition(64, 0, w - 64);
+        conditionPanel.setPosition(labelWidth, 0, w - labelWidth);
         super.setPosition(x, y, w);
     }
 

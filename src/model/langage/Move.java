@@ -24,4 +24,7 @@ public class Move extends Action {
     	return 1;
 	}
 
+    public String toString() {
+        return "Move";
+    }
 }

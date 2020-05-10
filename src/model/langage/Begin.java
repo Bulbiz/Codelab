@@ -15,4 +15,8 @@ public class Begin extends Action {
     public int run() {
     	return 0;
     }
+
+    public String toString() {
+        return "Begin";
+    }
 }

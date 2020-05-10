@@ -27,6 +27,7 @@ public class ControlFlowStatementPanel extends ActionPanel implements IActionPan
 
     protected JLabel conditionLabel;
     protected JLabel actionsLabel;
+    protected int labelWidth = 32;
 
     public ControlFlowStatementPanel(ControllerLanguage controller, ControlFlowStatement cfs) {
         super(controller);
@@ -46,10 +47,12 @@ public class ControlFlowStatementPanel extends ActionPanel implements IActionPan
         add(head.next);        
         
         height = 64;
-        conditionLabel = new JLabel(instruction.getVersion());
-        conditionLabel.setBounds(0, 0, 64, 32);
-        actionsLabel = new JLabel("do");
-        actionsLabel.setBounds(0, 32, 64, 32);
+        if (!cfs.getVersion().equals("if")) 
+            labelWidth = 48;
+        conditionLabel = new JLabel(instruction.toString());
+        conditionLabel.setBounds(0, 0, labelWidth, 32);
+        actionsLabel = new JLabel("Do");
+        actionsLabel.setBounds(0, 32, labelWidth, 32);
         add(conditionLabel);
         add(actionsLabel);
 
@@ -65,12 +68,12 @@ public class ControlFlowStatementPanel extends ActionPanel implements IActionPan
     }  
 
     protected void setPosConditionAndActions(int x, int y, int w) {
-        conditionPanel.setPosition(64, 0, w - 64);
+        conditionPanel.setPosition(labelWidth, 0, w - labelWidth);
 
         ActionPanel cur = head.next;
         height = 32;
         while (cur != null) {
-            cur.setPosition(64, height, w - 64);
+            cur.setPosition(labelWidth, height, w - labelWidth);
             height += cur.getHeight();
             cur = cur.next;
         }
@@ -120,7 +123,7 @@ public class ControlFlowStatementPanel extends ActionPanel implements IActionPan
 
         add(ap);
         ap.setParentPanel(this);
-        ap.setWidth(width - 64);
+        ap.setWidth(width - labelWidth);
 
         findEditPanel().updatePlacement();
 
