@@ -11,6 +11,7 @@
   },
 
   "story" : "Chapitre 6 : Vers les ruines de Finis\n au delà des montagnes de Hornburg",
+  "hint" : "L'instruction If Else est un If amélioré. Si la condition est vraie, les instructions du \"Do\" sont exécutées, et si la condition est fausse, ce sont les instructions du \"Else\" qui sont exécutées.",
     
   "decor": [
     {"nameDecor": "Floor"},

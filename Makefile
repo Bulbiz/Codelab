@@ -7,16 +7,16 @@ all: modell modelw viewl vieww editor controller story launcher testall
 	cp -r json-simple.jar bin
 
 modell:
-	javac -cp $(CLASSPATH) src/model/langage/*.java -d bin
+	javac -cp $(CLASSPATH) src/model/language/*.java -d bin
 
 modelw:
 	javac -cp $(CLASSPATH) src/model/world/*.java -d bin
 
 viewl:
-	javac -cp $(CLASSPATH) src/view/langage/*.java -d bin
+	javac -cp $(CLASSPATH) src/view/language/*.java -d bin
 
 vieww:
-	javac -cp $(CLASSPATH) src/view/langage/*.java -d bin
+	javac -cp $(CLASSPATH) src/view/world/*.java -d bin
 
 editor:
 	javac -cp $(CLASSPATH) src/editor/view/*.java -d bin
@@ -39,9 +39,9 @@ run:
 andrun:	all run
 
 clean :
-	rm -r bin/src/model/langage/*.class
+	rm -r bin/src/model/language/*.class
 	rm -r bin/src/model/world/*.class
-	rm -r bin/src/view/langage/*.class
+	rm -r bin/src/view/language/*.class
 	rm -r bin/src/view/world/*.class
 	rm -r bin/src/controller/*.class
 	rm -r bin/src/*.class

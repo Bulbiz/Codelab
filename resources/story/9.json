@@ -10,7 +10,8 @@
     "yPosition": 8
   },
 
-  "story" : "Chapitre 9 : Parcours Gauche, la solution à tous nos problèmes." ,
+  "story" : "Chapitre 9 : L'énigme de Finis -> Parcours Gauche,\n la solution à tous nos problèmes" ,
+  "hint" : "Certains labyrinthes peuvent être résolus en longeant un mur. La technique du parcours main gauche consiste à poser sa main gauche sur le mur de gauche et à ne jamais la détacher avant d'avoir trouvé l'arrivée. Cette une technique de programmeur confirmé !",
 
   "decor": [
     {"nameDecor": "Cobble"},

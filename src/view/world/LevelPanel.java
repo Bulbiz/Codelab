@@ -2,8 +2,10 @@ package src.view.world;
 
 import src.model.world.*;
 import src.controller.*;
-import src.view.langage.*;
+import src.view.language.*;
 import javax.swing.*;
+import javax.swing.border.TitledBorder;
+
 import java.awt.*;
 
 public class LevelPanel extends JPanel{
@@ -20,12 +22,14 @@ public class LevelPanel extends JPanel{
 	private JButton runOrStopButton;
 	private JButton restartButton;
 	private JButton fastForward;
+	private JLabel message;
 	private InventoryPanel inventoryPanel;
 
 	public LevelPanel (String name){
 		try{
 			this.level = new Level(name);
 			this.levelController = new ControllerLevel (this.level, this);
+			this.levelController.speedReset();
 
 			controllerLanguage = new ControllerLanguage(null);
 			languageView = new LanguageView(controllerLanguage, level.getPlayer());
@@ -46,7 +50,6 @@ public class LevelPanel extends JPanel{
         		levelFrame.dispose();
         		MenuPanel.beginMenu();
 			});
-			this.levelController.speedReset();
 		}catch(Exception e){
 			e.printStackTrace();
 			//Afficher un message d'erreur
@@ -67,6 +70,8 @@ public class LevelPanel extends JPanel{
 		inventoryPanel.setInventory(level.getPlayer().getInventory());
 		inventoryPanel.repaint();
 		this.levelController.speedReset();
+		setFastForwardText ();
+		this.runOrStopButton.setText("Run");
 		this.worldView.setBoard(level.getBoard());
 	}
 
@@ -78,16 +83,28 @@ public class LevelPanel extends JPanel{
 	}
 
 	private void initialiseRunOrStopButton(LanguageView languageView) {
-		this.runOrStopButton = new JButton ("Run Or Stop");
-		this.runOrStopButton.addActionListener((e) -> levelController.runOrStop(languageView));
-		//PlaceLanguageHere
+		this.runOrStopButton = new JButton ("Run");
+		this.runOrStopButton.addActionListener((e) -> {
+			levelController.runOrStop(languageView);
+			if(this.runOrStopButton.getText() == "Run")
+				this.runOrStopButton.setText("Stop");
+			else
+				this.runOrStopButton.setText("Run");
+		});
 	}
 
 	private void initialiseFastForwardButton () {
-		this.fastForward = new JButton ("Faster/Slower");
-		this.fastForward.addActionListener((e) -> levelController.acceleration());
+		this.fastForward = new JButton ();
+		this.fastForward.setText(levelController.isAccelerated()? "Slower" : "Faster");
+		this.fastForward.addActionListener((e) -> {
+			levelController.acceleration();
+			setFastForwardText ();
+		});
 	}
 
+	private void setFastForwardText (){
+		this.fastForward.setText(levelController.isAccelerated() ? "Slower" : "Faster");
+	}
 	private void initialiseRestartButton() {
 		this.restartButton = new JButton ("Restart");
 		this.restartButton.addActionListener((e) -> levelController.restart());
@@ -104,29 +121,38 @@ public class LevelPanel extends JPanel{
 	private void layoutPlacement() {
 		JPanel worldPane = new JPanel();
 		worldPane.setLayout(new BoxLayout(worldPane,BoxLayout.Y_AXIS));
-		//worldPane.add(constructTopPanel());
 		worldPane.add(constructBodyPanel());
 		this.add(worldPane);
-		this.add(languageView);
+
+		JPanel languagePane = new JPanel();
+		languagePane.setLayout(new BoxLayout(languagePane,BoxLayout.Y_AXIS));
+		languagePane.add(languageView);
+		
+		message = new JLabel ();
+		setMessageText(this.getMessageText());
+		message.setFont(new Font("SANS_SERIF", Font.BOLD,10));
+		message.setMinimumSize(new Dimension(332,100));
+		message.setMaximumSize(new Dimension(332,100));
+		message.setPreferredSize(new Dimension(332,100));
+		TitledBorder border = BorderFactory.createTitledBorder("Message");
+		message.setBorder(border);
+		languagePane.add(message);
+
+		this.add(languagePane);
+	}
+
+	protected void setMessageText(String s) {
+		message.setText("<html>" + s + "</html>");
+	}
+
+	protected String getMessageText(){
+		return "Bienvenue dans le Codelab de Bronze, bonne chance pour ce niveau ! N'hésitez pas à liker, partager, nous suivre sur les réseaux sociaux et créer vos propres niveaux !";
 	}
 
 	private JPanel constructBodyPanel() {
-		JPanel body = new JPanel (new GridLayout (1,2));
+		JPanel body = new JPanel ();
 		body.add(constructRightPanel());
-		//body.add(constructLeftPanel());
 		return body;
-	}
-
-	private JPanel constructLeftPanel() {//Ajouter le Panel du language
-		JPanel east = new JPanel ();
-		east.setLayout(new BoxLayout(east,BoxLayout.Y_AXIS));
-		JTextArea temp = new JTextArea("Code Temporaire");
-		temp.setPreferredSize(new Dimension (100,10));
-		JTextField messagetemp = new JTextField("Message Temporaire");
-		messagetemp.setPreferredSize(new Dimension (100,10));
-		east.add(temp);
-		east.add(messagetemp);
-		return east;
 	}
 
 	private JPanel constructRightPanel() {
@@ -141,7 +167,7 @@ public class LevelPanel extends JPanel{
 
 	private JPanel constructExecutionButton() {
 		JPanel executionPanel = new JPanel (new FlowLayout());
-		executionPanel.setAlignmentX(LEFT_ALIGNMENT);
+		//executionPanel.setAlignmentX(LEFT_ALIGNMENT);
 		executionPanel.add(this.runOrStopButton);
 		executionPanel.add(this.restartButton);	
 		executionPanel.add(this.fastForward);		

@@ -2,9 +2,9 @@ package src.controller;
 
 import src.model.world.*;
 import java.util.*;
-import src.model.langage.*;
+import src.model.language.*;
 import src.view.world.*;
-import src.view.langage.*;
+import src.view.language.*;
 import javax.swing.JOptionPane;
 
 public class ControllerLevel{
@@ -59,6 +59,9 @@ public class ControllerLevel{
 			WorldThread.speed = 400;
 	}
 	
+	public boolean isAccelerated (){
+		return WorldThread.speed == 100;
+	}
 	public void speedReset(){
 		WorldThread.speed = 400;
 	}
@@ -75,7 +78,8 @@ public class ControllerLevel{
 		this.level.restart();
 		this.vueLevel.restart();
 		isInfinite = false;
-		this.worldInterrupter.switchOff();
+		if(this.worldInterrupter.getOn())
+			this.worldInterrupter.switchOff();
 	}
 
 	public static void errorPopUp(String message) {

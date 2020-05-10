@@ -11,6 +11,7 @@
   },
 
   "story" : "Chapitre 1 : La menace de l'Oeil de Providence" ,
+  "hint" : "Pour construire votre code, cliquez sur instruction à droite et relachez là au dessus d'une instruction à gauche (au dessus de Begin par exemple).",
     
   "decor": [
     {"nameDecor": "Cobble"},
@@ -239,16 +240,5 @@
     {"nameDecor": "Wall"},
     {"nameDecor": "Cobble"}
   ],
-  "entity": [
-    {
-      "xPosition": 15,
-      "yPosition": 15,
-      "nameEntity": "Coin"
-    },
-    {
-      "xPosition": 15,
-      "yPosition": 1,
-      "nameEntity": "Coin"
-    }
-  ]
+  "entity": []
 }

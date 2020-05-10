@@ -11,6 +11,7 @@
   },
 
   "story" : "Chapitre 7 : Traversée de la mer interdite de Finis" ,
+  "hint" : "Vous avez désormais accès à toutes les instructions du jeu !",
     
   "decor": [
     {"nameDecor": "Sand"},

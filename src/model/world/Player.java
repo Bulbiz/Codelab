@@ -2,7 +2,7 @@
 package src.model.world;
 
 import java.util.*;
-import src.model.langage.*;
+import src.model.language.*;
 
 /**
  * Define the Player

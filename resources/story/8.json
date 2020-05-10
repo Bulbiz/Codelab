@@ -11,6 +11,7 @@
   },
 
   "story" : "Chapitre 8 : Le pouvoir de Naga Finis" ,
+  "hint" : "Le bouton Faster est le meilleur ami des programmeurs expérimentés.",
     
   "decor": [
     {"nameDecor": "River"},
@@ -239,16 +240,5 @@
     {"nameDecor": "Floor"},
     {"nameDecor": "Floor"}
   ],
-  "entity": [
-    {
-      "xPosition": 7,
-      "yPosition": 1,
-      "nameEntity": "Key"
-    },
-    {
-      "xPosition": 15,
-      "yPosition": 14,
-      "nameEntity": "Coin"
-    }
-  ]
+  "entity": []
 }
