@@ -274,26 +274,6 @@
       "xPosition": 9,
       "yPosition": 5,
       "nameEntity": "Key"
-    },
-    {
-      "xPosition": 2,
-      "yPosition": 3,
-      "nameEntity": "Coin"
-    },
-    {
-      "xPosition": 2,
-      "yPosition": 15,
-      "nameEntity": "Coin"
-    },
-    {
-      "xPosition": 2,
-      "yPosition": 14,
-      "nameEntity": "Coin"
-    },
-    {
-      "xPosition": 15,
-      "yPosition": 1,
-      "nameEntity": "Coin"
     }
   ]
 }
