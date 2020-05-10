@@ -47,6 +47,7 @@ public class LanguageView extends JLayeredPane {
         resourcePanel = new ResourcePanel(controller);        
         
         editScroll = new JScrollPane(editPanel);
+        editScroll.getVerticalScrollBar().setUnitIncrement(12);
         int margeright = 24;
         editPanel.setPreferredSize(new Dimension(EditPanel.width, EditPanel.height));
         editScroll.setViewportBorder(null);
@@ -56,6 +57,7 @@ public class LanguageView extends JLayeredPane {
                 
         
         resourceScroll = new JScrollPane(resourcePanel);
+        resourceScroll.getVerticalScrollBar().setUnitIncrement(12);
         resourcePanel.setPreferredSize(new Dimension(ResourcePanel.width, ResourcePanel.height));
         resourceScroll.setViewportBorder(null);
         resourceScroll.setBounds(EditPanel.width + margeright, 0, ResourcePanel.width, height);
